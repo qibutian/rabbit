@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
+import com.means.rabbit.R;
+
 public class MyIndexFragment extends Fragment implements OnClickListener {
 	static MyIndexFragment instance;
 
@@ -26,7 +28,7 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		// mainV = inflater.inflate(R.layout.fragment_home_page, null);
+		 mainV = inflater.inflate(R.layout.fragment_my, null);
 		mLayoutInflater = inflater;
 		initView();
 		// TODO Auto-generated method stub
