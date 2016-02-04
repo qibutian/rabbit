@@ -2,11 +2,149 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.means.rabbit.MainActivity" >
+    tools:context="com.means.shopping.activity.main.MainActivity" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+    <!-- <include layout="@layout/include_title_bar"/> -->
+
+    <FrameLayout
+        android:id="@+id/main_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/line"
+        android:layout_below="@+id/titlebar" >
+    </FrameLayout>
+
+    <View
+        android:id="@+id/line"
+        style="@style/line_horizontal"
+        android:layout_above="@+id/tab" />
+
+    <LinearLayout
+        android:id="@+id/tab"
+        android:layout_width="fill_parent"
+        android:layout_height="54dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/img_layout"
+                android:layout_width="20dp"
+                android:layout_height="20dp" >
+
+                <ImageView
+                    android:id="@+id/img"
+                    android:layout_width="20dp"
+                    
+                    android:layout_height="20dp"
+                    android:src="@drawable/test" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/text"
+                style="@style/text_66_black_small"
+                android:layout_marginTop="4dp"
+                android:text="首页" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="20dp"
+                android:layout_height="20dp" >
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/icon_trip_n" />
+            </RelativeLayout>
+
+            <TextView
+                style="@style/text_66_black_small"
+                android:layout_marginTop="4dp"
+                android:text="旅行小蜜" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="20dp"
+                android:layout_height="20dp" >
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/icon_store_n" />
+            </RelativeLayout>
+
+            <TextView
+                style="@style/text_66_black_small"
+                android:layout_marginTop="4dp"
+                android:text="商家" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="20dp"
+                android:layout_height="20dp" >
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/icon_my_n" />
+            </RelativeLayout>
+
+            <TextView
+                style="@style/text_66_black_small"
+                android:layout_marginTop="4dp"
+                android:text="我的" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="20dp"
+                android:layout_height="20dp" >
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/icon_more_n" />
+            </RelativeLayout>
+
+            <TextView
+                style="@style/text_66_black_small"
+                android:layout_marginTop="4dp"
+                android:text="更多" />
+        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>
