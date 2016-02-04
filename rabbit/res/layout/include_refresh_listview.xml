@@ -5,7 +5,7 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical" >
 
-    <com.means.shopping.views.RefreshListViewAndMore
+    <com.means.rabbit.views.RefreshListViewAndMore
         android:id="@+id/my_listview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />

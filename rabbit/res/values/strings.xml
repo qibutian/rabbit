@@ -22,5 +22,7 @@
     <string name="title_activity_about">AboutActivity</string>
     <string name="title_activity_forget_password">ForgetPasswordActivity</string>
     <string name="title_activity_user_protocol">UserProtocolActivity</string>
+    <string name="title_activity_edit_info">EditInfoActivity</string>
+    <string name="title_activity_system_msg">SystemMsgActivity</string>
 
 </resources>
