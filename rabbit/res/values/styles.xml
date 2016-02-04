@@ -37,6 +37,34 @@
         <item name="android:textColor">@color/text_white</item>
         <item name="android:textSize">@dimen/text_small</item>
     </style>
+    
+    <style name="text_7b_black_biger">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_7b_black</item>
+        <item name="android:textSize">@dimen/text_biger</item>
+    </style>
+
+    <style name="text_7b_black_big">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_7b_black</item>
+        <item name="android:textSize">@dimen/text_big</item>
+    </style>
+
+    <style name="text_7b_black_medium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_7b_black</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+    </style>
+
+    <style name="text_7b_black_small">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_7b_black</item>
+        <item name="android:textSize">@dimen/text_small</item>
+    </style>
 
     <style name="text_44_black_biger">
         <item name="android:layout_width">wrap_content</item>
