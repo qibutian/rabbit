@@ -50,7 +50,7 @@ public class MainActivity extends FragmentActivity {
 				@Override
 				public void onClick(View v) {
 					setTab(index);
-				}
+				}  
 			});
 		}
 	}
