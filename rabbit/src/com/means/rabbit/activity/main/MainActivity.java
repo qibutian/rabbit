@@ -1,4 +1,4 @@
-package com.means.rabbit.activity;
+package com.means.rabbit.activity.main;
 
 import com.means.rabbit.R;
 import com.means.rabbit.activity.home.HomePageFragment;

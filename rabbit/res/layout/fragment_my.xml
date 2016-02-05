@@ -92,6 +92,7 @@
             </LinearLayout>
             <View style="@style/line_horizontal" />
             <LinearLayout
+                android:id="@+id/business_order"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -178,6 +179,7 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/my_order"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"

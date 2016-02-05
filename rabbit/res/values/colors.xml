@@ -14,6 +14,8 @@
     <color name="text_7b_black">#7b7b7b</color>
     <color name="text_99_grey">#999999</color>
     <color name="text_2B_green">#2BB8AA</color>
+     <color name="text_dark_green">#089840</color>
+     <color name="text_pink">#ff5a5f</color>
     
     <color name="msg_red_bg">#ff5a5f</color>
 

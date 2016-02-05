@@ -24,5 +24,8 @@
     <string name="title_activity_user_protocol">UserProtocolActivity</string>
     <string name="title_activity_edit_info">EditInfoActivity</string>
     <string name="title_activity_system_msg">SystemMsgActivity</string>
+    <string name="title_activity_my_order">MyOrderActivity</string>
+    <string name="title_activity_business_order">BusinessOrderActivity</string>
+    <string name="title_activity_business_order_details">BusinessOrderDetailsActivity</string>
 
 </resources>

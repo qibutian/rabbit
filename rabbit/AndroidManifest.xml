@@ -9,12 +9,13 @@
         android:targetSdkVersion="21" />
 
     <application
+        android:name=".RabbitApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.main.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,8 +28,20 @@
             android:label="@string/title_activity_edit_info" >
         </activity>
         <activity
-            android:name="com.means.rabbit.activity.my.SystemMsgActivity"
+            android:name=".activity.my.SystemMsgActivity"
             android:label="@string/title_activity_system_msg" >
+        </activity>
+        <activity
+            android:name=".activity.my.order.MyOrderActivity"
+            android:label="@string/title_activity_my_order" >
+        </activity>
+        <activity
+            android:name=".activity.my.order.BusinessOrderActivity"
+            android:label="@string/title_activity_business_order" >
+        </activity>
+        <activity
+            android:name="com.means.rabbit.activity.my.order.BusinessOrderDetailsActivity"
+            android:label="@string/title_activity_business_order_details" >
         </activity>
     </application>
 

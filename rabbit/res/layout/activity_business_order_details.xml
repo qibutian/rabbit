@@ -1,0 +1,314 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg_color"
+    android:orientation="vertical"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <include layout="@layout/include_title_bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_leftandright" >
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:text="珍珠泉环球病休圣诞村" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:paddingRight="10dp" >
+
+                    <TextView
+                        style="@style/text_7b_black_medium"
+                        android:text="￥78" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View style="@style/line_horizontal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_leftandright" >
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:text="数量" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:paddingRight="10dp" >
+
+                    <TextView
+                        style="@style/text_7b_black_medium"
+                        android:text="2" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View style="@style/line_horizontal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_leftandright" >
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:text="总计" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:paddingRight="10dp" >
+
+                    <TextView
+                        style="@style/text_7b_black_medium"
+                        android:text="￥156"
+                        android:textColor="@color/text_2B_green" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View style="@style/line_horizontal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_leftandright" >
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:text="订单号" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:paddingRight="10dp" >
+
+                    <TextView
+                        style="@style/text_7b_black_medium"
+                        android:text="20155555555555" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View style="@style/line_horizontal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/padding_leftandright" >
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:text="消费码" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:paddingRight="10dp" >
+
+                    <TextView
+                        style="@style/text_7b_black_medium"
+                        android:drawablePadding="5dp"
+                        android:drawableRight="@drawable/icon_fav"
+                        android:gravity="center_vertical"
+                        android:text="（请输入或扫描二维码）"
+                        android:textColor="@color/text_2B_green" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                style="@style/line_horizontal"
+                android:layout_height="6dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_leftandright" >
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:text="手机" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:paddingRight="10dp" >
+
+                    <TextView
+                        style="@style/text_7b_black_medium"
+                        android:text="157777777777" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View style="@style/line_horizontal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_leftandright" >
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:text="下单时间" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:paddingRight="10dp" >
+
+                    <TextView
+                        style="@style/text_7b_black_medium"
+                        android:text="2016-2-6 01:16" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View style="@style/line_horizontal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_leftandright" >
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:text="支付时间" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:paddingRight="10dp" >
+
+                    <TextView
+                        style="@style/text_7b_black_medium"
+                        android:text="2016-2-6 01:15" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View style="@style/line_horizontal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_leftandright" >
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:text="使用时间" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:paddingRight="10dp" >
+
+                    <TextView
+                        style="@style/text_7b_black_medium"
+                        android:text="-" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View style="@style/line_horizontal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_leftandright" >
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:text="使用积分" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:paddingRight="10dp" >
+
+                    <TextView
+                        style="@style/text_7b_black_medium"
+                        android:text="200" />
+
+                    <TextView
+                        style="@style/text_7b_black_medium"
+                        android:layout_marginLeft="5dp"
+                        android:text="抵扣"
+                        android:textColor="@color/text_2B_green" />
+
+                    <TextView
+                        style="@style/text_7b_black_medium"
+                        android:layout_marginLeft="3dp"
+                        android:text="￥2"
+                        android:textColor="@color/text_2B_green" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View style="@style/line_horizontal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_leftandright" >
+
+                <TextView
+                    style="@style/text_7b_black_medium"
+                    android:text="实付金额" />
+
+                <TextView
+                    style="@style/text_7b_black_medium"
+                    android:layout_marginLeft="5dp"
+                    android:text="￥154"
+                    android:textColor="@color/text_2B_green" />
+            </LinearLayout>
+            
+            <Button 
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/fillet_10_pink_bg"
+                android:textSize="@dimen/text_big"
+                android:textColor="@color/white"
+                android:text="输入消费码"
+                />
+            
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
