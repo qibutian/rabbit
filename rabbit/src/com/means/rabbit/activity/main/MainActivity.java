@@ -2,6 +2,7 @@ package com.means.rabbit.activity.main;
 
 import com.means.rabbit.R;
 import com.means.rabbit.activity.home.HomePageFragment;
+import com.means.rabbit.activity.merchants.MerchatsFragment;
 import com.means.rabbit.activity.my.MyIndexFragment;
 import com.means.rabbit.activity.travel.TravelFragment;
 
@@ -79,7 +80,7 @@ public class MainActivity extends FragmentActivity {
 
 				case 2: // 商家
 					// if (per.isLogin()) {
-					switchContent(MyIndexFragment.getInstance());
+					switchContent(MerchatsFragment.getInstance());
 					imgI.setImageResource(R.drawable.icon_store_f);
 					textT.setTextColor(getResources().getColor(
 							R.color.text_2B_green));
@@ -91,7 +92,7 @@ public class MainActivity extends FragmentActivity {
 					break;
 
 				case 3: // 我的
-					switchContent(TravelFragment.getInstance());
+					switchContent(MyIndexFragment.getInstance());
 					imgI.setImageResource(R.drawable.icon_my_f);
 					textT.setTextColor(getResources().getColor(
 							R.color.text_2B_green));

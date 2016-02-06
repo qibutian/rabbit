@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     tools:context="com.means.shopping.activity.main.MainActivity" >
 
-    <!-- <include layout="@layout/include_title_bar"/> -->
+    <include layout="@layout/include_main_titlebar" />
 
     <FrameLayout
         android:id="@+id/main_content"
@@ -35,21 +35,20 @@
 
             <RelativeLayout
                 android:id="@+id/img_layout"
-                android:layout_width="20dp"
-                android:layout_height="20dp" >
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
 
                 <ImageView
                     android:id="@+id/img"
-                    android:layout_width="20dp"
-                    
-                    android:layout_height="20dp"
-                    android:src="@drawable/test" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_home_n" />
             </RelativeLayout>
 
             <TextView
                 android:id="@+id/text"
                 style="@style/text_66_black_small"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="3dp"
                 android:text="首页" />
         </LinearLayout>
 
@@ -61,18 +60,18 @@
             android:orientation="vertical" >
 
             <RelativeLayout
-                android:layout_width="20dp"
-                android:layout_height="20dp" >
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:src="@drawable/icon_trip_n" />
             </RelativeLayout>
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="3dp"
                 android:text="旅行小蜜" />
         </LinearLayout>
 
@@ -84,18 +83,18 @@
             android:orientation="vertical" >
 
             <RelativeLayout
-                android:layout_width="20dp"
-                android:layout_height="20dp" >
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:src="@drawable/icon_store_n" />
             </RelativeLayout>
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="3dp"
                 android:text="商家" />
         </LinearLayout>
 
@@ -107,18 +106,18 @@
             android:orientation="vertical" >
 
             <RelativeLayout
-                android:layout_width="20dp"
-                android:layout_height="20dp" >
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:src="@drawable/icon_my_n" />
             </RelativeLayout>
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="3dp"
                 android:text="我的" />
         </LinearLayout>
 
@@ -130,19 +129,19 @@
             android:orientation="vertical" >
 
             <RelativeLayout
-                android:layout_width="20dp"
-                android:layout_height="20dp" >
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/icon_more_n" />
             </RelativeLayout>
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="3dp"
                 android:text="更多" />
         </LinearLayout>
     </LinearLayout>
