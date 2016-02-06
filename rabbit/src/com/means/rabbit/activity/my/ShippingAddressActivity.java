@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.means.rabbit.R;
@@ -23,6 +24,8 @@ public class ShippingAddressActivity extends RabbitBaseActivity {
 	ListView contentListV;
 
 	NetJSONAdapter adapter;
+	
+	Button addaddressBtn;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +48,9 @@ public class ShippingAddressActivity extends RabbitBaseActivity {
 		// adapter.addField("image", R.id.pic, "default");
 		listV.setAdapter(adapter);
 		
-		listV.setOnClickListener(new OnClickListener() {
+		addaddressBtn = (Button) findViewById(R.id.addaddress);
+		
+		addaddressBtn.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
