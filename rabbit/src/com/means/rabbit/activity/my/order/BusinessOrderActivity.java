@@ -40,7 +40,7 @@ public class BusinessOrderActivity extends RabbitBaseActivity {
 		
 		adapter = new NetJSONAdapter(url, self,
 				R.layout.item_order_list);
-		adapter.fromWhat("data");
+		adapter.fromWhat("list");
 		// setUrl("http://cwapi.gongpingjia.com:8080/v2/activity/list?latitude=32&longitude=118&maxDistance=5000000&token="+user.getToken()+"&userId="+user.getUserId());
 //		adapter.addField("area_name", R.id.name);
 //		adapter.addField("image", R.id.pic, "default");
