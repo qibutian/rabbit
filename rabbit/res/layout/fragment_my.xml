@@ -6,7 +6,6 @@
     android:orientation="vertical" >
 
     <ScrollView
-        android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
@@ -43,7 +42,7 @@
                     <TextView
                         style="@style/text_66_black_medium"
                         android:layout_marginRight="15dp"
-                        android:text="编辑资料" />
+                        android:text="@string/myfragment_editinfo" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -67,7 +66,8 @@
                 <TextView
                     style="@style/text_44_black_medium"
                     android:layout_marginLeft="10dp"
-                    android:text="系统消息" />
+                    android:text="@string/myfragment_systemmsg"
+                     />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -106,7 +106,7 @@
                 <TextView
                     style="@style/text_44_black_medium"
                     android:layout_marginLeft="10dp"
-                    android:text="商家订单" />
+                    android:text="@string/myfragment_business_order" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -121,6 +121,7 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/comment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -134,7 +135,7 @@
                 <TextView
                     style="@style/text_44_black_medium"
                     android:layout_marginLeft="10dp"
-                    android:text="我的评价" />
+                    android:text="@string/myfragment_comment" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -151,6 +152,7 @@
             
             <View style="@style/line_horizontal" />
             <LinearLayout
+                android:id="@+id/shipping_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -164,7 +166,7 @@
                 <TextView
                     style="@style/text_44_black_medium"
                     android:layout_marginLeft="10dp"
-                    android:text="配送地址" />
+                    android:text="@string/myfragment_shipping_address" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -193,7 +195,7 @@
                 <TextView
                     style="@style/text_44_black_medium"
                     android:layout_marginLeft="10dp"
-                    android:text="订单" />
+                    android:text="@string/myfragment_my_order" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -218,6 +220,7 @@
             </LinearLayout>
             <View style="@style/line_horizontal" />
             <LinearLayout
+                android:id="@+id/integral"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -231,7 +234,7 @@
                 <TextView
                     style="@style/text_44_black_medium"
                     android:layout_marginLeft="10dp"
-                    android:text="积分（522）" />
+                    android:text="@string/myfragment_integral" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -246,6 +249,7 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/collect"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -259,7 +263,7 @@
                 <TextView
                     style="@style/text_44_black_medium"
                     android:layout_marginLeft="10dp"
-                    android:text="收藏" />
+                    android:text="@string/myfragment_collect" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -275,6 +279,7 @@
             </LinearLayout>
             <View style="@style/line_horizontal" />
             <LinearLayout
+                android:id="@+id/current_account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -288,7 +293,7 @@
                 <TextView
                     style="@style/text_44_black_medium"
                     android:layout_marginLeft="10dp"
-                    android:text="现金账户" />
+                    android:text="@string/myfragment_current_account" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -314,12 +319,13 @@
                 >
                 
                 <Button 
+                    android:id="@+id/logout"
                     style="@style/text_44_black_medium"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:background="@drawable/fillet_10_frame_green_bg"
                     android:textColor="@color/text_2B_green"
-                    android:text="退出当前账户"
+                    android:text="@string/myfragment_logout"
                     />
                 
             </LinearLayout>

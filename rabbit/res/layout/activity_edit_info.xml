@@ -18,7 +18,7 @@
 
         <TextView
             style="@style/text_7b_black_medium"
-            android:text="修改头像" />
+            android:text="@string/editinfo_edithead" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -50,7 +50,7 @@
 
         <TextView
             style="@style/text_44_black_medium"
-            android:text="昵称" />
+            android:text="@string/editinfo_nickname" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -81,7 +81,7 @@
 
         <TextView
             style="@style/text_44_black_medium"
-            android:text="密码" />
+            android:text="@string/editinfo_passwordr" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -113,7 +113,7 @@
 
         <TextView
             style="@style/text_44_black_medium"
-            android:text="手机" />
+            android:text="@string/editinfo_phone" />
 
         <LinearLayout
             android:layout_width="match_parent"
