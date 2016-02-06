@@ -49,7 +49,7 @@
 
                 <TextView
                     style="@style/text_44_black_medium"
-                    android:text="数量" />
+                    android:text="@string/businessorderdetails_amount" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -73,7 +73,7 @@
 
                 <TextView
                     style="@style/text_44_black_medium"
-                    android:text="总计" />
+                    android:text="@string/businessorderdetails_total" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -98,7 +98,7 @@
 
                 <TextView
                     style="@style/text_44_black_medium"
-                    android:text="订单号" />
+                    android:text="@string/businessorderdetails_ordernumber" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -123,7 +123,7 @@
 
                 <TextView
                     style="@style/text_44_black_medium"
-                    android:text="消费码" />
+                    android:text="@string/businessorderdetails_consumercode"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -132,12 +132,13 @@
                     android:orientation="horizontal"
                     android:paddingRight="10dp" >
 
-                    <TextView
+                    <EditText
                         style="@style/text_7b_black_medium"
                         android:drawablePadding="5dp"
                         android:drawableRight="@drawable/icon_fav"
                         android:gravity="center_vertical"
-                        android:text="（请输入或扫描二维码）"
+                        android:hint="@string/businessorderdetails_putconsumercode"
+                        android:textColorHint="@color/text_2B_green"
                         android:textColor="@color/text_2B_green" />
                 </LinearLayout>
             </LinearLayout>
@@ -153,7 +154,7 @@
 
                 <TextView
                     style="@style/text_44_black_medium"
-                    android:text="手机" />
+                    android:text="@string/businessorderdetails_phone" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -177,7 +178,7 @@
 
                 <TextView
                     style="@style/text_44_black_medium"
-                    android:text="下单时间" />
+                    android:text="@string/businessorderdetails_odertime" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -201,7 +202,7 @@
 
                 <TextView
                     style="@style/text_44_black_medium"
-                    android:text="支付时间" />
+                    android:text="@string/businessorderdetails_paytime" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -225,7 +226,7 @@
 
                 <TextView
                     style="@style/text_44_black_medium"
-                    android:text="使用时间" />
+                    android:text="@string/businessorderdetails_hours_of_use" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -249,7 +250,7 @@
 
                 <TextView
                     style="@style/text_44_black_medium"
-                    android:text="使用积分" />
+                    android:text="@string/businessorderdetails_hours_of_integral" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -287,7 +288,7 @@
 
                 <TextView
                     style="@style/text_7b_black_medium"
-                    android:text="实付金额" />
+                    android:text="@string/businessorderdetails_hours_amountpaid" />
 
                 <TextView
                     style="@style/text_7b_black_medium"
@@ -305,7 +306,7 @@
                 android:background="@drawable/fillet_10_pink_bg"
                 android:textSize="@dimen/text_big"
                 android:textColor="@color/white"
-                android:text="输入消费码"
+                android:text="@string/businessorderdetails_btn_putconsumercode"
                 />
             
         </LinearLayout>

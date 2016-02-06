@@ -18,7 +18,7 @@
             style="@style/text_66_black_medium"
             android:drawablePadding="2dp"
             android:drawableRight="@drawable/icon_down"
-            android:text="分类" />
+            android:text="@string/businessorder_classify" />
     </LinearLayout>
 
     <LinearLayout
@@ -32,7 +32,7 @@
             style="@style/text_66_black_medium"
             android:drawablePadding="2dp"
             android:drawableRight="@drawable/icon_down"
-            android:text="状态" />
+            android:text="@string/businessorder_state" />
     </LinearLayout>
 
 </LinearLayout>

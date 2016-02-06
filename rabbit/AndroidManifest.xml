@@ -56,12 +56,28 @@
             android:label="@string/title_activity_business_order" >
         </activity>
         <activity
-            android:name="com.means.rabbit.activity.my.order.BusinessOrderDetailsActivity"
+            android:name=".activity.my.order.BusinessOrderDetailsActivity"
             android:label="@string/title_activity_business_order_details" >
         </activity>
-         <activity
+        <activity
             android:name="com.means.rabbit.activity.merchants.FoodListActivity"
             android:label="@string/title_activity_business_order_details" >
+        </activity>
+        <activity
+            android:name=".activity.my.ShippingAddressActivity"
+            android:label="@string/title_activity_shipping_address" >
+        </activity>
+        <activity
+            android:name=".activity.my.AddShippingAddressActivity"
+            android:label="@string/title_activity_add_shipping_address" >
+        </activity>
+        <activity
+            android:name=".activity.my.MyCollectActivity"
+            android:label="@string/title_activity_my_collect" >
+        </activity>
+        <activity
+            android:name=".MyIntegralActivity"
+            android:label="@string/title_activity_my_integral" >
         </activity>
     </application>
 

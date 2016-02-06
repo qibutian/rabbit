@@ -53,29 +53,24 @@
                     style="@style/text_66_black_small"
                     android:text="3.1km" />
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="23dp" >
-
-                <TextView
-                    style="@style/text_44_black_medium"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="left"
-                    android:text="￥9.90"
-                    android:textColor="@color/text_2B_green" />
-
-                <TextView
+            
+           <View 
+               style="@style/line_horizontal"
+               android:layout_marginTop="6dp"
+               />
+           
+           <TextView
                     style="@style/text_66_black_small"
-                    android:layout_marginRight="10dp"
-                    android:text="已售112" />
-
-                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="价值990元的套餐只售99元" />
+           
+           <TextView
                     style="@style/text_66_black_small"
-                    android:text="3.1km" />
-            </LinearLayout>
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="在线付款满100减18" />
+
         </LinearLayout>
     </LinearLayout>
 

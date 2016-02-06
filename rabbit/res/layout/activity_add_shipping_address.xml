@@ -1,0 +1,202 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/app_bg_color"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <include layout="@layout/include_title_bar" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical" >
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/padding_leftandright" >
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:text="@string/addshippingaddress_region" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|center_vertical"
+                    android:orientation="horizontal" >
+                    
+                    <TextView
+                    style="@style/text_7b_black_medium"
+                    android:text="中国 - 江苏 - 南京 - 秦淮区" />
+                    
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/icon_right" />
+                </LinearLayout>
+            </LinearLayout>
+            
+            <View style="@style/line_horizontal"/>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/padding_leftandright" >
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:text="@string/addshippingaddress_address" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|center_vertical"
+                    android:orientation="horizontal" >
+                    
+                    <TextView
+                    style="@style/text_7b_black_medium"
+                    android:text="东山中路一号A201" />
+                </LinearLayout>
+            </LinearLayout>
+            
+            <View style="@style/line_horizontal"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/padding_leftandright" >
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:text="@string/addshippingaddress_phone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|center_vertical"
+                    android:orientation="horizontal" >
+                    
+                    <TextView
+                    style="@style/text_7b_black_medium"
+                    android:text="1588888888" />
+                    
+                </LinearLayout>
+            </LinearLayout>
+            
+            <View style="@style/line_horizontal"/>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/padding_leftandright" >
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:text="@string/addshippingaddress_name" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|center_vertical"
+                    android:orientation="horizontal" >
+                    
+                    <TextView
+                    style="@style/text_7b_black_medium"
+                    android:text="张三" />
+                    
+                </LinearLayout>
+            </LinearLayout>
+            
+            <View style="@style/line_horizontal"/>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/padding_leftandright" >
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:text="@string/addshippingaddress_postcode" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|center_vertical"
+                    android:orientation="horizontal" >
+                    
+                    <TextView
+                    style="@style/text_7b_black_medium"
+                    android:text="210000" />
+                    
+                </LinearLayout>
+            </LinearLayout>
+            
+            <View style="@style/line_horizontal"/>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/padding_leftandright" >
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:text="@string/addshippingaddress_default" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|center_vertical"
+                    android:orientation="horizontal" >
+                    
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@null"
+                        android:checked="true"
+                        android:background="@drawable/checkbox"
+                         />
+                </LinearLayout>
+            </LinearLayout>
+            
+            <View style="@style/line_horizontal"/>
+            
+           <LinearLayout 
+                android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="23dp"
+                    android:paddingRight="23dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:background="@color/app_bg_color"
+                >
+                
+                <Button 
+                    android:id="@+id/logout"
+                    style="@style/text_white_medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/fillet_10_green_bg"
+                    android:text="@string/addshippingaddress_save"
+                    />
+                
+            </LinearLayout>
+            
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

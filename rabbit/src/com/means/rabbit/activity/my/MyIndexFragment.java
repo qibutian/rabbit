@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.means.rabbit.MyIntegralActivity;
 import com.means.rabbit.R;
 import com.means.rabbit.activity.my.order.BusinessOrderDetailsActivity;
 import com.means.rabbit.activity.my.order.MyOrderActivity;
@@ -20,7 +21,8 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 
 	LayoutInflater mLayoutInflater;
 
-	LinearLayout editinfoLl, systemmsgLl, business_orderLl, my_orderLl;
+	LinearLayout editinfoLl, systemmsgLl, business_orderLl, my_orderLl,
+			collectLl, shipping_addressLl, integralLl;
 
 	public static MyIndexFragment getInstance() {
 		if (instance == null) {
@@ -47,11 +49,18 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 		business_orderLl = (LinearLayout) mainV
 				.findViewById(R.id.business_order);
 		my_orderLl = (LinearLayout) mainV.findViewById(R.id.my_order);
+		shipping_addressLl = (LinearLayout) mainV
+				.findViewById(R.id.shipping_address);
+		collectLl = (LinearLayout) mainV.findViewById(R.id.collect);
+		integralLl = (LinearLayout) mainV.findViewById(R.id.integral);
 
 		editinfoLl.setOnClickListener(this);
 		systemmsgLl.setOnClickListener(this);
 		business_orderLl.setOnClickListener(this);
 		my_orderLl.setOnClickListener(this);
+		shipping_addressLl.setOnClickListener(this);
+		collectLl.setOnClickListener(this);
+		integralLl.setOnClickListener(this);
 	}
 
 	@Override
@@ -70,13 +79,28 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 			break;
 		// 商家订单
 		case R.id.business_order:
-//			it = new Intent(getActivity(), BusinessOrderActivity.class);
+			// it = new Intent(getActivity(), BusinessOrderActivity.class);
 			it = new Intent(getActivity(), BusinessOrderDetailsActivity.class);
 			startActivity(it);
 			break;
 		// 我的订单
 		case R.id.my_order:
 			it = new Intent(getActivity(), MyOrderActivity.class);
+			startActivity(it);
+			break;
+		// 配送地址
+		case R.id.shipping_address:
+			it = new Intent(getActivity(), ShippingAddressActivity.class);
+			startActivity(it);
+			break;
+		// 收藏列表
+		case R.id.collect:
+			it = new Intent(getActivity(), MyCollectActivity.class);
+			startActivity(it);
+			break;
+		// 积分明细
+		case R.id.integral:
+			it = new Intent(getActivity(), MyIntegralActivity.class);
 			startActivity(it);
 			break;
 
