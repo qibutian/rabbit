@@ -1,5 +1,7 @@
 package com.means.rabbit.api;
 
 public class API {
-	public static String text = "http://www.foodies.im/wap.php?g=Wap&c=Travel&a=cityList";
+
+	public static String Baseurl = "http://115.28.184.43";
+	public static String text = Baseurl + "/home/market/contentlist";
 }

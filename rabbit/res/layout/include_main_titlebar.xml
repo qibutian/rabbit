@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="50dp"
     android:background="@color/text_2B_green"
+    android:id="@+id/title_bar"
     android:orientation="vertical" >
 
     <LinearLayout
