@@ -59,6 +59,10 @@
             android:name="com.means.rabbit.activity.my.order.BusinessOrderDetailsActivity"
             android:label="@string/title_activity_business_order_details" >
         </activity>
+         <activity
+            android:name="com.means.rabbit.activity.merchants.FoodListActivity"
+            android:label="@string/title_activity_business_order_details" >
+        </activity>
     </application>
 
 </manifest>
