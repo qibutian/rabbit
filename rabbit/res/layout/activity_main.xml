@@ -22,7 +22,7 @@
     <LinearLayout
         android:id="@+id/tab"
         android:layout_width="fill_parent"
-        android:layout_height="54dp"
+        android:layout_height="56dp"
         android:layout_alignParentBottom="true"
         android:background="@color/white" >
 
@@ -48,7 +48,7 @@
             <TextView
                 android:id="@+id/text"
                 style="@style/text_66_black_small"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="2dp"
                 android:text="首页" />
         </LinearLayout>
 
@@ -71,7 +71,7 @@
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="2dp"
                 android:text="旅行小蜜" />
         </LinearLayout>
 
@@ -94,7 +94,7 @@
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="2dp"
                 android:text="商家" />
         </LinearLayout>
 
@@ -117,7 +117,7 @@
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="2dp"
                 android:text="我的" />
         </LinearLayout>
 
@@ -141,7 +141,7 @@
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="2dp"
                 android:text="更多" />
         </LinearLayout>
     </LinearLayout>

@@ -61,8 +61,8 @@ public class RefreshListViewAndMore extends LinearLayout {
 		final StoreHouseHeader header = new StoreHouseHeader(mContext);
 		header.setPadding(0, DhUtil.dip2px(mContext, 15), 0,
 				DhUtil.dip2px(mContext, 10));
-		header.initWithString("XiaoMaYi");
-		header.setTextColor(getResources().getColor(R.color.black));
+		header.initWithString("XiaoLantu");
+		header.setTextColor(getResources().getColor(R.color.text_2B_green));
 		mPtrFrame.addPtrUIHandler(header);
 		mPtrFrame.setHeaderView(header);
 		mPtrFrame.setPinContent(false);

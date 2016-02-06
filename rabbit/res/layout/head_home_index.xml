@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="6dp"
         android:layout_marginRight="6dp"
-        android:layout_marginTop="6dp" >
+        android:layout_marginTop="8dp" >
 
         <LinearLayout
             android:id="@+id/sign_layout"
@@ -38,7 +38,7 @@
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="4dp"
                 android:text="美食" />
         </LinearLayout>
 
@@ -65,7 +65,7 @@
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="4dp"
                 android:text="酒店" />
         </LinearLayout>
 
@@ -92,8 +92,8 @@
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="3dp"
-                android:text="充值" />
+                android:layout_marginTop="4dp"
+                android:text="货币兑换" />
         </LinearLayout>
 
         <View
@@ -119,8 +119,8 @@
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="3dp"
-                android:text="分享" />
+                android:layout_marginTop="4dp"
+                android:text="出行服务" />
         </LinearLayout>
 
         <View
@@ -146,8 +146,8 @@
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="3dp"
-                android:text="分享" />
+                android:layout_marginTop="4dp"
+                android:text="旅行小秘" />
         </LinearLayout>
     </LinearLayout>
 
@@ -156,7 +156,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="6dp"
         android:layout_marginRight="6dp"
-        android:layout_marginTop="10dp" >
+        android:layout_marginTop="11dp" >
 
         <LinearLayout
             android:id="@+id/market"
@@ -176,8 +176,8 @@
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="2dp"
-                android:text="超市超市" />
+                android:layout_marginTop="4dp"
+                android:text="休闲娱乐" />
         </LinearLayout>
 
         <View
@@ -203,8 +203,8 @@
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="2dp"
-                android:text="夜生活也" />
+                android:layout_marginTop="4dp"
+                android:text="专享特色" />
         </LinearLayout>
 
         <View
@@ -230,8 +230,8 @@
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="2dp"
-                android:text="红包" />
+                android:layout_marginTop="4dp"
+                android:text="随身翻译" />
         </LinearLayout>
 
         <View
@@ -257,8 +257,8 @@
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="2dp"
-                android:text="佣金" />
+                android:layout_marginTop="4dp"
+                android:text="紧急求助" />
         </LinearLayout>
 
         <View
@@ -284,8 +284,8 @@
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="2dp"
-                android:text="佣金" />
+                android:layout_marginTop="4dp"
+                android:text="全部分类" />
         </LinearLayout>
     </LinearLayout>
 
@@ -371,9 +371,9 @@
         style="@style/text_99_grey_small"
         android:layout_width="fill_parent"
         android:layout_height="38dp"
-        android:layout_marginLeft="10dp"
         android:background="@color/app_bg_color"
         android:gravity="center_vertical"
+        android:paddingLeft="10dp"
         android:text="猜你喜欢" />
 
 </LinearLayout>
