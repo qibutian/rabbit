@@ -79,6 +79,14 @@
             android:name=".MyIntegralActivity"
             android:label="@string/title_activity_my_integral" >
         </activity>
+        <activity
+            android:name=".activity.merchants.DaiGouActivity"
+            android:label="@string/title_activity_my_integral" >
+        </activity>
+        <activity
+            android:name=".activity.merchants.HotelListActivity"
+            android:label="@string/title_activity_my_integral" >
+        </activity>
     </application>
 
 </manifest>

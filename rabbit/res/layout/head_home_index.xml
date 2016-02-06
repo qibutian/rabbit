@@ -21,7 +21,7 @@
         android:layout_marginTop="8dp" >
 
         <LinearLayout
-            android:id="@+id/sign_layout"
+            android:id="@+id/food_layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -48,7 +48,7 @@
             android:layout_weight="0.3" />
 
         <LinearLayout
-            android:id="@+id/classify"
+            android:id="@+id/hotel_layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

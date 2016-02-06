@@ -1,12 +1,14 @@
 package com.means.rabbit.activity.home;
 
-
 import net.duohuo.dhroid.adapter.NetJSONAdapter;
 
 import com.means.rabbit.R;
+import com.means.rabbit.activity.merchants.FoodListActivity;
+import com.means.rabbit.activity.merchants.HotelListActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.views.RefreshListViewAndMore;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -17,22 +19,26 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
-
 public class HomePageFragment extends Fragment implements OnClickListener {
 	static HomePageFragment instance;
 
 	View mainV;
 
 	LayoutInflater mLayoutInflater;
-	
-	View  headV;
-	
-	RefreshListViewAndMore  listV;
-	
-	ListView contentListV;
-	
-	NetJSONAdapter  adapter;
 
+	View headV;
+
+	RefreshListViewAndMore listV;
+
+	ListView contentListV;
+
+	NetJSONAdapter adapter;
+
+	// 美食点击按钮
+	View foodLayoutV;
+
+	// 酒店点击按钮
+	View hotelLayoutV;
 
 	public static HomePageFragment getInstance() {
 		if (instance == null) {
@@ -70,9 +76,32 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 			}
 		});
+
+		foodLayoutV = headV.findViewById(R.id.food_layout);
+		hotelLayoutV = headV.findViewById(R.id.hotel_layout);
+		foodLayoutV.setOnClickListener(this);
+		hotelLayoutV.setOnClickListener(this);
 	}
 
 	@Override
 	public void onClick(View v) {
+
+		Intent it;
+
+		switch (v.getId()) {
+		// 美食
+		case R.id.food_layout:
+			it = new Intent(getActivity(), FoodListActivity.class);
+			startActivity(it);
+			break;
+
+		case R.id.hotel_layout:
+			it = new Intent(getActivity(), HotelListActivity.class);
+			startActivity(it);
+			break;
+
+		default:
+			break;
+		}
 	}
 }

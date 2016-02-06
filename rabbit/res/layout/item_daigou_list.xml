@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:my="http://schemas.android.com/apk/res/com.means.rabbit"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+     <View
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:background="@color/app_bg_color" />
+
+    <View style="@style/line_horizontal" />
+
+    <net.duohuo.dhroid.view.YToXImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/model_xiezi"
+        android:scaleType="centerCrop"
+        my:heightToWidth="1.0" />
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="5dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:paddingBottom="8dp"
+        >
+    
+    <TextView 
+        style="@style/text_44_black_big"
+        android:text="Nike女式大童款运动鞋 轻跑鞋 只有35码 290直邮到手!"
+        />
+    
+    <TextView 
+        style="@style/text_66_black_small"
+        android:text="年底盘点咯,现在下单,年前还能收到货"
+        android:layout_marginTop="5dp"
+        />
+    
+    <View 
+        style="@style/line_horizontal"
+        android:layout_marginTop="8dp"
+        />
+    
+    <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp" >
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:text="￥150"
+                    android:textColor="@color/text_2B_green" />
+
+                <TextView
+                    style="@style/text_66_black_small"
+                    android:layout_marginRight="10dp"
+                    android:text="评分 4.8/1298" />
+
+
+                <TextView
+                    style="@style/text_66_black_small"
+                    android:text="鞋类" />
+            </LinearLayout>
+    </LinearLayout>
+ <View style="@style/line_horizontal" />
+</LinearLayout>

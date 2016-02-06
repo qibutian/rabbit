@@ -13,7 +13,7 @@ import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.views.RefreshListViewAndMore;
 
-public class FoodListActivity extends RabbitBaseActivity {
+public class DaiGouActivity extends RabbitBaseActivity {
 
 	LayoutInflater mLayoutInflater;
 
@@ -29,18 +29,18 @@ public class FoodListActivity extends RabbitBaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_food_list);
+		setContentView(R.layout.activity_daigou_list);
 	}
 
 	@Override
 	public void initView() {
-		setTitle("美食");
+		setTitle("代购");
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		mLayoutInflater = LayoutInflater.from(self);
 		headV = mLayoutInflater.inflate(R.layout.head_food_list, null);
 		listV.addHeadView(headV);
 		contentListV = listV.getListView();
-		adapter = new NetJSONAdapter(API.text, self, R.layout.item_food_list);
+		adapter = new NetJSONAdapter(API.text, self, R.layout.item_daigou_list);
 		adapter.fromWhat("list");
 		listV.setAdapter(adapter);
 		contentListV.setOnItemClickListener(new OnItemClickListener() {
