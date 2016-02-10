@@ -47,6 +47,10 @@
     <string name="addshippingaddress_postcode">邮编</string>
     <string name="addshippingaddress_default">默认</string>
     <string name="addshippingaddress_save">保存</string>
+    <string name="translate_hint">请输入中文···</string>
+    <string name="translate_language">语言</string>
+    <string name="translate_translate">翻译</string>
+     <string name="translate_result">翻译结果</string>
     
     
     
