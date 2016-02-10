@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">小懒兔</string>
+    <string name="app_name">LazyBunny</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="progress_doing">加载中...</string>
@@ -47,6 +47,12 @@
     <string name="addshippingaddress_postcode">邮编</string>
     <string name="addshippingaddress_default">默认</string>
     <string name="addshippingaddress_save">保存</string>
+    
+    
+    
+    
+    
+    
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_setting">SettingActivity</string>

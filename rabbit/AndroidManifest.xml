@@ -87,6 +87,10 @@
             android:name=".activity.merchants.HotelListActivity"
             android:label="@string/title_activity_my_integral" >
         </activity>
+        <activity
+            android:name=".activity.home.TranslateActivity"
+            android:label="@string/title_activity_my_integral" >
+        </activity>
     </application>
 
 </manifest>

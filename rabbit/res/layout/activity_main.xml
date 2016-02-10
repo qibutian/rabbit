@@ -40,8 +40,8 @@
 
                 <ImageView
                     android:id="@+id/img"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
                     android:src="@drawable/icon_home_n" />
             </RelativeLayout>
 
@@ -64,8 +64,8 @@
                 android:layout_height="wrap_content" >
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
                     android:src="@drawable/icon_trip_n" />
             </RelativeLayout>
 
@@ -87,8 +87,8 @@
                 android:layout_height="wrap_content" >
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
                     android:src="@drawable/icon_store_n" />
             </RelativeLayout>
 
@@ -110,8 +110,8 @@
                 android:layout_height="wrap_content" >
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
                     android:src="@drawable/icon_my_n" />
             </RelativeLayout>
 
@@ -133,8 +133,8 @@
                 android:layout_height="wrap_content" >
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/icon_more_n" />
             </RelativeLayout>

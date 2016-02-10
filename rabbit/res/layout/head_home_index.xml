@@ -31,14 +31,14 @@
             <net.duohuo.dhroid.view.YToXImageView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
                 android:src="@drawable/icon_meishi"
                 my:heightToWidth="1.0" />
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
                 android:text="美食" />
         </LinearLayout>
 
@@ -58,14 +58,14 @@
             <net.duohuo.dhroid.view.YToXImageView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
                 android:src="@drawable/icon_jiudian"
                 my:heightToWidth="1.0" />
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
                 android:text="酒店" />
         </LinearLayout>
 
@@ -85,14 +85,14 @@
             <net.duohuo.dhroid.view.YToXImageView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
                 android:src="@drawable/icon_huobi"
                 my:heightToWidth="1.0" />
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
                 android:text="货币兑换" />
         </LinearLayout>
 
@@ -112,14 +112,14 @@
             <net.duohuo.dhroid.view.YToXImageView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
                 android:src="@drawable/icon_chuxing"
                 my:heightToWidth="1.0" />
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
                 android:text="出行服务" />
         </LinearLayout>
 
@@ -139,14 +139,14 @@
             <net.duohuo.dhroid.view.YToXImageView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
                 android:src="@drawable/icon_lvxing"
                 my:heightToWidth="1.0" />
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
                 android:text="旅行小秘" />
         </LinearLayout>
     </LinearLayout>
@@ -169,14 +169,14 @@
             <net.duohuo.dhroid.view.YToXImageView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
                 android:src="@drawable/icon_xiuxian"
                 my:heightToWidth="1.0" />
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
                 android:text="休闲娱乐" />
         </LinearLayout>
 
@@ -196,14 +196,14 @@
             <net.duohuo.dhroid.view.YToXImageView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
                 android:src="@drawable/icon_zhuanxiang"
                 my:heightToWidth="1.0" />
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
                 android:text="专享特色" />
         </LinearLayout>
 
@@ -223,14 +223,14 @@
             <net.duohuo.dhroid.view.YToXImageView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
                 android:src="@drawable/icon_suishenfanyi"
                 my:heightToWidth="1.0" />
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
                 android:text="随身翻译" />
         </LinearLayout>
 
@@ -250,14 +250,14 @@
             <net.duohuo.dhroid.view.YToXImageView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
                 android:src="@drawable/icon_qiuzhu"
                 my:heightToWidth="1.0" />
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
                 android:text="紧急求助" />
         </LinearLayout>
 
@@ -277,14 +277,14 @@
             <net.duohuo.dhroid.view.YToXImageView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
                 android:src="@drawable/icon_quanbufenlei"
                 my:heightToWidth="1.0" />
 
             <TextView
                 style="@style/text_66_black_small"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
                 android:text="全部分类" />
         </LinearLayout>
     </LinearLayout>
