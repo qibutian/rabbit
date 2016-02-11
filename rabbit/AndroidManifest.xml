@@ -91,6 +91,16 @@
             android:name=".activity.home.TranslateActivity"
             android:label="@string/title_activity_my_integral" >
         </activity>
+        <activity
+            android:name=".activity.merchants.ShopDetailActivity"
+            android:label="@string/title_activity_my_integral" >
+        </activity>
+        
+        <activity
+            android:name=".activity.merchants.HotelDetailActivity"
+            android:label="@string/title_activity_my_integral" >
+        </activity>
+        
     </application>
 
 </manifest>
