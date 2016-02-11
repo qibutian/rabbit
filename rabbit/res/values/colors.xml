@@ -11,6 +11,7 @@
     <color name="text_66_black">#666666</color>
     <color name="text_7b_black">#7b7b7b</color>
     <color name="text_99_grey">#999999</color>
+    <color name="text_cc_grey">#cccccc</color>
     <color name="text_2B_green">#2BB8AA</color>
     <color name="text_dark_green">#089840</color>
     <color name="text_pink">#ff5a5f</color>
@@ -19,7 +20,6 @@
     <color name="text_yellow">#EDB833</color>
     <color name="text_green">#30D5C0</color>
     <color name="text_blue">#0090E3</color>
-    
     <color name="black60">#66000000</color>
 
 </resources>
