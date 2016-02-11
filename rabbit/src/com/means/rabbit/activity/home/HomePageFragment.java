@@ -39,6 +39,9 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 	// 酒店点击按钮
 	View hotelLayoutV;
+	
+	// 随身翻译点击按钮
+	View redpacketLayoutV;
 
 	public static HomePageFragment getInstance() {
 		if (instance == null) {
@@ -79,8 +82,10 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 		foodLayoutV = headV.findViewById(R.id.food_layout);
 		hotelLayoutV = headV.findViewById(R.id.hotel_layout);
+		redpacketLayoutV = headV.findViewById(R.id.redpacket);
 		foodLayoutV.setOnClickListener(this);
 		hotelLayoutV.setOnClickListener(this);
+		redpacketLayoutV.setOnClickListener(this);
 	}
 
 	@Override
@@ -97,6 +102,12 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 		case R.id.hotel_layout:
 			it = new Intent(getActivity(), HotelListActivity.class);
+			startActivity(it);
+			break;
+			
+			//随身翻译
+		case R.id.redpacket:
+			it = new Intent(getActivity(), TranslateActivity.class);
 			startActivity(it);
 			break;
 

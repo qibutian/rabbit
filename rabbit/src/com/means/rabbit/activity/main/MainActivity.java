@@ -1,12 +1,5 @@
 package com.means.rabbit.activity.main;
 
-import com.means.rabbit.R;
-import com.means.rabbit.activity.home.HomePageFragment;
-import com.means.rabbit.activity.merchants.MerchatsFragment;
-import com.means.rabbit.activity.my.MyIndexFragment;
-import com.means.rabbit.activity.travel.TravelFragment;
-
-import net.duohuo.dhroid.ioc.IocContainer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -20,12 +13,21 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.means.rabbit.R;
+import com.means.rabbit.activity.home.HomePageFragment;
+import com.means.rabbit.activity.home.SelectCityActivity;
+import com.means.rabbit.activity.merchants.MerchatsFragment;
+import com.means.rabbit.activity.my.MyIndexFragment;
+import com.means.rabbit.activity.travel.TravelFragment;
+
 public class MainActivity extends FragmentActivity {
 
 	private FragmentManager fm;
 	private Fragment currentFragment;
 
 	private LinearLayout tabV;
+	
+	TextView titlebar_cityT;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,17 @@ public class MainActivity extends FragmentActivity {
 		// TODO Auto-generated method stub
 		fm = getSupportFragmentManager();
 		tabV = (LinearLayout) findViewById(R.id.tab);
+		
+		titlebar_cityT = (TextView) findViewById(R.id.city);
+		titlebar_cityT.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent it = new Intent(MainActivity.this,SelectCityActivity.class);
+				startActivity(it);
+			}
+		});
 	}
 
 	private void initTab() {

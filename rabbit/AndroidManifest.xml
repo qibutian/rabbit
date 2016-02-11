@@ -60,7 +60,7 @@
             android:label="@string/title_activity_business_order_details" >
         </activity>
         <activity
-            android:name="com.means.rabbit.activity.merchants.FoodListActivity"
+            android:name=".activity.merchants.FoodListActivity"
             android:label="@string/title_activity_business_order_details" >
         </activity>
         <activity
@@ -76,7 +76,7 @@
             android:label="@string/title_activity_my_collect" >
         </activity>
         <activity
-            android:name=".MyIntegralActivity"
+            android:name=".activity.my.MyIntegralActivity"
             android:label="@string/title_activity_my_integral" >
         </activity>
         <activity
@@ -90,6 +90,14 @@
         <activity
             android:name=".activity.home.TranslateActivity"
             android:label="@string/title_activity_my_integral" >
+        </activity>
+        <activity
+            android:name=".activity.home.SelectLanguageActivity"
+            android:label="@string/title_activity_select_language" >
+        </activity>
+        <activity
+            android:name="com.means.rabbit.activity.home.SelectCityActivity"
+            android:label="@string/title_activity_select_city" >
         </activity>
     </application>
 

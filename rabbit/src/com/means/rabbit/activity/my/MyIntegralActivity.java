@@ -1,7 +1,10 @@
-package com.means.rabbit;
+package com.means.rabbit.activity.my;
 
 import net.duohuo.dhroid.adapter.NetJSONAdapter;
 
+import com.means.rabbit.R;
+import com.means.rabbit.R.id;
+import com.means.rabbit.R.layout;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.views.RefreshListViewAndMore;

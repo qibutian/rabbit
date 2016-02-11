@@ -9,7 +9,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.means.rabbit.MyIntegralActivity;
 import com.means.rabbit.R;
 import com.means.rabbit.activity.my.order.BusinessOrderDetailsActivity;
 import com.means.rabbit.activity.my.order.MyOrderActivity;
