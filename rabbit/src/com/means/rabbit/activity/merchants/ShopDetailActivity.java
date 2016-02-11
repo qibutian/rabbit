@@ -1,7 +1,6 @@
 package com.means.rabbit.activity.merchants;
 
 import net.duohuo.dhroid.adapter.NetJSONAdapter;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,13 +11,20 @@ import android.widget.AdapterView.OnItemClickListener;
 import com.means.rabbit.R;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
+import com.means.rabbit.views.CommentView;
+import com.means.rabbit.views.KeyVauleView;
 import com.means.rabbit.views.RefreshListViewAndMore;
+import com.means.rabbit.views.ShopDetailTuangouView;
 
-public class FoodListActivity extends RabbitBaseActivity {
-
-	LayoutInflater mLayoutInflater;
+public class ShopDetailActivity extends RabbitBaseActivity {
 
 	View headV;
+
+	KeyVauleView keyValueView;
+
+	ShopDetailTuangouView shopDetailTuangouView;
+
+	CommentView commentView;
 
 	RefreshListViewAndMore listV;
 
@@ -30,18 +36,20 @@ public class FoodListActivity extends RabbitBaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_food_list);
+		setContentView(R.layout.activity_shop_detail);
 	}
 
 	@Override
 	public void initView() {
-		setTitle("美食");
+		setTitle("商家详情");
+		headV = LayoutInflater.from(self).inflate(R.layout.head_shop_detail,
+				null);
+
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
-		mLayoutInflater = LayoutInflater.from(self);
-		headV = mLayoutInflater.inflate(R.layout.head_food_list, null);
 		listV.addHeadView(headV);
 		contentListV = listV.getListView();
-		adapter = new NetJSONAdapter(API.text, self, R.layout.item_food_list);
+		adapter = new NetJSONAdapter(API.text, self,
+				R.layout.item_shop_detail_tuangou_near);
 		adapter.fromWhat("list");
 		listV.setAdapter(adapter);
 		contentListV.setOnItemClickListener(new OnItemClickListener() {
@@ -50,11 +58,18 @@ public class FoodListActivity extends RabbitBaseActivity {
 			public void onItemClick(AdapterView<?> arg0, View arg1,
 					int position, long arg3) {
 
-				Intent it = new Intent(self, ShopDetailActivity.class);
-				startActivity(it);
-
 			}
 		});
+
+		keyValueView = (KeyVauleView) headV.findViewById(R.id.keyvule_view);
+		keyValueView.setData();
+
+		shopDetailTuangouView = (ShopDetailTuangouView) headV
+				.findViewById(R.id.tuangou_view);
+		shopDetailTuangouView.setData();
+
+		commentView = (CommentView) headV.findViewById(R.id.comment_view);
+		commentView.setData();
 	}
 
 }

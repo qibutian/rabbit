@@ -99,6 +99,15 @@
             android:name="com.means.rabbit.activity.home.SelectCityActivity"
             android:label="@string/title_activity_select_city" >
         </activity>
+        <activity
+            android:name=".activity.merchants.ShopDetailActivity"
+            android:label="@string/title_activity_my_integral" >
+        </activity>
+        
+        <activity
+            android:name=".activity.merchants.HotelDetailActivity"
+            android:label="@string/title_activity_my_integral" >
+        </activity>
     </application>
 
 </manifest>
