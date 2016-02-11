@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/include_title_bar" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="220dp" >
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/model_good" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:background="@color/black60"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingBottom="4dp"
+                    android:paddingTop="4dp" >
+
+                    <TextView
+                        style="@style/text_white_biger"
+                        android:text="Daniel Wellington丹利尔惠019DW男式潮款皮带手表 超薄时尚款" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_leftandright" >
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:gravity="left"
+                    android:text="￥5499"
+                    android:textColor="@color/text_2B_green" />
+
+                <TextView
+                    style="@style/text_66_black_small"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="￥12453" />
+
+                <TextView
+                    style="@style/text_66_black_small"
+                    android:layout_marginRight="15dp"
+                    android:text="255人购买" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/padding_leftandright" >
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:text="ABC代购中心 " />
+            </LinearLayout>
+
+            <View style="@style/line_horizontal" />
+
+            <LinearLayout
+                android:id="@+id/comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/padding_leftandright" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_grey_location" />
+
+                <TextView
+                    style="@style/text_66_black_medium"
+                    android:layout_marginLeft="10dp"
+                    android:text="南京市秦淮区中山东路11号 " />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|center_vertical"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icon_right" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View style="@style/line_horizontal" />
+
+            <LinearLayout
+                android:id="@+id/comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/padding_leftandright" >
+
+                <RatingBar
+                    android:id="@+id/ratingbar"
+                    style="@style/roomRatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:rating="1.5"
+                    android:stepSize="0.5" />
+
+                <TextView
+                    style="@style/text_66_black_medium"
+                    android:layout_marginLeft="10dp"
+                    android:text="2.7/113人" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|center_vertical"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icon_right" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View style="@style/line_horizontal" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="10dp"
+                android:background="@color/app_bg_color" />
+
+            <View style="@style/line_horizontal" />
+
+            <com.means.rabbit.views.KeyVauleView
+                android:id="@+id/keyvule_view"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+            </com.means.rabbit.views.KeyVauleView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/padding_leftandright" >
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:text="团购 " />
+            </LinearLayout>
+
+            <View style="@style/line_horizontal" />
+
+            <TextView
+                style="@style/text_66_black_medium"
+                android:layout_width="fill_parent"
+                android:background="@color/app_bg_color"
+                android:padding="@dimen/padding_leftandright"
+                android:text="购买须知" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="30dp"
+                android:paddingTop="14dp" >
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:text="发货时间"
+                    android:textColor="@color/text_2B_green" />
+
+                <TextView
+                    style="@style/text_66_black_medium"
+                    android:layout_marginTop="2dp"
+                    android:text="一周内发货" />
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:layout_marginTop="2dp"
+                    android:text="贵重物品"
+                    android:textColor="@color/text_2B_green" />
+
+                <TextView
+                    style="@style/text_66_black_medium"
+                    android:layout_marginTop="2dp"
+                    android:text="贵重物品如果需要保价请在订单备注" />
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:layout_marginTop="2dp"
+                    android:text="色差提示"
+                    android:textColor="@color/text_2B_green" />
+
+                <TextView
+                    style="@style/text_66_black_medium"
+                    android:layout_marginTop="2dp"
+                    android:text="因为相机和光线的问题,照片与实物有一定的差别" />
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:layout_marginTop="2dp"
+                    android:text="到货时间"
+                    android:textColor="@color/text_2B_green" />
+
+                <TextView
+                    style="@style/text_66_black_medium"
+                    android:layout_marginTop="2dp"
+                    android:text="因为天气和航班等因素,不能保证按时送到" />
+            </LinearLayout>
+
+            <View
+                style="@style/line_horizontal"
+                android:layout_marginTop="14dp" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="10dp"
+                android:background="@color/app_bg_color" />
+
+            <View style="@style/line_horizontal" />
+
+            <com.means.rabbit.views.CommentView
+                android:id="@+id/comment_view"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

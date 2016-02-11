@@ -108,6 +108,23 @@
             android:name=".activity.merchants.HotelDetailActivity"
             android:label="@string/title_activity_my_integral" >
         </activity>
+         <activity
+            android:name=".activity.merchants.GoodDetailActivity"
+            android:label="@string/title_activity_my_integral" >
+        </activity>
+         <activity
+            android:name=".activity.travel.TravelActivity"
+            android:label="@string/title_activity_my_integral" >
+        </activity>
+         <activity
+            android:name=".activity.main.HelpActivity"
+            android:label="@string/title_activity_my_integral" >
+        </activity>
+        
+          <activity
+            android:name=".activity.travel.TravelDetailActivity"
+            android:label="@string/title_activity_my_integral" >
+        </activity>
     </application>
 
 </manifest>

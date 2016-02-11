@@ -1,4 +1,4 @@
-package com.means.rabbit.activity.merchants;
+package com.means.rabbit.activity.travel;
 
 import net.duohuo.dhroid.adapter.NetJSONAdapter;
 import android.content.Intent;
@@ -14,11 +14,9 @@ import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.views.RefreshListViewAndMore;
 
-public class DaiGouActivity extends RabbitBaseActivity {
+public class TravelActivity extends RabbitBaseActivity {
 
 	LayoutInflater mLayoutInflater;
-
-	View headV;
 
 	RefreshListViewAndMore listV;
 
@@ -30,18 +28,15 @@ public class DaiGouActivity extends RabbitBaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_daigou_list);
+		setContentView(R.layout.activity_travel);
 	}
 
 	@Override
 	public void initView() {
-		setTitle("代购");
+		setTitle("旅行小秘");
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
-		mLayoutInflater = LayoutInflater.from(self);
-		headV = mLayoutInflater.inflate(R.layout.head_food_list, null);
-		listV.addHeadView(headV);
 		contentListV = listV.getListView();
-		adapter = new NetJSONAdapter(API.text, self, R.layout.item_daigou_list);
+		adapter = new NetJSONAdapter(API.text, self, R.layout.item_travel_list);
 		adapter.fromWhat("list");
 		listV.setAdapter(adapter);
 		contentListV.setOnItemClickListener(new OnItemClickListener() {
@@ -49,7 +44,7 @@ public class DaiGouActivity extends RabbitBaseActivity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1,
 					int position, long arg3) {
-				Intent it = new Intent(self, GoodDetailActivity.class);
+				Intent it = new Intent(self, TravelDetailActivity.class);
 				startActivity(it);
 			}
 		});

@@ -26,8 +26,8 @@ public class MainActivity extends FragmentActivity {
 	private Fragment currentFragment;
 
 	private LinearLayout tabV;
-	
-	TextView titlebar_cityT;
+
+	View city_layoutV;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,14 +42,15 @@ public class MainActivity extends FragmentActivity {
 		// TODO Auto-generated method stub
 		fm = getSupportFragmentManager();
 		tabV = (LinearLayout) findViewById(R.id.tab);
-		
-		titlebar_cityT = (TextView) findViewById(R.id.city);
-		titlebar_cityT.setOnClickListener(new OnClickListener() {
-			
+
+		city_layoutV = (View) findViewById(R.id.city_layout);
+		city_layoutV.setOnClickListener(new OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent it = new Intent(MainActivity.this,SelectCityActivity.class);
+				Intent it = new Intent(MainActivity.this,
+						SelectCityActivity.class);
 				startActivity(it);
 			}
 		});
@@ -64,7 +65,7 @@ public class MainActivity extends FragmentActivity {
 				@Override
 				public void onClick(View v) {
 					setTab(index);
-				}  
+				}
 			});
 		}
 	}
@@ -154,7 +155,7 @@ public class MainActivity extends FragmentActivity {
 					textT.setTextColor(getResources().getColor(
 							R.color.text_66_black));
 					break;
-					
+
 				default:
 					break;
 				}

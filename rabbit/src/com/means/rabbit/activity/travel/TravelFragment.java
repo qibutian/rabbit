@@ -1,6 +1,7 @@
 package com.means.rabbit.activity.travel;
 
 import net.duohuo.dhroid.adapter.NetJSONAdapter;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -60,7 +61,8 @@ public class TravelFragment extends Fragment implements OnClickListener {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1,
 					int position, long arg3) {
-
+				Intent it = new  Intent(getActivity(),TravelDetailActivity.class);
+				startActivity(it);
 			}
 		});
 	}
