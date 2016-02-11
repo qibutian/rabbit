@@ -1,6 +1,7 @@
 package com.means.rabbit.activity.merchants;
 
 import net.duohuo.dhroid.adapter.NetJSONAdapter;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,6 +44,9 @@ public class HotelListActivity extends RabbitBaseActivity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1,
 					int position, long arg3) {
+
+				Intent it = new Intent(self, HotelDetailActivity.class);
+				startActivity(it);
 
 			}
 		});
