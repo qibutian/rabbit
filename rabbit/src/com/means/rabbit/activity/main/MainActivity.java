@@ -62,6 +62,8 @@ public class MainActivity extends FragmentActivity {
 			LinearLayout childV = (LinearLayout) tabV.getChildAt(i);
 			childV.setOnClickListener(new OnClickListener() {
 
+				
+				
 				@Override
 				public void onClick(View v) {
 					setTab(index);
@@ -72,6 +74,7 @@ public class MainActivity extends FragmentActivity {
 
 	public void setTab(final int index) {
 		for (int i = 0; i < tabV.getChildCount(); i++) {
+			
 			LinearLayout childV = (LinearLayout) tabV.getChildAt(i);
 			RelativeLayout imgV = (RelativeLayout) childV.getChildAt(0);
 			ImageView imgI = (ImageView) imgV.getChildAt(0);
@@ -162,6 +165,7 @@ public class MainActivity extends FragmentActivity {
 			}
 		}
 	}
+	
 
 	public void switchContent(Fragment fragment) {
 		try {
