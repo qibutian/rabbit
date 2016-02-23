@@ -62,8 +62,6 @@ public class MainActivity extends FragmentActivity {
 			LinearLayout childV = (LinearLayout) tabV.getChildAt(i);
 			childV.setOnClickListener(new OnClickListener() {
 
-				
-				
 				@Override
 				public void onClick(View v) {
 					setTab(index);
@@ -74,7 +72,7 @@ public class MainActivity extends FragmentActivity {
 
 	public void setTab(final int index) {
 		for (int i = 0; i < tabV.getChildCount(); i++) {
-			
+
 			LinearLayout childV = (LinearLayout) tabV.getChildAt(i);
 			RelativeLayout imgV = (RelativeLayout) childV.getChildAt(0);
 			ImageView imgI = (ImageView) imgV.getChildAt(0);
@@ -145,6 +143,7 @@ public class MainActivity extends FragmentActivity {
 					imgI.setImageResource(R.drawable.icon_store_n);
 					textT.setTextColor(getResources().getColor(
 							R.color.text_66_black));
+
 					break;
 
 				case 3:
@@ -157,14 +156,23 @@ public class MainActivity extends FragmentActivity {
 					imgI.setImageResource(R.drawable.icon_more_n);
 					textT.setTextColor(getResources().getColor(
 							R.color.text_66_black));
+
+					break;
+					
+
+					
+				default:
+
 					break;
 
-				default:
-					break;
 				}
 			}
 		}
+		
+
+		
 	}
+	
 	
 
 	public void switchContent(Fragment fragment) {
@@ -175,6 +183,7 @@ public class MainActivity extends FragmentActivity {
 			}
 			if (!fragment.isAdded()) {
 				t.add(R.id.main_content, fragment);
+
 			}
 			t.show(fragment);
 			t.commitAllowingStateLoss();
