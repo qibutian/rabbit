@@ -39,9 +39,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activity.my.EditInfoActivity"
-            android:label="@string/title_activity_edit_info" >
+        <activity android:name=".activity.my.EditInfoActivity" >
         </activity>
         <activity
             android:name=".activity.my.SystemMsgActivity"
@@ -96,34 +94,44 @@
             android:label="@string/title_activity_select_language" >
         </activity>
         <activity
-            android:name="com.means.rabbit.activity.home.SelectCityActivity"
+            android:name=".activity.home.SelectCityActivity"
             android:label="@string/title_activity_select_city" >
         </activity>
         <activity
             android:name=".activity.merchants.ShopDetailActivity"
             android:label="@string/title_activity_my_integral" >
         </activity>
-        
         <activity
             android:name=".activity.merchants.HotelDetailActivity"
             android:label="@string/title_activity_my_integral" >
         </activity>
-         <activity
+        <activity
             android:name=".activity.merchants.GoodDetailActivity"
             android:label="@string/title_activity_my_integral" >
         </activity>
-         <activity
+        <activity
             android:name=".activity.travel.TravelActivity"
             android:label="@string/title_activity_my_integral" >
         </activity>
-         <activity
+        <activity
             android:name=".activity.main.HelpActivity"
             android:label="@string/title_activity_my_integral" >
         </activity>
-        
-          <activity
+        <activity
             android:name=".activity.travel.TravelDetailActivity"
             android:label="@string/title_activity_my_integral" >
+        </activity>
+        <activity
+            android:name="com.means.rabbit.activity.home.AllItemActivity"
+            android:label="@string/title_activity_all_item" >
+        </activity>
+       <activity
+            android:name="com.means.rabbit.activity.my.LoginActivity"
+            android:label="@string/title_activity_all_item" >
+        </activity>
+        <activity
+            android:name="com.means.rabbit.activity.my.RegisterActivity"
+            android:label="@string/title_activity_all_item" >
         </activity>
     </application>
 

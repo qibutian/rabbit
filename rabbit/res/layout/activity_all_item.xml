@@ -1,0 +1,365 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg_color"
+    android:orientation="vertical"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        layout="@layout/include_title_bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/app_bg_color"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp" >
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/icon_meishi" />
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/all_item_hot" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_leftandright" >
+                    
+                    <TextView
+                    style="@style/text_44_black_medium"
+                    android:layout_centerInParent="true"
+                    android:text="@string/all_item_halal_food" />
+                    
+                    <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_right" />
+                    
+                </RelativeLayout>
+                
+                <View style="@style/line_horizontal"/>
+                
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_leftandright" >
+                    
+                    <TextView
+                    style="@style/text_44_black_medium"
+                    android:layout_centerInParent="true"
+                    android:text="@string/all_item_travel_strategy" />
+                    
+                    <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_right" />
+                    
+                </RelativeLayout>
+                
+                <View style="@style/line_horizontal"/>
+                
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_leftandright" >
+                    
+                    <TextView
+                    style="@style/text_44_black_medium"
+                    android:layout_centerInParent="true"
+                    android:text="@string/all_item_hotboom" />
+                    
+                    <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_right" />
+                </RelativeLayout>
+                
+                <View style="@style/line_horizontal"/>
+                
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_leftandright" >
+                    
+                    <TextView
+                    style="@style/text_44_black_medium"
+                    android:layout_centerInParent="true"
+                    android:text="@string/all_item_diving" />
+                    
+                    <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_right" />
+                    
+                </RelativeLayout>
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/app_bg_color"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp" >
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/icon_meishi" />
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/all_item_food" />
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_leftandright" >
+                    
+                    <TextView
+                    style="@style/text_44_black_medium"
+                    android:layout_centerInParent="true"
+                    android:text="@string/all_item_all" />
+                    
+                    <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_right" />
+                    
+                </RelativeLayout>
+                
+                <View style="@style/line_horizontal"/>
+                
+                 <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_leftandright" >
+                    
+                    <TextView
+                    style="@style/text_44_black_medium"
+                    android:layout_centerInParent="true"
+                    android:text="@string/all_item_halal_food" />
+                    
+                    <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_right" />
+                    
+                </RelativeLayout>
+                
+                <View style="@style/line_horizontal"/>
+                
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_leftandright" >
+                    
+                    <TextView
+                    style="@style/text_44_black_medium"
+                    android:layout_centerInParent="true"
+                    android:text="@string/all_item_coffee" />
+                    
+                    <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_right" />
+                    
+                </RelativeLayout>
+                
+                <View style="@style/line_horizontal"/>
+                
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_leftandright" >
+                    
+                    <TextView
+                    style="@style/text_44_black_medium"
+                    android:layout_centerInParent="true"
+                    android:text="@string/all_item_bar" />
+                    
+                    <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_right" />
+                </RelativeLayout>
+                
+                <View style="@style/line_horizontal"/>
+                
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_leftandright" >
+                    
+                    <TextView
+                    style="@style/text_44_black_medium"
+                    android:layout_centerInParent="true"
+                    android:text="@string/all_item_other" />
+                    
+                    <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_right" />
+                    
+                </RelativeLayout>
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/app_bg_color"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp" >
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/icon_jiudian" />
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/all_item_grogshop" />
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_leftandright" >
+                    
+                    <TextView
+                    style="@style/text_44_black_medium"
+                    android:layout_centerInParent="true"
+                    android:text="@string/all_item_all" />
+                    
+                    <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_right" />
+                    
+                </RelativeLayout>
+                
+                <View style="@style/line_horizontal"/>
+                
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_leftandright" >
+                    
+                    <TextView
+                    style="@style/text_44_black_medium"
+                    android:layout_centerInParent="true"
+                    android:text="@string/all_item_starred_hotel" />
+                    
+                    <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_right" />
+                    
+                </RelativeLayout>
+                
+                <View style="@style/line_horizontal"/>
+                
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_leftandright" >
+                    
+                    <TextView
+                    style="@style/text_44_black_medium"
+                    android:layout_centerInParent="true"
+                    android:text="@string/all_item_hotel" />
+                    
+                    <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_right" />
+                </RelativeLayout>
+                
+                <View style="@style/line_horizontal"/>
+                
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_leftandright" >
+                    
+                    <TextView
+                    style="@style/text_44_black_medium"
+                    android:layout_centerInParent="true"
+                    android:text="@string/all_item_vacational_village" />
+                    
+                    <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_right" />
+                    
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
