@@ -133,6 +133,10 @@
             android:name="com.means.rabbit.activity.my.RegisterActivity"
             android:label="@string/title_activity_all_item" >
         </activity>
+        <activity
+            android:name="com.means.rabbit.activity.my.ForgetPswdActivity"
+            android:label="@string/title_activity_all_item" >
+        </activity>
     </application>
 
 </manifest>

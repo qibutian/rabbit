@@ -5,19 +5,18 @@ import android.os.Bundle;
 import com.means.rabbit.R;
 import com.means.rabbit.base.RabbitBaseActivity;
 
-public class RegisterActivity extends RabbitBaseActivity {
+public class ForgetPswdActivity extends RabbitBaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_register);
+		setContentView(R.layout.activity_forget_pswd);
 	}
 
 	@Override
 	public void initView() {
-		setTitle(getString(R.string.register));
-
+		setTitle(getString(R.string.forget_pswd));
 	}
 
 }

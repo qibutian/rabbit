@@ -63,27 +63,6 @@
 
         <View style="@style/line_horizontal" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="@dimen/padding_leftandright" >
-
-            <TextView
-                style="@style/text_44_black_medium"
-                android:text="@string/register_name" />
-
-            <EditText
-                style="@style/text_66_black_medium"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:background="@color/nothing"
-                android:gravity="right"
-                android:hint="@string/register_name_hint" />
-        </LinearLayout>
-
-        <View style="@style/line_horizontal" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -94,7 +73,7 @@
 
             <TextView
                 style="@style/text_44_black_medium"
-                android:text="@string/login_pswd" />
+                android:text="@string/forget_pswd_newpswd" />
 
             <EditText
                 style="@style/text_66_black_medium"
@@ -102,7 +81,7 @@
                 android:layout_weight="1"
                 android:background="@color/nothing"
                 android:gravity="right"
-                android:hint="@string/login_pswd_hint" />
+                android:hint="@string/forget_pswd_newpswd_hint" />
         </LinearLayout>
 
         <View style="@style/line_horizontal" />
