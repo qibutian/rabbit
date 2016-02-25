@@ -28,7 +28,7 @@
 
                 <TextView
                     style="@style/text_44_black_medium"
-                    android:text="@string/grogshop_name" />
+                    android:text="珍珠温泉度假村" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -38,7 +38,7 @@
 
                     <TextView
                         style="@style/text_99_grey_medium"
-                        android:text="金陵酒店" />
+                        android:text="￥78" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -53,7 +53,7 @@
 
                 <TextView
                     style="@style/text_44_black_medium"
-                    android:text="@string/grogshop_type" />
+                    android:text="@string/grouporder_pay_count" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -63,12 +63,12 @@
 
                     <TextView
                         style="@style/text_99_grey_medium"
-                        android:text="标准间" />
+                        android:text="2" />
                 </LinearLayout>
             </LinearLayout>
 
             <View style="@style/line_horizontal" />
-
+            
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -78,109 +78,7 @@
 
                 <TextView
                     style="@style/text_44_black_medium"
-                    android:text="@string/grogshop_date" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right|center_vertical"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        style="@style/text_99_grey_medium"
-                        android:text="入住 1晚" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <View style="@style/line_horizontal" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="@dimen/padding_leftandright" >
-
-                <TextView
-                    style="@style/text_44_black_medium"
-                    android:text="@string/grogshop_unit_price" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right|center_vertical"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        style="@style/text_99_grey_medium"
-                        android:text="￥78/晚" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <View style="@style/line_horizontal" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="@dimen/padding_leftandright" >
-
-                <TextView
-                    style="@style/text_44_black_medium"
-                    android:text="@string/grogshop_pay" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right|center_vertical"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        style="@style/text_99_grey_medium"
-                        android:text="￥78/晚" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <View style="@style/line_horizontal" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="@dimen/padding_leftandright" >
-
-                <TextView
-                    style="@style/text_44_black_medium"
-                    android:text="@string/grogshop_count" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right|center_vertical"
-                    android:orientation="horizontal" >
-
-                    <com.means.rabbit.views.CartView
-                        android:id="@+id/cartView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" >
-                    </com.means.rabbit.views.CartView>
-                </LinearLayout>
-            </LinearLayout>
-
-            <View style="@style/line_horizontal" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="@dimen/padding_leftandright" >
-
-                <TextView
-                    style="@style/text_44_black_medium"
-                    android:text="@string/grogshop_total" />
+                    android:text="@string/grouporder_pay_total" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -194,9 +92,66 @@
                         android:textColor="@color/text_2B_green" />
                 </LinearLayout>
             </LinearLayout>
+            
+            <View style="@style/line_horizontal" />
 
-            <View
-                style="@style/line_horizontal"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_leftandright" >
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:text="@string/grouporder_pay_order_number" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        style="@style/text_99_grey_medium"
+                        android:text="2151235484212" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View style="@style/line_horizontal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_leftandright" >
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:text="@string/grouporder_pay_consumption_code" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        style="@style/text_44_black_big"
+                        android:text="2300 58452 54845"
+                        android:textColor="@color/text_2B_green" />
+                    
+                    <ImageView 
+                        android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/erweima"
+                    android:layout_marginLeft="10dp"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View style="@style/line_horizontal"
                 android:layout_height="10dp" />
 
             <LinearLayout
@@ -208,7 +163,7 @@
 
                 <TextView
                     style="@style/text_44_black_medium"
-                    android:text="@string/grogshop_phone" />
+                    android:text="@string/grouporder_pay_phone" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -218,7 +173,7 @@
 
                     <TextView
                         style="@style/text_99_grey_medium"
-                        android:text="15188888888" />
+                        android:text="15888888888" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -233,7 +188,7 @@
 
                 <TextView
                     style="@style/text_44_black_medium"
-                    android:text="@string/grogshop_linkman" />
+                    android:text="@string/grouporder_pay_order_time" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -243,7 +198,7 @@
 
                     <TextView
                         style="@style/text_99_grey_medium"
-                        android:text="张三" />
+                        android:text="2016-2-25 13:55" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -258,7 +213,7 @@
 
                 <TextView
                     style="@style/text_44_black_medium"
-                    android:text="@string/grogshop_remark" />
+                    android:text="@string/grouporder_pay_paytime" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -268,10 +223,33 @@
 
                     <TextView
                         style="@style/text_99_grey_medium"
-                        android:ellipsize="end"
-                        android:maxWidth="150dp"
-                        android:singleLine="true"
-                        android:text="@string/grogshop_fill_in" />
+                        android:text="-" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                style="@style/line_horizontal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_leftandright" >
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:text="@string/grouporder_pay_use_time" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        style="@style/text_99_grey_medium"
+                        android:text="-" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -286,7 +264,7 @@
 
                 <TextView
                     style="@style/text_44_black_medium"
-                    android:text="@string/grogshop_use_integral" />
+                    android:text="@string/grouporder_pay_use_integral" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -301,7 +279,7 @@
                     <TextView
                         style="@style/text_44_black_medium"
                         android:layout_marginLeft="8dp"
-                        android:text="@string/grogshop_deduction"
+                        android:text="@string/grouporder_pay_deduction"
                         android:textColor="@color/text_2B_green" />
 
                     <TextView
@@ -322,7 +300,7 @@
 
                 <TextView
                     style="@style/text_99_grey_medium"
-                    android:text="@string/grogshop_reality_money" />
+                    android:text="@string/grouporder_pay_reality_money" />
 
                 <TextView
                     style="@style/text_44_black_medium"
@@ -345,8 +323,8 @@
                 android:layout_marginBottom="15dp"
                 android:layout_marginLeft="23dp"
                 android:layout_marginRight="23dp"
-                android:background="@drawable/fillet_10_green_bg"
-                android:text="@string/grogshop_submit_order" />
+                android:background="@drawable/fillet_10_pink_bg"
+                android:text="@string/grouporder_pay_pay_order" />
         </LinearLayout>
     </ScrollView>
 

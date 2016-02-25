@@ -138,7 +138,7 @@
             android:label="@string/title_activity_all_item" >
         </activity>
         <activity
-            android:name=".activity.order.FavorablePayMainActivity"
+            android:name=".activity.order.pay.FavorablePayMainActivity"
             android:label="@string/title_activity_favorable_pay_main" >
         </activity>
         <activity
@@ -146,12 +146,23 @@
             android:label="@string/title_activity_group_order" >
         </activity>
         <activity
-            android:name="com.means.rabbit.activity.order.GrogshopOrderActivity"
+            android:name=".activity.order.GrogshopOrderActivity"
             android:label="@string/title_activity_grogshop_order" >
         </activity>
         <activity
             android:name="com.means.rabbit.activity.my.CommentListActivity"
-            android:label="@string/title_activity_grogshop_order" >
+            android:label="@string/title_activity_grogshop_order" />
+        <activity
+            android:name=".activity.order.TakeAwayOrderActivity"
+            android:label="@string/title_activity_take_away_order" >
+        </activity>
+        <activity
+            android:name=".activity.order.pay.GroupPayActivity"
+            android:label="@string/title_activity_groupshop_pay" >
+        </activity>
+        <activity
+            android:name="com.means.rabbit.activity.order.pay.GrogshopPayActivity"
+            android:label="@string/title_activity_groupshop_pay" >
         </activity>
     </application>
 

@@ -1,4 +1,4 @@
-package com.means.rabbit.activity.order;
+package com.means.rabbit.activity.order.pay;
 
 import com.means.rabbit.R;
 import com.means.rabbit.R.layout;
@@ -11,23 +11,20 @@ import android.view.MenuItem;
 
 /**
  * 
- * 优惠买单
+ * 酒店支付
  * @author Administrator
  *
  */
-public class FavorablePayMainActivity extends RabbitBaseActivity {
+public class GrogshopPayActivity extends RabbitBaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_favorable_pay_main);
-		
-		
+		setContentView(R.layout.activity_grogshop_pay);
 	}
 
 	@Override
 	public void initView() {
-		// TODO Auto-generated method stub
-		setTitle("优惠买单");
+		setTitle("酒店订单");
 	}
 }
