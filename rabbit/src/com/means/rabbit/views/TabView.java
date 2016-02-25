@@ -17,6 +17,8 @@ public class TabView extends LinearLayout {
 
 	CatPop pop;
 
+	SortPop sortPop;
+
 	public TabView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		this.mContext = context;
@@ -30,21 +32,29 @@ public class TabView extends LinearLayout {
 		centerT = (TextView) contentV.findViewById(R.id.center);
 		rightT = (TextView) contentV.findViewById(R.id.right);
 		leftT.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				pop = new CatPop(mContext);
 				pop.show(TabView.this);
 			}
 		});
-		
-		centerT = (TextView) contentV.findViewById(R.id.right);
+
 		centerT.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				pop = new CatPop(mContext);
 				pop.show(TabView.this);
+			}
+		});
+
+		rightT.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				sortPop = new SortPop(mContext);
+				sortPop.show(TabView.this);
 			}
 		});
 	}
@@ -55,6 +65,7 @@ public class TabView extends LinearLayout {
 
 	public void setCentertText(String text) {
 		centerT.setText(text);
+		centerT.setVisibility(View.VISIBLE);
 	}
 
 	public void setRightText(String text) {

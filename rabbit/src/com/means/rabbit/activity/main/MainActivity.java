@@ -17,6 +17,7 @@ import com.means.rabbit.R;
 import com.means.rabbit.activity.home.HomePageFragment;
 import com.means.rabbit.activity.home.SelectCityActivity;
 import com.means.rabbit.activity.merchants.MerchatsFragment;
+import com.means.rabbit.activity.more.MoreFragment;
 import com.means.rabbit.activity.my.MyIndexFragment;
 import com.means.rabbit.activity.travel.TravelFragment;
 
@@ -113,8 +114,8 @@ public class MainActivity extends FragmentActivity {
 							R.color.text_2B_green));
 					break;
 
-				case 4: // 订单
-					switchContent(TravelFragment.getInstance());
+				case 4: // 更多
+					switchContent(MoreFragment.getInstance());
 					imgI.setImageResource(R.drawable.icon_more_f);
 					textT.setTextColor(getResources().getColor(
 							R.color.text_2B_green));
@@ -158,9 +159,7 @@ public class MainActivity extends FragmentActivity {
 							R.color.text_66_black));
 
 					break;
-					
 
-					
 				default:
 
 					break;
@@ -168,12 +167,8 @@ public class MainActivity extends FragmentActivity {
 				}
 			}
 		}
-		
 
-		
 	}
-	
-	
 
 	public void switchContent(Fragment fragment) {
 		try {

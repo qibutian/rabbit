@@ -1,4 +1,4 @@
-package com.means.rabbit.activity.merchants;
+package com.means.rabbit.activity.my;
 
 import net.duohuo.dhroid.adapter.NetJSONAdapter;
 import android.content.Intent;
@@ -10,16 +10,12 @@ import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
 import com.means.rabbit.R;
+import com.means.rabbit.activity.merchants.ShopDetailActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.views.RefreshListViewAndMore;
-import com.means.rabbit.views.TabView;
 
-public class FoodListActivity extends RabbitBaseActivity {
-
-	LayoutInflater mLayoutInflater;
-
-	View headV;
+public class CommentListActivity extends RabbitBaseActivity {
 
 	RefreshListViewAndMore listV;
 
@@ -27,24 +23,19 @@ public class FoodListActivity extends RabbitBaseActivity {
 
 	NetJSONAdapter adapter;
 
-	TabView tabV;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_food_list);
+		setContentView(R.layout.activity_comment_list);
 	}
 
 	@Override
 	public void initView() {
-		setTitle("美食");
+		setTitle(getString(R.string.comment_list));
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
-		mLayoutInflater = LayoutInflater.from(self);
-		headV = mLayoutInflater.inflate(R.layout.head_food_list, null);
-		listV.addHeadView(headV);
 		contentListV = listV.getListView();
-		adapter = new NetJSONAdapter(API.text, self, R.layout.item_food_list);
+		adapter = new NetJSONAdapter(API.text, self, R.layout.item_comment);
 		adapter.fromWhat("list");
 		listV.setAdapter(adapter);
 		contentListV.setOnItemClickListener(new OnItemClickListener() {
@@ -59,8 +50,6 @@ public class FoodListActivity extends RabbitBaseActivity {
 			}
 		});
 
-		tabV = (TabView) findViewById(R.id.tab);
-		tabV.setCentertText("附近");
 	}
 
 }

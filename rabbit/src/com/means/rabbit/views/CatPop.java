@@ -8,6 +8,7 @@ import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -46,7 +47,7 @@ public class CatPop {
 		pop.setOutsideTouchable(true);
 		// 设置此参数获得焦点，否则无法点击
 		pop.setFocusable(true);
-		pop.setAnimationStyle(R.style.mystyle);
+		// pop.setAnimationStyle(R.style.mystyle);
 		pop.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 		initView();
 
@@ -82,9 +83,20 @@ public class CatPop {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
+				leftAapter.setCurrentPosition(position);
 				rightAdapter.setData(rightData);
 			}
 		});
+
+		contentV.findViewById(R.id.bg).setOnClickListener(
+				new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						System.out.println("wwwwwww");
+						pop.dismiss();
+					}
+				});
 	}
 
 	public void show(View v) {

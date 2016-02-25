@@ -42,7 +42,7 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 	@Override
 	public void initView() {
 		setTitle("酒店详情");
-		headV = LayoutInflater.from(self).inflate(R.layout.head_shop_detail,
+		headV = LayoutInflater.from(self).inflate(R.layout.head_hotel_detail,
 				null);
 
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);

@@ -13,6 +13,7 @@ import com.means.rabbit.R;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.views.RefreshListViewAndMore;
+import com.means.rabbit.views.TabView;
 
 public class HotelListActivity extends RabbitBaseActivity {
 
@@ -23,6 +24,8 @@ public class HotelListActivity extends RabbitBaseActivity {
 	ListView contentListV;
 
 	NetJSONAdapter adapter;
+	
+	TabView tabV;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,7 @@ public class HotelListActivity extends RabbitBaseActivity {
 
 			}
 		});
+		
 	}
 
 }

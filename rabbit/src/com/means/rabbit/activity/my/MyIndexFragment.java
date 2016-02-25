@@ -21,7 +21,7 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 	LayoutInflater mLayoutInflater;
 
 	LinearLayout editinfoLl, systemmsgLl, business_orderLl, my_orderLl,
-			collectLl, shipping_addressLl, integralLl;
+			collectLl, shipping_addressLl, integralLl, commentV;
 
 	public static MyIndexFragment getInstance() {
 		if (instance == null) {
@@ -52,7 +52,7 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 				.findViewById(R.id.shipping_address);
 		collectLl = (LinearLayout) mainV.findViewById(R.id.collect);
 		integralLl = (LinearLayout) mainV.findViewById(R.id.integral);
-
+		commentV = (LinearLayout) mainV.findViewById(R.id.comment);
 		editinfoLl.setOnClickListener(this);
 		systemmsgLl.setOnClickListener(this);
 		business_orderLl.setOnClickListener(this);
@@ -60,6 +60,7 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 		shipping_addressLl.setOnClickListener(this);
 		collectLl.setOnClickListener(this);
 		integralLl.setOnClickListener(this);
+		commentV.setOnClickListener(this);
 	}
 
 	@Override
@@ -103,6 +104,11 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 			startActivity(it);
 			break;
 
+		// 我的评论
+		case R.id.comment:
+			it = new Intent(getActivity(), CommentListActivity.class);
+			startActivity(it);
+			break;
 		default:
 			break;
 		}

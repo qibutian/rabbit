@@ -102,7 +102,7 @@
             android:layout_weight="0.3" />
 
         <LinearLayout
-            android:id="@+id/share"
+            android:id="@+id/travel_services"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -159,7 +159,7 @@
         android:layout_marginTop="11dp" >
 
         <LinearLayout
-            android:id="@+id/market"
+            android:id="@+id/entertainment"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -186,7 +186,7 @@
             android:layout_weight="0.3" />
 
         <LinearLayout
-            android:id="@+id/night_life"
+            android:id="@+id/exclusive_characteristics"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

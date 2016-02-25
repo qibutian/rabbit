@@ -11,8 +11,9 @@ import android.view.MenuItem;
 
 /**
  * 全部分类
+ * 
  * @author Administrator
- *
+ * 
  */
 public class AllItemActivity extends RabbitBaseActivity {
 
@@ -24,7 +25,6 @@ public class AllItemActivity extends RabbitBaseActivity {
 
 	@Override
 	public void initView() {
-		// TODO Auto-generated method stub
-		
+		setTitle(getString(R.string.all_item));
 	}
 }

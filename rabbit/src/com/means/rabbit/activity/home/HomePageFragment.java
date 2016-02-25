@@ -55,6 +55,15 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 	// 全部分类
 	View all_catV;
 
+	// 出行服务
+	View travel_servicesV;
+
+	// 休闲娱乐
+	View entertainmentV;
+
+	// 专享特色
+	View exclusive_characteristicsV;
+
 	public static HomePageFragment getInstance() {
 		if (instance == null) {
 			instance = new HomePageFragment();
@@ -98,12 +107,19 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		travel_layoutV = headV.findViewById(R.id.travel_layout);
 		help_layoutV = headV.findViewById(R.id.help_layout);
 		all_catV = headV.findViewById(R.id.all_cat);
+		travel_servicesV = headV.findViewById(R.id.travel_services);
+		entertainmentV = headV.findViewById(R.id.entertainment);
+		exclusive_characteristicsV = headV
+				.findViewById(R.id.exclusive_characteristics);
 		foodLayoutV.setOnClickListener(this);
 		hotelLayoutV.setOnClickListener(this);
 		redpacketLayoutV.setOnClickListener(this);
 		travel_layoutV.setOnClickListener(this);
 		help_layoutV.setOnClickListener(this);
 		all_catV.setOnClickListener(this);
+		travel_servicesV.setOnClickListener(this);
+		entertainmentV.setOnClickListener(this);
+		exclusive_characteristicsV.setOnClickListener(this);
 	}
 
 	@Override
@@ -114,6 +130,24 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		switch (v.getId()) {
 		// 美食
 		case R.id.food_layout:
+			it = new Intent(getActivity(), FoodListActivity.class);
+			startActivity(it);
+			break;
+
+		// 出行服务
+		case R.id.travel_services:
+			it = new Intent(getActivity(), FoodListActivity.class);
+			startActivity(it);
+			break;
+
+		// 休闲娱乐
+		case R.id.entertainment:
+			it = new Intent(getActivity(), FoodListActivity.class);
+			startActivity(it);
+			break;
+
+		// 专享特色
+		case R.id.exclusive_characteristics:
 			it = new Intent(getActivity(), FoodListActivity.class);
 			startActivity(it);
 			break;
@@ -141,7 +175,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 			break;
 
 		case R.id.all_cat:
-			it = new Intent(getActivity(), DaiGouActivity.class);
+			it = new Intent(getActivity(), AllItemActivity.class);
 			startActivity(it);
 			break;
 		default:

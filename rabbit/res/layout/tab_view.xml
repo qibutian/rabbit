@@ -59,4 +59,6 @@
         </LinearLayout>
     </LinearLayout>
 
+    <View style="@style/line_horizontal" />
+
 </LinearLayout>

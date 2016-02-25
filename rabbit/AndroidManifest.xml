@@ -149,6 +149,10 @@
             android:name="com.means.rabbit.activity.order.GrogshopOrderActivity"
             android:label="@string/title_activity_grogshop_order" >
         </activity>
+        <activity
+            android:name="com.means.rabbit.activity.my.CommentListActivity"
+            android:label="@string/title_activity_grogshop_order" >
+        </activity>
     </application>
 
 </manifest>

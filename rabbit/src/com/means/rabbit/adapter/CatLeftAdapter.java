@@ -18,6 +18,8 @@ public class CatLeftAdapter extends BaseAdapter {
 
 	List<String> list;
 
+	int currentPosition = -1;
+
 	public CatLeftAdapter(Context mContex) {
 		this.mContex = mContex;
 		inflater = LayoutInflater.from(mContex);
@@ -35,6 +37,11 @@ public class CatLeftAdapter extends BaseAdapter {
 			return 0;
 		}
 		return list.size();
+	}
+
+	public void setCurrentPosition(int position) {
+		this.currentPosition = position;
+		notifyDataSetChanged();
 	}
 
 	@Override
@@ -56,6 +63,14 @@ public class CatLeftAdapter extends BaseAdapter {
 
 		ViewUtil.bindView(convertView.findViewById(R.id.name),
 				list.get(position));
+
+		if (currentPosition == position) {
+			convertView.setBackgroundColor(mContex.getResources().getColor(
+					R.color.white));
+		} else {
+			convertView.setBackgroundColor(mContex.getResources().getColor(
+					R.color.app_bg_color));
+		}
 		// TODO Auto-generated method stub
 		return convertView;
 	}

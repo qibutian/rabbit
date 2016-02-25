@@ -113,7 +113,7 @@
     <string name="grouporder_reality_money">实付金额</string>
     <string name="grouporder_deduction">抵扣</string>
     <string name="grouporder_submit_order">提交订单</string>
-    <!--  酒店订单  -->
+    <!-- 酒店订单 -->
     <string name="grogshop_name">名称</string>
     <string name="grogshop_type">房型</string>
     <string name="grogshop_date">日期</string>
@@ -128,6 +128,18 @@
     <string name="grogshop_deduction">抵扣</string>
     <string name="grogshop_reality_money">实付金额</string>
     <string name="grogshop_submit_order">提交订单</string>
+
+    <!-- 附近弹框 -->
+    <string name="sort_one">智能排序</string>
+    <string name="sort_two">离我最近</string>
+    <string name="sort_three">口碑最好</string>
+    <string name="sort_four">人气最高</string>
+
+    <!-- 全部分类 -->
+    <string name="all_item">全部分类</string>
+
+    <!-- 评论列表 -->
+    <string name="comment_list">全部评论</string>
     
     
     
