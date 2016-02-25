@@ -122,20 +122,32 @@
             android:label="@string/title_activity_my_integral" >
         </activity>
         <activity
-            android:name="com.means.rabbit.activity.home.AllItemActivity"
-            android:label="@string/title_activity_all_item" >
-        </activity>
-       <activity
-            android:name="com.means.rabbit.activity.my.LoginActivity"
+            android:name=".activity.home.AllItemActivity"
             android:label="@string/title_activity_all_item" >
         </activity>
         <activity
-            android:name="com.means.rabbit.activity.my.RegisterActivity"
+            android:name=".activity.my.LoginActivity"
             android:label="@string/title_activity_all_item" >
         </activity>
         <activity
-            android:name="com.means.rabbit.activity.my.ForgetPswdActivity"
+            android:name=".activity.my.RegisterActivity"
             android:label="@string/title_activity_all_item" >
+        </activity>
+        <activity
+            android:name=".activity.my.ForgetPswdActivity"
+            android:label="@string/title_activity_all_item" >
+        </activity>
+        <activity
+            android:name=".activity.order.FavorablePayMainActivity"
+            android:label="@string/title_activity_favorable_pay_main" >
+        </activity>
+        <activity
+            android:name=".activity.order.GroupOrderActivity"
+            android:label="@string/title_activity_group_order" >
+        </activity>
+        <activity
+            android:name="com.means.rabbit.activity.order.GrogshopOrderActivity"
+            android:label="@string/title_activity_grogshop_order" >
         </activity>
     </application>
 
