@@ -40,7 +40,6 @@ public class TranslatePop implements View.OnClickListener {
 
     private void initView() {
 
-
     }
 
     public void show(View v) {

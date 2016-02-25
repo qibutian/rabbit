@@ -129,6 +129,8 @@
     <string name="grogshop_reality_money">实付金额</string>
     <string name="grogshop_submit_order">提交订单</string>
     
+    
+    
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_setting">SettingActivity</string>
