@@ -161,8 +161,18 @@
             android:label="@string/title_activity_groupshop_pay" >
         </activity>
         <activity
-            android:name="com.means.rabbit.activity.order.pay.GrogshopPayActivity"
+            android:name=".activity.order.pay.GrogshopPayActivity"
             android:label="@string/title_activity_groupshop_pay" >
+        </activity>
+        <activity android:name=".activity.order.pay.TakeAwayPayActivity" >
+        </activity>
+        <activity
+            android:name=".activity.order.InsteadShoppingActivity"
+            android:label="@string/title_activity_instead_shopping" >
+        </activity>
+        <activity
+            android:name="com.means.rabbit.activity.order.pay.InsteadShoppingPayActivity"
+            android:label="@string/title_activity_instead_shopping_pay" >
         </activity>
     </application>
 

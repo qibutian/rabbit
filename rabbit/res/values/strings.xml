@@ -166,7 +166,7 @@
     <string name="grouporder_pay_deduction">抵扣</string>
     <string name="grouporder_pay_reality_money">实付金额</string>
     <string name="grouporder_pay_pay_order">支付订单</string>
-    <!--  酒店支付  -->
+    <!-- 酒店支付 -->
     <string name="grogshop_pay_name">名称</string>
     <string name="grogshop_pay_type">房型</string>
     <string name="grogshop_pay_date">日期</string>
@@ -187,10 +187,51 @@
     <string name="grogshop_pay_deduction">抵扣</string>
     <string name="grogshop_pay_reality_money">实付金额</string>
     <string name="grogshop_pay_pay_finish">支付完成</string>
-    
-    
-    
-    
+    <!-- 外卖订单 -->
+    <string name="takeaway_pay_shipping_rates">配送费</string>
+    <string name="takeaway_pay_total">总计</string>
+    <string name="takeaway_pay_order_number">订单号</string>
+    <string name="takeaway_pay_consumption_code">消费码</string>
+    <string name="takeaway_pay_transport_time">送达时间</string>
+    <string name="takeaway_pay_phone">手机</string>
+    <string name="takeaway_pay_linkman">联系人</string>
+    <string name="takeaway_pay_remark">备注</string>
+    <string name="takeaway_pay_fill_in">填写其他要求</string>
+    <string name="takeaway_pay_order_time">下单时间</string>
+    <string name="takeaway_pay_paytime">支付时间</string>
+    <string name="takeaway_pay_use_time">使用时间</string>
+    <string name="takeaway_pay_use_integral">使用积分</string>
+    <string name="takeaway_pay_deduction">抵扣</string>
+    <string name="takeaway_pay_reality_money">实付金额</string>
+    <string name="takeaway_pay_evaluate">发布评价</string>
+    <!-- 代购订单 -->
+    <string name="insteadshopping_order_count">数量</string>
+    <string name="insteadshopping_order_postage">邮费</string>
+    <string name="insteadshopping_order_total">总计</string>
+    <string name="insteadshopping_order_phone">手机</string>
+    <string name="insteadshopping_order_linkman">联系人</string>
+    <string name="insteadshopping_order_remark">备注</string>
+    <string name="insteadshopping_order_fill_in">填写其他要求</string>
+    <string name="insteadshopping_order_integral">使用积分</string>
+    <string name="insteadshopping_order_deduction">抵扣</string>
+    <string name="insteadshopping_order_reality_money">实付金额</string>
+    <string name="insteadshopping_order_submit_order">提交订单</string>
+    <!-- 代购支付 -->
+    <string name="insteadshopping_pay_postage">邮费</string>
+    <string name="insteadshopping_pay_total">总计</string>
+    <string name="insteadshopping_pay_order_number">订单号</string>
+    <string name="insteadshopping_pay_consumption_code">消费码</string>
+    <string name="insteadshopping_pay_phone">手机</string>
+    <string name="insteadshopping_pay_linkman">联系人</string>
+    <string name="insteadshopping_pay_remark">备注</string>
+    <string name="insteadshopping_pay_fill_in">填写其他要求</string>
+    <string name="insteadshopping_pay_order_time">下单时间</string>
+    <string name="insteadshopping_pay_paytime">支付时间</string>
+    <string name="insteadshopping_pay_use_time">使用时间</string>
+    <string name="insteadshopping_pay_use_integral">使用积分</string>
+    <string name="insteadshopping_pay_deduction">抵扣</string>
+    <string name="insteadshopping_pay_reality_money">实付金额</string>
+    <string name="insteadshopping_pay_evaluate">发布评价</string>
     
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_register">RegisterActivity</string>
@@ -223,5 +264,8 @@
     <string name="title_activity_grogshop_order">GrogshopOrderActivity</string>
     <string name="title_activity_take_away_order">TakeAwayOrderActivity</string>
     <string name="title_activity_groupshop_pay">GroupshopPayActivity</string>
+    <string name="title_activity_take_away_pay">TakeAwayPayActivity</string>
+    <string name="title_activity_instead_shopping">InsteadShoppingActivity</string>
+    <string name="title_activity_instead_shopping_pay">InsteadShoppingPayActivity</string>
 
 </resources>
