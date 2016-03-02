@@ -15,7 +15,7 @@ public class RabbitPerference extends Perference {
 	public String faceimg_s;
 	public String msgcount;
 	public boolean login;
-	public String catid;
+	public String catid = "1";
 	public String cityname;
 
 	public String getSex() {
