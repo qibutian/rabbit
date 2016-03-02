@@ -21,6 +21,8 @@
     <string name="editinfo_edithead">修改头像</string>
     <string name="editinfo_nickname">昵称</string>
     <string name="editinfo_passwordr">密码</string>
+    
+    
     <string name="editinfo_phone">手机</string>
     <string name="businessorder_classify">分类</string>
     <string name="businessorder_state">状态</string>
@@ -130,6 +132,7 @@
     <string name="grogshop_reality_money">实付金额</string>
     <string name="grogshop_submit_order">提交订单</string>
 
+    
     <!-- 附近弹框 -->
     <string name="sort_one">智能排序</string>
     <string name="sort_two">离我最近</string>
@@ -233,6 +236,7 @@
     <string name="insteadshopping_pay_reality_money">实付金额</string>
     <string name="insteadshopping_pay_evaluate">发布评价</string>
     
+    
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_setting">SettingActivity</string>
@@ -244,6 +248,8 @@
     <string name="title_activity_consignee_address">ConsigneeAddressActivity</string>
     <string name="title_activity_splash">SplashActivity</string>
     <string name="title_activity_guidance">GuidanceActivity</string>
+    
+    
     <string name="title_activity_about">AboutActivity</string>
     <string name="title_activity_forget_password">ForgetPasswordActivity</string>
     <string name="title_activity_user_protocol">UserProtocolActivity</string>

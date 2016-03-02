@@ -6,6 +6,7 @@ import net.duohuo.dhroid.dialog.IDialog;
 import net.duohuo.dhroid.ioc.Instance.InstanceScope;
 import net.duohuo.dhroid.ioc.IocContainer;
 import net.duohuo.dhroid.net.GlobalCodeHandler;
+import net.duohuo.dhroid.net.GlobalParams;
 import net.duohuo.dhroid.net.cache.DaoHelper;
 import android.app.Application;
 import android.content.Context;
@@ -56,7 +57,8 @@ public class RabbitApplication extends Application implements
 		Const.response_msg = "info";
 		Const.response_result_status = "1";
 		Const.netadapter_no_more = "";
-//		Const.postType = 2;
+
+		// Const.postType = 2;
 		IocContainer.getShare().initApplication(this);
 		IocContainer.getShare().bind(RabbitValueFix.class).to(ValueFix.class)
 				.scope(InstanceScope.SCOPE_SINGLETON);
@@ -100,6 +102,10 @@ public class RabbitApplication extends Application implements
 				.defaultDisplayImageOptions(DisplayImageOptions.createSimple())
 				.build();
 		ImageLoader.getInstance().init(imageconfig);
+
+		GlobalParams globalParams = IocContainer.getShare().get(
+				GlobalParams.class);
+		globalParams.setGlobalParam("lang", "cn");
 
 	}
 

@@ -39,7 +39,7 @@ public class HotelListActivity extends RabbitBaseActivity {
 		setTitle("酒店");
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		contentListV = listV.getListView();
-		adapter = new NetJSONAdapter(API.text, self, R.layout.item_hotel_list);
+		adapter = new NetJSONAdapter(API.hotelList, self, R.layout.item_hotel_list);
 		adapter.fromWhat("list");
 		listV.setAdapter(adapter);
 		contentListV.setOnItemClickListener(new OnItemClickListener() {
