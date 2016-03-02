@@ -53,10 +53,10 @@ public class RabbitApplication extends Application implements
 		Const.response_data = "data";
 		Const.netadapter_step_default = 10;
 		Const.DATABASE_VERSION = 18;
-		Const.response_success = "status";
-		Const.response_msg = "info";
-		Const.response_result_status = "1";
-		Const.netadapter_no_more = "";
+//		Const.response_success = "status";
+//		Const.response_msg = "info";
+//		Const.response_result_status = "1";
+//		Const.netadapter_no_more = "";
 
 		// Const.postType = 2;
 		IocContainer.getShare().initApplication(this);

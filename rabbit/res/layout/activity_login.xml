@@ -25,6 +25,7 @@
                 android:text="@string/login_name" />
 
             <EditText
+                android:id="@+id/nickname"
                 style="@style/text_66_black_medium"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -47,6 +48,7 @@
                 android:text="@string/login_pswd" />
 
             <EditText
+                android:id="@+id/password"
                 style="@style/text_66_black_medium"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -58,6 +60,7 @@
         <View style="@style/line_horizontal" />
 
         <Button
+            android:id="@+id/login"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginBottom="15dp"
@@ -70,6 +73,7 @@
             android:textSize="@dimen/text_medium" />
 
         <TextView
+            android:id="@+id/forgetpswd"
             style="@style/text_66_black_medium"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="15dp"

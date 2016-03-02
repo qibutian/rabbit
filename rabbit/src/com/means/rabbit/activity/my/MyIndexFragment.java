@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.means.rabbit.R;
@@ -22,6 +23,8 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 
 	LinearLayout editinfoLl, systemmsgLl, business_orderLl, my_orderLl,
 			collectLl, shipping_addressLl, integralLl, commentV;
+
+	Button logoutBtn;
 
 	public static MyIndexFragment getInstance() {
 		if (instance == null) {
@@ -53,6 +56,7 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 		collectLl = (LinearLayout) mainV.findViewById(R.id.collect);
 		integralLl = (LinearLayout) mainV.findViewById(R.id.integral);
 		commentV = (LinearLayout) mainV.findViewById(R.id.comment);
+		logoutBtn = (Button) mainV.findViewById(R.id.logout);
 		editinfoLl.setOnClickListener(this);
 		systemmsgLl.setOnClickListener(this);
 		business_orderLl.setOnClickListener(this);
@@ -61,6 +65,7 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 		collectLl.setOnClickListener(this);
 		integralLl.setOnClickListener(this);
 		commentV.setOnClickListener(this);
+		logoutBtn.setOnClickListener(this);
 	}
 
 	@Override
@@ -107,6 +112,11 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 		// 我的评论
 		case R.id.comment:
 			it = new Intent(getActivity(), CommentListActivity.class);
+			startActivity(it);
+			break;
+		// 退出当前用户
+		case R.id.logout:
+			it = new Intent(getActivity(), LoginActivity.class);
 			startActivity(it);
 			break;
 		default:
