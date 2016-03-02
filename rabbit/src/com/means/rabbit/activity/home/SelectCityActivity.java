@@ -63,6 +63,17 @@ public class SelectCityActivity extends RabbitBaseActivity {
 					cityAdapter.setData(jsa);
 				} catch (JSONException e) {
 					cityAdapter.setData(null);
+					RabbitPerference per = IocContainer.getShare().get(
+							RabbitPerference.class);
+					per.load();
+					per.catid = JSONUtil.getString(jo, "id");
+					per.cityname = JSONUtil.getString(jo, "name");
+					per.commit();
+					CityEB city = new CityEB();
+					city.setCatid(JSONUtil.getString(jo, "id"));
+					city.setCityname(JSONUtil.getString(jo, "name"));
+					EventBus.getDefault().post(city);
+					finish();
 					e.printStackTrace();
 				}
 			}
