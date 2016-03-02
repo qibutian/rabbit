@@ -20,6 +20,7 @@ import com.means.rabbit.activity.merchants.MerchatsFragment;
 import com.means.rabbit.activity.more.MoreFragment;
 import com.means.rabbit.activity.my.MyIndexFragment;
 import com.means.rabbit.activity.travel.TravelFragment;
+import com.means.rabbit.bean.CityEB;
 
 public class MainActivity extends FragmentActivity {
 
@@ -186,4 +187,5 @@ public class MainActivity extends FragmentActivity {
 		} catch (Exception e) {
 		}
 	}
+	
 }
