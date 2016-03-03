@@ -186,7 +186,8 @@ public class RefreshListViewAndMore extends LinearLayout {
 					}
 
 					loadMoreListViewContainer
-							.setShowLoadingForFirstPage(true);
+							.setShowLoadingForFirstPage(mAdapter
+									.hasMore());
 					loadMoreListViewContainer.loadMoreFinish(
 							!mAdapter.hasMore(), mAdapter.hasMore());
 				} else {

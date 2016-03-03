@@ -1,8 +1,5 @@
 package com.means.rabbit.views;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.duohuo.dhroid.ioc.IocContainer;
 import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.net.JSONUtil;
@@ -13,10 +10,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
-import android.hardware.Camera.Area;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -32,10 +27,8 @@ import com.means.rabbit.adapter.CatLeftAdapter;
 import com.means.rabbit.adapter.CatRightAdapter;
 import com.means.rabbit.api.API;
 import com.means.rabbit.utils.RabbitPerference;
-import com.means.rabbit.views.AreaPop.OnReslutClickListener;
 
-public class CatPop {
-
+public class AreaPop {
 	Context context;
 
 	View contentV;
@@ -52,15 +45,8 @@ public class CatPop {
 
 	OnReslutClickListener onReslutClickListener;
 
-	public static int CAT = 1;
-	public static int AREA = 2;
-	public static int BRAND = 3;
-
-	int type;
-
-	public CatPop(Context context, int type) {
+	public AreaPop(Context context) {
 		this.context = context;
-		this.type = type;
 		contentV = LayoutInflater.from(context).inflate(R.layout.pop_cat, null);
 		pop = new PopupWindow(contentV, ViewGroup.LayoutParams.FILL_PARENT,
 				ViewGroup.LayoutParams.FILL_PARENT, true);
@@ -133,23 +119,15 @@ public class CatPop {
 					}
 				});
 
-		getdata(type);
+		getdata();
 	}
 
-	private void getdata(int type) {
+	private void getdata() {
 
 		RabbitPerference per = IocContainer.getShare().get(
 				RabbitPerference.class);
 		per.load();
-		String url = null;
-		if (type == CAT) {
-			url = API.catlist;
-		} else if (type == AREA) {
-			url = API.arealist;
-		} else if (type == BRAND) {
-			url = API.brandlist;
-		}
-		DhNet net = new DhNet(url);
+		DhNet net = new DhNet(API.arealist);
 		net.addParam("cityid", per.catid);
 		net.doGetInDialog(new NetTask(context) {
 
