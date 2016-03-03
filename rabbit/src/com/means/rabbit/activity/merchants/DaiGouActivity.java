@@ -14,6 +14,12 @@ import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.views.RefreshListViewAndMore;
 
+/**
+ * 
+ * 代购列表
+ * @author Administrator
+ *
+ */
 public class DaiGouActivity extends RabbitBaseActivity {
 
 	LayoutInflater mLayoutInflater;

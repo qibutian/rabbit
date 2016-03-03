@@ -7,6 +7,14 @@ import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.views.CommentView;
 import com.means.rabbit.views.KeyVauleView;
 
+/**
+ * 
+ * 代购详情
+ * 
+ * @author Administrator
+ *
+ */
+
 public class GoodDetailActivity extends RabbitBaseActivity {
 	KeyVauleView keyValueView;
 

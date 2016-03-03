@@ -3,8 +3,11 @@ package com.means.rabbit.activity.travel;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.json.JSONObject;
+
 import net.duohuo.dhroid.adapter.FieldMap;
 import net.duohuo.dhroid.adapter.NetJSONAdapter;
+import net.duohuo.dhroid.net.JSONUtil;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -85,6 +88,8 @@ public class TravelFragment extends Fragment implements OnClickListener {
 			public void onItemClick(AdapterView<?> arg0, View arg1,
 					int position, long arg3) {
 				Intent it = new  Intent(getActivity(),TravelDetailActivity.class);
+				JSONObject jo = adapter.getTItem(position);
+				it.putExtra("id", JSONUtil.getInt(jo, "id"));
 				startActivity(it);
 			}
 		});

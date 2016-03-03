@@ -41,6 +41,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/hot_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" >
@@ -49,84 +50,81 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_leftandright" >
-                    
+
                     <TextView
-                    style="@style/text_44_black_medium"
-                    android:layout_centerInParent="true"
-                    android:text="@string/all_item_halal_food" />
-                    
+                        style="@style/text_44_black_medium"
+                        android:layout_centerInParent="true"
+                        android:text="@string/all_item_halal_food" />
+
                     <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/icon_right" />
-                    
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_right" />
                 </RelativeLayout>
-                
-                <View style="@style/line_horizontal"/>
-                
+
+                <View style="@style/line_horizontal" />
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_leftandright" >
-                    
+
                     <TextView
-                    style="@style/text_44_black_medium"
-                    android:layout_centerInParent="true"
-                    android:text="@string/all_item_travel_strategy" />
-                    
+                        style="@style/text_44_black_medium"
+                        android:layout_centerInParent="true"
+                        android:text="@string/all_item_travel_strategy" />
+
                     <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/icon_right" />
-                    
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_right" />
                 </RelativeLayout>
-                
-                <View style="@style/line_horizontal"/>
-                
+
+                <View style="@style/line_horizontal" />
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_leftandright" >
-                    
+
                     <TextView
-                    style="@style/text_44_black_medium"
-                    android:layout_centerInParent="true"
-                    android:text="@string/all_item_hotboom" />
-                    
+                        style="@style/text_44_black_medium"
+                        android:layout_centerInParent="true"
+                        android:text="@string/all_item_hotboom" />
+
                     <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/icon_right" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_right" />
                 </RelativeLayout>
-                
-                <View style="@style/line_horizontal"/>
-                
+
+                <View style="@style/line_horizontal" />
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_leftandright" >
-                    
+
                     <TextView
-                    style="@style/text_44_black_medium"
-                    android:layout_centerInParent="true"
-                    android:text="@string/all_item_diving" />
-                    
+                        style="@style/text_44_black_medium"
+                        android:layout_centerInParent="true"
+                        android:text="@string/all_item_diving" />
+
                     <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/icon_right" />
-                    
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_right" />
                 </RelativeLayout>
             </LinearLayout>
-            
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -145,7 +143,7 @@
                     android:layout_marginLeft="5dp"
                     android:text="@string/all_item_food" />
             </LinearLayout>
-            
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -155,105 +153,101 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_leftandright" >
-                    
+
                     <TextView
-                    style="@style/text_44_black_medium"
-                    android:layout_centerInParent="true"
-                    android:text="@string/all_item_all" />
-                    
+                        style="@style/text_44_black_medium"
+                        android:layout_centerInParent="true"
+                        android:text="@string/all_item_all" />
+
                     <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/icon_right" />
-                    
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_right" />
                 </RelativeLayout>
-                
-                <View style="@style/line_horizontal"/>
-                
-                 <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/padding_leftandright" >
-                    
-                    <TextView
-                    style="@style/text_44_black_medium"
-                    android:layout_centerInParent="true"
-                    android:text="@string/all_item_halal_food" />
-                    
-                    <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/icon_right" />
-                    
-                </RelativeLayout>
-                
-                <View style="@style/line_horizontal"/>
-                
+
+                <View style="@style/line_horizontal" />
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_leftandright" >
-                    
+
                     <TextView
-                    style="@style/text_44_black_medium"
-                    android:layout_centerInParent="true"
-                    android:text="@string/all_item_coffee" />
-                    
+                        style="@style/text_44_black_medium"
+                        android:layout_centerInParent="true"
+                        android:text="@string/all_item_halal_food" />
+
                     <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/icon_right" />
-                    
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_right" />
                 </RelativeLayout>
-                
-                <View style="@style/line_horizontal"/>
-                
+
+                <View style="@style/line_horizontal" />
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_leftandright" >
-                    
+
                     <TextView
-                    style="@style/text_44_black_medium"
-                    android:layout_centerInParent="true"
-                    android:text="@string/all_item_bar" />
-                    
+                        style="@style/text_44_black_medium"
+                        android:layout_centerInParent="true"
+                        android:text="@string/all_item_coffee" />
+
                     <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/icon_right" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_right" />
                 </RelativeLayout>
-                
-                <View style="@style/line_horizontal"/>
-                
+
+                <View style="@style/line_horizontal" />
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_leftandright" >
-                    
+
                     <TextView
-                    style="@style/text_44_black_medium"
-                    android:layout_centerInParent="true"
-                    android:text="@string/all_item_other" />
-                    
+                        style="@style/text_44_black_medium"
+                        android:layout_centerInParent="true"
+                        android:text="@string/all_item_bar" />
+
                     <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/icon_right" />
-                    
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_right" />
+                </RelativeLayout>
+
+                <View style="@style/line_horizontal" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_leftandright" >
+
+                    <TextView
+                        style="@style/text_44_black_medium"
+                        android:layout_centerInParent="true"
+                        android:text="@string/all_item_other" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_right" />
                 </RelativeLayout>
             </LinearLayout>
-            
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -272,7 +266,7 @@
                     android:layout_marginLeft="5dp"
                     android:text="@string/all_item_grogshop" />
             </LinearLayout>
-            
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -282,81 +276,78 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_leftandright" >
-                    
+
                     <TextView
-                    style="@style/text_44_black_medium"
-                    android:layout_centerInParent="true"
-                    android:text="@string/all_item_all" />
-                    
+                        style="@style/text_44_black_medium"
+                        android:layout_centerInParent="true"
+                        android:text="@string/all_item_all" />
+
                     <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/icon_right" />
-                    
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_right" />
                 </RelativeLayout>
-                
-                <View style="@style/line_horizontal"/>
-                
+
+                <View style="@style/line_horizontal" />
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_leftandright" >
-                    
+
                     <TextView
-                    style="@style/text_44_black_medium"
-                    android:layout_centerInParent="true"
-                    android:text="@string/all_item_starred_hotel" />
-                    
+                        style="@style/text_44_black_medium"
+                        android:layout_centerInParent="true"
+                        android:text="@string/all_item_starred_hotel" />
+
                     <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/icon_right" />
-                    
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_right" />
                 </RelativeLayout>
-                
-                <View style="@style/line_horizontal"/>
-                
+
+                <View style="@style/line_horizontal" />
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_leftandright" >
-                    
+
                     <TextView
-                    style="@style/text_44_black_medium"
-                    android:layout_centerInParent="true"
-                    android:text="@string/all_item_hotel" />
-                    
+                        style="@style/text_44_black_medium"
+                        android:layout_centerInParent="true"
+                        android:text="@string/all_item_hotel" />
+
                     <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/icon_right" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_right" />
                 </RelativeLayout>
-                
-                <View style="@style/line_horizontal"/>
-                
+
+                <View style="@style/line_horizontal" />
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/padding_leftandright" >
-                    
+
                     <TextView
-                    style="@style/text_44_black_medium"
-                    android:layout_centerInParent="true"
-                    android:text="@string/all_item_vacational_village" />
-                    
+                        style="@style/text_44_black_medium"
+                        android:layout_centerInParent="true"
+                        android:text="@string/all_item_vacational_village" />
+
                     <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/icon_right" />
-                    
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_right" />
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
