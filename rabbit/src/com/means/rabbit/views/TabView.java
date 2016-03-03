@@ -17,6 +17,8 @@ public class TabView extends LinearLayout {
 
 	CatPop pop;
 
+	AreaPop areaPop;
+
 	SortPop sortPop;
 
 	public TabView(Context context, AttributeSet attrs) {
@@ -35,7 +37,7 @@ public class TabView extends LinearLayout {
 
 			@Override
 			public void onClick(View v) {
-				pop = new CatPop(mContext);
+				pop = new CatPop(mContext, CatPop.CAT);
 				pop.show(TabView.this);
 			}
 		});
@@ -44,7 +46,11 @@ public class TabView extends LinearLayout {
 
 			@Override
 			public void onClick(View v) {
-				pop = new CatPop(mContext);
+				if (centerT.getTag().toString().equals("品牌")) {
+					pop = new CatPop(mContext, CatPop.BRAND);
+				} else {
+					pop = new CatPop(mContext, CatPop.AREA);
+				}
 				pop.show(TabView.this);
 			}
 		});
@@ -63,8 +69,9 @@ public class TabView extends LinearLayout {
 		leftT.setText(text);
 	}
 
-	public void setCentertText(String text) {
+	public void setCentertText(String text, String tag) {
 		centerT.setText(text);
+		centerT.setTag(tag);
 		centerT.setVisibility(View.VISIBLE);
 	}
 

@@ -60,7 +60,7 @@ public class FoodListActivity extends RabbitBaseActivity {
 		});
 
 		tabV = (TabView) findViewById(R.id.tab);
-		tabV.setCentertText("附近");
+		tabV.setCentertText("附近", "");
 	}
 
 }

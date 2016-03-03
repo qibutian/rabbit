@@ -1,8 +1,11 @@
 package com.means.rabbit.activity.merchants;
 
+import org.json.JSONObject;
+
 import net.duohuo.dhroid.adapter.FieldMap;
 import net.duohuo.dhroid.adapter.NetJSONAdapter;
 import net.duohuo.dhroid.ioc.IocContainer;
+import net.duohuo.dhroid.net.JSONUtil;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.TextView;
 
 import com.means.rabbit.R;
 import com.means.rabbit.api.API;
@@ -54,12 +58,15 @@ public class HotelListActivity extends RabbitBaseActivity {
 			
 			@Override
 			public Object fix(View itemV, Integer position, Object o, Object jo) {
-				// TODO Auto-generated method stub
+				TextView  comment_desT = (TextView) itemV.findViewById(R.id.comment_des);
+				JSONObject data = (JSONObject) jo;
+				comment_desT.setText("评论"+JSONUtil.getString(data, "score")+"/"+JSONUtil.getString(data, "score"));
+				
 				return "￥"+o+"起";
 			}
 		});
 		adapter.addField("tuangoudes", R.id.order_des);
-//		adapter.addField("title", R.id.title);
+		adapter.addField("address", R.id.address);
 //		adapter.addField("title", R.id.title);
 //		adapter.addField("title", R.id.title);
 //		adapter.addField("title", R.id.title);
