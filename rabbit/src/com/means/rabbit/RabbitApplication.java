@@ -47,9 +47,9 @@ public class RabbitApplication extends Application implements
 		super.onCreate();
 		// Thread.setDefaultUncaughtExceptionHandler(this);
 		instance = this;
-		Const.netadapter_page_no = "page";
-		Const.netadapter_step = "pageNums";
-		Const.response_total = "totalRows";
+		Const.netadapter_page_no = "p";
+		Const.netadapter_step = "step";
+		Const.response_total = "totalcount";
 		Const.response_data = "data";
 		Const.netadapter_step_default = 10;
 		Const.DATABASE_VERSION = 18;

@@ -17,6 +17,7 @@
         android:padding="6dp" >
 
         <ImageView
+            android:id="@+id/pic"
             android:layout_width="73dp"
             android:layout_height="73dp"
             android:scaleType="fitXY"
@@ -29,6 +30,7 @@
             android:orientation="vertical" >
 
             <TextView
+                android:id="@+id/title"
                 style="@style/text_44_black_big"
                 android:text="速8酒店南京中山陵景区" />
 
@@ -38,47 +40,47 @@
                 android:layout_marginTop="8dp" >
 
                 <TextView
+                    android:id="@+id/price"
                     style="@style/text_44_black_small"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="left"
                     android:text="￥188起"
                     android:textColor="@color/text_2B_green" />
 
                 <TextView
+                    android:id="@+id/comment_des"
                     style="@style/text_66_black_small"
-                    android:layout_marginRight="10dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
                     android:text="评分 4.8/1298" />
 
                 <TextView
-                    style="@style/text_66_black_small"
-                    android:layout_marginRight="15dp"
-                    android:text="浦口区" />
-
-                <TextView
+                    android:id="@+id/distance"
                     style="@style/text_66_black_small"
                     android:text="3.1km" />
             </LinearLayout>
-            
-             <TextView
+
+            <TextView
+                android:id="@+id/address"
                 style="@style/text_66_black_small"
                 android:layout_width="wrap_content"
                 android:layout_marginTop="6dp"
-                android:text="在线付款满100减18" />
+                android:text="南京太平门" />
 
             <View
                 style="@style/line_horizontal"
                 android:layout_marginTop="1dp" />
 
             <TextView
+                android:id="@+id/price_des"
                 style="@style/text_66_black_small"
                 android:layout_width="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="仅售188元!价值238元速8南京中山陵风景区酒店只要188元"
+                android:ellipsize="end"
                 android:singleLine="true"
-                android:ellipsize="end" />
+                android:text="仅售188元!价值238元速8南京中山陵风景区酒店只要188元" />
 
             <TextView
+                android:id="@+id/order_des"
                 style="@style/text_66_black_small"
                 android:layout_width="wrap_content"
                 android:layout_marginTop="5dp"

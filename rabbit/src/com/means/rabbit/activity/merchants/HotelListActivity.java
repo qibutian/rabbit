@@ -1,6 +1,8 @@
 package com.means.rabbit.activity.merchants;
 
+import net.duohuo.dhroid.adapter.FieldMap;
 import net.duohuo.dhroid.adapter.NetJSONAdapter;
+import net.duohuo.dhroid.ioc.IocContainer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +14,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import com.means.rabbit.R;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
+import com.means.rabbit.utils.RabbitPerference;
 import com.means.rabbit.views.RefreshListViewAndMore;
 import com.means.rabbit.views.TabView;
 
@@ -40,7 +43,26 @@ public class HotelListActivity extends RabbitBaseActivity {
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		contentListV = listV.getListView();
 		adapter = new NetJSONAdapter(API.hotelList, self, R.layout.item_hotel_list);
+		RabbitPerference per = IocContainer.getShare().get(
+				RabbitPerference.class);
+		per.load();
+		adapter.addparam("catid", per.catid);
 		adapter.fromWhat("list");
+		adapter.addField("title", R.id.title);
+		adapter.addField("pic", R.id.pic);
+		adapter.addField(new FieldMap("price",R.id.price) {
+			
+			@Override
+			public Object fix(View itemV, Integer position, Object o, Object jo) {
+				// TODO Auto-generated method stub
+				return "￥"+o+"起";
+			}
+		});
+		adapter.addField("tuangoudes", R.id.order_des);
+//		adapter.addField("title", R.id.title);
+//		adapter.addField("title", R.id.title);
+//		adapter.addField("title", R.id.title);
+//		adapter.addField("title", R.id.title);
 		listV.setAdapter(adapter);
 		contentListV.setOnItemClickListener(new OnItemClickListener() {
 

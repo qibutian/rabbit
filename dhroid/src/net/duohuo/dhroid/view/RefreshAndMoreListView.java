@@ -82,7 +82,6 @@ public class RefreshAndMoreListView extends ListView implements OnScrollListener
     private void init(Context context)
     {
         inflater = LayoutInflater.from(context);
-        
         headView = (LinearLayout)inflater.inflate(R.layout.list_refresh_head, null);// listview拼接headview
         footView = inflater.inflate(R.layout.list_more_view, null);
         footView.setVisibility(View.GONE);
