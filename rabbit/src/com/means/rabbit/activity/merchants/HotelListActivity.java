@@ -31,7 +31,7 @@ public class HotelListActivity extends RabbitBaseActivity {
 	ListView contentListV;
 
 	NetJSONAdapter adapter;
-	
+
 	TabView tabV;
 
 	@Override
@@ -46,30 +46,33 @@ public class HotelListActivity extends RabbitBaseActivity {
 		setTitle("酒店");
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		contentListV = listV.getListView();
-		adapter = new NetJSONAdapter(API.hotelList, self, R.layout.item_hotel_list);
+		adapter = new NetJSONAdapter(API.hotelList, self,
+				R.layout.item_hotel_list);
 		RabbitPerference per = IocContainer.getShare().get(
 				RabbitPerference.class);
 		per.load();
-		adapter.addparam("catid", per.catid);
+//		adapter.addparam("catid", per.catid);
 		adapter.fromWhat("list");
 		adapter.addField("title", R.id.title);
 		adapter.addField("pic", R.id.pic);
-		adapter.addField(new FieldMap("price",R.id.price) {
-			
+		adapter.addField(new FieldMap("price", R.id.price) {
+
 			@Override
 			public Object fix(View itemV, Integer position, Object o, Object jo) {
-				TextView  comment_desT = (TextView) itemV.findViewById(R.id.comment_des);
+				TextView comment_desT = (TextView) itemV
+						.findViewById(R.id.comment_des);
 				JSONObject data = (JSONObject) jo;
-				comment_desT.setText("评论"+JSONUtil.getString(data, "score")+"/"+JSONUtil.getString(data, "score"));
-				
-				return "￥"+o+"起";
+				comment_desT.setText("评论" + JSONUtil.getString(data, "score")
+						+ "/" + JSONUtil.getString(data, "score"));
+
+				return "￥" + o + "起";
 			}
 		});
 		adapter.addField("tuangoudes", R.id.order_des);
 		adapter.addField("address", R.id.address);
-//		adapter.addField("title", R.id.title);
-//		adapter.addField("title", R.id.title);
-//		adapter.addField("title", R.id.title);
+		// adapter.addField("title", R.id.title);
+		// adapter.addField("title", R.id.title);
+		// adapter.addField("title", R.id.title);
 		listV.setAdapter(adapter);
 		contentListV.setOnItemClickListener(new OnItemClickListener() {
 
@@ -77,12 +80,14 @@ public class HotelListActivity extends RabbitBaseActivity {
 			public void onItemClick(AdapterView<?> arg0, View arg1,
 					int position, long arg3) {
 
+				JSONObject jo = adapter.getTItem(position);
 				Intent it = new Intent(self, HotelDetailActivity.class);
+				it.putExtra("hotelId", JSONUtil.getString(jo, "id"));
 				startActivity(it);
 
 			}
 		});
-		
+
 	}
 
 }

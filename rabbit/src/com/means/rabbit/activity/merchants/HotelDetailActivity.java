@@ -31,6 +31,7 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 	ListView contentListV;
 
 	NetJSONAdapter adapter;
+	String hotelId;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,15 +43,18 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 	@Override
 	public void initView() {
 		setTitle("酒店详情");
+		hotelId = getIntent().getStringExtra("hotelId");
 		headV = LayoutInflater.from(self).inflate(R.layout.head_hotel_detail,
 				null);
 
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		listV.addHeadView(headV);
 		contentListV = listV.getListView();
-		adapter = new NetJSONAdapter(API.text, self,
+		adapter = new NetJSONAdapter(API.hotelDetailNearTuangou, self,
 				R.layout.item_shop_detail_tuangou_near);
 		adapter.fromWhat("list");
+		adapter.addparam("contentid", hotelId);
+		adapter.addparam("type", 2);
 		listV.setAdapter(adapter);
 		contentListV.setOnItemClickListener(new OnItemClickListener() {
 
@@ -72,5 +76,4 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 		commentView = (CommentView) headV.findViewById(R.id.comment_view);
 		commentView.setData();
 	}
-
 }
