@@ -6,13 +6,13 @@ public class API {
 	public static String text = Baseurl + "/home/hotel/contentlist";
 
 	public static String hotelList = Baseurl + "/home/hotel/contentlist";
-	
+
 	/** 用户注册 */
 	public static String register = Baseurl + "/home/user/registaction";
-	
+
 	/** 获取验证码 */
 	public static String mobilecode = Baseurl + "/home/user/mobilecode";
-	
+
 	/** 用户登录 */
 	public static String login = Baseurl + "/home/user/login";
 	
@@ -25,5 +25,7 @@ public class API {
 	/** 旅行小蜜/紧急求助资详情 */
 	public static String contentview = Baseurl + "/home/cms/contentview";
 	
-	
+	/** 城市列表 */
+	public static String citylist = Baseurl + "/home/index/citylist";
+
 }

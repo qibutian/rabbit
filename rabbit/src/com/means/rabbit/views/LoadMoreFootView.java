@@ -38,7 +38,6 @@ public class LoadMoreFootView extends LinearLayout implements LoadMoreUIHandler 
 
 	@Override
 	public void onLoading(LoadMoreContainer container) {
-		System.out.println("加载中");
 		layoutV.setVisibility(View.VISIBLE);
 		setVisibility(View.VISIBLE);
 		// layoutV.setVisibility(VISIBLE);
@@ -49,7 +48,6 @@ public class LoadMoreFootView extends LinearLayout implements LoadMoreUIHandler 
 	@Override
 	public void onLoadFinish(LoadMoreContainer container, boolean empty,
 			boolean hasMore) {
-		System.out.println("加载完成");
 		if (!hasMore) {
 			progress.setVisibility(View.GONE);
 			if (empty) {

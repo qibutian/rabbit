@@ -1,5 +1,12 @@
 package com.means.rabbit.adapter;
 
+import net.duohuo.dhroid.net.JSONUtil;
+import net.duohuo.dhroid.util.ViewUtil;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,24 +15,46 @@ import android.widget.BaseAdapter;
 
 import com.means.rabbit.R;
 
-public class CountryAdapter extends BaseAdapter{
+public class CountryAdapter extends BaseAdapter {
 	Context mContex;
 	LayoutInflater inflater;
-	public CountryAdapter (Context mContex){
+
+	JSONArray jsa;
+	int currentPosition = -1;
+
+	public CountryAdapter(Context mContex) {
 		this.mContex = mContex;
 		inflater = LayoutInflater.from(mContex);
 	}
 
-	@Override
-	public int getCount() {
-		// TODO Auto-generated method stub
-		return 10;
+	public void setData(JSONArray jsa) {
+		this.jsa = jsa;
+		notifyDataSetChanged();
+	}
+	
+	public void setCurrentPosition(int position) {
+		this.currentPosition = position;
+		notifyDataSetChanged();
 	}
 
 	@Override
-	public Object getItem(int position) {
+	public int getCount() {
+		if (jsa == null) {
+			return 0;
+		}
+		return jsa.length();
+	}
+
+	@Override
+	public JSONObject getItem(int position) {
 		// TODO Auto-generated method stub
-		return position;
+		try {
+			return jsa.getJSONObject(position);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
@@ -36,8 +65,18 @@ public class CountryAdapter extends BaseAdapter{
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		
+
 		convertView = inflater.inflate(R.layout.item_country_list, null);
+		if (currentPosition == position) {
+			convertView.setBackgroundColor(mContex.getResources().getColor(
+					R.color.white));
+		} else {
+			convertView.setBackgroundColor(mContex.getResources().getColor(
+					R.color.app_bg_color));
+		}
+		JSONObject jo = getItem(position);
+		ViewUtil.bindView(convertView.findViewById(R.id.name),
+				JSONUtil.getString(jo, "name"));
 		// TODO Auto-generated method stub
 		return convertView;
 	}

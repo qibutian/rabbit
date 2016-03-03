@@ -9,7 +9,10 @@ import com.means.rabbit.activity.merchants.FoodListActivity;
 import com.means.rabbit.activity.merchants.HotelListActivity;
 import com.means.rabbit.activity.travel.TravelActivity;
 import com.means.rabbit.api.API;
+import com.means.rabbit.bean.CityEB;
 import com.means.rabbit.views.RefreshListViewAndMore;
+
+import de.greenrobot.event.EventBus;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +24,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.TextView;
 
 public class HomePageFragment extends Fragment implements OnClickListener {
 	static HomePageFragment instance;
@@ -78,6 +82,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 			Bundle savedInstanceState) {
 		mainV = inflater.inflate(R.layout.fragment_home_page, null);
 		mLayoutInflater = inflater;
+		EventBus.getDefault().register(this);
 		initView();
 		// TODO Auto-generated method stub
 		return mainV;
@@ -120,6 +125,11 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		travel_servicesV.setOnClickListener(this);
 		entertainmentV.setOnClickListener(this);
 		exclusive_characteristicsV.setOnClickListener(this);
+	}
+
+	public void onEventMainThread(CityEB city) {
+		TextView cityT = (TextView) mainV.getRootView().findViewById(R.id.city);
+		cityT.setText(city.getCityname());
 	}
 
 	@Override
@@ -181,5 +191,11 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		default:
 			break;
 		}
+	}
+
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		EventBus.getDefault().unregister(this);
 	}
 }
