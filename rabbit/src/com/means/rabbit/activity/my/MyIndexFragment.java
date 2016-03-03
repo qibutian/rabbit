@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.means.rabbit.R;
+import com.means.rabbit.activity.my.edit.EditInfoActivity;
 import com.means.rabbit.activity.my.order.BusinessOrderDetailsActivity;
 import com.means.rabbit.activity.my.order.MyOrderActivity;
 

@@ -41,14 +41,15 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/hot_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" >
 
                 <RelativeLayout
+                    android:id="@+id/hot_halal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="allItemClick"
                     android:padding="@dimen/padding_leftandright" >
 
                     <TextView
@@ -67,8 +68,10 @@
                 <View style="@style/line_horizontal" />
 
                 <RelativeLayout
+                    android:id="@+id/hot_travel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="allItemClick"
                     android:padding="@dimen/padding_leftandright" >
 
                     <TextView
@@ -87,8 +90,10 @@
                 <View style="@style/line_horizontal" />
 
                 <RelativeLayout
+                    android:id="@+id/hot_hotboom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="allItemClick"
                     android:padding="@dimen/padding_leftandright" >
 
                     <TextView
@@ -107,8 +112,10 @@
                 <View style="@style/line_horizontal" />
 
                 <RelativeLayout
+                    android:id="@+id/hot_diving"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="allItemClick"
                     android:padding="@dimen/padding_leftandright" >
 
                     <TextView
@@ -150,8 +157,10 @@
                 android:orientation="vertical" >
 
                 <RelativeLayout
+                   	android:id="@+id/food_all"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="allItemClick"
                     android:padding="@dimen/padding_leftandright" >
 
                     <TextView
@@ -170,8 +179,10 @@
                 <View style="@style/line_horizontal" />
 
                 <RelativeLayout
+                    android:id="@+id/food_halal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="allItemClick"
                     android:padding="@dimen/padding_leftandright" >
 
                     <TextView
@@ -190,8 +201,10 @@
                 <View style="@style/line_horizontal" />
 
                 <RelativeLayout
+                    android:id="@+id/food_coffee"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="allItemClick"
                     android:padding="@dimen/padding_leftandright" >
 
                     <TextView
@@ -210,8 +223,10 @@
                 <View style="@style/line_horizontal" />
 
                 <RelativeLayout
+                    android:id="@+id/food_bar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="allItemClick"
                     android:padding="@dimen/padding_leftandright" >
 
                     <TextView
@@ -230,8 +245,10 @@
                 <View style="@style/line_horizontal" />
 
                 <RelativeLayout
+                    android:id="@+id/food_other"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="allItemClick"
                     android:padding="@dimen/padding_leftandright" >
 
                     <TextView
@@ -273,8 +290,10 @@
                 android:orientation="vertical" >
 
                 <RelativeLayout
+                    android:id="@+id/grogshop_all"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="allItemClick"
                     android:padding="@dimen/padding_leftandright" >
 
                     <TextView
@@ -293,8 +312,10 @@
                 <View style="@style/line_horizontal" />
 
                 <RelativeLayout
+                    android:id="@+id/grogshop_starred_hotel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="allItemClick"
                     android:padding="@dimen/padding_leftandright" >
 
                     <TextView
@@ -313,8 +334,10 @@
                 <View style="@style/line_horizontal" />
 
                 <RelativeLayout
+                    android:id="@+id/grogshop_hotel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="allItemClick"
                     android:padding="@dimen/padding_leftandright" >
 
                     <TextView
@@ -333,8 +356,10 @@
                 <View style="@style/line_horizontal" />
 
                 <RelativeLayout
+                    android:id="@+id/grogshop_vacational_village"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="allItemClick"
                     android:padding="@dimen/padding_leftandright" >
 
                     <TextView

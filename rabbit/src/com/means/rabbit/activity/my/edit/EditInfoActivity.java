@@ -1,4 +1,4 @@
-package com.means.rabbit.activity.my;
+package com.means.rabbit.activity.my.edit;
 
 import com.means.rabbit.R;
 import com.means.rabbit.R.layout;
@@ -25,6 +25,6 @@ public class EditInfoActivity extends RabbitBaseActivity {
 	@Override
 	public void initView() {
 		// TODO Auto-generated method stub
-		
+		setTitle(getString(R.string.editinfo));
 	}
 }

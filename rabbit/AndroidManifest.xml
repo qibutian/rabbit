@@ -39,7 +39,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.my.EditInfoActivity" >
+        <activity android:name=".activity.my.edit.EditInfoActivity" >
         </activity>
         <activity
             android:name=".activity.my.SystemMsgActivity"
@@ -150,7 +150,7 @@
             android:label="@string/title_activity_grogshop_order" >
         </activity>
         <activity
-            android:name="com.means.rabbit.activity.my.CommentListActivity"
+            android:name=".activity.my.CommentListActivity"
             android:label="@string/title_activity_grogshop_order" />
         <activity
             android:name=".activity.order.TakeAwayOrderActivity"
@@ -171,8 +171,12 @@
             android:label="@string/title_activity_instead_shopping" >
         </activity>
         <activity
-            android:name="com.means.rabbit.activity.order.pay.InsteadShoppingPayActivity"
+            android:name=".activity.order.pay.InsteadShoppingPayActivity"
             android:label="@string/title_activity_instead_shopping_pay" >
+        </activity>
+        <activity
+            android:name="com.means.rabbit.activity.my.edit.EditNickNameActivity"
+            android:label="@string/title_activity_edit_nick_name" >
         </activity>
     </application>
 

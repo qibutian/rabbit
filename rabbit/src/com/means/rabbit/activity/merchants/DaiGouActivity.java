@@ -41,14 +41,21 @@ public class DaiGouActivity extends RabbitBaseActivity {
 
 	@Override
 	public void initView() {
-		setTitle("代购");
+		setTitle(getString(R.string.Hotboom));
+		
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		mLayoutInflater = LayoutInflater.from(self);
 		headV = mLayoutInflater.inflate(R.layout.head_food_list, null);
 		listV.addHeadView(headV);
 		contentListV = listV.getListView();
-		adapter = new NetJSONAdapter(API.text, self, R.layout.item_daigou_list);
+		adapter = new NetJSONAdapter(API.dgcontentlist, self, R.layout.item_daigou_list);
 		adapter.fromWhat("list");
+		adapter.addField("pic", R.id.pic);
+		adapter.addField("price", R.id.price);
+		adapter.addField("title", R.id.title);
+		adapter.addField("score", R.id.score);
+		adapter.addField("catname", R.id.catname);
+		adapter.addField("des", R.id.des);
 		listV.setAdapter(adapter);
 		contentListV.setOnItemClickListener(new OnItemClickListener() {
 

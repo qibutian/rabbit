@@ -19,6 +19,9 @@ public class API {
 	/** 修改密码 */
 	public static String resetpswdbyphone = Baseurl + "/home/user/resetpswdbyphone";
 	
+	/** 修改昵称 */
+	public static String editaction = Baseurl + "/home/user/editaction";
+	
 	/** 旅行小蜜/紧急求助资讯列表分页 */
 	public static String contentlist = Baseurl + "/home/cms/contentlist";
 	
@@ -27,5 +30,8 @@ public class API {
 	
 	/** 城市列表 */
 	public static String citylist = Baseurl + "/home/index/citylist";
+	
+	/** 代购列表分页 */
+	public static String dgcontentlist = Baseurl + "/home/shop/dgcontentlist";
 
 }
