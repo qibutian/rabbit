@@ -1,5 +1,8 @@
 package com.means.rabbit.activity.travel;
 
+import java.util.Date;
+
+import net.duohuo.dhroid.adapter.FieldMap;
 import net.duohuo.dhroid.adapter.NetJSONAdapter;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +15,15 @@ import android.widget.AdapterView.OnItemClickListener;
 import com.means.rabbit.R;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
+import com.means.rabbit.utils.DateUtils;
 import com.means.rabbit.views.RefreshListViewAndMore;
 
+/**
+ * 
+ * 旅游小密
+ * @author Administrator
+ *
+ */
 public class TravelActivity extends RabbitBaseActivity {
 
 	LayoutInflater mLayoutInflater;
@@ -33,11 +43,29 @@ public class TravelActivity extends RabbitBaseActivity {
 
 	@Override
 	public void initView() {
-		setTitle("旅行小秘");
+		setTitle(getString(R.string.travel));
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		contentListV = listV.getListView();
-		adapter = new NetJSONAdapter(API.text, self, R.layout.item_travel_list);
+		adapter = new NetJSONAdapter(API.contentlist, self, R.layout.item_travel_list);
 		adapter.fromWhat("list");
+		adapter.addField("title", R.id.title);
+		adapter.addField(new FieldMap("views",R.id.views) {
+			
+			@Override
+			public Object fix(View itemV, Integer position, Object o, Object jo) {
+				
+				return "阅读  "+o;
+			}
+		});
+		adapter.addField("des", R.id.des);
+		adapter.addField(new FieldMap("adddateline", R.id.adddateline) {
+			
+			@Override
+			public Object fix(View itemV, Integer position, Object o, Object jo) {
+				return DateUtils.dateToStr(new Date(Long.parseLong(o.toString())*1000));
+			}
+		});
+		adapter.addField("pic", R.id.pic);
 		listV.setAdapter(adapter);
 		contentListV.setOnItemClickListener(new OnItemClickListener() {
 

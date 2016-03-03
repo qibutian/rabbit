@@ -16,6 +16,7 @@
             android:layout_height="180dp" >
 
             <ImageView
+                android:id="@+id/pic"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:scaleType="centerCrop"
@@ -32,6 +33,7 @@
                 android:paddingTop="8dp" >
 
                 <TextView
+                    android:id="@+id/title"
                     style="@style/text_white_medium"
                     android:text="喀纳斯旅游人间净土喀纳斯三日游" />
             </LinearLayout>
@@ -54,15 +56,16 @@
             android:padding="@dimen/padding_leftandright" >
 
             <TextView
-                android:id="@+id/date"
+                android:id="@+id/adddateline"
                 style="@style/text_66_black_small"
                 android:layout_alignParentRight="true"
                 android:text="发布时间 2016-11-02" />
 
             <TextView
+                android:id="@+id/views"
                 style="@style/text_66_black_small"
                 android:layout_marginRight="10dp"
-                android:layout_toLeftOf="@+id/date"
+                android:layout_toLeftOf="@+id/adddateline"
                 android:text="阅读 221" />
         </RelativeLayout>
     </LinearLayout>

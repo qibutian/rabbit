@@ -10,6 +10,7 @@
         android:padding="6dp" >
 
         <ImageView
+            android:id="@+id/pic"
             android:layout_width="93dp"
             android:layout_height="93dp"
             android:scaleType="fitXY"
@@ -22,10 +23,12 @@
             android:orientation="vertical" >
 
             <TextView
+                android:id="@+id/title"
                 style="@style/text_44_black_big"
                 android:text="青海蜜月" />
 
             <TextView
+                android:id="@+id/des"
                 style="@style/text_66_black_small"
                 android:layout_marginTop="9dp"
                 android:text="领结婚证后,结婚仪式之前的度假,快快行动吧,赶快加入有惊喜"
@@ -39,12 +42,14 @@
 
 
                 <TextView
+                    android:id="@+id/views"
                     style="@style/text_66_black_small"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:text="阅读521" />
 
                 <TextView
+                    android:id="@+id/adddateline"
                     style="@style/text_66_black_small"
                     android:text="2015-10-21" />
             </LinearLayout>

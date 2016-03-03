@@ -6,6 +6,7 @@ import net.duohuo.dhroid.net.Response;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.provider.Settings.System;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
