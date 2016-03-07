@@ -185,8 +185,12 @@
             android:label="@string/title_activity_edit_phone" >
         </activity>
         <activity
-            android:name="com.means.rabbit.activity.my.AboutUsActivity"
+            android:name=".activity.my.AboutUsActivity"
             android:label="@string/title_activity_about_us" >
+        </activity>
+        <activity
+            android:name="com.means.rabbit.activity.comment.PostCommentMainActivity"
+            android:label="@string/title_activity_post_comment_main" >
         </activity>
     </application>
 

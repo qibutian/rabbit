@@ -300,5 +300,6 @@
     <string name="title_activity_edit_nick_name">EditNickNameActivity</string>
     <string name="title_activity_edit_phone">EditPhoneActivity</string>
     <string name="title_activity_about_us">AboutUsActivity</string>
+    <string name="title_activity_post_comment_main">PostCommentMainActivity</string>
 
 </resources>
