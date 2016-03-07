@@ -1,5 +1,6 @@
 package com.means.rabbit.activity.more;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
 import com.means.rabbit.R;
+import com.means.rabbit.activity.my.AboutUsActivity;
 
 /**
  * 更多
@@ -51,14 +53,24 @@ public class MoreFragment extends Fragment implements OnClickListener {
 		versionV = mainV.findViewById(R.id.version);
 		helpV = mainV.findViewById(R.id.help);
 		wipe_cacheV = mainV.findViewById(R.id.wipe_cache);
+		
+		aboutV.setOnClickListener(this);
+		langswitcherV.setOnClickListener(this);
+		feedbackV.setOnClickListener(this);
+		richscanV.setOnClickListener(this);
+		versionV.setOnClickListener(this);
+		helpV.setOnClickListener(this);
+		wipe_cacheV.setOnClickListener(this);
 	}
 
 	@Override
 	public void onClick(View v) {
+		Intent it;
 		switch (v.getId()) {
 		//关于我们
 		case R.id.about:
-			
+			it = new Intent(getActivity(),AboutUsActivity.class);
+			startActivity(it);
 			break;
 			//语言选择
 		case R.id.langswitcher:

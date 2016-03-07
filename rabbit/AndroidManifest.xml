@@ -39,7 +39,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.my.edit.EditInfoActivity" >
+        <activity
+            android:name=".activity.my.edit.EditInfoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" >
         </activity>
         <activity
             android:name=".activity.my.SystemMsgActivity"
@@ -134,7 +136,7 @@
             android:label="@string/title_activity_all_item" >
         </activity>
         <activity
-            android:name=".activity.my.ForgetPswdActivity"
+            android:name=".activity.my.edit.ForgetPswdActivity"
             android:label="@string/title_activity_all_item" >
         </activity>
         <activity
@@ -175,8 +177,16 @@
             android:label="@string/title_activity_instead_shopping_pay" >
         </activity>
         <activity
-            android:name="com.means.rabbit.activity.my.edit.EditNickNameActivity"
+            android:name=".activity.my.edit.EditNickNameActivity"
             android:label="@string/title_activity_edit_nick_name" >
+        </activity>
+        <activity
+            android:name=".activity.my.edit.EditPhoneActivity"
+            android:label="@string/title_activity_edit_phone" >
+        </activity>
+        <activity
+            android:name="com.means.rabbit.activity.my.AboutUsActivity"
+            android:label="@string/title_activity_about_us" >
         </activity>
     </application>
 

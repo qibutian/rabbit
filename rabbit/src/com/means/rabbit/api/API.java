@@ -19,8 +19,24 @@ public class API {
 	/** 修改密码 */
 	public static String resetpswdbyphone = Baseurl + "/home/user/resetpswdbyphone";
 	
+	/** 修改手机 */
+	public static String changephone = Baseurl + "/home/user/changephone";
+	
 	/** 修改昵称 */
 	public static String editaction = Baseurl + "/home/user/editaction";
+	
+	/** 修改头像 */
+	public static String editfceimg = Baseurl + "/home/user/editfceimg";
+	
+	/** 消息列表分页 */
+	public static String msglist = Baseurl + "/home/index/msglist";
+	
+	/** 消息删除 */
+	public static String msgdelete = Baseurl + "/home/index/msgdelete";
+	
+	/** 关于我们 */
+	public static String aboutdetail = Baseurl + "/home/index/aboutdetail";
+	
 	
 	/** 旅行小蜜/紧急求助资讯列表分页 */
 	public static String contentlist = Baseurl + "/home/cms/contentlist";

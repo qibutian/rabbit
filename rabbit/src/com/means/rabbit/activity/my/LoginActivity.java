@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.means.rabbit.R;
+import com.means.rabbit.activity.my.edit.ForgetPswdActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.utils.RabbitPerference;
@@ -69,11 +70,11 @@ public class LoginActivity extends RabbitBaseActivity implements
 	}
 	
 	private void login() {
-		 final String nickname = nicknameEt.getText().toString();
-		 final String password = passwordEt.getText().toString();
+//		 final String nickname = nicknameEt.getText().toString();
+//		 final String password = passwordEt.getText().toString();
 
-//		final String nickname = "qqq";
-//		final String password = "qqqqqq";
+		final String nickname = "qqq";
+		final String password = "q111111";
 		if (TextUtils.isEmpty(nickname)) {
 			showToast("请输入昵称/用户名");
 			return;
@@ -108,6 +109,7 @@ public class LoginActivity extends RabbitBaseActivity implements
 					per.setMsgcount(JSONUtil.getString(jo, "msgcount"));
 					per.setOrdercount(JSONUtil.getString(jo, "ordercount"));
 					per.setGroupname(JSONUtil.getString(jo, "groupname"));
+					per.setPassword(password);
 					per.commit();
 					finish();
 				}
