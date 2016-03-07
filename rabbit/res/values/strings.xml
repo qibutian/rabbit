@@ -18,6 +18,8 @@
     <string name="myfragment_collect">收藏</string>
     <string name="myfragment_current_account">现金账户</string>
     <string name="myfragment_logout">退出当前账户</string>
+    <!-- 系统消息 -->
+    <string name="systemmsg">系统消息</string>
     <!-- 编辑资料 -->
     <string name="editinfo">编辑资料</string>
     <string name="editinfo_edithead">修改头像</string>
@@ -28,8 +30,17 @@
     <string name="edit_nickname">昵称</string>
     <string name="edit_save">保存修改</string>
     <string name="edit_input_nickname">请输入昵称</string>
-    <!-- 修改密码 -->
     <!-- 修改手机 -->
+    <string name="edit_phone">旧手机</string>
+    <string name="edit_new_phone">新手机</string>
+    <string name="edit_phone_password">密码</string>
+    <string name="edit_phone_code">验证码	</string>
+    <string name="edit_phone_hint_phone">请输入旧手机号</string>
+    <string name="edit_phone_hint_new_phone">请输入新手机号</string>
+    <string name="edit_phone_hint_password">请输入密码</string>
+    <string name="edit_phone_hint_code">请输入验证码</string>
+    <string name="edit_phone_get_code">获取验证码</string>
+    <string name="edit_phone_submit">提交</string>
     <string name="businessorder_classify">分类</string>
     <string name="businessorder_state">状态</string>
     <string name="item_order_finished">已完成</string>
@@ -240,7 +251,12 @@
     <string name="insteadshopping_pay_deduction">抵扣</string>
     <string name="insteadshopping_pay_reality_money">实付金额</string>
     <string name="insteadshopping_pay_evaluate">发布评价</string>
-
+    <!-- 删除弹框 -->
+    <string name="delect_dialog">确认删除</string>
+    <string name="delect_dialog_yes">确认</string>
+    <string name="delect_dialog_no">取消</string>
+    <!-- 关于我们 -->
+    <string name="about_us">关于我们</string>
     <!-- 旅行小密 -->
     <string name="travel">旅行小密</string>
     <!-- 旅行小密 -->
@@ -282,5 +298,7 @@
     <string name="title_activity_instead_shopping">InsteadShoppingActivity</string>
     <string name="title_activity_instead_shopping_pay">InsteadShoppingPayActivity</string>
     <string name="title_activity_edit_nick_name">EditNickNameActivity</string>
+    <string name="title_activity_edit_phone">EditPhoneActivity</string>
+    <string name="title_activity_about_us">AboutUsActivity</string>
 
 </resources>

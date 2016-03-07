@@ -117,7 +117,7 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 			break;
 		// 退出当前用户
 		case R.id.logout:
-			it = new Intent(getActivity(), ForgetPswdActivity.class);
+			it = new Intent(getActivity(), LoginActivity.class);
 			startActivity(it);
 			break;
 		default:

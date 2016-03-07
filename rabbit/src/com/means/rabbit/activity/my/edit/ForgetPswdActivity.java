@@ -1,8 +1,9 @@
-package com.means.rabbit.activity.my;
+package com.means.rabbit.activity.my.edit;
 
 import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.net.NetTask;
 import net.duohuo.dhroid.net.Response;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.TextUtils;
@@ -13,7 +14,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.means.rabbit.R;
-import com.means.rabbit.activity.my.RegisterActivity.TimeCount;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.utils.RabbitUtils;
@@ -68,7 +68,7 @@ public class ForgetPswdActivity extends RabbitBaseActivity implements
 	
 	private void forget() {
 		String tel = phoneEt.getText().toString();
-		String password = passwordEt.getText().toString();
+		final String password = passwordEt.getText().toString();
 		String code = verificationEt.getText().toString();
 		if (TextUtils.isEmpty(tel)) {
 			showToast("请输入手机号");
@@ -106,6 +106,9 @@ public class ForgetPswdActivity extends RabbitBaseActivity implements
 				// TODO Auto-generated method stub
 				if (response.isSuccess()) {
 					showToast("修改成功");
+					Intent it = new Intent(self,EditInfoActivity.class);
+					it.putExtra("password",password);
+					setResult(RESULT_OK, it);
 					finish();
 				}
 			}

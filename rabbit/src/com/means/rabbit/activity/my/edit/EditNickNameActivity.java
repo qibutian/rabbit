@@ -3,6 +3,7 @@ package com.means.rabbit.activity.my.edit;
 import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.net.NetTask;
 import net.duohuo.dhroid.net.Response;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -35,6 +36,8 @@ public class EditNickNameActivity extends RabbitBaseActivity {
 		nicknameEt = (EditText) findViewById(R.id.nickname);
 		saveBtn = (Button) findViewById(R.id.save);
 		
+		nicknameEt.setText(getIntent().getStringExtra("nickname"));
+		
 		saveBtn.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -45,7 +48,7 @@ public class EditNickNameActivity extends RabbitBaseActivity {
 	}
 	
 	public void editNickName(){
-		String name = nicknameEt.getText().toString();
+		final String name = nicknameEt.getText().toString();
 		if (TextUtils.isEmpty(name)) {
 			showToast("昵称不能为空");
 			return;
@@ -64,6 +67,10 @@ public class EditNickNameActivity extends RabbitBaseActivity {
 				// TODO Auto-generated method stub
 				if (response.isSuccess()) {
 					showToast("修改成功");
+					Intent it = new Intent(self,EditInfoActivity.class);
+					it.putExtra("nickname",name);
+					setResult(RESULT_OK, it);
+					finish();
 				}
 			}
 		});
