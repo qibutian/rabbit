@@ -21,6 +21,7 @@ import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.utils.RabbitPerference;
 import com.means.rabbit.views.RefreshListViewAndMore;
 import com.means.rabbit.views.TabView;
+import com.means.rabbit.views.TabView.OnTabSelectListener;
 
 public class HotelListActivity extends RabbitBaseActivity {
 
@@ -38,7 +39,9 @@ public class HotelListActivity extends RabbitBaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+
 		setContentView(R.layout.activity_hotel_list);
+
 	}
 
 	@Override
@@ -48,10 +51,11 @@ public class HotelListActivity extends RabbitBaseActivity {
 		contentListV = listV.getListView();
 		adapter = new NetJSONAdapter(API.hotelList, self,
 				R.layout.item_hotel_list);
+
 		RabbitPerference per = IocContainer.getShare().get(
 				RabbitPerference.class);
 		per.load();
-//		adapter.addparam("catid", per.catid);
+		// adapter.addparam("catid", per.catid);
 		adapter.fromWhat("list");
 		adapter.addField("title", R.id.title);
 		adapter.addField("pic", R.id.pic);
@@ -60,7 +64,8 @@ public class HotelListActivity extends RabbitBaseActivity {
 			@Override
 			public Object fix(View itemV, Integer position, Object o, Object jo) {
 				TextView comment_desT = (TextView) itemV
-						.findViewById(R.id.comment_des);
+
+				.findViewById(R.id.comment_des);
 				JSONObject data = (JSONObject) jo;
 				comment_desT.setText("评论" + JSONUtil.getString(data, "score")
 						+ "/" + JSONUtil.getString(data, "score"));
@@ -85,6 +90,23 @@ public class HotelListActivity extends RabbitBaseActivity {
 				it.putExtra("hotelId", JSONUtil.getString(jo, "id"));
 				startActivity(it);
 
+			}
+		});
+
+		tabV = (TabView) findViewById(R.id.tab);
+		tabV.setCentertText("附近", "");
+		tabV.setOnTabSelectListener(new OnTabSelectListener() {
+
+			@Override
+			public void onRightSelect(String result) {
+				adapter.addparam("order", result);
+				adapter.refreshDialog();
+			}
+
+			@Override
+			public void onCenterSelect(String result) {
+				adapter.addparam("catid", result);
+				adapter.refreshDialog();
 			}
 		});
 

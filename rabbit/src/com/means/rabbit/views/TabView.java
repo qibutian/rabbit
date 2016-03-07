@@ -1,6 +1,7 @@
 package com.means.rabbit.views;
 
 import com.means.rabbit.R;
+import com.means.rabbit.views.CatPop.OnReslutClickListener;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -20,6 +21,8 @@ public class TabView extends LinearLayout {
 	AreaPop areaPop;
 
 	SortPop sortPop;
+
+	OnTabSelectListener onTabSelectListener;
 
 	public TabView(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -51,6 +54,16 @@ public class TabView extends LinearLayout {
 				} else {
 					pop = new CatPop(mContext, CatPop.AREA);
 				}
+				pop.setOnReslutClickListener(new OnReslutClickListener() {
+
+					@Override
+					public void result(String catname, String catid) {
+						centerT.setText(catname);
+						if (onTabSelectListener != null) {
+							onTabSelectListener.onCenterSelect(catid);
+						}
+					}
+				});
 				pop.show(TabView.this);
 			}
 		});
@@ -60,6 +73,16 @@ public class TabView extends LinearLayout {
 			@Override
 			public void onClick(View v) {
 				sortPop = new SortPop(mContext);
+				sortPop.setOnReslutClickListener(new SortPop.OnReslutClickListener() {
+
+					@Override
+					public void result(String catname, String tag) {
+						rightT.setText(catname);
+						if (onTabSelectListener != null) {
+							onTabSelectListener.onRightSelect(tag);
+						}
+					}
+				});
 				sortPop.show(TabView.this);
 			}
 		});
@@ -77,6 +100,20 @@ public class TabView extends LinearLayout {
 
 	public void setRightText(String text) {
 		rightT.setText(text);
+	}
+
+	public OnTabSelectListener getOnTabSelectListener() {
+		return onTabSelectListener;
+	}
+
+	public void setOnTabSelectListener(OnTabSelectListener onTabSelectListener) {
+		this.onTabSelectListener = onTabSelectListener;
+	}
+
+	public interface OnTabSelectListener {
+		void onCenterSelect(String result);
+
+		void onRightSelect(String result);
 	}
 
 }

@@ -7,6 +7,7 @@
     android:orientation="vertical" >
 
     <LinearLayout
+        android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -15,7 +16,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/padding_leftandright" >
+            android:padding="@dimen/padding_leftandright"
+            android:tag="dft" >
 
             <TextView
                 style="@style/text_44_black_medium"
@@ -35,7 +37,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/padding_leftandright" >
+            android:padding="@dimen/padding_leftandright"
+            android:tag="near" >
 
             <TextView
                 style="@style/text_44_black_medium"
@@ -55,7 +58,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/padding_leftandright" >
+            android:padding="@dimen/padding_leftandright"
+            android:tag="best" >
 
             <TextView
                 style="@style/text_44_black_medium"
@@ -75,7 +79,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/padding_leftandright" >
+            android:padding="@dimen/padding_leftandright"
+            android:tag="hot" >
 
             <TextView
                 style="@style/text_44_black_medium"

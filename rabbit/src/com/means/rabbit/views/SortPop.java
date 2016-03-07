@@ -11,13 +11,17 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.means.rabbit.R;
 import com.means.rabbit.adapter.CatLeftAdapter;
 import com.means.rabbit.adapter.CatRightAdapter;
+import com.means.rabbit.views.CatPop.OnReslutClickListener;
 
 public class SortPop {
 	Context context;
@@ -25,6 +29,10 @@ public class SortPop {
 	View contentV;
 
 	PopupWindow pop;
+
+	OnReslutClickListener onReslutClickListener;
+
+	LinearLayout layoutV;
 
 	public SortPop(Context context) {
 		this.context = context;
@@ -38,7 +46,7 @@ public class SortPop {
 		pop.setOutsideTouchable(true);
 		// 设置此参数获得焦点，否则无法点击
 		pop.setFocusable(true);
-//		pop.setAnimationStyle(R.style.mystyle);
+		// pop.setAnimationStyle(R.style.mystyle);
 		pop.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 		initView();
 
@@ -53,10 +61,46 @@ public class SortPop {
 						pop.dismiss();
 					}
 				});
+
+		layoutV = (LinearLayout) contentV.findViewById(R.id.layout);
+		System.out
+				.println("layoutV.getChildCount():" + layoutV.getChildCount());
+		for (int i = 0; i < layoutV.getChildCount(); i+=2) {
+			System.out.println("i:" + i);
+			RelativeLayout childV = (RelativeLayout) layoutV.getChildAt(i);
+			final TextView textT = (TextView) childV.getChildAt(0);
+			childV.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					if (onReslutClickListener != null) {
+						onReslutClickListener.result(
+								textT.getText().toString(), v.getTag()
+										.toString());
+					}
+					pop.dismiss();
+
+				}
+			});
+
+		}
 	}
 
 	public void show(View v) {
 		pop.showAsDropDown(v);
+	}
+
+	public OnReslutClickListener getOnReslutClickListener() {
+		return onReslutClickListener;
+	}
+
+	public void setOnReslutClickListener(
+			OnReslutClickListener onReslutClickListener) {
+		this.onReslutClickListener = onReslutClickListener;
+	}
+
+	public interface OnReslutClickListener {
+		void result(String catname, String tag);
 	}
 
 }

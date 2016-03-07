@@ -44,7 +44,8 @@ public class FoodListActivity extends RabbitBaseActivity {
 		headV = mLayoutInflater.inflate(R.layout.head_food_list, null);
 		listV.addHeadView(headV);
 		contentListV = listV.getListView();
-		adapter = new NetJSONAdapter(API.text, self, R.layout.item_food_list);
+		adapter = new NetJSONAdapter(API.foodList, self,
+				R.layout.item_food_list);
 		adapter.fromWhat("list");
 		listV.setAdapter(adapter);
 		contentListV.setOnItemClickListener(new OnItemClickListener() {

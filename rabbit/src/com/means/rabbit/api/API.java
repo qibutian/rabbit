@@ -51,4 +51,11 @@ public class API {
 	public static String hotelDetailNearTuangou = Baseurl
 			+ "/home/shop/itemlist";
 
+	/** 酒店预订列表 */
+	public static String hotelDetailOrderList = Baseurl
+			+ "/home/hotel/itemlist";
+
+	/** 美食列表 */
+	public static String foodList = Baseurl + "/home/shop/contentlist";
+
 }

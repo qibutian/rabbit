@@ -66,7 +66,7 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 
 		shopDetailTuangouView = (ShopDetailTuangouView) headV
 				.findViewById(R.id.tuangou_view);
-		shopDetailTuangouView.setData();
+//		shopDetailTuangouView.setData();
 
 		commentView = (CommentView) headV.findViewById(R.id.comment_view);
 		commentView.setData();

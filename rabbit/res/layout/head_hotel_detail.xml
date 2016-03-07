@@ -8,13 +8,13 @@
         android:layout_width="fill_parent"
         android:layout_height="220dp" >
 
-        <ImageView
+        <com.means.rabbit.views.NomalGallery
+            android:id="@+id/gallery"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/model_hotel" />
+            android:layout_height="fill_parent" />
 
         <TextView
+            android:id="@+id/pic_count"
             style="@style/text_white_small"
             android:layout_alignParentBottom="true"
             android:layout_margin="15dp"
@@ -23,6 +23,7 @@
             android:text="1/30" />
 
         <TextView
+            android:id="@+id/price"
             style="@style/text_white_big"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
@@ -33,6 +34,7 @@
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/title"
         style="@style/text_44_black_biger"
         android:layout_width="fill_parent"
         android:padding="@dimen/padding_leftandright"
@@ -55,7 +57,7 @@
         <TextView
             style="@style/text_66_black_medium"
             android:layout_marginLeft="10dp"
-            android:text="营业时间: " />
+            android:text="营业时间: (没有字段)" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -73,7 +75,6 @@
     <View style="@style/line_horizontal" />
 
     <LinearLayout
-        android:id="@+id/comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -85,6 +86,7 @@
             android:src="@drawable/icon_grey_location" />
 
         <TextView
+            android:id="@+id/address"
             style="@style/text_66_black_medium"
             android:layout_marginLeft="10dp"
             android:text="南京市秦淮区中山东路11号 " />
@@ -105,7 +107,6 @@
     <View style="@style/line_horizontal" />
 
     <LinearLayout
-        android:id="@+id/comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -117,6 +118,7 @@
             android:src="@drawable/icon_tel" />
 
         <TextView
+            android:id="@+id/tel"
             style="@style/text_66_black_medium"
             android:layout_marginLeft="10dp"
             android:text="025-12345678 " />
@@ -137,7 +139,6 @@
     <View style="@style/line_horizontal" />
 
     <LinearLayout
-        android:id="@+id/comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -148,11 +149,13 @@
             style="@style/roomRatingBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:isIndicator="true"
             android:numStars="5"
             android:rating="1.5"
             android:stepSize="0.5" />
 
         <TextView
+            android:id="@+id/comment_des"
             style="@style/text_66_black_medium"
             android:layout_marginLeft="10dp"
             android:text="2.7/113人" />
@@ -173,13 +176,13 @@
     <View style="@style/line_horizontal" />
 
     <LinearLayout
-        android:id="@+id/comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:padding="@dimen/padding_leftandright" >
 
         <TextView
+            android:id="@+id/label"
             style="@style/text_66_black_medium"
             android:text="Wifi,电视,宽带,热水洗浴,免费饮料 " />
 
