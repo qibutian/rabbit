@@ -76,4 +76,13 @@ public class API {
 	/** 商家详情 */
 	public static String shopDetail = Baseurl + "/home/shop/contentview";
 
+	/** 评论列表 */
+	public static String commentlist = Baseurl + "/home/shop/commentlist";
+
+	/**
+	 * 
+	 * 
+	 */
+	public static String tuangouDetail = Baseurl + "/home/shop/itemview";
+
 }

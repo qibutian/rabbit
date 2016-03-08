@@ -191,11 +191,13 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		// 旅行小秘
 		case R.id.travel_layout:
 			it = new Intent(getActivity(), TravelActivity.class);
+			it.putExtra("title", "旅行小秘");
 			startActivity(it);
 			break;
 
 		case R.id.help_layout:
-			it = new Intent(getActivity(), HelpActivity.class);
+			it = new Intent(getActivity(), TravelActivity.class);
+			it.putExtra("title", "紧急求助");
 			startActivity(it);
 			break;
 

@@ -18,9 +18,5 @@
             android:textColor="@color/text_2B_green" />
     </LinearLayout>
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="10dp"
-        android:background="@color/app_bg_color" />
 
 </LinearLayout>

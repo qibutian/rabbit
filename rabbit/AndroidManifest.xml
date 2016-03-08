@@ -192,6 +192,8 @@
             android:name="com.means.rabbit.activity.comment.PostCommentMainActivity"
             android:label="@string/title_activity_post_comment_main" >
         </activity>
+        <activity android:name=".activity.merchants.TuangouDetailActivity" >
+        </activity>
     </application>
 
 </manifest>

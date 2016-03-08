@@ -269,5 +269,12 @@
         android:id="@+id/comment_view"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
+    
+    <TextView
+        style="@style/text_44_black_medium"
+        android:layout_width="fill_parent"
+        android:background="@color/app_bg_color"
+        android:padding="@dimen/padding_leftandright"
+        android:text="附近团购 " />
 
 </LinearLayout>
