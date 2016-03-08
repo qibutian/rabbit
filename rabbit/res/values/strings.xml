@@ -160,6 +160,14 @@
 
     <!-- 评论列表 -->
     <string name="comment_list">全部评论</string>
+    
+    <!-- 发布评论 -->
+    <string name="post_comment">发布评论</string>
+    <string name="post_comment_hint_txt">给个好评是对我们的支持</string>
+    <string name="post_comment_txt">请说些什么吧^-^</string>
+    <string name="post_comment_grade">评分</string>
+    <string name="post_comment_save">保存</string>
+    
     <!-- 外卖订单 -->
     <string name="takeawayorder_shipping_rates">配送费</string>
     <string name="takeawayorder_total">总计</string>
