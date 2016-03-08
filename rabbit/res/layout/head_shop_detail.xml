@@ -15,6 +15,7 @@
             android:src="@drawable/model_tuzhan" />
 
         <TextView
+            android:id="@+id/count"
             style="@style/text_white_small"
             android:layout_margin="15dp"
             android:background="@drawable/num_bg"
@@ -35,10 +36,12 @@
             android:paddingTop="4dp" >
 
             <TextView
+                android:id="@+id/title"
                 style="@style/text_white_biger"
                 android:text="李姐小面重庆店(万达店)" />
 
             <TextView
+                android:id="@+id/price"
                 style="@style/text_white_big"
                 android:layout_marginTop="2dp"
                 android:text="￥18/人" />
@@ -46,7 +49,6 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -58,6 +60,7 @@
             android:src="@drawable/icon_time" />
 
         <TextView
+            android:id="@+id/time"
             style="@style/text_66_black_medium"
             android:layout_marginLeft="10dp"
             android:text="营业时间: " />
@@ -78,7 +81,6 @@
     <View style="@style/line_horizontal" />
 
     <LinearLayout
-        android:id="@+id/comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -90,6 +92,7 @@
             android:src="@drawable/icon_grey_location" />
 
         <TextView
+            android:id="@+id/address"
             style="@style/text_66_black_medium"
             android:layout_marginLeft="10dp"
             android:text="南京市秦淮区中山东路11号 " />
@@ -122,6 +125,7 @@
             android:src="@drawable/icon_tel" />
 
         <TextView
+            android:id="@+id/tel"
             style="@style/text_66_black_medium"
             android:layout_marginLeft="10dp"
             android:text="025-12345678 " />
@@ -142,7 +146,6 @@
     <View style="@style/line_horizontal" />
 
     <LinearLayout
-        android:id="@+id/comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -158,6 +161,7 @@
             android:stepSize="0.5" />
 
         <TextView
+            android:id="@+id/comment_des"
             style="@style/text_66_black_medium"
             android:layout_marginLeft="10dp"
             android:text="2.7/113人" />

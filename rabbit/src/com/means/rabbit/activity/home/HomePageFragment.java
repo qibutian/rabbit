@@ -68,6 +68,9 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 	// 专享特色
 	View exclusive_characteristicsV;
 
+	// 货币兑换
+	View huobiV;
+
 	public static HomePageFragment getInstance() {
 		if (instance == null) {
 			instance = new HomePageFragment();
@@ -116,6 +119,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		entertainmentV = headV.findViewById(R.id.entertainment);
 		exclusive_characteristicsV = headV
 				.findViewById(R.id.exclusive_characteristics);
+		huobiV = headV.findViewById(R.id.huobi);
 		foodLayoutV.setOnClickListener(this);
 		hotelLayoutV.setOnClickListener(this);
 		redpacketLayoutV.setOnClickListener(this);
@@ -125,6 +129,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		travel_servicesV.setOnClickListener(this);
 		entertainmentV.setOnClickListener(this);
 		exclusive_characteristicsV.setOnClickListener(this);
+		huobiV.setOnClickListener(this);
 	}
 
 	public void onEventMainThread(CityEB city) {
@@ -141,24 +146,34 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		// 美食
 		case R.id.food_layout:
 			it = new Intent(getActivity(), FoodListActivity.class);
+			it.putExtra("title", "美食");
 			startActivity(it);
 			break;
 
 		// 出行服务
 		case R.id.travel_services:
 			it = new Intent(getActivity(), FoodListActivity.class);
+			it.putExtra("title", "出行服务");
 			startActivity(it);
 			break;
 
 		// 休闲娱乐
 		case R.id.entertainment:
 			it = new Intent(getActivity(), FoodListActivity.class);
+			it.putExtra("title", "休闲娱乐");
 			startActivity(it);
 			break;
 
 		// 专享特色
 		case R.id.exclusive_characteristics:
 			it = new Intent(getActivity(), FoodListActivity.class);
+			it.putExtra("title", "专享特色");
+			startActivity(it);
+			break;
+		// 专享特色
+		case R.id.huobi:
+			it = new Intent(getActivity(), FoodListActivity.class);
+			it.putExtra("title", "货币兑换");
 			startActivity(it);
 			break;
 

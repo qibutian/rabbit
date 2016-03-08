@@ -67,6 +67,7 @@ public class HotelListActivity extends RabbitBaseActivity {
 
 				.findViewById(R.id.comment_des);
 				JSONObject data = (JSONObject) jo;
+				
 				comment_desT.setText("评论" + JSONUtil.getString(data, "score")
 						+ "/" + JSONUtil.getString(data, "score"));
 
