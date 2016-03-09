@@ -17,6 +17,7 @@
         android:padding="@dimen/padding_leftandright" >
 
         <EditText
+            android:id="@+id/content"
             style="@style/text_44_black_small"
             android:layout_width="match_parent"
             android:background="@color/white"
@@ -34,6 +35,12 @@
             android:gravity="center"
             android:padding="@dimen/padding_leftandright"
             android:text="@string/post_comment_txt" />
+        
+         <android.support.v7.widget.RecyclerView
+            	android:id="@+id/recyclerView"
+            	android:layout_width="match_parent"
+            	android:layout_height="77dp"
+                android:scrollbars="none" />
         
     </LinearLayout>
 
@@ -78,7 +85,7 @@
         style="@style/line_horizontal" />
         
         <Button
-            android:id="@+id/login"
+            android:id="@+id/submit"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginBottom="15dp"
@@ -86,7 +93,7 @@
             android:layout_marginRight="30dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/fillet_10_green_bg"
-            android:text="@string/post_comment_save"
+            android:text="@string/post_comment_submit"
             android:textColor="@color/white"
             android:textSize="@dimen/text_medium" />
         

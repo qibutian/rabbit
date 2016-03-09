@@ -1,14 +1,30 @@
 package com.means.rabbit.utils;
 
+import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
-import java.util.Random;
 
 public class DateUtils {
+	
+	 /**
+	  * 
+	  * 将字符串转为时间戳
+	  * 
+	  */
+    public static long getStringToDate(String time) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+        Date date = new Date();
+        try {
+            date = sdf.parse(time);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date.getTime();
+    }
 
 	/**
 	  * 获取现在时间

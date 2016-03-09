@@ -40,6 +40,8 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".activity.main.PhotoSelectorActivity" />
+        <activity
             android:name=".activity.my.edit.EditInfoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" >
         </activity>
@@ -185,13 +187,21 @@
             android:label="@string/title_activity_edit_phone" >
         </activity>
         <activity
-            android:name=".activity.my.AboutUsActivity"
+            android:name="com.means.rabbit.activity.more.AboutUsActivity"
             android:label="@string/title_activity_about_us" >
         </activity>
         <activity
             android:name="com.means.rabbit.activity.comment.PostCommentMainActivity"
-            android:label="@string/title_activity_post_comment_main" >
+            android:label="@string/title_activity_post_comment_main" 
+            android:configChanges="orientation|keyboardHidden|screenSize" >
         </activity>
+        <activity
+            android:name="BasePhotoPreviewActivityBasePhotoPreviewActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"  >
+        </activity>
+        <activity
+            android:name=".activity.main.PhotoPreviewActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

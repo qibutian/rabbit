@@ -1,4 +1,4 @@
-package com.means.rabbit.activity.my;
+package com.means.rabbit.activity.more;
 
 import org.json.JSONObject;
 

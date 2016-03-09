@@ -9,7 +9,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
 import com.means.rabbit.R;
-import com.means.rabbit.activity.my.AboutUsActivity;
+import com.means.rabbit.activity.comment.PostCommentMainActivity;
 
 /**
  * 更多
@@ -74,7 +74,8 @@ public class MoreFragment extends Fragment implements OnClickListener {
 			break;
 			//语言选择
 		case R.id.langswitcher:
-			
+			it = new Intent(getActivity(),PostCommentMainActivity.class);
+			startActivity(it);
 			break;
 			//反馈
 		case R.id.feedback:

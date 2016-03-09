@@ -166,7 +166,7 @@
     <string name="post_comment_hint_txt">给个好评是对我们的支持</string>
     <string name="post_comment_txt">请说些什么吧^-^</string>
     <string name="post_comment_grade">评分</string>
-    <string name="post_comment_save">保存</string>
+    <string name="post_comment_submit">提交</string>
     
     <!-- 外卖订单 -->
     <string name="takeawayorder_shipping_rates">配送费</string>
@@ -271,6 +271,9 @@
     <string name="travel_details">旅游详情</string>
     <!-- 代购 -->
     <string name="Hotboom">代购</string>
+    
+    <string name="recent_photos">最近照片</string>
+    <string name="taking_pictures">Taking Pictures</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_setting">SettingActivity</string>

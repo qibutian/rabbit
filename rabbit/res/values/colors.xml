@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="black40">#66000000</color>
     <color name="white">#FFFFFF</color>
     <color name="nothing">#00000000</color>
     <color name="black">#000000</color>
@@ -24,6 +25,7 @@
     <color name="black61">#99000000</color>
     <color name="hotel_red">#FF5A5F</color>
     <color name="comment_btn_bg">#585858</color>
-    
+    <color name="wheel_line_grey">#e5e5e5</color>
+     <color name="wheel_dialog_blue">#23bde1</color>
 
 </resources>

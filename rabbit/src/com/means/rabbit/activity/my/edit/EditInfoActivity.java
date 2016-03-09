@@ -65,7 +65,7 @@ public class EditInfoActivity extends RabbitBaseActivity implements
 
 	@Override
 	public void initView() {
-		mCacheDir = new File(getExternalCacheDir(), "foods");
+		mCacheDir = new File(getExternalCacheDir(), "Rabbit");
 		mCacheDir.mkdirs();
 		// TODO Auto-generated method stub
 		setTitle(getString(R.string.editinfo));
