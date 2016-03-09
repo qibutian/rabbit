@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+     >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/padding_leftandright"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/type"
+                style="@style/text_white_medium"
+                android:background="@drawable/fillet_10_green_bg"
+                android:paddingBottom="2dp"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:paddingTop="2dp"
+                android:text="收入" />
+
+            <TextView
+                android:id="@+id/balance"
+                style="@style/text_44_black_medium"
+                android:layout_marginLeft="@dimen/padding_leftandright"
+                android:text="￥100" />
+
+            <TextView
+                android:id="@+id/note"
+                style="@style/text_44_black_medium"
+                android:layout_marginLeft="@dimen/padding_leftandright"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:text="支付宝充值" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/dateline"
+            style="@style/text_99_grey_small"
+            android:layout_marginTop="3dp"
+            android:text="2016-03-09 16:44:23" />
+    </LinearLayout>
+	<View style="@style/line_horizontal" />
+</LinearLayout>

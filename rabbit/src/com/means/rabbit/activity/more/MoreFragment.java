@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.means.rabbit.R;
 import com.means.rabbit.activity.comment.PostCommentMainActivity;
+import com.means.rabbit.activity.finance.FinanceDetailActivity;
 
 /**
  * 更多
@@ -79,7 +80,8 @@ public class MoreFragment extends Fragment implements OnClickListener {
 			break;
 			//反馈
 		case R.id.feedback:
-			
+			it = new Intent(getActivity(),FinanceDetailActivity.class);
+			startActivity(it);
 			break;
 			//扫一扫
 		case R.id.richscan:

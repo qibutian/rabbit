@@ -39,8 +39,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activity.main.PhotoSelectorActivity" />
+        <activity android:name=".activity.main.PhotoSelectorActivity" />
         <activity
             android:name=".activity.my.edit.EditInfoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" >
@@ -187,22 +186,42 @@
             android:label="@string/title_activity_edit_phone" >
         </activity>
         <activity
-            android:name="com.means.rabbit.activity.more.AboutUsActivity"
+            android:name=".activity.more.AboutUsActivity"
             android:label="@string/title_activity_about_us" >
         </activity>
         <activity
-            android:name="com.means.rabbit.activity.comment.PostCommentMainActivity"
-            android:label="@string/title_activity_post_comment_main" 
-            android:configChanges="orientation|keyboardHidden|screenSize" >
+            android:name=".activity.comment.PostCommentMainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_post_comment_main" >
         </activity>
         <activity
-            android:name="BasePhotoPreviewActivityBasePhotoPreviewActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"  >
+            android:name=".BasePhotoPreviewActivityBasePhotoPreviewActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" >
         </activity>
         <activity
             android:name=".activity.main.PhotoPreviewActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".activity.merchants.TuangouDetailActivity" >
+        </activity>
+        <activity
+            android:name=".activity.finance.FinancialManagementActivity"
+            android:label="@string/title_activity_financial_management" >
+        </activity>
+        <activity
+            android:name=".activity.order.pay.PayOrderActivity"
+            android:label="@string/title_activity_pay_order" >
+        </activity>
+        <activity
+            android:name=".activity.finance.WithdrawCardActivity"
+            android:label="@string/title_activity_withdraw_card" >
+        </activity>
+        <activity
+            android:name=".activity.finance.RechargeActivity"
+            android:label="@string/title_activity_recharge" >
+        </activity>
+        <activity
+            android:name="com.means.rabbit.activity.finance.FinanceDetailActivity"
+            android:label="@string/title_activity_finance_detail" >
         </activity>
     </application>
 

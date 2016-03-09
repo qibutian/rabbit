@@ -160,14 +160,14 @@
 
     <!-- 评论列表 -->
     <string name="comment_list">全部评论</string>
-    
+
     <!-- 发布评论 -->
     <string name="post_comment">发布评论</string>
     <string name="post_comment_hint_txt">给个好评是对我们的支持</string>
     <string name="post_comment_txt">请说些什么吧^-^</string>
     <string name="post_comment_grade">评分</string>
     <string name="post_comment_submit">提交</string>
-    
+
     <!-- 外卖订单 -->
     <string name="takeawayorder_shipping_rates">配送费</string>
     <string name="takeawayorder_total">总计</string>
@@ -263,6 +263,32 @@
     <string name="delect_dialog">确认删除</string>
     <string name="delect_dialog_yes">确认</string>
     <string name="delect_dialog_no">取消</string>
+    <!-- 财务管理 -->
+    <string name="financial_management">财务管理</string>
+    <string name="financial_management_balance">账户余额</string>
+    <string name="financial_management_recharge">充值</string>
+    <string name="financial_management_details">财务明细</string>
+    <string name="financial_management_withdraw">提现到银行卡</string>
+
+    <!-- 支付订单 -->
+    <string name="pay_order">支付订单</string>
+    <string name="pay_order_zfb">支付宝(快捷支付)</string>
+    <string name="pay_order_palpay">Palpay</string>
+    <string name="pay_order_balance">账户余额</string>
+
+    <!-- 提现到银行卡 -->
+    <string name="withdraw_card">提现到银行卡</string>
+    <string name="withdraw_card_money">提现金额</string>
+    <string name="withdraw_card_cardid">卡号</string>
+    <string name="withdraw_card_name">姓名</string>
+    <string name="withdraw_card_submit">提交</string>
+    <!-- 账户充值 -->
+    <string name="recharge">账户充值</string>
+    <string name="recharge_money">充值金额</string>
+    <string name="recharge_palpay">Palpay</string>
+    <string name="recharge_zfb">支付宝(快捷支付)</string>
+    <!-- 财务明细 -->
+    <string name="finance_detail">财务明细</string>
     <!-- 关于我们 -->
     <string name="about_us">关于我们</string>
     <!-- 旅行小密 -->
@@ -271,7 +297,6 @@
     <string name="travel_details">旅游详情</string>
     <!-- 代购 -->
     <string name="Hotboom">代购</string>
-    
     <string name="recent_photos">最近照片</string>
     <string name="taking_pictures">Taking Pictures</string>
     <string name="title_activity_login">LoginActivity</string>
@@ -312,5 +337,10 @@
     <string name="title_activity_edit_phone">EditPhoneActivity</string>
     <string name="title_activity_about_us">AboutUsActivity</string>
     <string name="title_activity_post_comment_main">PostCommentMainActivity</string>
+    <string name="title_activity_financial_management">FinancialManagementActivity</string>
+    <string name="title_activity_pay_order">PayOrderActivity</string>
+    <string name="title_activity_withdraw_card">WithdrawCardActivity</string>
+    <string name="title_activity_recharge">RechargeActivity</string>
+    <string name="title_activity_finance_detail">FinanceDetailActivity</string>
 
 </resources>

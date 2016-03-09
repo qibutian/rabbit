@@ -1,0 +1,119 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg_color"
+    android:orientation="vertical" >
+
+    <include layout="@layout/include_title_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical" >
+        
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_leftandright" >
+
+            <TextView
+                style="@style/text_44_black_medium"
+                android:text="珍珠泉" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right|center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                style="@style/text_44_black_medium"
+                android:textColor="@color/text_2B_green"
+                android:layout_marginRight="10dp"
+                android:text="￥288" />
+            </LinearLayout>
+        </LinearLayout>
+        <View style="@style/line_horizontal"
+            android:layout_height="10dp"
+             />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_leftandright" >
+
+            <TextView
+                style="@style/text_44_black_medium"
+                android:text="@string/pay_order_zfb" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right|center_vertical"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_right" />
+            </LinearLayout>
+        </LinearLayout>
+        <View style="@style/line_horizontal" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_leftandright" >
+
+            <TextView
+                style="@style/text_44_black_medium"
+                android:text="@string/pay_order_palpay" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right|center_vertical"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_right" />
+            </LinearLayout>
+        </LinearLayout>
+        <View style="@style/line_horizontal" />
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_leftandright" >
+
+            <TextView
+                style="@style/text_44_black_medium"
+                android:text="@string/pay_order_balance" />
+            <TextView
+                style="@style/text_44_black_medium"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:text="(￥288)" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right|center_vertical"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_right" />
+            </LinearLayout>
+        </LinearLayout>
+        
+    </LinearLayout>
+
+</LinearLayout>

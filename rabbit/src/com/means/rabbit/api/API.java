@@ -87,5 +87,9 @@ public class API {
 	 * 
 	 */
 	public static String tuangouDetail = Baseurl + "/home/shop/itemview";
+	
+	/** 财务分页明细 */
+	public static String accountlog = Baseurl + "/home/user/accountlog";
+	
 
 }
