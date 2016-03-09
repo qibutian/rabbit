@@ -1,9 +1,16 @@
 package com.means.rabbit.views;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import net.duohuo.dhroid.net.JSONUtil;
+import net.duohuo.dhroid.util.ViewUtil;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.means.rabbit.R;
@@ -23,20 +30,53 @@ public class CommentView extends LinearLayout {
 		this.mContext = context;
 	}
 
-	public void setData() {
+	public void setData(JSONArray jsa) {
 		mLayoutInflater = LayoutInflater.from(mContext);
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < jsa.length(); i++) {
 
-			if (i == 2) {
-				View v = mLayoutInflater.inflate(R.layout.model_comment_text,
-						null);
-				this.addView(v);
-			} else {
-				View v = mLayoutInflater.inflate(R.layout.item_comment, null);
-				this.addView(v);
+			JSONObject jo = JSONUtil.getJSONObjectAt(jsa, i);
+			View v = mLayoutInflater.inflate(R.layout.item_comment, null);
+
+			ViewUtil.bindView(v.findViewById(R.id.content),
+					JSONUtil.getString(jo, "content"));
+			ViewUtil.bindView(v.findViewById(R.id.name),
+					JSONUtil.getString(jo, "username"));
+			ViewUtil.bindView(v.findViewById(R.id.time),
+					JSONUtil.getString(jo, "dateline"), "neartime");
+			ViewUtil.bindNetImage((ImageView) v.findViewById(R.id.head),
+					JSONUtil.getString(jo, "faceimg_s"), "head");
+
+			JSONArray picJsa = JSONUtil.getJSONArray(jo, "image_data");
+
+			if (picJsa != null && picJsa.length() != 0) {
+				LinearLayout picV = (LinearLayout) v
+						.findViewById(R.id.pic_layout);
+				for (int j = 0; j < picJsa.length(); j++) {
+
+					if (j < 4) {
+						ImageView picI = (ImageView) picV.getChildAt(j);
+						try {
+							ViewUtil.bindNetImage(picI, picJsa.getString(j),
+									"head");
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+
+				}
 			}
+
+			// ViewUtil.bindView(v.findViewById(R.id.content),
+			// JSONUtil.getString(jo, "content"));
+
+			this.addView(v);
+		}
+
+		if (jsa.length() >= 2) {
+			View v = mLayoutInflater.inflate(R.layout.model_comment_text, null);
+			this.addView(v);
 		}
 
 	}
-
 }

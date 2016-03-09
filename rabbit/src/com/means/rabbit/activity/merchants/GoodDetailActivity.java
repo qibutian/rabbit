@@ -34,7 +34,6 @@ public class GoodDetailActivity extends RabbitBaseActivity {
 //		keyValueView.setData();
 
 		commentView = (CommentView) findViewById(R.id.comment_view);
-		commentView.setData();
 	}
 
 }

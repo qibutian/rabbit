@@ -104,7 +104,6 @@ public class TuangouDetailActivity extends RabbitBaseActivity {
 		keyValueView = (KeyVauleView) headV.findViewById(R.id.keyvule_view);
 
 		commentView = (CommentView) headV.findViewById(R.id.comment_view);
-		commentView.setData();
 		gallery = (NomalGallery) headV.findViewById(R.id.gallery);
 		ratingBar = (RatingBar) headV.findViewById(R.id.ratingbar);
 		getShopDetalData();
@@ -159,7 +158,7 @@ public class TuangouDetailActivity extends RabbitBaseActivity {
 		DhNet net = new DhNet(API.commentlist);
 		net.addParam("contentid", tuangouId);
 		net.addParam("type", 1);
-		net.addParam("step", 3);
+		net.addParam("step", 2);
 		net.doGet(new NetTask(self) {
 
 			@Override

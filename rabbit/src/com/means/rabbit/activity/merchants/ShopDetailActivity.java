@@ -112,7 +112,6 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 				.findViewById(R.id.tuangou_view);
 
 		commentView = (CommentView) headV.findViewById(R.id.comment_view);
-		commentView.setData();
 		gallery = (NomalGallery) headV.findViewById(R.id.gallery);
 		ratingBar = (RatingBar) headV.findViewById(R.id.ratingbar);
 		pic_countT = (TextView) headV.findViewById(R.id.pic_count);
@@ -192,15 +191,15 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 		DhNet net = new DhNet(API.commentlist);
 		net.addParam("contentid", shopId);
 		net.addParam("type", 1);
-		net.addParam("step", 3);
+		net.addParam("step", 2);
 		net.doGet(new NetTask(self) {
 
 			@Override
 			public void doInUI(Response response, Integer transfer) {
 
 				if (response.isSuccess()) {
-//					commentView.setData(response
-//							.jSONArrayFrom("list"));
+					// commentView.setData(response
+					// .jSONArrayFrom("list"));
 				}
 
 			}
