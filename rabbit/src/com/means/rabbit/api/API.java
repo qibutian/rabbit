@@ -79,4 +79,13 @@ public class API {
 	/** 团购/代购/酒店商家的发布评论 */
 	public static String addcomment = Baseurl + "/home/shop/addcomment";
 
+	/** 评论列表 */
+	public static String commentlist = Baseurl + "/home/shop/commentlist";
+
+	/**
+	 * 
+	 * 
+	 */
+	public static String tuangouDetail = Baseurl + "/home/shop/itemview";
+
 }

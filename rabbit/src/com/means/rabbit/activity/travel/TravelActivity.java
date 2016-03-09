@@ -24,8 +24,9 @@ import com.means.rabbit.views.RefreshListViewAndMore;
 /**
  * 
  * 旅游小密
+ * 
  * @author Administrator
- *
+ * 
  */
 public class TravelActivity extends RabbitBaseActivity {
 
@@ -46,26 +47,28 @@ public class TravelActivity extends RabbitBaseActivity {
 
 	@Override
 	public void initView() {
-		setTitle(getString(R.string.travel));
+		setTitle(getIntent().getStringExtra("title"));
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		contentListV = listV.getListView();
-		adapter = new NetJSONAdapter(API.contentlist, self, R.layout.item_travel_list);
+		adapter = new NetJSONAdapter(API.contentlist, self,
+				R.layout.item_travel_list);
 		adapter.fromWhat("list");
 		adapter.addField("title", R.id.title);
-		adapter.addField(new FieldMap("views",R.id.views) {
-			
+		adapter.addField(new FieldMap("views", R.id.views) {
+
 			@Override
 			public Object fix(View itemV, Integer position, Object o, Object jo) {
-				
-				return "阅读  "+o;
+
+				return "阅读  " + o;
 			}
 		});
 		adapter.addField("des", R.id.des);
 		adapter.addField(new FieldMap("adddateline", R.id.adddateline) {
-			
+
 			@Override
 			public Object fix(View itemV, Integer position, Object o, Object jo) {
-				return DateUtils.dateToStr(new Date(Long.parseLong(o.toString())*1000));
+				return DateUtils.dateToStr(new Date(
+						Long.parseLong(o.toString()) * 1000));
 			}
 		});
 		adapter.addField("pic", R.id.pic);

@@ -31,7 +31,7 @@ public class GoodDetailActivity extends RabbitBaseActivity {
 	public void initView() {
 		setTitle("商品详情");
 		keyValueView = (KeyVauleView) findViewById(R.id.keyvule_view);
-		keyValueView.setData();
+//		keyValueView.setData();
 
 		commentView = (CommentView) findViewById(R.id.comment_view);
 		commentView.setData();

@@ -8,14 +8,13 @@
         android:layout_width="fill_parent"
         android:layout_height="220dp" >
 
-        <ImageView
+        <com.means.rabbit.views.NomalGallery
+            android:id="@+id/gallery"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/model_tuzhan" />
+            android:layout_height="fill_parent" />
 
         <TextView
-            android:id="@+id/count"
+            android:id="@+id/pic_count"
             style="@style/text_white_small"
             android:layout_margin="15dp"
             android:background="@drawable/num_bg"
@@ -180,7 +179,7 @@
     </LinearLayout>
 
     <View style="@style/line_horizontal" />
-    
+
     <View
         android:layout_width="fill_parent"
         android:layout_height="10dp"
@@ -201,5 +200,12 @@
         android:id="@+id/comment_view"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
+
+    <TextView
+        style="@style/text_44_black_medium"
+        android:layout_width="fill_parent"
+        android:background="@color/app_bg_color"
+        android:padding="@dimen/padding_leftandright"
+        android:text="附近团购 " />
 
 </LinearLayout>

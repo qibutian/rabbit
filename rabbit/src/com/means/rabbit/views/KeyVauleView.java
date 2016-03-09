@@ -1,5 +1,8 @@
 package com.means.rabbit.views;
 
+import net.duohuo.dhroid.net.JSONUtil;
+import net.duohuo.dhroid.util.ViewUtil;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,6 +14,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class KeyVauleView extends LinearLayout {
 	Context mContext;
@@ -27,17 +31,22 @@ public class KeyVauleView extends LinearLayout {
 		this.mContext = context;
 	}
 
-	public void setData() {
+	public void setData(JSONArray jsa) {
 		mLayoutInflater = LayoutInflater.from(mContext);
-		for (int i = 0; i < 3; i++) {
-
-			if (i == 2) {
+		for (int i = 0; i < jsa.length() + 1; i++) {
+			if (i == jsa.length()) {
 				View v = mLayoutInflater.inflate(R.layout.model_look_detail,
 						null);
 				this.addView(v);
 			} else {
+				JSONObject jo = JSONUtil.getJSONObjectAt(jsa, i);
 				View v = mLayoutInflater
 						.inflate(R.layout.model_key_value, null);
+
+				ViewUtil.bindView(v.findViewById(R.id.key),
+						JSONUtil.getString(jo, "label"));
+				ViewUtil.bindView(v.findViewById(R.id.value),
+						JSONUtil.getString(jo, "value"));
 				this.addView(v);
 			}
 		}
