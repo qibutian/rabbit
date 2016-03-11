@@ -10,6 +10,7 @@
         android:padding="10dp" >
 
         <ImageView
+            android:id="@+id/head"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:src="@drawable/icon_face" />
@@ -25,6 +26,7 @@
                 android:layout_height="wrap_content" >
 
                 <TextView
+                    android:id="@+id/name"
                     style="@style/text_66_black_small"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -41,18 +43,51 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/content"
                 style="@style/text_44_black_medium"
                 android:layout_marginTop="2dp"
                 android:text="我真心强烈推荐这家,服务超一流" />
 
-            <ImageView
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:layout_marginTop="6dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/model_meishi" />
+            <LinearLayout
+                android:id="@+id/pic_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp" >
+
+                <ImageView
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/model_meishi"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginLeft="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/model_meishi"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginLeft="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/model_meishi"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginLeft="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/model_meishi"
+                    android:visibility="gone" />
+            </LinearLayout>
 
             <TextView
+                android:id="@+id/time"
                 style="@style/text_66_black_small"
                 android:layout_marginTop="6dp"
                 android:text="今天 08:30" />

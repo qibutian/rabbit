@@ -10,10 +10,12 @@ import net.duohuo.dhroid.net.Response;
 import net.duohuo.dhroid.util.ViewUtil;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -115,7 +117,6 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 				.findViewById(R.id.tuangou_view);
 
 		commentView = (CommentView) headV.findViewById(R.id.comment_view);
-		commentView.setData();
 		gallery = (NomalGallery) headV.findViewById(R.id.gallery);
 		pic_countT = (TextView) headV.findViewById(R.id.pic_count);
 		priceT = (TextView) headV.findViewById(R.id.price);
@@ -123,6 +124,7 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 		getHotelDetalData();
 		getOrderList();
 		getTuangouList();
+		getCommentList();
 	}
 
 	// 获取详情数据
@@ -150,15 +152,35 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 
 					ViewUtil.bindView(headV.findViewById(R.id.title),
 							JSONUtil.getString(detailJo, "title"));
-
+					ViewUtil.bindView(headV.findViewById(R.id.time),
+							JSONUtil.getString(detailJo, "yytime"));
 					ViewUtil.bindView(headV.findViewById(R.id.address),
 							JSONUtil.getString(detailJo, "address"));
 
 					ViewUtil.bindView(headV.findViewById(R.id.tel),
 							JSONUtil.getString(detailJo, "lxphone"));
 
-					ViewUtil.bindView(headV.findViewById(R.id.label),
-							JSONUtil.getString(detailJo, "label_in"));
+					JSONArray label_inJsa = JSONUtil.getJSONArray(detailJo,
+							"label_in");
+					if (label_inJsa != null && label_inJsa.length() != 0) {
+						String labelS = "";
+						for (int i = 0; i < label_inJsa.length(); i++) {
+							try {
+								JSONObject labeljo = label_inJsa
+										.getJSONObject(i);
+								labelS = labelS + " "
+
+								+ JSONUtil.getString(labeljo, "name");
+								ViewUtil.bindView(
+										headV.findViewById(R.id.label), labelS);
+							} catch (JSONException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+
+					}
+
 					ViewUtil.bindView(headV.findViewById(R.id.comment_des),
 							JSONUtil.getString(detailJo, "score") + "/"
 									+ JSONUtil.getString(detailJo, "comment"));
@@ -200,6 +222,26 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 				if (response.isSuccess()) {
 					shopDetailTuangouView.setData(response
 							.jSONArrayFrom("list"));
+				}
+
+			}
+		});
+	}
+
+	//
+	private void getCommentList() {
+		DhNet net = new DhNet(API.commentlist);
+		net.addParam("contentid", hotelId);
+		net.addParam("type", 2);
+		net.addParam("step", 2);
+		net.doGet(new NetTask(self) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+
+				if (response.isSuccess()) {
+					// commentView.setData(response
+					// .jSONArrayFrom("list"));
 				}
 
 			}
