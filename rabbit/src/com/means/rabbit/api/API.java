@@ -106,13 +106,10 @@ public class API {
 	/** 酒店订单预览 */
 	public static String preHotelOrder = Baseurl + "/home/hotel/orderpreview";
 	public static String addOrder = Baseurl + "/home/hotel/orderadd";
-<<<<<<< HEAD
 
 	/** 酒店订单预览 */
-=======
 	
 	/** 酒店订单详情 */
->>>>>>> origin/master
 	public static String orderpreview = Baseurl + "/home/hotel/orderpreview";
 
 }
