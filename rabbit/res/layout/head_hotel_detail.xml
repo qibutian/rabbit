@@ -225,8 +225,23 @@
 
             <TextView
                 style="@style/text_44_black_medium"
+                android:text="入住 " />
+
+            <TextView
+                android:id="@+id/start_date"
+                style="@style/text_44_black_medium"
+                android:text="2016-2-13 离开2016-214 " />
+
+            <TextView
+                style="@style/text_44_black_medium"
+                android:layout_marginLeft="5dp"
+                android:text="离开 " />
+
+            <TextView
+                android:id="@+id/end_date"
+                style="@style/text_44_black_medium"
                 android:layout_marginRight="40dp"
-                android:text="入住 2016-2-13 离开2016-214 " />
+                android:text="2016-214 " />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -270,7 +285,7 @@
         android:id="@+id/comment_view"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
-    
+
     <TextView
         style="@style/text_44_black_medium"
         android:layout_width="fill_parent"

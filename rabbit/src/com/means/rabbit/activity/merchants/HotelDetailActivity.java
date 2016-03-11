@@ -60,6 +60,8 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 
 	RatingBar ratingBar;
 
+	TextView startDateT, endDateT;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -70,7 +72,8 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 	@Override
 	public void initView() {
 		setTitle("酒店详情");
-		hotelId = getIntent().getStringExtra("hotelId");
+		Intent lastIntent = getIntent();
+		hotelId = lastIntent.getStringExtra("hotelId");
 		headV = LayoutInflater.from(self).inflate(R.layout.head_hotel_detail,
 				null);
 
@@ -121,6 +124,13 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 		pic_countT = (TextView) headV.findViewById(R.id.pic_count);
 		priceT = (TextView) headV.findViewById(R.id.price);
 		ratingBar = (RatingBar) headV.findViewById(R.id.ratingbar);
+
+		startDateT = (TextView) headV.findViewById(R.id.start_date);
+		endDateT = (TextView) headV.findViewById(R.id.end_date);
+
+		startDateT.setText(lastIntent.getStringExtra("startDate"));
+		endDateT.setText(lastIntent.getStringExtra("endDate"));
+
 		getHotelDetalData();
 		getOrderList();
 		getTuangouList();
@@ -164,6 +174,7 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 							"label_in");
 					if (label_inJsa != null && label_inJsa.length() != 0) {
 						String labelS = "";
+
 						for (int i = 0; i < label_inJsa.length(); i++) {
 							try {
 								JSONObject labeljo = label_inJsa
@@ -203,7 +214,12 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 			public void doInUI(Response response, Integer transfer) {
 
 				if (response.isSuccess()) {
-					hotelYudingView.setData(response.jSONArrayFrom("list"));
+
+					TextView titleT = (TextView) headV.findViewById(R.id.title);
+					hotelYudingView.setDate(startDateT.getText().toString(),
+							endDateT.getText().toString());
+					hotelYudingView.setData(response.jSONArrayFrom("list"),
+							titleT.getText().toString());
 				}
 
 			}

@@ -37,6 +37,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/name"
                         style="@style/text_99_grey_medium"
                         android:text="金陵酒店" />
                 </LinearLayout>
@@ -62,6 +63,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/fangxing"
                         style="@style/text_99_grey_medium"
                         android:text="标准间" />
                 </LinearLayout>
@@ -87,6 +89,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/date"
                         style="@style/text_99_grey_medium"
                         android:text="入住 1晚" />
                 </LinearLayout>
@@ -112,6 +115,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/old_price"
                         style="@style/text_99_grey_medium"
                         android:text="￥78/晚" />
                 </LinearLayout>
@@ -137,6 +141,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/price"
                         style="@style/text_99_grey_medium"
                         android:text="￥78/晚" />
                 </LinearLayout>
@@ -189,6 +194,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/total_price"
                         style="@style/text_44_black_big"
                         android:text="￥156"
                         android:textColor="@color/text_2B_green" />
@@ -216,8 +222,12 @@
                     android:gravity="right|center_vertical"
                     android:orientation="horizontal" >
 
-                    <TextView
+                    <EditText
+                        android:id="@+id/tel"
                         style="@style/text_99_grey_medium"
+                        android:layout_width="fill_parent"
+                        android:background="@color/nothing"
+                        android:gravity="right"
                         android:text="15188888888" />
                 </LinearLayout>
             </LinearLayout>
@@ -241,8 +251,12 @@
                     android:gravity="right|center_vertical"
                     android:orientation="horizontal" >
 
-                    <TextView
+                    <EditText
+                        android:id="@+id/username"
                         style="@style/text_99_grey_medium"
+                        android:layout_width="fill_parent"
+                        android:background="@color/nothing"
+                        android:gravity="right"
                         android:text="张三" />
                 </LinearLayout>
             </LinearLayout>
@@ -266,12 +280,13 @@
                     android:gravity="right|center_vertical"
                     android:orientation="horizontal" >
 
-                    <TextView
+                    <EditText
+                        android:id="@+id/msg"
                         style="@style/text_99_grey_medium"
-                        android:ellipsize="end"
-                        android:maxWidth="150dp"
-                        android:singleLine="true"
-                        android:text="@string/grogshop_fill_in" />
+                        android:layout_width="fill_parent"
+                        android:background="@color/nothing"
+                        android:gravity="right"
+                        android:text="备注" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -295,6 +310,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/jifen"
                         style="@style/text_99_grey_medium"
                         android:text="200" />
 
@@ -305,6 +321,7 @@
                         android:textColor="@color/text_2B_green" />
 
                     <TextView
+                        android:id="@+id/dikou"
                         style="@style/text_44_black_medium"
                         android:layout_marginLeft="5dp"
                         android:text="￥2"

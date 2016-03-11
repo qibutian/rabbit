@@ -9,15 +9,13 @@
         android:layout_width="36dp"
         android:layout_height="wrap_content"
         android:scaleType="center"
-        android:src="@drawable/icon_minus"
-        android:visibility="invisible" />
+        android:src="@drawable/icon_minus" />
 
     <TextView
         android:id="@+id/cart_num"
         style="@style/text_44_black_medium"
-        android:textColor="@color/text_2B_green"
         android:text="0"
-        android:visibility="invisible" />
+        android:textColor="@color/text_2B_green" />
 
     <ImageView
         android:id="@+id/add"

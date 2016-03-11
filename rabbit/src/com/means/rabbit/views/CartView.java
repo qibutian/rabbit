@@ -21,6 +21,8 @@ public class CartView extends LinearLayout {
 
 	ImageView addI;
 
+	int maxNum;
+
 	public CartView(Context context) {
 		super(context);
 	}
@@ -40,6 +42,9 @@ public class CartView extends LinearLayout {
 			@Override
 			public void onClick(View v) {
 				minusNum();
+				if (onCartViewClickListener != null) {
+					onCartViewClickListener.onClick();
+				}
 			}
 		});
 
@@ -49,49 +54,58 @@ public class CartView extends LinearLayout {
 			@Override
 			public void onClick(View v) {
 				addNum();
+				if (onCartViewClickListener != null) {
+					onCartViewClickListener.onClick();
+				}
 			}
 		});
 	}
-	
-	public void addNum(){
+
+	public void addNum() {
 		int num = getCartNum();
-		num++;
-		cartNumT.setText(num);
+		if (num < maxNum) {
+			num++;
+		}
+		cartNumT.setText(num + "");
 	}
-	
-	public void minusNum(){
+
+	public void minusNum() {
 		int num = getCartNum();
-		if (num<=0) {
+		if (num <= 0) {
 			num = 0;
-		}else {
+		} else {
 			num--;
 		}
-		cartNumT.setText(num);
+		cartNumT.setText(num + "");
 	}
-	
-	public int getCartNum(){
+
+	public int getCartNum() {
 		int num = 0;
 		try {
 			num = Integer.valueOf(cartNumT.getText().toString());
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
+
 		return num;
 	}
 
-//	public void setCartNumTextView() {
-//		if (mGood != null) {
-//			cartNumT.setVisibility(mGood.getCount() >= 1 ? View.VISIBLE
-//					: View.GONE);
-//			minusI.setVisibility(mGood.getCount() >= 1 ? View.VISIBLE
-//					: View.INVISIBLE);
-//			cartNumT.setText(mGood.getCount() + "");
-//		} else {
-//			cartNumT.setVisibility(View.INVISIBLE);
-//			minusI.setVisibility(View.INVISIBLE);
-//		}
-//	}
+	// public void setCartNumTextView() {
+	// if (mGood != null) {
+	// cartNumT.setVisibility(mGood.getCount() >= 1 ? View.VISIBLE
+	// : View.GONE);
+	// minusI.setVisibility(mGood.getCount() >= 1 ? View.VISIBLE
+	// : View.INVISIBLE);
+	// cartNumT.setText(mGood.getCount() + "");
+	// } else {
+	// cartNumT.setVisibility(View.INVISIBLE);
+	// minusI.setVisibility(View.INVISIBLE);
+	// }
+	// }
+
+	public void setMaxNum(int maxNum) {
+		this.maxNum = maxNum;
+	}
 
 	public OnCartViewClickListener getOnCartViewClickListener() {
 		return onCartViewClickListener;
@@ -104,10 +118,8 @@ public class CartView extends LinearLayout {
 
 	public interface OnCartViewClickListener {
 
-		void onAddClick();
+		void onClick();
 
-		void onMinusClick();
 	}
-
 
 }

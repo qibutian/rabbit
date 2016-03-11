@@ -149,7 +149,7 @@
             android:label="@string/title_activity_group_order" >
         </activity>
         <activity
-            android:name=".activity.order.GrogshopOrderActivity"
+            android:name=".activity.order.AddShopOrderActivity"
             android:label="@string/title_activity_grogshop_order" >
         </activity>
         <activity

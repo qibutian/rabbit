@@ -92,6 +92,9 @@ public class API {
 	public static String accountlog = Baseurl + "/home/user/accountlog";
 
 	/** 酒店下单 */
-	public static String addOrder = Baseurl + "/home/hotel/orderadd";
+	public static String addHotelOrder = Baseurl + "/home/hotel/orderadd";
+
+	/** 酒店订单预览 */
+	public static String preHotelOrder = Baseurl + "/home/hotel/orderpreview";
 
 }

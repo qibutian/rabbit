@@ -105,6 +105,8 @@ public class HotelListActivity extends RabbitBaseActivity {
 				JSONObject jo = adapter.getTItem(position);
 				Intent it = new Intent(self, HotelDetailActivity.class);
 				it.putExtra("hotelId", JSONUtil.getString(jo, "id"));
+				it.putExtra("startDate", startDateT.getText().toString());
+				it.putExtra("endDate", endDateT.getText().toString());
 				startActivity(it);
 
 			}
