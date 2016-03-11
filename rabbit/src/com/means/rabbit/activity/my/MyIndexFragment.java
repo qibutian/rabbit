@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.means.rabbit.R;
+import com.means.rabbit.activity.finance.FinancialManagementActivity;
 import com.means.rabbit.activity.my.edit.EditInfoActivity;
 import com.means.rabbit.activity.my.order.BusinessOrderDetailsActivity;
 import com.means.rabbit.activity.my.order.MyOrderActivity;
@@ -23,7 +24,8 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 	LayoutInflater mLayoutInflater;
 
 	LinearLayout editinfoLl, systemmsgLl, business_orderLl, my_orderLl,
-			collectLl, shipping_addressLl, integralLl, commentV;
+			collectLl, shipping_addressLl, integralLl, commentV,
+			current_accountLl;
 
 	Button logoutBtn;
 
@@ -57,6 +59,8 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 		collectLl = (LinearLayout) mainV.findViewById(R.id.collect);
 		integralLl = (LinearLayout) mainV.findViewById(R.id.integral);
 		commentV = (LinearLayout) mainV.findViewById(R.id.comment);
+		current_accountLl = (LinearLayout) mainV
+				.findViewById(R.id.current_account);
 		logoutBtn = (Button) mainV.findViewById(R.id.logout);
 		editinfoLl.setOnClickListener(this);
 		systemmsgLl.setOnClickListener(this);
@@ -66,6 +70,7 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 		collectLl.setOnClickListener(this);
 		integralLl.setOnClickListener(this);
 		commentV.setOnClickListener(this);
+		current_accountLl.setOnClickListener(this);
 		logoutBtn.setOnClickListener(this);
 	}
 
@@ -113,6 +118,11 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 		// 我的评论
 		case R.id.comment:
 			it = new Intent(getActivity(), CommentListActivity.class);
+			startActivity(it);
+			break;
+		// 现金账户
+		case R.id.current_account:
+			it = new Intent(getActivity(), FinancialManagementActivity.class);
 			startActivity(it);
 			break;
 		// 退出当前用户

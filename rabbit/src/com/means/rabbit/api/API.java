@@ -91,10 +91,23 @@ public class API {
 	/** 财务分页明细 */
 	public static String accountlog = Baseurl + "/home/user/accountlog";
 
+	/** 申请提现 */
+	public static String cashapply = Baseurl + "/home/user/cashapply";
+
+	/** 我的财务 */
+	public static String accountview = Baseurl + "/home/user/accountview";
+
+	/** 我的订单列表分页 */
+	public static String orderlist = Baseurl + "/home/hotel/orderlist";
+
 	/** 酒店下单 */
 	public static String addHotelOrder = Baseurl + "/home/hotel/orderadd";
 
 	/** 酒店订单预览 */
 	public static String preHotelOrder = Baseurl + "/home/hotel/orderpreview";
+	public static String addOrder = Baseurl + "/home/hotel/orderadd";
+
+	/** 酒店订单预览 */
+	public static String orderpreview = Baseurl + "/home/hotel/orderpreview";
 
 }

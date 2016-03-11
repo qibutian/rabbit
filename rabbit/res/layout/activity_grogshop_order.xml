@@ -65,7 +65,7 @@
                     <TextView
                         android:id="@+id/fangxing"
                         style="@style/text_99_grey_medium"
-                        android:text="标准间" />
+                        android:text="无字段" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -92,6 +92,9 @@
                         android:id="@+id/date"
                         style="@style/text_99_grey_medium"
                         android:text="入住 1晚" />
+
+                    <TextView>
+                    </TextView>
                 </LinearLayout>
             </LinearLayout>
 
@@ -118,6 +121,9 @@
                         android:id="@+id/old_price"
                         style="@style/text_99_grey_medium"
                         android:text="￥78/晚" />
+
+                    <TextView>
+                    </TextView>
                 </LinearLayout>
             </LinearLayout>
 
@@ -229,6 +235,12 @@
                         android:background="@color/nothing"
                         android:gravity="right"
                         android:text="15188888888" />
+
+                    <TextView>
+                    </TextView>
+
+                    <EditText>
+                    </EditText>
                 </LinearLayout>
             </LinearLayout>
 
@@ -258,6 +270,12 @@
                         android:background="@color/nothing"
                         android:gravity="right"
                         android:text="张三" />
+
+                    <TextView>
+                    </TextView>
+
+                    <EditText>
+                    </EditText>
                 </LinearLayout>
             </LinearLayout>
 

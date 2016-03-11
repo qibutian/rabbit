@@ -16,7 +16,10 @@
             android:orientation="horizontal" >
 
             <TextView
+                android:id="@+id/title"
                 style="@style/text_44_black_big"
+                android:ellipsize="end"
+                android:singleLine="true"
                 android:text="汤山温泉酒店山庄【限时特惠】" />
 
             <LinearLayout
@@ -26,6 +29,7 @@
                 android:orientation="horizontal" >
 
                 <TextView
+                    android:id="@+id/paystatus"
                     style="@style/text_44_black_medium"
                     android:background="@drawable/fillet_10_frame_dark_green_bg"
                     android:paddingBottom="3dp"
@@ -45,6 +49,7 @@
             android:orientation="horizontal" >
 
             <TextView
+                android:id="@+id/payprice"
                 style="@style/text_44_black_big"
                 android:text="￥	128.00"
                 android:textColor="@color/text_2B_green" />
@@ -60,6 +65,7 @@
                     android:text="@string/item_order_ordertime" />
 
                 <TextView
+                    android:id="@+id/adddateline"
                     style="@style/text_66_black_small"
                     android:layout_marginLeft="3dp"
                     android:text="2015-12-28 14：20" />
