@@ -282,6 +282,9 @@
     <string name="withdraw_card_cardid">卡号</string>
     <string name="withdraw_card_name">姓名</string>
     <string name="withdraw_card_submit">提交</string>
+    <string name="withdraw_card_input_money">请输入提现金额</string>
+    <string name="withdraw_card_input_cardid">请输入卡号</string>
+    <string name="withdraw_card_input_name">请输入姓名</string>
     <!-- 账户充值 -->
     <string name="recharge">账户充值</string>
     <string name="recharge_money">充值金额</string>

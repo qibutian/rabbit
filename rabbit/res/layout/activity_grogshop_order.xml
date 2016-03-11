@@ -37,6 +37,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/title"
                         style="@style/text_99_grey_medium"
                         android:text="金陵酒店" />
                 </LinearLayout>
@@ -62,8 +63,9 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/shop_type"
                         style="@style/text_99_grey_medium"
-                        android:text="标准间" />
+                        android:text="无字段" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -87,6 +89,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/daycount"
                         style="@style/text_99_grey_medium"
                         android:text="入住 1晚" />
                 </LinearLayout>
@@ -112,6 +115,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/payprice"
                         style="@style/text_99_grey_medium"
                         android:text="￥78/晚" />
                 </LinearLayout>
@@ -217,6 +221,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/buyerphone"
                         style="@style/text_99_grey_medium"
                         android:text="15188888888" />
                 </LinearLayout>
@@ -242,6 +247,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/buyername"
                         style="@style/text_99_grey_medium"
                         android:text="张三" />
                 </LinearLayout>
@@ -266,12 +272,13 @@
                     android:gravity="right|center_vertical"
                     android:orientation="horizontal" >
 
-                    <TextView
+                    <EditText
+                        android:id="@+id/buyernote"
                         style="@style/text_99_grey_medium"
                         android:ellipsize="end"
                         android:maxWidth="150dp"
                         android:singleLine="true"
-                        android:text="@string/grogshop_fill_in" />
+                        android:hint="@string/grogshop_fill_in" />
                 </LinearLayout>
             </LinearLayout>
 
