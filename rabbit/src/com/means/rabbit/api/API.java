@@ -75,7 +75,7 @@ public class API {
 
 	/** 商家详情 */
 	public static String shopDetail = Baseurl + "/home/shop/contentview";
-	
+
 	/** 团购/代购/酒店商家的发布评论 */
 	public static String addcomment = Baseurl + "/home/shop/addcomment";
 
@@ -87,9 +87,11 @@ public class API {
 	 * 
 	 */
 	public static String tuangouDetail = Baseurl + "/home/shop/itemview";
-	
+
 	/** 财务分页明细 */
 	public static String accountlog = Baseurl + "/home/user/accountlog";
-	
+
+	/** 酒店下单 */
+	public static String addOrder = Baseurl + "/home/hotel/orderadd";
 
 }

@@ -146,13 +146,14 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 					}
 					galleryAdapter = new PSAdapter(self, R.layout.item_gallery);
 					galleryAdapter.addAll(image_data);
-					gallery.setAdapter(galleryAdapter);  
+					gallery.setAdapter(galleryAdapter);
 
 					priceT.setText(JSONUtil.getString(detailJo, "prcie") + "起");
 
 					ViewUtil.bindView(headV.findViewById(R.id.title),
 							JSONUtil.getString(detailJo, "title"));
-
+					ViewUtil.bindView(headV.findViewById(R.id.time),
+							JSONUtil.getString(detailJo, "yytime"));
 					ViewUtil.bindView(headV.findViewById(R.id.address),
 							JSONUtil.getString(detailJo, "address"));
 
@@ -168,7 +169,8 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 								JSONObject labeljo = label_inJsa
 										.getJSONObject(i);
 								labelS = labelS + " "
-										+ JSONUtil.getString(labeljo, "name");
+
+								+ JSONUtil.getString(labeljo, "name");
 								ViewUtil.bindView(
 										headV.findViewById(R.id.label), labelS);
 							} catch (JSONException e) {

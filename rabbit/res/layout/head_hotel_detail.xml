@@ -55,6 +55,7 @@
             android:src="@drawable/icon_time" />
 
         <TextView
+            android:id="@+id/time"
             style="@style/text_66_black_medium"
             android:layout_marginLeft="10dp"
             android:text="营业时间: (没有字段)" />
