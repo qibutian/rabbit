@@ -102,5 +102,8 @@ public class API {
 	
 	/** 酒店下单 */
 	public static String addOrder = Baseurl + "/home/hotel/orderadd";
+	
+	/** 酒店订单预览 */
+	public static String orderpreview = Baseurl + "/home/hotel/orderpreview";
 
 }

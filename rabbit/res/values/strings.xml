@@ -194,6 +194,7 @@
     <string name="grouporder_pay_reality_money">实付金额</string>
     <string name="grouporder_pay_pay_order">支付订单</string>
     <!-- 酒店支付 -->
+    <string name="grogshop_pay_order">酒店订单</string>
     <string name="grogshop_pay_name">名称</string>
     <string name="grogshop_pay_type">房型</string>
     <string name="grogshop_pay_date">日期</string>

@@ -37,6 +37,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/title"
                         style="@style/text_99_grey_medium"
                         android:text="2" />
                 </LinearLayout>
@@ -62,6 +63,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/name"
                         style="@style/text_99_grey_medium"
                         android:text="2" />
                 </LinearLayout>
@@ -87,6 +89,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/date"
                         style="@style/text_99_grey_medium"
                         android:text="2" />
                 </LinearLayout>
@@ -112,6 +115,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/signlpirce"
                         style="@style/text_99_grey_medium"
                         android:text="2" />
                 </LinearLayout>
@@ -138,7 +142,7 @@
 
                     <TextView
                         style="@style/text_99_grey_medium"
-                        android:text="2" />
+                        android:text="暂无字段" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -162,6 +166,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/mincount"
                         style="@style/text_99_grey_medium"
                         android:text="2" />
                 </LinearLayout>
@@ -187,6 +192,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/totalprice"
                         style="@style/text_44_black_big"
                         android:text="￥156"
                         android:textColor="@color/text_2B_green" />
@@ -213,6 +219,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/id"
                         style="@style/text_99_grey_medium"
                         android:text="2151235484212" />
                 </LinearLayout>
@@ -272,6 +279,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/phone"
                         style="@style/text_99_grey_medium"
                         android:text="15888888888" />
                 </LinearLayout>
@@ -297,6 +305,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/nickname"
                         style="@style/text_99_grey_medium"
                         android:text="15888888888" />
                 </LinearLayout>
@@ -426,6 +435,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/credit"
                         style="@style/text_99_grey_medium"
                         android:text="200" />
 
@@ -436,6 +446,7 @@
                         android:textColor="@color/text_2B_green" />
 
                     <TextView
+                        android:id="@+id/credit_s"
                         style="@style/text_44_black_medium"
                         android:layout_marginLeft="5dp"
                         android:text="￥2"
@@ -462,6 +473,7 @@
                     android:textColor="@color/text_2B_green" />
 
                 <TextView
+                    android:id="@+id/reality_money"
                     style="@style/text_44_black_medium"
                     android:layout_marginLeft="5dp"
                     android:text="197"
@@ -469,7 +481,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/logout"
+                android:id="@+id/grogshop_btn"
                 style="@style/text_white_medium"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
