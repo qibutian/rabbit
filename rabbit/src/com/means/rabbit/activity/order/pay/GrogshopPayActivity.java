@@ -17,13 +17,13 @@ import com.means.rabbit.base.RabbitBaseActivity;
 
 /**
  * 
- * 酒店订单预览
+ * 酒店订单详情
  * @author Administrator
  *
  */
 public class GrogshopPayActivity extends RabbitBaseActivity {
 	
-	TextView titleT,nameT,dateT,signlpirceT,mincountT,totalpriceT,idT,phoneT,nicknameT,creditT,credit_sT,reality_moneyT;
+	TextView titleT,nameT,dateT,signlpirceT,countT,totalpriceT,idT,buyernoteT,buyerphoneT,buyernameT,creditT,credit_sT,reality_moneyT;
 
 	int itemid;
 	
@@ -44,11 +44,12 @@ public class GrogshopPayActivity extends RabbitBaseActivity {
 		nameT = (TextView) findViewById(R.id.name);
 		dateT = (TextView) findViewById(R.id.date);
 		signlpirceT = (TextView) findViewById(R.id.signlpirce);
-		mincountT = (TextView) findViewById(R.id.mincount);
+		countT = (TextView) findViewById(R.id.count);
 		totalpriceT = (TextView) findViewById(R.id.totalprice);
 		idT = (TextView) findViewById(R.id.id);
-		phoneT = (TextView) findViewById(R.id.phone);
-		nicknameT = (TextView) findViewById(R.id.nickname);
+		buyerphoneT = (TextView) findViewById(R.id.buyerphone);
+		buyernameT = (TextView) findViewById(R.id.buyername);
+		buyernoteT = (TextView) findViewById(R.id.buyernote);
 		creditT = (TextView) findViewById(R.id.credit);
 		credit_sT = (TextView) findViewById(R.id.credit_s);
 		reality_moneyT = (TextView) findViewById(R.id.reality_money);
@@ -71,16 +72,20 @@ public class GrogshopPayActivity extends RabbitBaseActivity {
 					nameT.setText(JSONUtil.getString(jo, "name"));
 					dateT.setText("入住"+JSONUtil.getString(jo, "startdate")+" 离开"+JSONUtil.getString(jo, "enddate"));
 					signlpirceT.setText(JSONUtil.getString(jo, "signlpirce"));
-					mincountT.setText(JSONUtil.getString(jo, "mincount"));
-					totalpriceT.setText(JSONUtil.getString(jo, "totalprice"));
+					countT.setText(JSONUtil.getString(jo, "count"));
+//					totalpriceT.setText(JSONUtil.getString(jo, "totalprice"));
 					idT.setText(JSONUtil.getString(jo, "id"));
-					JSONObject user_data = JSONUtil.getJSONObject(jo, "user_data");
-					phoneT.setText(JSONUtil.getString(user_data, "phone"));
-					nicknameT.setText(JSONUtil.getString(user_data, "nickname"));
-					creditT.setText(JSONUtil.getString(user_data, "credit"));
-					credit_sT.setText(JSONUtil.getString(user_data, "credit_s"));
+					buyerphoneT.setText(JSONUtil.getString(jo, "buyerphone"));
+					buyernameT.setText(JSONUtil.getString(jo, "buyername"));
+					buyernoteT.setText(JSONUtil.getString(jo, "buyernote"));
+					JSONObject credit_data = JSONUtil.getJSONObject(jo, "credit_data");
+					creditT.setText(JSONUtil.getString(credit_data, "credit"));
+					credit_sT.setText(JSONUtil.getString(credit_data, "credit_s"));
 					
-					reality_moneyT.setText((JSONUtil.getDouble(jo, "totalprice")-JSONUtil.getDouble(user_data, "credit_s")) + "");
+					grogshop_btn.setText(JSONUtil.getString(jo, "paystatus").equals("1") ? "待支付" : "已支付");
+					
+					
+//					reality_moneyT.setText((JSONUtil.getDouble(jo, "totalprice")-JSONUtil.getDouble(user_data, "credit_s")) + "");
 				}
 			}
 		});
