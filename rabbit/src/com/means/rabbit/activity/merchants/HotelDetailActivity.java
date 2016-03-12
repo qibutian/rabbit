@@ -155,6 +155,7 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 						pic_countT.setText(0 + "");
 					}
 					galleryAdapter = new PSAdapter(self, R.layout.item_gallery);
+					galleryAdapter.addField("img_m", R.id.pic, "default");
 					galleryAdapter.addAll(image_data);
 					gallery.setAdapter(galleryAdapter);
 

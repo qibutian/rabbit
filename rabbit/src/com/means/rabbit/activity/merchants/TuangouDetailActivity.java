@@ -15,13 +15,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
 import com.means.rabbit.R;
+import com.means.rabbit.activity.order.GroupOrderActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.views.CommentView;
@@ -51,6 +54,9 @@ public class TuangouDetailActivity extends RabbitBaseActivity {
 	NomalGallery gallery;
 
 	PSAdapter galleryAdapter;
+
+	// 立即购买按钮
+	TextView bugT;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +112,17 @@ public class TuangouDetailActivity extends RabbitBaseActivity {
 		commentView = (CommentView) headV.findViewById(R.id.comment_view);
 		gallery = (NomalGallery) headV.findViewById(R.id.gallery);
 		ratingBar = (RatingBar) headV.findViewById(R.id.ratingbar);
+		bugT = (TextView) headV.findViewById(R.id.bug);
+		bugT.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				Intent it = new Intent(self, GroupOrderActivity.class);
+				it.putExtra("tuangouId", tuangouId);
+				startActivity(it);
+
+			}
+		});
 		getShopDetalData();
 		getCommentList();
 	}
@@ -122,7 +139,9 @@ public class TuangouDetailActivity extends RabbitBaseActivity {
 					JSONArray image_data = JSONUtil.getJSONArray(detailJo,
 							"image_data");
 					galleryAdapter = new PSAdapter(self, R.layout.item_gallery);
+					galleryAdapter.addField("img_m", R.id.pic, "default");
 					galleryAdapter.addAll(image_data);
+
 					gallery.setAdapter(galleryAdapter);
 
 					ViewUtil.bindView(headV.findViewById(R.id.title),

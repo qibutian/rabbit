@@ -27,6 +27,7 @@
                 android:padding="@dimen/padding_leftandright" >
 
                 <TextView
+                    android:id="@+id/name"
                     style="@style/text_44_black_medium"
                     android:text="珍珠温泉度假村" />
 
@@ -37,6 +38,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/price"
                         style="@style/text_99_grey_medium"
                         android:text="￥78" />
                 </LinearLayout>
@@ -62,6 +64,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/count"
                         style="@style/text_99_grey_medium"
                         android:text="2" />
                 </LinearLayout>
@@ -87,6 +90,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/total_price"
                         style="@style/text_44_black_big"
                         android:text="￥156"
                         android:textColor="@color/text_2B_green" />
@@ -113,6 +117,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/code"
                         style="@style/text_99_grey_medium"
                         android:text="2151235484212" />
                 </LinearLayout>
@@ -138,6 +143,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/ercode"
                         style="@style/text_44_black_big"
                         android:text="2300 58452 54845"
                         android:textColor="@color/text_2B_green" />
@@ -172,6 +178,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/tel"
                         style="@style/text_99_grey_medium"
                         android:text="15888888888" />
                 </LinearLayout>
@@ -197,6 +204,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/order_time"
                         style="@style/text_99_grey_medium"
                         android:text="2016-2-25 13:55" />
                 </LinearLayout>
@@ -222,6 +230,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/pay_time"
                         style="@style/text_99_grey_medium"
                         android:text="-" />
                 </LinearLayout>
@@ -248,6 +257,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/use_time"
                         style="@style/text_99_grey_medium"
                         android:text="-" />
                 </LinearLayout>
@@ -273,6 +283,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/credit"
                         style="@style/text_99_grey_medium"
                         android:text="200" />
 
@@ -283,6 +294,7 @@
                         android:textColor="@color/text_2B_green" />
 
                     <TextView
+                        android:id="@+id/credit_s"
                         style="@style/text_44_black_medium"
                         android:layout_marginLeft="5dp"
                         android:text="￥2"
@@ -309,6 +321,7 @@
                     android:textColor="@color/text_2B_green" />
 
                 <TextView
+                    android:id="@+id/shifu"
                     style="@style/text_44_black_medium"
                     android:layout_marginLeft="5dp"
                     android:text="197"
@@ -316,7 +329,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/logout"
+                android:id="@+id/pay"
                 style="@style/text_white_medium"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"

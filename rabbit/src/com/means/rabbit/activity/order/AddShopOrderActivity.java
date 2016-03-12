@@ -12,6 +12,7 @@ import net.duohuo.dhroid.util.ViewUtil;
 
 import com.means.rabbit.R;
 import com.means.rabbit.R.layout;
+import com.means.rabbit.activity.order.pay.HotelOrderDetailActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.utils.RabbitUtils;
@@ -23,6 +24,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -47,6 +50,12 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 
 	Double price;
 
+	int credit;
+
+	TextView shifuT;
+
+	int credit_s;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -59,14 +68,6 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 		setTitle("酒店订单");
 		Intent it = getIntent();
 		cartView = (CartView) findViewById(R.id.cartView);
-		cartView.setOnCartViewClickListener(new OnCartViewClickListener() {
-
-			@Override
-			public void onClick() {
-
-				totalPriceT.setText("￥" + cartView.getCartNum() * price);
-			}
-		});
 		msgE = (EditText) findViewById(R.id.msg);
 		telE = (EditText) findViewById(R.id.tel);
 		usernameE = (EditText) findViewById(R.id.username);
@@ -86,6 +87,15 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 
 		id = it.getStringExtra("id");
 
+		findViewById(R.id.submit).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				submit();
+
+			}
+		});
+		shifuT = (TextView) findViewById(R.id.shifu);
 		getData();
 	}
 
@@ -108,11 +118,12 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 
 					JSONObject user_dataJo = JSONUtil.getJSONObject(jo,
 							"user_data");
-					ViewUtil.bindView(findViewById(R.id.jifen),
-							JSONUtil.getString(user_dataJo, "credit"));
 
-					ViewUtil.bindView(findViewById(R.id.dikou),
-							"￥" + JSONUtil.getString(user_dataJo, "credit_s"));
+					credit = JSONUtil.getInt(user_dataJo, "credit");
+					credit_s = JSONUtil.getInt(user_dataJo, "credit_s");
+					ViewUtil.bindView(findViewById(R.id.jifen), credit + "");
+
+					ViewUtil.bindView(findViewById(R.id.dikou), "￥" + credit_s);
 
 					ViewUtil.bindView(findViewById(R.id.tel),
 							JSONUtil.getString(user_dataJo, "phone"));
@@ -120,12 +131,27 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 					ViewUtil.bindView(findViewById(R.id.username),
 							JSONUtil.getString(jo, "nickname"));
 					price = JSONUtil.getDouble(jo, "dayprice");
+
+					totalPriceT.setText("￥" + price);
+
 					ViewUtil.bindView(findViewById(R.id.price),
 							"￥" + JSONUtil.getString(jo, "dayprice") + "/晚");
 
 					ViewUtil.bindView(findViewById(R.id.old_price), "￥"
 							+ JSONUtil.getString(jo, "dayprice") + "/晚");
+					cartView.setOnCartViewClickListener(new OnCartViewClickListener() {
+
+						@Override
+						public void onClick() {
+
+							totalPriceT.setText("￥" + cartView.getCartNum()
+									* price);
+							shifuT.setText(cartView.getCartNum() * price
+									- credit_s + "");
+						}
+					});
 					cartView.setMaxNum(JSONUtil.getInt(jo, "mincount"));
+					shifuT.setText(price - credit_s + "");
 
 				}
 
@@ -134,8 +160,32 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 	}
 
 	private void submit() {
-		
-		DhNet  net = new DhNet(API.addHotelOrder);
+
+		DhNet net = new DhNet(API.addHotelOrder);
+		net.addParam("itemid", id);
+
+		net.addParam("itemid", id);
+		net.addParam("startdate", startDate);
+		net.addParam("enddate", endDate);
+		net.addParam("buyernote", msgE.getText().toString());
+		net.addParam("buyername", usernameE.getText().toString());
+		net.addParam("buyerphone", telE.getText().toString());
+		net.addParam("ordercount", cartView.getCartNum());
+		net.addParam("credit", credit);
+		net.doPostInDialog("提交中...", new NetTask(self) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+				if (response.isSuccess()) {
+					showToast("提交成功!");
+					JSONObject jo = response.jSON();
+					Intent it = new Intent(self, HotelOrderDetailActivity.class);
+					it.putExtra("itemid", JSONUtil.getInt(jo, "id"));
+					startActivity(it);
+				}
+
+			}
+		});
 
 	}
 }
