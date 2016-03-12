@@ -245,6 +245,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/ercode"
                         style="@style/text_44_black_big"
                         android:text="2300 58452 54845"
                         android:textColor="@color/text_2B_green" />
