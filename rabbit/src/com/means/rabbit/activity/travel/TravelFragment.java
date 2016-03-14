@@ -66,6 +66,7 @@ public class TravelFragment extends Fragment implements OnClickListener {
 		contentListV = listV.getListView();
 		adapter = new NetJSONAdapter(API.contentlist, getActivity(),
 				R.layout.item_travel_list);
+		adapter.addparam("catid", "5");
 		adapter.fromWhat("list");
 		adapter.addField("title", R.id.title);
 		adapter.addField(new FieldMap("views", R.id.views) {
