@@ -254,6 +254,7 @@
     <string name="insteadshopping_order_submit_order">提交订单</string>
     <!-- 代购支付 -->
     <string name="insteadshopping_pay_postage">邮费</string>
+    <string name="insteadshopping_pay_shuliang">数量</string>
     <string name="insteadshopping_pay_total">总计</string>
     <string name="insteadshopping_pay_order_number">订单号</string>
     <string name="insteadshopping_pay_consumption_code">消费码</string>
