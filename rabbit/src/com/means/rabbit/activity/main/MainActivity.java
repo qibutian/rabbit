@@ -20,6 +20,10 @@ import com.means.rabbit.activity.merchants.MerchatsFragment;
 import com.means.rabbit.activity.more.MoreFragment;
 import com.means.rabbit.activity.my.MyIndexFragment;
 import com.means.rabbit.activity.travel.TravelFragment;
+import com.means.rabbit.bean.CityEB;
+import com.means.rabbit.bean.User;
+import com.means.rabbit.manage.UserInfoManage;
+import com.means.rabbit.manage.UserInfoManage.LoginCallBack;
 
 public class MainActivity extends FragmentActivity {
 
@@ -72,6 +76,29 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	public void setTab(final int index) {
+
+		User user = User.getInstance();
+		if (index == 3) {
+			if (!user.isLogin()) {
+				UserInfoManage.getInstance().checkLogin(MainActivity.this,
+						new LoginCallBack() {
+
+							@Override
+							public void onisLogin() {
+								setTab(index);
+
+							}
+
+							@Override
+							public void onLoginFail() {
+								// TODO Auto-generated method stub
+
+							}
+						});
+				return;
+			}
+		}
+
 		for (int i = 0; i < tabV.getChildCount(); i++) {
 
 			LinearLayout childV = (LinearLayout) tabV.getChildAt(i);
@@ -186,5 +213,5 @@ public class MainActivity extends FragmentActivity {
 		} catch (Exception e) {
 		}
 	}
-	
+
 }

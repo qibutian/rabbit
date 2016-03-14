@@ -15,6 +15,7 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.hardware.Camera.Area;
 import android.view.LayoutInflater;
@@ -26,8 +27,14 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.Switch;
 
+import com.amap.api.services.poisearch.Hotel;
 import com.means.rabbit.R;
+import com.means.rabbit.activity.merchants.DaiGouActivity;
+import com.means.rabbit.activity.merchants.FoodListActivity;
+import com.means.rabbit.activity.merchants.HotelListActivity;
+import com.means.rabbit.activity.travel.TravelActivity;
 import com.means.rabbit.adapter.CatLeftAdapter;
 import com.means.rabbit.adapter.CatRightAdapter;
 import com.means.rabbit.api.API;
@@ -57,6 +64,8 @@ public class CatPop {
 	public static int BRAND = 3;
 
 	int type;
+
+	int parentId;
 
 	public CatPop(Context context, int type) {
 		this.context = context;
@@ -93,10 +102,13 @@ public class CatPop {
 					int position, long id) {
 				leftAapter.setCurrentPosition(position);
 				JSONObject jo = leftAapter.getItem(position);
+				parentId = JSONUtil.getInt(jo, "id");
 				try {
 					JSONArray jsa = jo.getJSONArray("_child");
 					rightAdapter.setData(jsa);
 				} catch (JSONException e) {
+					goNext(JSONUtil.getString(jo, "id"),
+							JSONUtil.getString(jo, "name"));
 					if (onReslutClickListener != null) {
 						onReslutClickListener.result(
 								JSONUtil.getString(jo, "name"),
@@ -120,6 +132,8 @@ public class CatPop {
 							JSONUtil.getString(jo, "name"),
 							JSONUtil.getString(jo, "id"));
 				}
+				goNext(JSONUtil.getString(jo, "id"),
+						JSONUtil.getString(jo, "name"));
 				pop.dismiss();
 			}
 		});
@@ -179,6 +193,68 @@ public class CatPop {
 
 	public interface OnReslutClickListener {
 		void result(String catname, String catid);
+	}
+
+	private void goNext(String catid, String name) {
+		if (type == CAT) {
+			Intent it = null;
+			switch (parentId) {
+			case 1:
+				it = new Intent(context, FoodListActivity.class);
+				it.putExtra("title", context.getString(R.string.meishi));
+				break;
+
+			case 2:
+				it = new Intent(context, HotelListActivity.class);
+				break;
+
+			// 货币兑换
+			case 3:
+				it = new Intent(context, FoodListActivity.class);
+				it.putExtra("title", context.getString(R.string.huobiduihuan));
+				break;
+
+			// 出行服务
+			case 4:
+				it = new Intent(context, FoodListActivity.class);
+				it.putExtra("title", context.getString(R.string.chuxingfuwu));
+				break;
+
+			// 旅行小米
+			case 5:
+				it = new Intent(context, TravelActivity.class);
+				it.putExtra("title", context.getString(R.string.lvxingxiaomi));
+				break;
+
+			// 休闲娱乐
+			case 6:
+				it = new Intent(context, FoodListActivity.class);
+				it.putExtra("title", context.getString(R.string.xiuxianyule));
+				break;
+
+			// 专享特色
+			case 7:
+				it = new Intent(context, FoodListActivity.class);
+				it.putExtra("title", context.getString(R.string.zhuanxiangtese));
+				break;
+
+			// 紧急求助
+			case 8:
+				it = new Intent(context, TravelActivity.class);
+				it.putExtra("title", context.getString(R.string.jinjiqiuzhu));
+				break;
+
+			case 35:
+				it = new Intent(context, DaiGouActivity.class);
+				break;
+
+			default:
+				break;
+			}
+			it.putExtra("catid", catid);
+			it.putExtra("name", name);
+			context.startActivity(it);
+		}
 	}
 
 }

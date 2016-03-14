@@ -137,6 +137,7 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 						pic_countT.setText(0 + "");
 					}
 					galleryAdapter = new PSAdapter(self, R.layout.item_gallery);
+					galleryAdapter.addField("img_m", R.id.pic, "default");
 					galleryAdapter.addAll(image_data);
 					gallery.setAdapter(galleryAdapter);
 
@@ -161,7 +162,8 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 
 					JSONArray field_dataJSA = JSONUtil.getJSONArray(detailJo,
 							"field_data");
-					keyValueView.setData(field_dataJSA);
+					keyValueView.setData(field_dataJSA,
+							JSONUtil.getString(detailJo, "content"));
 				}
 
 			}

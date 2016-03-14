@@ -79,7 +79,7 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 		try {
 			int days = RabbitUtils.daysBetween(startDate, endDate);
 			ViewUtil.bindView(findViewById(R.id.date), "入住" + startDate + "离开"
-					+ endDate + "[" + days + "]");
+					+ endDate + " [" + days + "]晚");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -129,7 +129,7 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 							JSONUtil.getString(user_dataJo, "phone"));
 
 					ViewUtil.bindView(findViewById(R.id.username),
-							JSONUtil.getString(jo, "nickname"));
+							JSONUtil.getString(user_dataJo, "nickname"));
 					price = JSONUtil.getDouble(jo, "dayprice");
 
 					totalPriceT.setText("￥" + price);

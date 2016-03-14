@@ -4,11 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <com.means.rabbit.views.TabView
-        android:id="@+id/tab"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+    <include layout="@layout/include_title_bar" />
 
-    <include layout="@layout/include_refresh_listview" />
+    <TextView
+        android:id="@+id/text"
+        style="@style/text_44_black_medium" />
 
 </LinearLayout>

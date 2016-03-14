@@ -11,6 +11,7 @@ import net.duohuo.dhroid.net.JSONUtil;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,6 +24,8 @@ import com.means.rabbit.R;
 import com.means.rabbit.api.API;
 import com.means.rabbit.utils.DateUtils;
 import com.means.rabbit.views.RefreshListViewAndMore;
+import com.means.rabbit.views.TabView;
+import com.means.rabbit.views.TabView.OnTabSelectListener;
 
 public class TravelFragment extends Fragment implements OnClickListener {
 	static TravelFragment instance;
@@ -36,6 +39,8 @@ public class TravelFragment extends Fragment implements OnClickListener {
 	ListView contentListV;
 
 	NetJSONAdapter adapter;
+
+	TabView tabV;
 
 	public static TravelFragment getInstance() {
 		if (instance == null) {
@@ -63,36 +68,56 @@ public class TravelFragment extends Fragment implements OnClickListener {
 				R.layout.item_travel_list);
 		adapter.fromWhat("list");
 		adapter.addField("title", R.id.title);
-		adapter.addField(new FieldMap("views",R.id.views) {
-			
+		adapter.addField(new FieldMap("views", R.id.views) {
+
 			@Override
 			public Object fix(View itemV, Integer position, Object o, Object jo) {
-				
-				return "阅读  "+o;
+
+				return "阅读  " + o;
 			}
 		});
 		adapter.addField("des", R.id.des);
 		adapter.addField(new FieldMap("adddateline", R.id.adddateline) {
-			
+
 			@Override
 			public Object fix(View itemV, Integer position, Object o, Object jo) {
-				return DateUtils.dateToStr(new Date(Long.parseLong(o.toString())*1000));
+				return DateUtils.dateToStr(new Date(
+						Long.parseLong(o.toString()) * 1000));
 			}
 		});
 		adapter.addField("pic", R.id.pic);
-		
+
 		listV.setAdapter(adapter);
 		contentListV.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1,
 					int position, long arg3) {
-				Intent it = new  Intent(getActivity(),TravelDetailActivity.class);
+				Intent it = new Intent(getActivity(),
+						TravelDetailActivity.class);
 				JSONObject jo = adapter.getTItem(position);
 				it.putExtra("id", JSONUtil.getInt(jo, "id"));
 				startActivity(it);
 			}
 		});
+
+		tabV = (TabView) mainV.findViewById(R.id.tab);
+		tabV.setLeftText(getString(R.string.lvxingxiaomi));
+		tabV.setOnTabSelectListener(new OnTabSelectListener() {
+
+			@Override
+			public void onRightSelect(String result) {
+				adapter.addparam("order", result);
+				adapter.refreshDialog();
+			}
+
+			@Override
+			public void onCenterSelect(String result) {
+				adapter.addparam("catid", result);
+				adapter.refreshDialog();
+			}
+		});
+
 	}
 
 	@Override

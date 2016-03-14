@@ -21,6 +21,7 @@ import com.means.rabbit.R;
 import com.means.rabbit.activity.my.edit.ForgetPswdActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
+import com.means.rabbit.bean.User;
 import com.means.rabbit.utils.RabbitPerference;
 
 public class LoginActivity extends RabbitBaseActivity implements
@@ -29,7 +30,7 @@ public class LoginActivity extends RabbitBaseActivity implements
 	private EditText nicknameEt, passwordEt;
 	private Button loginBtn;
 	private TextView forgetpswdT;
-	
+
 	RabbitPerference per;
 
 	@Override
@@ -56,22 +57,22 @@ public class LoginActivity extends RabbitBaseActivity implements
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		//登录
+		// 登录
 		case R.id.login:
 			login();
 			break;
-		//忘记密码
+		// 忘记密码
 		case R.id.forgetpswd:
-			Intent it = new Intent(self,ForgetPswdActivity.class);
+			Intent it = new Intent(self, ForgetPswdActivity.class);
 			startActivity(it);
 			break;
 
 		}
 	}
-	
+
 	private void login() {
-//		 final String nickname = nicknameEt.getText().toString();
-//		 final String password = passwordEt.getText().toString();
+		// final String nickname = nicknameEt.getText().toString();
+		// final String password = passwordEt.getText().toString();
 
 		final String nickname = "qqq";
 		final String password = "q111111";
@@ -97,6 +98,7 @@ public class LoginActivity extends RabbitBaseActivity implements
 			public void doInUI(Response response, Integer transfer) {
 				// TODO Auto-generated method stub
 				if (response.isSuccess()) {
+					User.getInstance().setLogin(true);
 					JSONObject jo = response.jSONFromData();
 					per = IocContainer.getShare().get(RabbitPerference.class);
 					per.load();

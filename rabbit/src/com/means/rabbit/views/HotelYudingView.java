@@ -6,6 +6,7 @@ import net.duohuo.dhroid.util.ViewUtil;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
@@ -16,6 +17,9 @@ import android.widget.LinearLayout;
 
 import com.means.rabbit.R;
 import com.means.rabbit.activity.order.AddShopOrderActivity;
+import com.means.rabbit.activity.order.InsteadShoppingActivity;
+import com.means.rabbit.manage.UserInfoManage;
+import com.means.rabbit.manage.UserInfoManage.LoginCallBack;
 
 public class HotelYudingView extends LinearLayout {
 	Context mContext;
@@ -58,14 +62,35 @@ public class HotelYudingView extends LinearLayout {
 
 							@Override
 							public void onClick(View v) {
-								Intent it = new Intent(mContext,
-										AddShopOrderActivity.class);
 
-								it.putExtra("endDate", endDate);
+								UserInfoManage.getInstance().checkLogin(
+										(Activity) mContext,
+										new LoginCallBack() {
 
-								it.putExtra("startDate", startDate);
-								it.putExtra("id", JSONUtil.getString(jo, "id"));
-								mContext.startActivity(it);
+											@Override
+											public void onisLogin() {
+												Intent it = new Intent(
+														mContext,
+														AddShopOrderActivity.class);
+
+												it.putExtra("endDate", endDate);
+
+												it.putExtra("startDate",
+														startDate);
+												it.putExtra("id", JSONUtil
+														.getString(jo, "id"));
+												mContext.startActivity(it);
+
+											}
+
+											@Override
+											public void onLoginFail() {
+												// TODO Auto-generated method
+												// stub
+
+											}
+										});
+
 							}
 						});
 				this.addView(v);

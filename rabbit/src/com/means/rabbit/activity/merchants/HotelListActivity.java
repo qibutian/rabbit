@@ -15,6 +15,7 @@ import net.duohuo.dhroid.view.DateDialog;
 import net.duohuo.dhroid.view.DateDialog.OnDateResultListener;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -50,6 +51,8 @@ public class HotelListActivity extends RabbitBaseActivity {
 
 	DateDialog timeDialog;
 
+	String catid;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -62,7 +65,7 @@ public class HotelListActivity extends RabbitBaseActivity {
 	@Override
 	public void initView() {
 		setTitle("酒店");
-
+		catid = getIntent().getStringExtra("catid");
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		contentListV = listV.getListView();
 		adapter = new NetJSONAdapter(API.hotelList, self,
@@ -71,8 +74,9 @@ public class HotelListActivity extends RabbitBaseActivity {
 		RabbitPerference per = IocContainer.getShare().get(
 				RabbitPerference.class);
 		per.load();
-		// adapter.addparam("catid", per.catid);
+		adapter.addparam("catid", catid);
 		adapter.fromWhat("list");
+
 		adapter.addField("title", R.id.title);
 		adapter.addField("pic", R.id.pic);
 		adapter.addField(new FieldMap("price", R.id.price) {
@@ -113,6 +117,12 @@ public class HotelListActivity extends RabbitBaseActivity {
 		});
 
 		tabV = (TabView) findViewById(R.id.tab);
+		String name = getIntent().getStringExtra("name");
+		if (TextUtils.isEmpty(name)) {
+			tabV.setLeftText("酒店");
+		} else {
+			tabV.setLeftText(name);
+		}
 		tabV.setCentertText("附近", "");
 		tabV.setOnTabSelectListener(new OnTabSelectListener() {
 

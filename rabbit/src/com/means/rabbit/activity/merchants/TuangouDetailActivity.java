@@ -13,6 +13,7 @@ import net.duohuo.dhroid.net.Response;
 import net.duohuo.dhroid.util.ViewUtil;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -25,8 +26,11 @@ import android.widget.AdapterView.OnItemClickListener;
 
 import com.means.rabbit.R;
 import com.means.rabbit.activity.order.GroupOrderActivity;
+import com.means.rabbit.activity.order.InsteadShoppingActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
+import com.means.rabbit.manage.UserInfoManage;
+import com.means.rabbit.manage.UserInfoManage.LoginCallBack;
 import com.means.rabbit.views.CommentView;
 import com.means.rabbit.views.KeyVauleView;
 import com.means.rabbit.views.NomalGallery;
@@ -117,9 +121,25 @@ public class TuangouDetailActivity extends RabbitBaseActivity {
 
 			@Override
 			public void onClick(View arg0) {
-				Intent it = new Intent(self, GroupOrderActivity.class);
-				it.putExtra("tuangouId", tuangouId);
-				startActivity(it);
+
+				UserInfoManage.getInstance().checkLogin(self,
+						new LoginCallBack() {
+
+							@Override
+							public void onisLogin() {
+								Intent it = new Intent(self,
+										GroupOrderActivity.class);
+								it.putExtra("tuangouId", tuangouId);
+								startActivity(it);
+
+							}
+
+							@Override
+							public void onLoginFail() {
+								// TODO Auto-generated method stub
+
+							}
+						});
 
 			}
 		});
@@ -160,13 +180,15 @@ public class TuangouDetailActivity extends RabbitBaseActivity {
 
 					ViewUtil.bindView(headV.findViewById(R.id.old_price), "￥"
 							+ JSONUtil.getString(detailJo, "oldprice"));
-					ViewUtil.bindView(headV.findViewById(R.id.goumaides),
-							JSONUtil.getString(detailJo, "goumaides"));
+					TextView goumaidesT = (TextView) findViewById(R.id.goumaides);
+					goumaidesT.setText(Html.fromHtml(JSONUtil.getString(
+							detailJo, "goumaides")));
 					ratingBar.setRating(JSONUtil.getFloat(detailJo, "score"));
 
 					JSONArray field_dataJSA = JSONUtil.getJSONArray(detailJo,
 							"field_data");
-					keyValueView.setData(field_dataJSA);
+					keyValueView.setData(field_dataJSA,
+							JSONUtil.getString(detailJo, "content"));
 				}
 
 			}

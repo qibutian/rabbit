@@ -9,6 +9,7 @@ import net.duohuo.dhroid.adapter.NetJSONAdapter;
 import net.duohuo.dhroid.net.JSONUtil;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,6 +21,8 @@ import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.utils.DateUtils;
 import com.means.rabbit.views.RefreshListViewAndMore;
+import com.means.rabbit.views.TabView;
+import com.means.rabbit.views.TabView.OnTabSelectListener;
 
 /**
  * 
@@ -37,6 +40,10 @@ public class TravelActivity extends RabbitBaseActivity {
 	ListView contentListV;
 
 	NetJSONAdapter adapter;
+	
+	TabView tabV;
+	
+	String catid;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +55,13 @@ public class TravelActivity extends RabbitBaseActivity {
 	@Override
 	public void initView() {
 		setTitle(getIntent().getStringExtra("title"));
+		catid = getIntent().getStringExtra("catid");
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		contentListV = listV.getListView();
 		adapter = new NetJSONAdapter(API.contentlist, self,
 				R.layout.item_travel_list);
 		adapter.fromWhat("list");
+		adapter.addparam("catid", catid);
 		adapter.addField("title", R.id.title);
 		adapter.addField(new FieldMap("views", R.id.views) {
 
@@ -82,6 +91,28 @@ public class TravelActivity extends RabbitBaseActivity {
 				JSONObject jo = adapter.getTItem(position);
 				it.putExtra("id", JSONUtil.getInt(jo, "id"));
 				startActivity(it);
+			}
+		});
+		
+		tabV = (TabView) findViewById(R.id.tab);
+		String tabName = getIntent().getStringExtra("name");
+		if (!TextUtils.isEmpty(tabName)) {
+			tabV.setLeftText(tabName);
+		} else {
+			tabV.setLeftText(getIntent().getStringExtra("title"));
+		}
+		tabV.setOnTabSelectListener(new OnTabSelectListener() {
+
+			@Override
+			public void onRightSelect(String result) {
+				adapter.addparam("order", result);
+				adapter.refreshDialog();
+			}
+
+			@Override
+			public void onCenterSelect(String result) {
+				adapter.addparam("catid", result);
+				adapter.refreshDialog();
 			}
 		});
 	}

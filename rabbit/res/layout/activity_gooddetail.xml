@@ -39,6 +39,7 @@
                     android:paddingTop="4dp" >
 
                     <TextView
+                        android:id="@+id/title"
                         style="@style/text_white_biger"
                         android:text="Daniel Wellington丹利尔惠019DW男式潮款皮带手表 超薄时尚款" />
                 </LinearLayout>
@@ -50,12 +51,14 @@
                 android:padding="@dimen/padding_leftandright" >
 
                 <TextView
+                    android:id="@+id/price"
                     style="@style/text_44_black_medium"
                     android:gravity="left"
                     android:text="￥5499"
                     android:textColor="@color/text_2B_green" />
 
                 <TextView
+                    android:id="@+id/old_price"
                     style="@style/text_66_black_small"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
@@ -69,7 +72,7 @@
                     android:text="255人购买" />
 
                 <TextView
-                    android:id="@+id/bug"
+                    android:id="@+id/buy"
                     style="@style/text_white_medium"
                     android:background="@drawable/btn_green_n"
                     android:paddingBottom="6dp"
@@ -86,8 +89,9 @@
                 android:padding="@dimen/padding_leftandright" >
 
                 <TextView
+                    android:id="@+id/name"
                     style="@style/text_44_black_medium"
-                    android:text="ABC代购中心 " />
+                    android:text="ABC代购中心(没字段) " />
             </LinearLayout>
 
             <View style="@style/line_horizontal" />
@@ -105,6 +109,7 @@
                     android:src="@drawable/icon_grey_location" />
 
                 <TextView
+                    android:id="@+id/address"
                     style="@style/text_66_black_medium"
                     android:layout_marginLeft="10dp"
                     android:text="南京市秦淮区中山东路11号 " />
@@ -140,6 +145,7 @@
                     android:stepSize="0.5" />
 
                 <TextView
+                    android:id="@+id/comment_des"
                     style="@style/text_66_black_medium"
                     android:layout_marginLeft="10dp"
                     android:text="2.7/113人" />
@@ -199,48 +205,11 @@
                 android:paddingLeft="30dp"
                 android:paddingTop="14dp" >
 
-                <TextView
-                    style="@style/text_44_black_medium"
-                    android:text="发货时间"
-                    android:textColor="@color/text_2B_green" />
-
-                <TextView
+              <TextView
+                    android:id="@+id/goumaides"
                     style="@style/text_66_black_medium"
                     android:layout_marginTop="2dp"
                     android:text="一周内发货" />
-
-                <TextView
-                    style="@style/text_44_black_medium"
-                    android:layout_marginTop="2dp"
-                    android:text="贵重物品"
-                    android:textColor="@color/text_2B_green" />
-
-                <TextView
-                    style="@style/text_66_black_medium"
-                    android:layout_marginTop="2dp"
-                    android:text="贵重物品如果需要保价请在订单备注" />
-
-                <TextView
-                    style="@style/text_44_black_medium"
-                    android:layout_marginTop="2dp"
-                    android:text="色差提示"
-                    android:textColor="@color/text_2B_green" />
-
-                <TextView
-                    style="@style/text_66_black_medium"
-                    android:layout_marginTop="2dp"
-                    android:text="因为相机和光线的问题,照片与实物有一定的差别" />
-
-                <TextView
-                    style="@style/text_44_black_medium"
-                    android:layout_marginTop="2dp"
-                    android:text="到货时间"
-                    android:textColor="@color/text_2B_green" />
-
-                <TextView
-                    style="@style/text_66_black_medium"
-                    android:layout_marginTop="2dp"
-                    android:text="因为天气和航班等因素,不能保证按时送到" />
             </LinearLayout>
 
             <View
