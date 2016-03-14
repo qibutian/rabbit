@@ -1,18 +1,16 @@
 package com.means.rabbit.activity.home;
 
+import net.duohuo.dhroid.adapter.FieldMap;
 import net.duohuo.dhroid.adapter.NetJSONAdapter;
+import net.duohuo.dhroid.adapter.PSAdapter;
+import net.duohuo.dhroid.net.DhNet;
+import net.duohuo.dhroid.net.JSONUtil;
+import net.duohuo.dhroid.net.NetTask;
+import net.duohuo.dhroid.net.Response;
+import net.duohuo.dhroid.util.ViewUtil;
+import net.duohuo.dhroid.view.NormalGallery;
 
-import com.means.rabbit.R;
-import com.means.rabbit.activity.main.HelpActivity;
-import com.means.rabbit.activity.merchants.DaiGouActivity;
-import com.means.rabbit.activity.merchants.FoodListActivity;
-import com.means.rabbit.activity.merchants.HotelListActivity;
-import com.means.rabbit.activity.travel.TravelActivity;
-import com.means.rabbit.api.API;
-import com.means.rabbit.bean.CityEB;
-import com.means.rabbit.views.RefreshListViewAndMore;
-
-import de.greenrobot.event.EventBus;
+import org.json.JSONArray;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,9 +20,20 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import com.means.rabbit.R;
+import com.means.rabbit.activity.merchants.FoodListActivity;
+import com.means.rabbit.activity.merchants.HotelListActivity;
+import com.means.rabbit.activity.travel.TravelActivity;
+import com.means.rabbit.api.API;
+import com.means.rabbit.bean.CityEB;
+import com.means.rabbit.views.RefreshListViewAndMore;
+
+import de.greenrobot.event.EventBus;
 
 public class HomePageFragment extends Fragment implements OnClickListener {
 	static HomePageFragment instance;
@@ -40,6 +49,11 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 	ListView contentListV;
 
 	NetJSONAdapter adapter;
+	
+	NormalGallery gallery;
+	PSAdapter galleryAdapter;
+	//中间部分控件id
+	int [] pic_ids = {R.id.pic_1,R.id.pic_2,R.id.pic_3,R.id.pic_4};
 
 	// 美食点击按钮
 	View foodLayoutV;
@@ -70,7 +84,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 	// 货币兑换
 	View huobiV;
-
+	
 	public static HomePageFragment getInstance() {
 		if (instance == null) {
 			instance = new HomePageFragment();
@@ -94,12 +108,43 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 	private void initView() {
 		listV = (RefreshListViewAndMore) mainV.findViewById(R.id.my_listview);
 		headV = mLayoutInflater.inflate(R.layout.head_home_index, null);
+		gallery = (NormalGallery) headV.findViewById(R.id.gallery);
+		getConfiglist();
+		
 		listV.addHeadView(headV);
 		contentListV = listV.getListView();
-		adapter = new NetJSONAdapter(API.text, getActivity(),
+		adapter = new NetJSONAdapter(API.likelist, getActivity(),
 				R.layout.item_home_list);
 		adapter.fromWhat("list");
+		adapter.addField("title", R.id.title);
+		adapter.addField("tuangoudes", R.id.tuangoudes);
+		adapter.addField("pic", R.id.pic);
+		adapter.addField(new FieldMap("price", R.id.price) {
+
+			@Override
+			public Object fix(View itemV, Integer position, Object o, Object jo) {
+				return "￥" + o.toString();
+			}
+		});
+		
+		adapter.addField(new FieldMap("ordercount", R.id.ordercount) {
+
+			@Override
+			public Object fix(View itemV, Integer position, Object o, Object jo) {
+				return "已售" + o.toString();
+			}
+		});
+		
+		adapter.addField(new FieldMap("lng", R.id.distance) {
+
+			@Override
+			public Object fix(View itemV, Integer position, Object o, Object jo) {
+				return "距离" + o.toString();
+			}
+		});
+
 		listV.setAdapter(adapter);
+
 		contentListV.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -130,6 +175,34 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		entertainmentV.setOnClickListener(this);
 		exclusive_characteristicsV.setOnClickListener(this);
 		huobiV.setOnClickListener(this);
+	}
+	
+	//获取首页幻灯+中间内容列表
+	private void getConfiglist(){
+		DhNet net = new DhNet(API.configlist);
+		net.doGet(new NetTask(getActivity()) {
+			
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+				if (response.isSuccess()) {
+					//幻灯
+					JSONArray jsa1 = response.jSONArrayFromData();
+					galleryAdapter = new PSAdapter(getActivity(), R.layout.item_gallery);
+					galleryAdapter.addField("pic", R.id.pic, "default");
+					galleryAdapter.addAll(jsa1);
+					gallery.setAdapter(galleryAdapter);
+					
+					//中间部分
+					JSONArray jsa2 = response.jSONArrayFrom("data2");
+					if (jsa2!=null) {
+						for (int i = 0; i < jsa2.length(); i++) {
+							ImageView view = (ImageView) headV.findViewById(pic_ids[i]);
+							ViewUtil.bindNetImage(view, JSONUtil.getString(JSONUtil.getJSONObjectAt(jsa2, i), "pic"), "default");
+						}
+					}
+				}
+			}
+		});
 	}
 
 	public void onEventMainThread(CityEB city) {

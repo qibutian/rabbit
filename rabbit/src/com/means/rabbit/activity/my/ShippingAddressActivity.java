@@ -1,5 +1,6 @@
 package com.means.rabbit.activity.my;
 
+import net.duohuo.dhroid.adapter.FieldMap;
 import net.duohuo.dhroid.adapter.NetJSONAdapter;
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,17 +36,30 @@ public class ShippingAddressActivity extends RabbitBaseActivity {
 
 	@Override
 	public void initView() {
-		setTitle("配送地址");
+		setTitle(getString(R.string.shippingaddressactivity));
 
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
-		String url = API.text;
+		String url = API.addressuserlist;
 		contentListV = listV.getListView();
 
 		adapter = new NetJSONAdapter(url, self, R.layout.item_shipping_address);
 		adapter.fromWhat("list");
-		// setUrl("http://cwapi.gongpingjia.com:8080/v2/activity/list?latitude=32&longitude=118&maxDistance=5000000&token="+user.getToken()+"&userId="+user.getUserId());
-		// adapter.addField("area_name", R.id.name);
-		// adapter.addField("image", R.id.pic, "default");
+		 adapter.addField("lxname", R.id.lxname);
+		 adapter.addField("lxphone", R.id.lxphone);
+		 adapter.addField("lxaddress", R.id.lxaddress);
+		 adapter.addField(new FieldMap("dft",R.id.dft) {
+			
+			@Override
+			public Object fix(View itemV, Integer position, Object o, Object jo) {
+				if (o.toString().equals("1")) {
+					itemV.findViewById(R.id.dft).setVisibility(View.VISIBLE);
+				}else {
+					itemV.findViewById(R.id.dft).setVisibility(View.INVISIBLE);
+				}
+				
+				return getString(R.string.item_shippingaddress_default);
+			}
+		});
 		listV.setAdapter(adapter);
 		
 		addaddressBtn = (Button) findViewById(R.id.addaddress);

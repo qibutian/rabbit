@@ -10,6 +10,7 @@
         android:padding="6dp" >
 
         <ImageView
+            android:id="@+id/pic"
             android:layout_width="93dp"
             android:layout_height="93dp"
             android:scaleType="fitXY"
@@ -22,10 +23,12 @@
             android:orientation="vertical" >
 
             <TextView
+                android:id="@+id/title"
                 style="@style/text_44_black_big"
                 android:text="李姐重庆小面(万达店)" />
 
             <TextView
+                android:id="@+id/tuangoudes"
                 style="@style/text_66_black_small"
                 android:layout_marginTop="9dp"
                 android:text="仅售9.9元,李姐小面3选1" />
@@ -36,6 +39,7 @@
                 android:layout_marginTop="23dp" >
 
                 <TextView
+                    android:id="@+id/price"
                     style="@style/text_44_black_medium"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -44,11 +48,13 @@
                     android:textColor="@color/text_2B_green" />
 
                 <TextView
+                    android:id="@+id/ordercount"
                     style="@style/text_66_black_small"
                     android:layout_marginRight="10dp"
                     android:text="已售112" />
 
                 <TextView
+                    android:id="@+id/distance"
                     style="@style/text_66_black_small"
                     android:text="3.1km" />
             </LinearLayout>

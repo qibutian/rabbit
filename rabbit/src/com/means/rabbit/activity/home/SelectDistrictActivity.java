@@ -19,36 +19,44 @@ import android.widget.ListView;
 import com.means.rabbit.R;
 import com.means.rabbit.adapter.CityAdapter;
 import com.means.rabbit.adapter.CountryAdapter;
+import com.means.rabbit.adapter.DistrictlistAdapter;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
-import com.means.rabbit.bean.DistrictEB;
 import com.means.rabbit.bean.CityEB;
+import com.means.rabbit.bean.DistrictEB;
 import com.means.rabbit.utils.RabbitPerference;
 
 import de.greenrobot.event.EventBus;
 
-public class SelectCityActivity extends RabbitBaseActivity {
+public class SelectDistrictActivity extends RabbitBaseActivity {
 
-	ListView countrylist, citylist;
+	ListView countrylist, citylist,districtlist;
 
 	JSONArray jsa;
 
 	CountryAdapter countryAdapter;
+	
+	DistrictlistAdapter districtlistAdapter;
 
 	CityAdapter cityAdapter;
+	
+	DistrictEB districtBean;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_select_city);
+		setContentView(R.layout.activity_district);
 	}
 
 	@Override
 	public void initView() {
 		setTitle("选择城市");
+		districtBean = new DistrictEB();
 
 		countrylist = (ListView) findViewById(R.id.countrylist);
 		citylist = (ListView) findViewById(R.id.citylist);
+		districtlist = (ListView) findViewById(R.id.district);
+		
 		countryAdapter = new CountryAdapter(self);
 		countrylist.setAdapter(countryAdapter);
 		countrylist.setOnItemClickListener(new OnItemClickListener() {
@@ -58,21 +66,15 @@ public class SelectCityActivity extends RabbitBaseActivity {
 					int position, long id) {
 				countryAdapter.setCurrentPosition(position);
 				JSONObject jo = countryAdapter.getItem(position);
+				
+				districtBean.setCountryid(JSONUtil.getString(jo, "id"));
+				districtBean.setCountryName(JSONUtil.getString(jo, "name"));
 				try {
 					JSONArray jsa = jo.getJSONArray("_child");
 					cityAdapter.setData(jsa);
 				} catch (JSONException e) {
 					cityAdapter.setData(null);
-					RabbitPerference per = IocContainer.getShare().get(
-							RabbitPerference.class);
-					per.load();
-					per.catid = JSONUtil.getString(jo, "id");
-					per.cityname = JSONUtil.getString(jo, "name");
-					per.commit();
-					CityEB city = new CityEB();
-					city.setCatid(JSONUtil.getString(jo, "id"));
-					city.setCityname(JSONUtil.getString(jo, "name"));
-					EventBus.getDefault().post(city);
+					EventBus.getDefault().post(districtBean);
 					finish();
 					e.printStackTrace();
 				}
@@ -86,18 +88,26 @@ public class SelectCityActivity extends RabbitBaseActivity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				JSONObject jo = cityAdapter.getItem(position);
+				
+				districtBean.setCityid(JSONUtil.getString(jo, "id"));
+				districtBean.setCityName(JSONUtil.getString(jo, "name"));
+				
+				getDistrict(JSONUtil.getInt(jo, "id"));
+			}
+		});
+		
+		districtlistAdapter = new DistrictlistAdapter(self);
+		districtlist.setAdapter(districtlistAdapter);
+		districtlist.setOnItemClickListener(new OnItemClickListener() {
 
-				RabbitPerference per = IocContainer.getShare().get(
-						RabbitPerference.class);
-				per.load();
-				per.catid = JSONUtil.getString(jo, "id");
-				per.cityname = JSONUtil.getString(jo, "name");
-				per.commit();
-				CityEB city = new CityEB();
-				city.setCatid(JSONUtil.getString(jo, "id"));
-				city.setCityname(JSONUtil.getString(jo, "name"));
-				EventBus.getDefault().post(city);
-
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				JSONObject jo = districtlistAdapter.getItem(position);
+				districtBean.setDistrictid(JSONUtil.getString(jo, "id"));
+				districtBean.setDistrictName(JSONUtil.getString(jo, "name"));
+				
+				EventBus.getDefault().post(districtBean);
 				finish();
 			}
 		});
@@ -114,6 +124,27 @@ public class SelectCityActivity extends RabbitBaseActivity {
 				if (response.isSuccess()) {
 					jsa = response.jSONArrayFromData();
 					countryAdapter.setData(jsa);
+				}
+
+			}
+		});
+	}
+	
+	private void getDistrict(int cityid) {
+		DhNet net = new DhNet(API.arealist);
+		net.addParam("cityid", cityid);
+		net.doGetInDialog("加载中...", new NetTask(self) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+
+				if (response.isSuccess()) {
+					jsa = response.jSONArrayFromData();
+					districtlistAdapter.setData(jsa);
+					if (jsa == null || jsa.length() == 0) {
+						EventBus.getDefault().post(districtBean);
+						finish();
+					}
 				}
 
 			}

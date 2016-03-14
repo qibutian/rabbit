@@ -38,7 +38,7 @@ public class API {
 	/** 商家区域列表 */
 	public static String arealist = Baseurl + "/home/index/arealist";
 
-	/** 商家区域列表 */
+	/** 商家分类列表 */
 	public static String catlist = Baseurl + "/home/index/catlist";
 
 	/** 代购品牌分类 */
@@ -118,5 +118,17 @@ public class API {
 
 	/** 团购订单详情 */
 	public static String tuangouOrderDetail = Baseurl + "/home/shop/orderview";
+	
+	/** 首页猜你喜欢分页列表 */
+	public static String likelist = Baseurl + "/home/index/likelist";
+	
+	/** 首页幻灯+中间内容列表 */
+	public static String configlist = Baseurl + "/home/index/configlist";
+	
+	/** 收获地址列表分页 */
+	public static String addressuserlist = Baseurl + "/home/cart/addressuserlist";
+	
+	/** 添加收获地址 */
+	public static String addaddress = Baseurl + "/home/cart/addaddress";
 
 }

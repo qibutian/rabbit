@@ -220,8 +220,12 @@
             android:label="@string/title_activity_recharge" >
         </activity>
         <activity
-            android:name="com.means.rabbit.activity.finance.FinanceDetailActivity"
+            android:name=".activity.finance.FinanceDetailActivity"
             android:label="@string/title_activity_finance_detail" >
+        </activity>
+        <activity
+            android:name=".activity.home.SelectDistrictActivity"
+            android:label="@string/title_activity_district" >
         </activity>
     </application>
 

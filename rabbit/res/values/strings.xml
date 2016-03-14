@@ -57,6 +57,8 @@
     <string name="businessorderdetails_hours_of_integral">使用积分</string>
     <string name="businessorderdetails_hours_amountpaid">实付金额</string>
     <string name="businessorderdetails_btn_putconsumercode">输入消费码</string>
+    <!-- 配送地址 -->
+    <string name="shippingaddressactivity">配送地址</string>
     <string name="shippingaddressactivity_addadress">新增配送地址</string>
     <string name="item_shippingaddress_default">默认</string>
     <string name="addshippingaddress_region">地区</string>
@@ -66,6 +68,11 @@
     <string name="addshippingaddress_postcode">邮编</string>
     <string name="addshippingaddress_default">默认</string>
     <string name="addshippingaddress_save">保存</string>
+    <string name="addshippingaddress_input_region">请输入地区</string>
+    <string name="addshippingaddress_input_address">请输入地址</string>
+    <string name="addshippingaddress_input_phone">请输入手机</string>
+    <string name="addshippingaddress_input_name">请输入姓名</string>
+    <string name="addshippingaddress_input_postcode">请输入邮编</string>
     <string name="translate_hint">请输入中文···</string>
     <string name="translate_language">语言</string>
     <string name="translate_translate">翻译</string>
@@ -346,5 +353,6 @@
     <string name="title_activity_withdraw_card">WithdrawCardActivity</string>
     <string name="title_activity_recharge">RechargeActivity</string>
     <string name="title_activity_finance_detail">FinanceDetailActivity</string>
+    <string name="title_activity_district">DistrictActivity</string>
 
 </resources>
