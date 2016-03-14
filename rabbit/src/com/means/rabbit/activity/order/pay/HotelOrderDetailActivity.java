@@ -46,7 +46,7 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 	public void initView() {
 		setTitle(getString(R.string.grogshop_pay_order));
 
-		itemid = getIntent().getIntExtra("itemid", -1);
+		itemid = getIntent().getIntExtra("orderid", -1);
 
 		titleT = (TextView) findViewById(R.id.title_name);
 		nameT = (TextView) findViewById(R.id.name);

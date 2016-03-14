@@ -10,7 +10,10 @@ import org.json.JSONObject;
 
 import com.means.rabbit.R;
 import com.means.rabbit.R.layout;
+import com.means.rabbit.activity.home.SelectDistrictActivity;
+import com.means.rabbit.activity.my.ShippingAddressActivity;
 import com.means.rabbit.activity.order.pay.HotelOrderDetailActivity;
+import com.means.rabbit.activity.order.pay.InsteadShoppingPayActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.views.CartView;
@@ -50,6 +53,10 @@ public class InsteadShoppingActivity extends RabbitBaseActivity {
 
 	int credit_s;
 
+	final int Address = 1001;
+
+	String addressId;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -74,6 +81,18 @@ public class InsteadShoppingActivity extends RabbitBaseActivity {
 
 			}
 		});
+
+		findViewById(R.id.address_layout).setOnClickListener(
+				new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						Intent it = new Intent(self,
+								ShippingAddressActivity.class);
+						startActivityForResult(it, Address);
+					}
+				});
+
 		shifuT = (TextView) findViewById(R.id.shifu);
 		getData();
 	}
@@ -134,9 +153,12 @@ public class InsteadShoppingActivity extends RabbitBaseActivity {
 							JSONUtil.getString(user_addressJo, "lxname"));
 					ViewUtil.bindView(findViewById(R.id.add_tel),
 							JSONUtil.getString(user_addressJo, "lxphone"));
-					ViewUtil.bindView(findViewById(R.id.address),
-							JSONUtil.getString(user_addressJo, "lxaddress"));
-
+					ViewUtil.bindView(
+							findViewById(R.id.address),
+							JSONUtil.getString(user_addressJo, "areaname")
+									+ JSONUtil.getString(user_addressJo,
+											"lxaddress"));
+					addressId = JSONUtil.getString(user_addressJo, "id");
 				}
 
 			}
@@ -153,7 +175,7 @@ public class InsteadShoppingActivity extends RabbitBaseActivity {
 		net.addParam("buyerphone", telE.getText().toString());
 		net.addParam("ordercount", cartView.getCartNum());
 		net.addParam("credit", credit);
-		net.addParam("addressid", 1);
+		net.addParam("addressid", addressId);
 		net.doPostInDialog("提交中...", new NetTask(self) {
 
 			@Override
@@ -161,8 +183,9 @@ public class InsteadShoppingActivity extends RabbitBaseActivity {
 				if (response.isSuccess()) {
 					showToast("提交成功!");
 					JSONObject jo = response.jSON();
-					Intent it = new Intent(self, HotelOrderDetailActivity.class);
-					it.putExtra("itemid", JSONUtil.getInt(jo, "id"));
+					Intent it = new Intent(self,
+							InsteadShoppingPayActivity.class);
+					it.putExtra("orderid", JSONUtil.getInt(jo, "id"));
 					startActivity(it);
 				}
 
@@ -170,4 +193,25 @@ public class InsteadShoppingActivity extends RabbitBaseActivity {
 		});
 
 	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		if (resultCode == Activity.RESULT_OK && requestCode == Address) {
+			addressId = data.getStringExtra("id");
+
+			ViewUtil.bindView(findViewById(R.id.add_username),
+					data.getStringExtra("lxname"));
+			ViewUtil.bindView(findViewById(R.id.add_tel),
+					data.getStringExtra("lxphone"));
+			ViewUtil.bindView(
+					findViewById(R.id.address),
+					data.getStringExtra("areaname")
+							+ data.getStringExtra("lxaddress"));
+
+		}
+
+	}
+
 }

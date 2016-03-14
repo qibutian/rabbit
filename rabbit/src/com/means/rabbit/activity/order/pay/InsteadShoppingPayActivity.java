@@ -16,6 +16,7 @@ import android.view.MenuItem;
  *
  */
 public class InsteadShoppingPayActivity extends RabbitBaseActivity {
+	String daigouId;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,5 +28,6 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 	public void initView() {
 		// TODO Auto-generated method stub
 		setTitle("代购订单");
+		daigouId = getIntent().getStringExtra("orderid");
 	}
 }

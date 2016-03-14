@@ -1,11 +1,17 @@
 package com.means.rabbit.activity.my;
 
+import org.json.JSONObject;
+
 import net.duohuo.dhroid.adapter.FieldMap;
 import net.duohuo.dhroid.adapter.NetJSONAdapter;
+import net.duohuo.dhroid.net.JSONUtil;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -25,7 +31,7 @@ public class ShippingAddressActivity extends RabbitBaseActivity {
 	ListView contentListV;
 
 	NetJSONAdapter adapter;
-	
+
 	Button addaddressBtn;
 
 	@Override
@@ -44,31 +50,47 @@ public class ShippingAddressActivity extends RabbitBaseActivity {
 
 		adapter = new NetJSONAdapter(url, self, R.layout.item_shipping_address);
 		adapter.fromWhat("list");
-		 adapter.addField("lxname", R.id.lxname);
-		 adapter.addField("lxphone", R.id.lxphone);
-		 adapter.addField("lxaddress", R.id.lxaddress);
-		 adapter.addField(new FieldMap("dft",R.id.dft) {
-			
+		adapter.addField("lxname", R.id.lxname);
+		adapter.addField("lxphone", R.id.lxphone);
+		adapter.addField("lxaddress", R.id.lxaddress);
+		adapter.addField(new FieldMap("dft", R.id.dft) {
+
 			@Override
 			public Object fix(View itemV, Integer position, Object o, Object jo) {
 				if (o.toString().equals("1")) {
 					itemV.findViewById(R.id.dft).setVisibility(View.VISIBLE);
-				}else {
+				} else {
 					itemV.findViewById(R.id.dft).setVisibility(View.INVISIBLE);
 				}
-				
+
 				return getString(R.string.item_shippingaddress_default);
 			}
 		});
 		listV.setAdapter(adapter);
-		
+		contentListV.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				JSONObject jo = adapter.getTItem(position);
+				Intent it = getIntent();
+				it.putExtra("areaname", JSONUtil.getString(jo, "areaname"));
+				it.putExtra("id", JSONUtil.getString(jo, "id"));
+				it.putExtra("lxname", JSONUtil.getString(jo, "lxname"));
+				it.putExtra("lxphone", JSONUtil.getString(jo, "lxphone"));
+				it.putExtra("lxaddress", JSONUtil.getString(jo, "lxaddress"));
+				setResult(Activity.RESULT_OK, it);
+				finish();
+			}
+		});
+
 		addaddressBtn = (Button) findViewById(R.id.addaddress);
-		
+
 		addaddressBtn.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				//新增地址
+				// 新增地址
 				Intent it = new Intent(self, AddShippingAddressActivity.class);
 				startActivity(it);
 			}

@@ -136,7 +136,7 @@ public class GroupOrderActivity extends RabbitBaseActivity {
 				if (response.isSuccess()) {
 					JSONObject jo = response.jSONFromData();
 					Intent it = new Intent(self, GroupPayActivity.class);
-					it.putExtra("orderId", JSONUtil.getString(jo, "id"));
+					it.putExtra("orderid", JSONUtil.getString(jo, "id"));
 					startActivity(it);
 				}
 
