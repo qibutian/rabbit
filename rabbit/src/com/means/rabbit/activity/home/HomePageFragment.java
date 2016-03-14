@@ -220,6 +220,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		case R.id.food_layout:
 			it = new Intent(getActivity(), FoodListActivity.class);
 			it.putExtra("title",getString(R.string.meishi));
+			it.putExtra("catid", "1");
 			startActivity(it);
 			break;
 
@@ -227,6 +228,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		case R.id.travel_services:
 			it = new Intent(getActivity(), FoodListActivity.class);
 			it.putExtra("title", getString(R.string.chuxingfuwu));
+			it.putExtra("catid", "4");
 			startActivity(it);
 			break;
 
@@ -234,6 +236,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		case R.id.entertainment:
 			it = new Intent(getActivity(), FoodListActivity.class);
 			it.putExtra("title", getString(R.string.xiuxianyule));
+			it.putExtra("catid", "6");
 			startActivity(it);
 			break;
 
@@ -241,12 +244,14 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		case R.id.exclusive_characteristics:
 			it = new Intent(getActivity(), FoodListActivity.class);
 			it.putExtra("title", getString(R.string.zhuanxiangtese));
+			it.putExtra("catid", "7");
 			startActivity(it);
 			break;
 		// 专享特色
 		case R.id.huobi:
 			it = new Intent(getActivity(), FoodListActivity.class);
 			it.putExtra("title",getString(R.string.huobiduihuan));
+			it.putExtra("catid", "3");
 			startActivity(it);
 			break;
 
@@ -265,12 +270,14 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		case R.id.travel_layout:
 			it = new Intent(getActivity(), TravelActivity.class);
 			it.putExtra("title", getString(R.string.lvxingxiaomi));
+			it.putExtra("catid", "5");
 			startActivity(it);
 			break;
 
 		case R.id.help_layout:
 			it = new Intent(getActivity(), TravelActivity.class);
 			it.putExtra("title", getString(R.string.jinjiqiuzhu));
+			it.putExtra("catid", "8");
 			startActivity(it);
 			break;
 
