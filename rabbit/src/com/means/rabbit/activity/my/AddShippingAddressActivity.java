@@ -120,7 +120,7 @@ public class AddShippingAddressActivity extends RabbitBaseActivity {
 		net.addParam("zipcode", postcode);
 		net.addParam("cityid", city.getCityid());
 		net.addParam("areaid", city.getDistrictid());
-		net.addParam("dft", checkbox.isChecked());
+		net.addParam("dft", checkbox.isChecked() ? 1 : 0);
 		net.doPostInDialog(new NetTask(self) {
 			
 			@Override

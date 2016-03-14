@@ -13,8 +13,8 @@ import android.widget.LinearLayout;
 import com.means.rabbit.R;
 import com.means.rabbit.activity.finance.FinancialManagementActivity;
 import com.means.rabbit.activity.my.edit.EditInfoActivity;
-import com.means.rabbit.activity.my.order.BusinessOrderDetailsActivity;
 import com.means.rabbit.activity.my.order.MyOrderActivity;
+import com.means.rabbit.views.CatPop;
 
 public class MyIndexFragment extends Fragment implements OnClickListener {
 	static MyIndexFragment instance;
@@ -91,8 +91,10 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 		// 商家订单
 		case R.id.business_order:
 			// it = new Intent(getActivity(), BusinessOrderActivity.class);
-			it = new Intent(getActivity(), BusinessOrderDetailsActivity.class);
-			startActivity(it);
+//			it = new Intent(getActivity(), BusinessOrderDetailsActivity.class);
+//			startActivity(it);
+			CatPop pop = new CatPop(getActivity(),1);
+			pop.show(v);
 			break;
 		// 我的订单
 		case R.id.my_order:
