@@ -9,6 +9,8 @@ import net.duohuo.dhroid.util.ViewUtil;
 import org.json.JSONObject;
 
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -62,6 +64,14 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 
 		grogshop_btn = (Button) findViewById(R.id.grogshop_btn);
 
+		findViewById(R.id.cancle).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				cancleOrder();
+			}
+		});
+
 		getGrogshopData();
 	}
 
@@ -76,19 +86,17 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 					JSONObject jo = response.jSONFromData();
 					titleT.setText(JSONUtil.getString(jo, "title"));
 					nameT.setText(JSONUtil.getString(jo, "buyername"));
-					
-					String startdate = RabbitValueFix.getStandardTime(JSONUtil.getLong(jo, "startdate"),"yyyy-MM-dd");
-					String enddate = RabbitValueFix.getStandardTime(JSONUtil.getLong(jo, "enddate"),"yyyy-MM-dd");
-					
-					dateT.setText("入住" + startdate
-							+ " 离开" + enddate);
-					
-					
-					
+
+					String startdate = RabbitValueFix.getStandardTime(
+							JSONUtil.getLong(jo, "startdate"), "yyyy-MM-dd");
+					String enddate = RabbitValueFix.getStandardTime(
+							JSONUtil.getLong(jo, "enddate"), "yyyy-MM-dd");
+
+					dateT.setText("入住" + startdate + " 离开" + enddate);
+
 					signlpirceT.setText(JSONUtil.getString(jo, "signlpirce"));
 					countT.setText(JSONUtil.getString(jo, "daycount"));
-					 totalpriceT.setText(JSONUtil.getString(jo,
-					 "payprice"));
+					totalpriceT.setText(JSONUtil.getString(jo, "payprice"));
 					idT.setText(JSONUtil.getString(jo, "code"));
 					buyerphoneT.setText(JSONUtil.getString(jo, "buyerphone"));
 					buyernameT.setText(JSONUtil.getString(jo, "buyername"));
@@ -107,6 +115,23 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 					// "totalprice")-JSONUtil.getDouble(user_data, "credit_s"))
 					// + "");
 				}
+			}
+		});
+	}
+
+	private void cancleOrder() {
+		DhNet net = new DhNet(API.cancelOrder);
+		net.addParam("orderid", itemid);
+		net.doPostInDialog("取消中...", new NetTask(self) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+
+				if (response.isSuccess()) {
+					showToast("取消成功!");
+					finish();
+				}
+
 			}
 		});
 	}

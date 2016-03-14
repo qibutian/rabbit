@@ -123,6 +123,18 @@ public class API {
 	public static String tuangouOrderDetail = Baseurl + "/home/shop/orderview";
 
 	/** 取消订单 */
-	public static String cancelOrder = Baseurl + "/home/shop/ ordercancel";
+	public static String cancelOrder = Baseurl + "/home/shop/ordercancel";
+
+	/** 代购订单预览 */
+	public static String preDaigouOrder = Baseurl + "/home/shop/dgorderpreview";
+
+	/** 代购订单预览 */
+	public static String addDaigouOrder = Baseurl + "/home/shop/dgorderadd";
+
+	/** 代购订单预览 */
+	public static String daigouOrderDetail = Baseurl + "/home/shop/dgorderview";
+
+	/** 代购详情 */
+	public static String daigouDetail = Baseurl + "/home/shop/dgview";
 
 }

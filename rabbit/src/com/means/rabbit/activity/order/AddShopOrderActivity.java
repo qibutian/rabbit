@@ -129,7 +129,7 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 							JSONUtil.getString(user_dataJo, "phone"));
 
 					ViewUtil.bindView(findViewById(R.id.username),
-							JSONUtil.getString(jo, "nickname"));
+							JSONUtil.getString(user_dataJo, "nickname"));
 					price = JSONUtil.getDouble(jo, "dayprice");
 
 					totalPriceT.setText("￥" + price);

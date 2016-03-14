@@ -164,8 +164,7 @@
             android:label="@string/title_activity_groupshop_pay" >
         </activity>
         <activity
-            android:name=".activity.order.pay.HotelOrderDetailActivity"
-            android:label="@string/title_activity_groupshop_pay" >
+            android:name=".activity.order.pay.HotelOrderDetailActivity" >
         </activity>
         <activity android:name=".activity.order.pay.TakeAwayPayActivity" >
         </activity>
@@ -221,6 +220,10 @@
         </activity>
         <activity
             android:name="com.means.rabbit.activity.finance.FinanceDetailActivity"
+            android:label="@string/title_activity_finance_detail" >
+        </activity>
+        <activity
+            android:name="com.means.rabbit.activity.merchants.GraphicDetailActivity"
             android:label="@string/title_activity_finance_detail" >
         </activity>
     </application>

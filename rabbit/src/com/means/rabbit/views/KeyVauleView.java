@@ -8,8 +8,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.means.rabbit.R;
+import com.means.rabbit.activity.merchants.GraphicDetailActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,12 +33,23 @@ public class KeyVauleView extends LinearLayout {
 		this.mContext = context;
 	}
 
-	public void setData(JSONArray jsa) {
+	public void setData(JSONArray jsa, final String content) {
 		mLayoutInflater = LayoutInflater.from(mContext);
 		for (int i = 0; i < jsa.length() + 1; i++) {
 			if (i == jsa.length()) {
 				View v = mLayoutInflater.inflate(R.layout.model_look_detail,
 						null);
+				v.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						Intent it = new Intent(mContext,
+								GraphicDetailActivity.class);
+						it.putExtra("content", content);
+						mContext.startActivity(it);
+
+					}
+				});
 				this.addView(v);
 			} else {
 				JSONObject jo = JSONUtil.getJSONObjectAt(jsa, i);

@@ -161,7 +161,7 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 
 					JSONArray field_dataJSA = JSONUtil.getJSONArray(detailJo,
 							"field_data");
-					keyValueView.setData(field_dataJSA);
+					keyValueView.setData(field_dataJSA,JSONUtil.getString(detailJo, "content"));
 				}
 
 			}
