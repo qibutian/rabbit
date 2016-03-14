@@ -3,6 +3,7 @@ package com.means.rabbit.api;
 public class API {
 
 	public static String Baseurl = "http://cn.lazybunny.c.wanruankeji.com";
+
 	public static String text = Baseurl + "/home/hotel/contentlist";
 
 	public static String hotelList = Baseurl + "/home/hotel/contentlist";
@@ -108,8 +109,11 @@ public class API {
 	public static String addOrder = Baseurl + "/home/hotel/orderadd";
 
 	/** 酒店订单预览 */
-	
+
 	/** 酒店订单详情 */
 	public static String orderpreview = Baseurl + "/home/hotel/orderpreview";
+
+	/** 取消订单 */
+	public static String cancelOrder = Baseurl + "/home/shop/ ordercancel";
 
 }
