@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.means.rabbit.R;
 import com.means.rabbit.activity.merchants.DaiGouActivity;
+import com.means.rabbit.activity.merchants.FoodListActivity;
 import com.means.rabbit.base.RabbitBaseActivity;
 
 /**
@@ -36,13 +37,15 @@ public class AllItemActivity extends RabbitBaseActivity {
 		/** 热门 */
 		// 清真美食
 		case R.id.hot_halal:
+			it = new Intent(self, FoodListActivity.class);
+			startActivity(it);
 			break;
 		// 旅游攻略
 		case R.id.hot_travel:
 			break;
 		// 代购
 		case R.id.hot_hotboom:
-			it = new Intent(self,DaiGouActivity.class);
+			it = new Intent(self, DaiGouActivity.class);
 			startActivity(it);
 			break;
 		// 潜水

@@ -15,6 +15,7 @@ public class GraphicDetailActivity extends RabbitBaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_graphic_detail);
 	}
 
 	@Override

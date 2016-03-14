@@ -16,6 +16,8 @@ import com.means.rabbit.R;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.views.RefreshListViewAndMore;
+import com.means.rabbit.views.TabView;
+import com.means.rabbit.views.TabView.OnTabSelectListener;
 
 /**
  * 
@@ -35,6 +37,8 @@ public class DaiGouActivity extends RabbitBaseActivity {
 	ListView contentListV;
 
 	NetJSONAdapter adapter;
+
+	TabView tabV;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +76,24 @@ public class DaiGouActivity extends RabbitBaseActivity {
 				Intent it = new Intent(self, GoodDetailActivity.class);
 				it.putExtra("daigouId", JSONUtil.getString(jo, "id"));
 				startActivity(it);
+			}
+		});
+
+		tabV = (TabView) findViewById(R.id.tab);
+		tabV.setLeftText(getString(R.string.Hotboom));
+		tabV.setCentertText("品牌", "品牌");
+		tabV.setOnTabSelectListener(new OnTabSelectListener() {
+
+			@Override
+			public void onRightSelect(String result) {
+				adapter.addparam("order", result);
+				adapter.refreshDialog();
+			}
+
+			@Override
+			public void onCenterSelect(String result) {
+				adapter.addparam("catid", result);
+				adapter.refreshDialog();
 			}
 		});
 	}

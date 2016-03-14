@@ -7,6 +7,7 @@ import net.duohuo.dhroid.adapter.NetJSONAdapter;
 import net.duohuo.dhroid.net.JSONUtil;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -35,6 +36,8 @@ public class FoodListActivity extends RabbitBaseActivity {
 
 	TabView tabV;
 
+	String catid;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -45,6 +48,7 @@ public class FoodListActivity extends RabbitBaseActivity {
 	@Override
 	public void initView() {
 		setTitle(getIntent().getStringExtra("title"));
+		catid = getIntent().getStringExtra("catid");
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		mLayoutInflater = LayoutInflater.from(self);
 		headV = mLayoutInflater.inflate(R.layout.head_food_list, null);
@@ -52,6 +56,7 @@ public class FoodListActivity extends RabbitBaseActivity {
 		contentListV = listV.getListView();
 		adapter = new NetJSONAdapter(API.foodList, self,
 				R.layout.item_food_list);
+		adapter.addparam("catid", catid);
 		adapter.fromWhat("list");
 		adapter.addField("title", R.id.title);
 		adapter.addField("price", R.id.price);
@@ -81,7 +86,8 @@ public class FoodListActivity extends RabbitBaseActivity {
 			public void onItemClick(AdapterView<?> arg0, View arg1,
 					int position, long arg3) {
 
-				JSONObject jo = adapter.getTItem(position-contentListV.getHeaderViewsCount());
+				JSONObject jo = adapter.getTItem(position
+						- contentListV.getHeaderViewsCount());
 				Intent it = new Intent(self, ShopDetailActivity.class);
 				it.putExtra("shopId", JSONUtil.getString(jo, "id"));
 				startActivity(it);
@@ -90,6 +96,12 @@ public class FoodListActivity extends RabbitBaseActivity {
 		});
 
 		tabV = (TabView) findViewById(R.id.tab);
+		String tabName = getIntent().getStringExtra("name");
+		if (!TextUtils.isEmpty(tabName)) {
+			tabV.setLeftText(tabName);
+		} else {
+			tabV.setLeftText(getIntent().getStringExtra("title"));
+		}
 		tabV.setCentertText("附近", "");
 		tabV.setOnTabSelectListener(new OnTabSelectListener() {
 

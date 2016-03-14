@@ -159,7 +159,7 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 					galleryAdapter.addAll(image_data);
 					gallery.setAdapter(galleryAdapter);
 
-					priceT.setText(JSONUtil.getString(detailJo, "prcie") + "起");
+					priceT.setText(JSONUtil.getString(detailJo, "price") + "起");
 
 					ViewUtil.bindView(headV.findViewById(R.id.title),
 							JSONUtil.getString(detailJo, "title"));

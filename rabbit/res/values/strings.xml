@@ -215,7 +215,6 @@
     <string name="grogshop_pay_deduction">抵扣</string>
     <string name="grogshop_pay_reality_money">实付金额</string>
     <string name="cancle_order">取消订单</string>
-    
     <string name="grogshop_pay_pay_finish">支付完成</string>
     <!-- 外卖订单 -->
     <string name="takeaway_pay_shipping_rates">配送费</string>
@@ -304,6 +303,13 @@
     <!-- 代购 -->
     <string name="Hotboom">代购</string>
     <string name="recent_photos">最近照片</string>
+    <string name="jinjiqiuzhu">紧急求助</string>
+    <string name="lvxingxiaomi">旅行小秘</string>
+    <string name="huobiduihuan">货币兑换</string>
+    <string name="zhuanxiangtese">专享特色</string>
+    <string name="xiuxianyule">休闲娱乐</string>
+    <string name="chuxingfuwu">出行服务</string>
+    <string name="meishi">美食</string>
     <string name="taking_pictures">Taking Pictures</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_register">RegisterActivity</string>

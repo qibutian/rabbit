@@ -107,9 +107,9 @@ public class GroupOrderActivity extends RabbitBaseActivity {
 							"user_data");
 
 					credit = JSONUtil.getInt(user_dataJo, "credit");
-					ViewUtil.bindView(findViewById(R.id.jifen), credit + "");
+					ViewUtil.bindView(findViewById(R.id.credit), credit + "");
 					credit_s = JSONUtil.getInt(user_dataJo, "credit_s");
-					ViewUtil.bindView(findViewById(R.id.dikou),
+					ViewUtil.bindView(findViewById(R.id.credit_s),
 							"￥" + JSONUtil.getString(user_dataJo, "credit_s"));
 
 					ViewUtil.bindView(telT,

@@ -48,7 +48,7 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 
 		itemid = getIntent().getIntExtra("itemid", -1);
 
-		titleT = (TextView) findViewById(R.id.title);
+		titleT = (TextView) findViewById(R.id.title_name);
 		nameT = (TextView) findViewById(R.id.name);
 		dateT = (TextView) findViewById(R.id.date);
 		signlpirceT = (TextView) findViewById(R.id.signlpirce);
@@ -109,7 +109,9 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 					ViewUtil.bindView(findViewById(R.id.ercode),
 							JSONUtil.getString(jo, "ercode"));
 					grogshop_btn.setText(JSONUtil.getString(jo, "paystatus")
-							.equals("1") ? "待支付" : "已支付");
+							.equals("1") ? "支付订单" : "已支付");
+					grogshop_btn.setBackgroundResource(JSONUtil.getString(jo, "paystatus")
+							.equals("1") ?R.drawable.fillet_10_pink_bg:R.drawable.fillet_10_green_bg);
 
 					// reality_moneyT.setText((JSONUtil.getDouble(jo,
 					// "totalprice")-JSONUtil.getDouble(user_data, "credit_s"))
@@ -135,4 +137,6 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 			}
 		});
 	}
+	
+	
 }

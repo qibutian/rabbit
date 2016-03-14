@@ -146,34 +146,34 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		// 美食
 		case R.id.food_layout:
 			it = new Intent(getActivity(), FoodListActivity.class);
-			it.putExtra("title", "美食");
+			it.putExtra("title",getString(R.string.meishi));
 			startActivity(it);
 			break;
 
 		// 出行服务
 		case R.id.travel_services:
 			it = new Intent(getActivity(), FoodListActivity.class);
-			it.putExtra("title", "出行服务");
+			it.putExtra("title", getString(R.string.chuxingfuwu));
 			startActivity(it);
 			break;
 
 		// 休闲娱乐
 		case R.id.entertainment:
 			it = new Intent(getActivity(), FoodListActivity.class);
-			it.putExtra("title", "休闲娱乐");
+			it.putExtra("title", getString(R.string.xiuxianyule));
 			startActivity(it);
 			break;
 
 		// 专享特色
 		case R.id.exclusive_characteristics:
 			it = new Intent(getActivity(), FoodListActivity.class);
-			it.putExtra("title", "专享特色");
+			it.putExtra("title", getString(R.string.zhuanxiangtese));
 			startActivity(it);
 			break;
 		// 专享特色
 		case R.id.huobi:
 			it = new Intent(getActivity(), FoodListActivity.class);
-			it.putExtra("title", "货币兑换");
+			it.putExtra("title",getString(R.string.huobiduihuan));
 			startActivity(it);
 			break;
 
@@ -191,13 +191,13 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		// 旅行小秘
 		case R.id.travel_layout:
 			it = new Intent(getActivity(), TravelActivity.class);
-			it.putExtra("title", "旅行小秘");
+			it.putExtra("title", getString(R.string.lvxingxiaomi));
 			startActivity(it);
 			break;
 
 		case R.id.help_layout:
 			it = new Intent(getActivity(), TravelActivity.class);
-			it.putExtra("title", "紧急求助");
+			it.putExtra("title", getString(R.string.jinjiqiuzhu));
 			startActivity(it);
 			break;
 

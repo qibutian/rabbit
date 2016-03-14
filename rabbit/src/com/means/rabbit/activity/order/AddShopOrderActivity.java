@@ -79,7 +79,7 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 		try {
 			int days = RabbitUtils.daysBetween(startDate, endDate);
 			ViewUtil.bindView(findViewById(R.id.date), "入住" + startDate + "离开"
-					+ endDate + "[" + days + "]");
+					+ endDate + " [" + days + "]晚");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

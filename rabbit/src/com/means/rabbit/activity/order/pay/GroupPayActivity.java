@@ -15,9 +15,13 @@ import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -34,6 +38,8 @@ public class GroupPayActivity extends RabbitBaseActivity {
 
 	TextView shifuT;
 
+	Button payB;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -44,6 +50,7 @@ public class GroupPayActivity extends RabbitBaseActivity {
 	public void initView() {
 		setTitle("团购订单");
 		orderId = getIntent().getStringExtra("orderId");
+		payB = (Button) findViewById(R.id.pay);
 		getData();
 	}
 
@@ -91,6 +98,25 @@ public class GroupPayActivity extends RabbitBaseActivity {
 
 					ViewUtil.bindView(findViewById(R.id.shifu),
 							JSONUtil.getInt(jo, "payprice") - credit_s + "");
+
+					final int paystatus = JSONUtil.getInt(jo, "paystatus");
+
+					payB.setBackgroundResource(paystatus == 1 ? R.drawable.fillet_10_pink_bg
+							: R.drawable.fillet_10_green_bg);
+					payB.setText(paystatus == 1 ? "支付订单" : "已支付");
+
+					payB.setOnClickListener(new OnClickListener() {
+
+						@Override
+						public void onClick(View v) {
+							Intent it;
+							if (paystatus == 1) {
+								it = new Intent(self, PayOrderActivity.class);
+								startActivity(it);
+							}
+
+						}
+					});
 
 				}
 

@@ -10,10 +10,13 @@ import com.means.rabbit.R;
 import com.means.rabbit.activity.home.HomePageFragment;
 import com.means.rabbit.api.API;
 import com.means.rabbit.views.RefreshListViewAndMore;
+import com.means.rabbit.views.TabView;
+import com.means.rabbit.views.TabView.OnTabSelectListener;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +40,8 @@ public class MerchatsFragment extends Fragment {
 	ListView contentListV;
 
 	NetJSONAdapter adapter;
+
+	TabView tabV;
 
 	public static MerchatsFragment getInstance() {
 		if (instance == null) {
@@ -64,7 +69,7 @@ public class MerchatsFragment extends Fragment {
 		headV = mLayoutInflater.inflate(R.layout.head_food_list, null);
 		listV.addHeadView(headV);
 		contentListV = listV.getListView();
-		adapter = new NetJSONAdapter(API.text, getActivity(),
+		adapter = new NetJSONAdapter(API.foodList, getActivity(),
 				R.layout.item_food_list);
 		adapter.fromWhat("list");
 		adapter.addField("title", R.id.title);
@@ -87,6 +92,7 @@ public class MerchatsFragment extends Fragment {
 				return o;
 			}
 		});
+
 		listV.setAdapter(adapter);
 		contentListV.setOnItemClickListener(new OnItemClickListener() {
 
@@ -94,9 +100,30 @@ public class MerchatsFragment extends Fragment {
 			public void onItemClick(AdapterView<?> arg0, View arg1,
 					int position, long arg3) {
 
+				JSONObject jo = adapter.getTItem(position
+						- contentListV.getHeaderViewsCount());
 				Intent it = new Intent(getActivity(), ShopDetailActivity.class);
+				it.putExtra("shopId", JSONUtil.getString(jo, "id"));
 				startActivity(it);
 
+			}
+		});
+
+		tabV = (TabView) mainV.findViewById(R.id.tab);
+		tabV.setLeftText(getString(R.string.meishi));
+		tabV.setCentertText("附近", "");
+		tabV.setOnTabSelectListener(new OnTabSelectListener() {
+
+			@Override
+			public void onRightSelect(String result) {
+				adapter.addparam("order", result);
+				adapter.refreshDialog();
+			}
+
+			@Override
+			public void onCenterSelect(String result) {
+				adapter.addparam("catid", result);
+				adapter.refreshDialog();
 			}
 		});
 	}
