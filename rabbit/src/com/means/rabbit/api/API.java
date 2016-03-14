@@ -111,7 +111,16 @@ public class API {
 	/** 酒店订单预览 */
 
 	/** 酒店订单详情 */
-	public static String orderpreview = Baseurl + "/home/hotel/orderpreview";
+	public static String hotelOrderDetail = Baseurl + "/home/hotel/orderview";
+
+	/** 团购订单预览 */
+	public static String preTuangouOrder = Baseurl + "/home/shop/orderpreview";
+
+	/** 团购订单下单 */
+	public static String addTuangouOrder = Baseurl + "/home/shop/orderadd";
+
+	/** 团购订单详情 */
+	public static String tuangouOrderDetail = Baseurl + "/home/shop/orderview";
 
 	/** 取消订单 */
 	public static String cancelOrder = Baseurl + "/home/shop/ ordercancel";
