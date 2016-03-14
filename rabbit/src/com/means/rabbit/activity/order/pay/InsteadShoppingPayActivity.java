@@ -56,7 +56,7 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 	}
 
 	private void getData() {
-		DhNet net = new DhNet(API.daigouDetail);
+		DhNet net = new DhNet(API.daigouOrderDetail);
 		net.addParam("orderid", daigouId);
 		net.doGetInDialog(new NetTask(self) {
 
@@ -81,9 +81,15 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 					String orderTime = RabbitValueFix.getStandardTime(
 							JSONUtil.getLong(jo, "adddateline"), "yyyy-MM-dd");
 
-					ViewUtil.bindView(findViewById(R.id.order_time), orderTime);
-					ViewUtil.bindView(findViewById(R.id.tel),
+					ViewUtil.bindView(findViewById(R.id.adddateline), orderTime);
+					ViewUtil.bindView(findViewById(R.id.buyerphone),
 							JSONUtil.getString(jo, "buyerphone"));
+					
+					ViewUtil.bindView(findViewById(R.id.buyername),
+							JSONUtil.getString(jo, "buyername"));
+					
+					ViewUtil.bindView(findViewById(R.id.buyernote),
+							JSONUtil.getString(jo, "buyernote"));
 
 					JSONObject credit_dataJo = JSONUtil.getJSONObject(jo,
 							"credit_data");
