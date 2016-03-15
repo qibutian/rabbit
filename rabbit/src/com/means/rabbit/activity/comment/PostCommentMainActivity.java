@@ -23,6 +23,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,6 +36,7 @@ import com.means.rabbit.api.API;
 import com.means.rabbit.api.Constant;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.photo.model.PhotoModel;
+import com.means.rabbit.views.MyToast;
 import com.means.rabbit.views.dialog.DateTimerDialog;
 import com.means.rabbit.views.dialog.DateTimerDialog.OnDateTimerResultListener;
 import com.means.rabbit.views.pop.SelectPicturePop;
@@ -53,6 +55,8 @@ public class PostCommentMainActivity extends RabbitBaseActivity {
 	private EditText contentEd;
 	private RatingBar ratingBar;
 	private Button submitBtn;
+	
+	private MyToast toastCommom;  
 	
 	// 图片缓存根目录
     private File mCacheDir;
@@ -85,6 +89,7 @@ public class PostCommentMainActivity extends RabbitBaseActivity {
 		setTitle(getString(R.string.post_comment));
 		picArray = new JSONArray();
 		
+		toastCommom = MyToast.createToastConfig();  
 		recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 		contentEd = (EditText) findViewById(R.id.content);
 		ratingBar = (RatingBar) findViewById(R.id.ratingbar);
@@ -211,7 +216,7 @@ public class PostCommentMainActivity extends RabbitBaseActivity {
     private void submit(){
     	String content = contentEd.getText().toString();
     	if (TextUtils.isEmpty(content)) {
-    		showToast("请填写评价信息");
+    		toastCommom.ToastShow(self, (ViewGroup)findViewById(R.id.toast_layout_root), getString(R.string.post_comment_txt));
 			return;
 		}
     	

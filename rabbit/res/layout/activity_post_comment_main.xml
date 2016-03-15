@@ -33,6 +33,7 @@
             android:layout_marginTop="@dimen/padding_leftandright"
             android:background="@drawable/fillet_90_black_bg"
             android:gravity="center"
+            android:visibility="invisible"
             android:padding="@dimen/padding_leftandright"
             android:text="@string/post_comment_txt" />
         

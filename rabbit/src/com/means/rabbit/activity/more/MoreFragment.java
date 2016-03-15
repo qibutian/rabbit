@@ -80,12 +80,13 @@ public class MoreFragment extends Fragment implements OnClickListener {
 			break;
 			//反馈
 		case R.id.feedback:
-			it = new Intent(getActivity(),FinanceDetailActivity.class);
+			it = new Intent(getActivity(),FeedbackActivity.class);
 			startActivity(it);
 			break;
 			//扫一扫
 		case R.id.richscan:
-			
+			it = new Intent(getActivity(),FinanceDetailActivity.class);
+			startActivity(it);
 			break;
 			//版本更新
 		case R.id.version:

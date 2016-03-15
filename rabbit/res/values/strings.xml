@@ -87,20 +87,9 @@
     <string name="more_version_updating">版本更新</string>
     <string name="more_help">帮助中心</string>
     <string name="more_wipe_cache">清除缓存</string>
+    <!-- 全部分类 -->
     <string name="all_item_hot">热门</string>
     <string name="all_item_halal_food">清真美食</string>
-    <string name="all_item_travel_strategy">旅游攻略</string>
-    <string name="all_item_hotboom">代购</string>
-    <string name="all_item_diving">潜水</string>
-    <string name="all_item_food">美食</string>
-    <string name="all_item_all">全部</string>
-    <string name="all_item_coffee">咖啡</string>
-    <string name="all_item_bar">酒吧</string>
-    <string name="all_item_grogshop">酒店</string>
-    <string name="all_item_other">其他</string>
-    <string name="all_item_starred_hotel">星级酒店</string>
-    <string name="all_item_hotel">旅馆</string>
-    <string name="all_item_vacational_village">度假村</string>
 
     <!-- 登陆 -->
     <string name="login_name_hint">昵称/姓名</string>
@@ -317,6 +306,11 @@
     <string name="xiuxianyule">休闲娱乐</string>
     <string name="chuxingfuwu">出行服务</string>
     <string name="meishi">美食</string>
+
+    <!-- 意见反馈 -->
+    <string name="feedback">意见反馈</string>
+    <string name="feedback_hint">谢谢您帮我们改进平台</string>
+    <string name="feedback_submit">提交</string>
     <string name="taking_pictures">Taking Pictures</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_register">RegisterActivity</string>
@@ -362,5 +356,7 @@
     <string name="title_activity_recharge">RechargeActivity</string>
     <string name="title_activity_finance_detail">FinanceDetailActivity</string>
     <string name="title_activity_district">DistrictActivity</string>
+    <string name="title_activity_feedback">FeedbackActivity</string>
+    <string name="title_activity_search">SearchActivity</string>
 
 </resources>
