@@ -140,7 +140,7 @@ public class API {
 	/** 代购订单预览 */
 	public static String preDaigouOrder = Baseurl + "/home/shop/dgorderpreview";
 
-	/** 代购订单预览 */
+	/** 代购订单下单 */
 	public static String addDaigouOrder = Baseurl + "/home/shop/dgorderadd";
 
 	/** 代购订单预览 */

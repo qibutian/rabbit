@@ -31,7 +31,7 @@ public class RefreshListViewAndMore extends LinearLayout {
 
 	Context mContext;
 
-	PtrFrameLayout mPtrFrame;
+	FixRequestDisallowTouchEventPtrFrameLayout mPtrFrame;
 
 	ListView listV;
 
@@ -57,7 +57,7 @@ public class RefreshListViewAndMore extends LinearLayout {
 		emptyLayout = (LinearLayout) findViewById(R.id.empty_layout);
 		
 		listV = (ListView) findViewById(R.id.listview);
-		mPtrFrame = (PtrFrameLayout) findViewById(R.id.ptr_frame);
+		mPtrFrame = (FixRequestDisallowTouchEventPtrFrameLayout) findViewById(R.id.ptr_frame);
 		loadMoreListViewContainer = (LoadMoreListViewContainer) findViewById(R.id.load_more_list_view_container);
 		LoadMoreFootView  footView = new LoadMoreFootView(mContext);
 		loadMoreListViewContainer.setLoadMoreView(footView);

@@ -180,7 +180,7 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 					showToast("提交成功!");
 					JSONObject jo = response.jSON();
 					Intent it = new Intent(self, HotelOrderDetailActivity.class);
-					it.putExtra("itemid", JSONUtil.getInt(jo, "id"));
+					it.putExtra("orderid", JSONUtil.getInt(jo, "id"));
 					startActivity(it);
 				}
 

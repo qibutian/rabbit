@@ -49,7 +49,7 @@ public class GroupPayActivity extends RabbitBaseActivity {
 	@Override
 	public void initView() {
 		setTitle("团购订单");
-		orderId = getIntent().getStringExtra("orderId");
+		orderId = getIntent().getStringExtra("orderid");
 		payB = (Button) findViewById(R.id.pay);
 		getData();
 	}
