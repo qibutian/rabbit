@@ -142,6 +142,8 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 					// "totalprice")-JSONUtil.getDouble(user_data, "credit_s"))
 					// + "");
 				}
+				
+				
 			}
 		});
 	}
