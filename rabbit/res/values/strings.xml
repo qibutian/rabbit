@@ -148,6 +148,7 @@
     <string name="grogshop_deduction">抵扣</string>
     <string name="grogshop_reality_money">实付金额</string>
     <string name="grogshop_submit_order">提交订单</string>
+    <string name="jifen_init">请输入积分</string>
 
     <!-- 附近弹框 -->
     <string name="sort_one">智能排序</string>
