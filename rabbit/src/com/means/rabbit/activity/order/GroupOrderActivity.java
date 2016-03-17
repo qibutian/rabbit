@@ -58,7 +58,7 @@ public class GroupOrderActivity extends RabbitBaseActivity {
 	@Override
 	public void initView() {
 		// TODO Auto-generated method stub
-		setTitle("团购订单");
+		setTitle(getString(R.string.grouporder));
 		tuangouId = getIntent().getStringExtra("tuangouId");
 		cartView = (CartView) findViewById(R.id.cartView);
 		totalPriceT = (TextView) findViewById(R.id.total_price);

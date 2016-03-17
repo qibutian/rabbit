@@ -71,7 +71,7 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 
 	@Override
 	public void initView() {
-		setTitle("酒店详情");
+		setTitle(getString(R.string.hotel_detail));
 		Intent lastIntent = getIntent();
 		hotelId = lastIntent.getStringExtra("hotelId");
 		headV = LayoutInflater.from(self).inflate(R.layout.head_hotel_detail,
@@ -130,6 +130,22 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 
 		startDateT.setText(lastIntent.getStringExtra("startDate"));
 		endDateT.setText(lastIntent.getStringExtra("endDate"));
+		
+		gallery.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				pic_countT.setText(position+1 + "/" + gallery.getCount());
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 
 		getHotelDetalData();
 		getOrderList();
@@ -149,11 +165,6 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 					JSONObject detailJo = response.jSONFromData();
 					JSONArray image_data = JSONUtil.getJSONArray(detailJo,
 							"image_data");
-					if (image_data != null && image_data.length() != 0) {
-						pic_countT.setText(image_data.length() + "");
-					} else {
-						pic_countT.setText(0 + "");
-					}
 					galleryAdapter = new PSAdapter(self, R.layout.item_gallery);
 					galleryAdapter.addField("img_m", R.id.pic, "default");
 					galleryAdapter.addAll(image_data);

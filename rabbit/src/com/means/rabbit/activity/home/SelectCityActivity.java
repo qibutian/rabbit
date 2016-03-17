@@ -45,7 +45,7 @@ public class SelectCityActivity extends RabbitBaseActivity {
 
 	@Override
 	public void initView() {
-		setTitle("选择城市");
+		setTitle(getString(R.string.select_city));
 
 		countrylist = (ListView) findViewById(R.id.countrylist);
 		citylist = (ListView) findViewById(R.id.citylist);

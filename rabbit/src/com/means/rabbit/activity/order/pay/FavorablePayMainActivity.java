@@ -28,6 +28,6 @@ public class FavorablePayMainActivity extends RabbitBaseActivity {
 	@Override
 	public void initView() {
 		// TODO Auto-generated method stub
-		setTitle("优惠买单");
+		setTitle(getString(R.string.favorable));
 	}
 }

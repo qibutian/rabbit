@@ -49,7 +49,7 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 	@Override
 	public void initView() {
 		// TODO Auto-generated method stub
-		setTitle("代购订单");
+		setTitle(getString(R.string.insteadshopping));
 		daigouId = getIntent().getIntExtra("orderid", 0);
 		payB = (Button) findViewById(R.id.pay);
 		getData();

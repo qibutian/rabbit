@@ -64,7 +64,7 @@ public class HotelListActivity extends RabbitBaseActivity {
 
 	@Override
 	public void initView() {
-		setTitle("酒店");
+		setTitle(getString(R.string.hotel_list));
 		catid = getIntent().getStringExtra("catid");
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		contentListV = listV.getListView();

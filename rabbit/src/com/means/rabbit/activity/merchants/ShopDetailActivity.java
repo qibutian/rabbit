@@ -66,7 +66,7 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 
 	@Override
 	public void initView() {
-		setTitle("商家详情");
+		setTitle(getString(R.string.shop_detail));
 		shopId = getIntent().getStringExtra("shopId");
 		headV = LayoutInflater.from(self).inflate(R.layout.head_shop_detail,
 				null);
@@ -115,6 +115,22 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 		gallery = (NomalGallery) headV.findViewById(R.id.gallery);
 		ratingBar = (RatingBar) headV.findViewById(R.id.ratingbar);
 		pic_countT = (TextView) headV.findViewById(R.id.pic_count);
+		
+		gallery.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				pic_countT.setText(position+1 + "/" + gallery.getCount());
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		getShopDetalData();
 		getTuangouList();
 		getCommentList();
@@ -131,11 +147,11 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 					JSONObject detailJo = response.jSONFromData();
 					JSONArray image_data = JSONUtil.getJSONArray(detailJo,
 							"image_data");
-					if (image_data != null && image_data.length() != 0) {
-						pic_countT.setText(image_data.length() + "");
-					} else {
-						pic_countT.setText(0 + "");
-					}
+//					if (image_data != null && image_data.length() != 0) {
+//						pic_countT.setText(image_data.length() + "");
+//					} else {
+//						pic_countT.setText(0 + "");
+//					}
 					galleryAdapter = new PSAdapter(self, R.layout.item_gallery);
 					galleryAdapter.addField("img_m", R.id.pic, "default");
 					galleryAdapter.addAll(image_data);

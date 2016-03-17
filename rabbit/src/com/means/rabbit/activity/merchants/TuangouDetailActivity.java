@@ -71,7 +71,7 @@ public class TuangouDetailActivity extends RabbitBaseActivity {
 
 	@Override
 	public void initView() {
-		setTitle("团购详情");
+		setTitle(getString(R.string.tuangou_detail));
 		tuangouId = getIntent().getStringExtra("tuangouId");
 		headV = LayoutInflater.from(self).inflate(R.layout.head_tuangou_detail,
 				null);

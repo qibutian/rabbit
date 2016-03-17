@@ -32,7 +32,7 @@ public class BusinessOrderActivity extends RabbitBaseActivity {
 	@Override
 	public void initView() {
 		// TODO Auto-generated method stub
-		setTitle("商家订单");
+		setTitle(getString(R.string.business_order));
 		
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		String url = API.text;

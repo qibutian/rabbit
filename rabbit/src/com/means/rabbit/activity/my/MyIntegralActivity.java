@@ -33,7 +33,7 @@ public class MyIntegralActivity extends RabbitBaseActivity {
 
 	@Override
 	public void initView() {
-		setTitle("积分明细");
+		setTitle(getString(R.string.my_integral));
 		
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		String url = API.text;

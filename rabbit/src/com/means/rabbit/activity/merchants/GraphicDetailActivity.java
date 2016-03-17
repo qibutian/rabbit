@@ -20,7 +20,7 @@ public class GraphicDetailActivity extends RabbitBaseActivity {
 
 	@Override
 	public void initView() {
-		setTitle("图文详情");
+		setTitle(getString(R.string.graphic_detail));
 		content = getIntent().getStringExtra("content");
 		TextView textT = (TextView) findViewById(R.id.text);
 		textT.setText(Html.fromHtml(content));

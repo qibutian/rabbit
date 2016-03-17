@@ -16,7 +16,7 @@ public class HelpActivity extends RabbitBaseActivity {
 
 	@Override
 	public void initView() {
-		setTitle("紧急求助");
+		setTitle(getString(R.string.jinjiqiuzhu));
 	}
 
 }

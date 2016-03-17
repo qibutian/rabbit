@@ -65,7 +65,7 @@ public class InsteadShoppingActivity extends RabbitBaseActivity {
 
 	@Override
 	public void initView() {
-		setTitle("代购订单");
+		setTitle(getString(R.string.insteadshopping));
 		daigouId = getIntent().getStringExtra("daigouId");
 		cartView = (CartView) findViewById(R.id.cartView);
 		msgE = (EditText) findViewById(R.id.msg);

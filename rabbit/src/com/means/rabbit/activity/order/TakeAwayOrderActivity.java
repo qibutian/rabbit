@@ -28,7 +28,7 @@ public class TakeAwayOrderActivity extends RabbitBaseActivity {
 
 	@Override
 	public void initView() {
-		setTitle("外卖订单");
+		setTitle(getString(R.string.takeawayorder));
 		
 		inflater = LayoutInflater.from(self);
 		View footView = inflater.inflate(R.layout.take_away_order_footview, null);

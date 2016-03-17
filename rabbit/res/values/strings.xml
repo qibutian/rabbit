@@ -73,6 +73,8 @@
     <string name="addshippingaddress_input_phone">请输入手机</string>
     <string name="addshippingaddress_input_name">请输入姓名</string>
     <string name="addshippingaddress_input_postcode">请输入邮编</string>
+    <!-- 翻译助手 -->
+    <string name="translate">翻译助手</string>
     <string name="translate_hint">请输入中文···</string>
     <string name="translate_language">语言</string>
     <string name="translate_translate">翻译</string>
@@ -115,12 +117,14 @@
     <string name="forget_pswd_newpswd_hint">请输入新密码</string>
 
     <!-- 优惠买单 -->
+    <string name="favorable">优惠买单</string>
     <string name="favorable_expendamount">消费总额</string>
     <string name="favorable_use_integral">使用积分</string>
     <string name="favorable_reality_money">实付金额</string>
     <string name="favorable_deduction">抵扣</string>
     <string name="favorable_confirm_payment">确认支付</string>
     <!-- 团购订单 -->
+    <string name="grouporder">团购订单</string>
     <string name="grouporder_count">数量</string>
     <string name="grouporder_total">总计</string>
     <string name="grouporder_phone">手机</string>
@@ -165,6 +169,7 @@
     <string name="post_comment_submit">提交</string>
 
     <!-- 外卖订单 -->
+    <string name="takeawayorder">外卖订单</string>
     <string name="takeawayorder_shipping_rates">配送费</string>
     <string name="takeawayorder_total">总计</string>
     <string name="takeawayorder_transport_time">送达时间</string>
@@ -230,6 +235,7 @@
     <string name="takeaway_pay_reality_money">实付金额</string>
     <string name="takeaway_pay_evaluate">发布评价</string>
     <!-- 代购订单 -->
+    <string name="insteadshopping">代购订单</string>
     <string name="insteadshopping_order_count">数量</string>
     <string name="insteadshopping_order_postage">邮费</string>
     <string name="insteadshopping_order_total">总计</string>
@@ -297,9 +303,38 @@
     <string name="travel">旅行小密</string>
     <!-- 旅行小密 -->
     <string name="travel_details">旅游详情</string>
+    <!-- 酒店详情 -->
+    <string name="hotel_detail">酒店详情</string>
+    <!-- 酒店 -->
+    <string name="hotel_list">酒店</string>
+    <!-- 商家详情 -->
+    <string name="shop_detail">商家详情</string>
+    <!-- 选择城市 -->
+    <string name="select_city">选择城市</string>
+    <!-- 选择语言 -->
+    <string name="select_language">选择语言</string>
+    <!-- 搜索 -->
+    <string name="search">搜索</string>
+    <!-- 商品详情 -->
+    <string name="good_detail">商品详情</string>
+    <!-- 团购详情 -->
+    <string name="tuangou_detail">团购详情</string>
+    <!-- 图文详情 -->
+    <string name="graphic_detail">图文详情</string>
+    <!-- 商家订单 -->
+    <string name="business_order">商家订单</string>
+    <!-- 我的订单 -->
+    <string name="my_order">我的订单</string>
+    <!-- 商家订单详情 -->
+    <string name="business_order_details">商家订单详情</string>
     <!-- 代购 -->
     <string name="Hotboom">代购</string>
+    <!-- 积分明细 -->
+    <string name="my_integral">积分明细</string>
+    <!-- 收藏列表 -->
+    <string name="my_collect">收藏列表</string>
     <string name="recent_photos">最近照片</string>
+    <!-- 紧急求助 -->
     <string name="jinjiqiuzhu">紧急求助</string>
     <string name="lvxingxiaomi">旅行小秘</string>
     <string name="huobiduihuan">货币兑换</string>

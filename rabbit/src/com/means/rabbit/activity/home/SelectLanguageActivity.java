@@ -19,7 +19,7 @@ public class SelectLanguageActivity extends RabbitBaseActivity {
 
 	@Override
 	public void initView() {
-		setTitle("选择语言");
+		setTitle(getString(R.string.select_language));
 		
 	}
 }

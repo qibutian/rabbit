@@ -58,7 +58,7 @@ public class GoodDetailActivity extends RabbitBaseActivity {
 
 	@Override
 	public void initView() {
-		setTitle("商品详情");
+		setTitle(getString(R.string.good_detail));
 		daigouId = getIntent().getStringExtra("daigouId");
 		keyValueView = (KeyVauleView) findViewById(R.id.keyvule_view);
 		commentView = (CommentView) findViewById(R.id.comment_view);

@@ -36,7 +36,7 @@ public class MyOrderActivity extends RabbitBaseActivity {
 	@Override
 	public void initView() {
 		// TODO Auto-generated method stub
-		setTitle("我的订单");
+		setTitle(getString(R.string.my_order));
 
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		String url = API.orderlist;

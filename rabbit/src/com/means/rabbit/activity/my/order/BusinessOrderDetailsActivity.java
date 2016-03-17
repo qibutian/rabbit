@@ -24,6 +24,6 @@ public class BusinessOrderDetailsActivity extends RabbitBaseActivity {
 
 	@Override
 	public void initView() {
-		
+		setTitle(getString(R.string.business_order_details));
 	}
 }

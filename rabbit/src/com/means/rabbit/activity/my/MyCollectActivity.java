@@ -32,7 +32,7 @@ public class MyCollectActivity extends RabbitBaseActivity {
 
 	@Override
 	public void initView() {
-		setTitle("收藏列表");
+		setTitle(getString(R.string.my_collect));
 		
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		String url = API.text;

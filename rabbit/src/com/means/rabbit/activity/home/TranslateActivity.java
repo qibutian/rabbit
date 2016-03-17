@@ -37,7 +37,7 @@ public class TranslateActivity extends RabbitBaseActivity implements
 
 	@Override
 	public void initView() {
-		setTitle("文件助手");
+		setTitle(getString(R.string.translate));
 		my_titlebarV = findViewById(R.id.my_titlebar);
 		// TODO Auto-generated method stub
 		languageLl = (LinearLayout) findViewById(R.id.language);

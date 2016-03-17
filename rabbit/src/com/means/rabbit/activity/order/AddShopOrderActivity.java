@@ -65,7 +65,7 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 	@Override
 	public void initView() {
 		// TODO Auto-generated method stub
-		setTitle("酒店订单");
+		setTitle(getString(R.string.grogshop_pay_order));
 		Intent it = getIntent();
 		cartView = (CartView) findViewById(R.id.cartView);
 		msgE = (EditText) findViewById(R.id.msg);

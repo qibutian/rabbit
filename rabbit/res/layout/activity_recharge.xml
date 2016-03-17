@@ -28,10 +28,13 @@
                 android:gravity="right|center_vertical"
                 android:orientation="horizontal" >
 
-                <TextView
+                <EditText
                 style="@style/text_44_black_big"
+                android:layout_width="match_parent"
+                android:gravity="right"
                 android:textColor="@color/text_2B_green"
-                android:text="￥288" />
+                android:background="@color/white"
+                android:inputType="number" />
             </LinearLayout>
         </LinearLayout>
         <View style="@style/line_horizontal"
