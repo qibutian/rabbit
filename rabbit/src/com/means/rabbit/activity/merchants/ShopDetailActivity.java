@@ -30,6 +30,12 @@ import com.means.rabbit.views.NomalGallery;
 import com.means.rabbit.views.RefreshListViewAndMore;
 import com.means.rabbit.views.ShopDetailTuangouView;
 
+/**
+ * 
+ * 商家详情
+ * @author Administrator
+ *
+ */
 public class ShopDetailActivity extends RabbitBaseActivity {
 
 	View headV;

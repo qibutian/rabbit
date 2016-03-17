@@ -59,10 +59,14 @@
             android:src="@drawable/icon_time" />
 
         <TextView
+            style="@style/text_66_black_medium"
+            android:layout_marginLeft="10dp"
+            android:text="@string/shop_detail_time" />
+        <TextView
             android:id="@+id/time"
             style="@style/text_66_black_medium"
             android:layout_marginLeft="10dp"
-            android:text="营业时间: " />
+            android:text="" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -70,10 +74,16 @@
             android:gravity="right|center_vertical"
             android:orientation="horizontal" >
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_right" />
+            <TextView
+                android:id="@+id/favorable"
+                style="@style/text_white_small"
+                android:background="@drawable/fillet_90_green_bg"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:text="@string/shop_detail_favorable"
+                 />
         </LinearLayout>
     </LinearLayout>
 
