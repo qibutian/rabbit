@@ -184,10 +184,10 @@ public class HotelListActivity extends RabbitBaseActivity {
 				calendar.add(Calendar.DAY_OF_MONTH, +1);
 				Log.d("------calendar.getTimeInMillis()-----",calendar.getTimeInMillis()+"");
 				
-				SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd ");
+				SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd");
 				try {
 					Date date =  formatter.parse(startDateT.getText().toString());
-					timeDialog.show(self, "-", date.getTime());
+					timeDialog.show(self, "-",date.getTime());
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

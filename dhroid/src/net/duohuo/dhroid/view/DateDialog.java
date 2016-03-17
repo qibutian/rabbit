@@ -33,7 +33,7 @@ public class DateDialog {
 		builder.setView(view);
 		Calendar cal = Calendar.getInstance();
 		if (minTimer>0) {
-			datePicker.setMinDate(minTimer+86400000 - 10000);
+			datePicker.setMinDate(minTimer+86400000);
 		}else {
 			datePicker.setMinDate(new Date().getTime() - 10000);
 		}
