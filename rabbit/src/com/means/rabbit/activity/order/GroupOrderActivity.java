@@ -168,7 +168,7 @@ public class GroupOrderActivity extends RabbitBaseActivity {
 						creditY = credit / (float) credit_s;
 
 					} else {
-						jifenE.setText(0);
+						jifenE.setText(0+"");
 					}
 					
 					jifenE.setEnabled(credit_s==0?false:true);

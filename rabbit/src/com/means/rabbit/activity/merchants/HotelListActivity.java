@@ -157,11 +157,12 @@ public class HotelListActivity extends RabbitBaseActivity {
 					@Override
 					public void result(String date, long datetime) {
 						startDateT.setText(date);
+						startDateT.setTag(datetime);
 						adapter.addparam("startdate", date);
 						adapter.refreshDialog();
 					}
 				});
-				timeDialog.show(self, "-",-1);
+				timeDialog.show(self, "-", -1);
 			}
 		});
 
@@ -179,21 +180,14 @@ public class HotelListActivity extends RabbitBaseActivity {
 						adapter.refreshDialog();
 					}
 				});
-				Calendar calendar = Calendar.getInstance();
-				calendar.setTimeInMillis(DateUtils.getStringToDate2(startDateT.getText().toString()));
-				calendar.add(Calendar.DAY_OF_MONTH, +1);
-				Log.d("------calendar.getTimeInMillis()-----",calendar.getTimeInMillis()+"");
-				
-				SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd ");
-				try {
-					Date date =  formatter.parse(startDateT.getText().toString());
-					timeDialog.show(self, "-", date.getTime());
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-				
+				// Calendar calendar = Calendar.getInstance();
+				// calendar.setTimeInMillis(DateUtils.getStringToDate2(startDateT.getText().toString()));
+				// calendar.add(Calendar.DAY_OF_MONTH, +1);
+				// Log.d("------calendar.getTimeInMillis()-----",calendar.getTimeInMillis()+"");
+
+				timeDialog.show(self, "-",
+						Long.parseLong(startDateT.getTag().toString()));
+
 			}
 		});
 	}
