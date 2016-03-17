@@ -5,35 +5,36 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import org.json.JSONObject;
-
 import net.duohuo.dhroid.adapter.FieldMap;
 import net.duohuo.dhroid.adapter.NetJSONAdapter;
 import net.duohuo.dhroid.ioc.IocContainer;
 import net.duohuo.dhroid.net.JSONUtil;
 import net.duohuo.dhroid.view.DateDialog;
 import net.duohuo.dhroid.view.DateDialog.OnDateResultListener;
+
+import org.json.JSONObject;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.means.rabbit.R;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
+import com.means.rabbit.utils.DateUtils;
 import com.means.rabbit.utils.RabbitPerference;
 import com.means.rabbit.views.RefreshListViewAndMore;
 import com.means.rabbit.views.TabView;
 import com.means.rabbit.views.TabView.OnTabSelectListener;
-import com.means.rabbit.views.dialog.DateTimerDialog;
-import com.means.rabbit.views.dialog.DateTimerDialog.OnDateTimerResultListener;
 
 public class HotelListActivity extends RabbitBaseActivity {
 
@@ -160,7 +161,7 @@ public class HotelListActivity extends RabbitBaseActivity {
 						adapter.refreshDialog();
 					}
 				});
-				timeDialog.show(self, "-");
+				timeDialog.show(self, "-",-1);
 			}
 		});
 
@@ -178,8 +179,21 @@ public class HotelListActivity extends RabbitBaseActivity {
 						adapter.refreshDialog();
 					}
 				});
-
-				timeDialog.show(self, "-");
+				Calendar calendar = Calendar.getInstance();
+				calendar.setTimeInMillis(DateUtils.getStringToDate2(startDateT.getText().toString()));
+				calendar.add(Calendar.DAY_OF_MONTH, +1);
+				Log.d("------calendar.getTimeInMillis()-----",calendar.getTimeInMillis()+"");
+				
+				SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd ");
+				try {
+					Date date =  formatter.parse(startDateT.getText().toString());
+					timeDialog.show(self, "-", date.getTime());
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
 			}
 		});
 	}

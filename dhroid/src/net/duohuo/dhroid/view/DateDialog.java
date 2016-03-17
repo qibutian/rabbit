@@ -25,14 +25,19 @@ public class DateDialog {
 
 	OnDateResultListener onDateResultListener;
 
-	public void show(final Context context, final String dateformat) {
+	public void show(final Context context, final String dateformat, long minTimer) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
 		View view = View.inflate(context, R.layout.time_dialog, null);
 		datePicker = (DatePicker) view.findViewById(R.id.date_picker);
 		bendi = System.currentTimeMillis();
 		builder.setView(view);
 		Calendar cal = Calendar.getInstance();
-		datePicker.setMinDate(new Date().getTime() - 10000);
+		if (minTimer>0) {
+			datePicker.setMinDate(minTimer+86400000 - 10000);
+		}else {
+			datePicker.setMinDate(new Date().getTime() - 10000);
+		}
+		
 		cal.setTimeInMillis(bendi);
 		datePicker.init(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH),
 				cal.get(Calendar.DAY_OF_MONTH), null);
@@ -71,6 +76,14 @@ public class DateDialog {
 				});
 		Dialog dialog = builder.create();
 		dialog.show();
+	}
+	
+	public void setMinDate(long minDate){
+		datePicker.setMinDate(minDate-10000);
+	}
+	
+	public void reset(){
+		datePicker.setMinDate(new Date().getTime() - 10000);
 	}
 
 	public OnDateResultListener getOnDateResultListener() {

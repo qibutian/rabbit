@@ -25,6 +25,22 @@ public class DateUtils {
         }
         return date.getTime();
     }
+    
+    /**
+	  * 
+	  * 将字符串转为时间戳
+	  * 
+	  */
+   public static long getStringToDate2(String time) {
+       SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+       Date date = new Date();
+       try {
+           date = sdf.parse(time);
+       } catch (ParseException e) {
+           e.printStackTrace();
+       }
+       return date.getTime();
+   }
 
 	/**
 	  * 获取现在时间
