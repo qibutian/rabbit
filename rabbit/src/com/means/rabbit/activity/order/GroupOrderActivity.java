@@ -144,10 +144,15 @@ public class GroupOrderActivity extends RabbitBaseActivity {
 							totalPriceT.setText("￥" + cartView.getCartNum()
 									* price);
 							
-							shifuT.setText(cartView.getCartNum()
-									* price
-									- Integer.parseInt(jifenE.getText()
-											.toString()) / creditY + "");
+							if (Integer.parseInt(jifenE.getText().toString()) == 0) {
+								shifuT.setText(cartView.getCartNum() * price
+										+ "");
+							} else {
+								shifuT.setText(cartView.getCartNum()
+										* price
+										- Integer.parseInt(jifenE.getText()
+												.toString()) / creditY + "");
+							}
 						}
 					});
 					totalPriceT.setText("￥" + price);
@@ -161,8 +166,9 @@ public class GroupOrderActivity extends RabbitBaseActivity {
 					int credit_s = JSONUtil.getInt(user_dataJo, "credit_s");
 					if (credit_s != 0) {
 						creditY = credit / (float) credit_s;
-						jifenE.setText(0);
 
+					} else {
+						jifenE.setText(0);
 					}
 					
 					jifenE.setEnabled(credit_s==0?false:true);

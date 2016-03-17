@@ -162,12 +162,12 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 					int credit_s = JSONUtil.getInt(user_dataJo, "credit_s");
 					if (credit_s != 0) {
 						creditY = credit / (float) credit_s;
-						jifenE.setText(0);
 
+					} else {
+						jifenE.setText(0);
 					}
 					
 					jifenE.setEnabled(credit_s==0?false:true);
-					ViewUtil.bindView(findViewById(R.id.jifen), credit + "");
 
 					ViewUtil.bindView(findViewById(R.id.tel),
 							JSONUtil.getString(user_dataJo, "phone"));
@@ -190,10 +190,15 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 
 							totalPriceT.setText("￥" + cartView.getCartNum()
 									* price);
-							shifuT.setText(cartView.getCartNum()
-									* price
-									- Integer.parseInt(jifenE.getText()
-											.toString()) / creditY + "");
+							if (Integer.parseInt(jifenE.getText().toString()) == 0) {
+								shifuT.setText(cartView.getCartNum() * price
+										+ "");
+							} else {
+								shifuT.setText(cartView.getCartNum()
+										* price
+										- Integer.parseInt(jifenE.getText()
+												.toString()) / creditY + "");
+							}
 						}
 					});
 					cartView.setMaxNum(JSONUtil.getInt(jo, "mincount"));
