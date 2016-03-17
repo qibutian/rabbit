@@ -16,8 +16,10 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources.NotFoundException;
 import android.graphics.drawable.BitmapDrawable;
 import android.hardware.Camera.Area;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -103,21 +105,48 @@ public class CatPop {
 				leftAapter.setCurrentPosition(position);
 				JSONObject jo = leftAapter.getItem(position);
 				parentId = JSONUtil.getInt(jo, "id");
+
+				JSONArray childJsa;
+
 				try {
-					JSONArray jsa = jo.getJSONArray("_child");
-					rightAdapter.setData(jsa);
+					childJsa = jo.getJSONArray("_child");
+					childJsa.put(
+							0,
+							new JSONObject()
+									.put("name",
+											context.getResources().getString(
+													R.string.all))
+									.put("title",
+											JSONUtil.getString(jo, "name"))
+									.put("id", JSONUtil.getString(jo, "id")));
+					rightAdapter.setData(childJsa);
 				} catch (JSONException e) {
-					goNext(JSONUtil.getString(jo, "id"),
-							JSONUtil.getString(jo, "name"));
-					if (onReslutClickListener != null) {
-						onReslutClickListener.result(
-								JSONUtil.getString(jo, "name"),
-								JSONUtil.getString(jo, "id"));
+
+					childJsa = new JSONArray();
+					try {
+						childJsa.put(0, new JSONObject().put("name", context
+								.getResources().getString(R.string.all)));
+					} catch (NotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (JSONException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
 					}
-					rightAdapter.setData(null);
-					pop.dismiss();
+					rightAdapter.setData(childJsa);
+
+					// goNext(JSONUtil.getString(jo, "id"),
+					// JSONUtil.getString(jo, "name"));
+					// if (onReslutClickListener != null) {
+					// onReslutClickListener.result(
+					// JSONUtil.getString(jo, "name"),
+					// JSONUtil.getString(jo, "id"));
+					// }
+					// rightAdapter.setData(null);
+					// pop.dismiss();
 					e.printStackTrace();
 				}
+
 			}
 		});
 
@@ -127,13 +156,26 @@ public class CatPop {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				JSONObject jo = rightAdapter.getItem(position);
-				if (onReslutClickListener != null) {
-					onReslutClickListener.result(
-							JSONUtil.getString(jo, "name"),
-							JSONUtil.getString(jo, "id"));
+				if (TextUtils.isEmpty(JSONUtil.getString(jo, "title"))) {
+					if (onReslutClickListener != null) {
+						onReslutClickListener.result(
+								JSONUtil.getString(jo, "name"),
+								JSONUtil.getString(jo, "id"));
+					}
+
+					goNext(JSONUtil.getString(jo, "id"),
+							JSONUtil.getString(jo, "name"));
+				} else {
+					if (onReslutClickListener != null) {
+						onReslutClickListener.result(
+								JSONUtil.getString(jo, "title"),
+								JSONUtil.getString(jo, "id"));
+					}
+
+					goNext(JSONUtil.getString(jo, "id"),
+							JSONUtil.getString(jo, "title"));
 				}
-				goNext(JSONUtil.getString(jo, "id"),
-						JSONUtil.getString(jo, "name"));
+
 				pop.dismiss();
 			}
 		});
