@@ -3,20 +3,28 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/app_bg_color"
-    android:gravity="center_vertical"
-    android:orientation="horizontal"
-    android:padding="8dp" >
+    android:orientation="vertical" >
 
-    <ImageView
-        android:id="@+id/pic"
-        android:layout_width="18dp"
-        android:layout_height="18dp"
-        android:src="@drawable/icon_meishi" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="8dp" >
 
-    <TextView
-        android:id="@+id/name"
-        style="@style/text_44_black_medium"
-        android:layout_marginLeft="5dp"
-        android:text="@string/all_item_hot" />
+        <ImageView
+            android:id="@+id/pic"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/icon_meishi" />
+
+        <TextView
+            android:id="@+id/name"
+            style="@style/text_44_black_medium"
+            android:layout_marginLeft="5dp"
+            android:text="@string/all_item_hot" />
+    </LinearLayout>
+
+    <View style="@style/line_horizontal" />
 
 </LinearLayout>
