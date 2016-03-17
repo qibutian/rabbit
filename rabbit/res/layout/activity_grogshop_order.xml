@@ -313,10 +313,13 @@
                     android:gravity="right|center_vertical"
                     android:orientation="horizontal" >
 
-                    <TextView
+                    <EditText
                         android:id="@+id/jifen"
                         style="@style/text_99_grey_medium"
-                        android:text="200" />
+                        android:background="@color/nothing"
+                        android:minWidth="30dp"
+                        android:inputType="number"
+                        android:text="请输入积分" />
 
                     <TextView
                         style="@style/text_44_black_medium"
@@ -328,7 +331,7 @@
                         android:id="@+id/dikou"
                         style="@style/text_44_black_medium"
                         android:layout_marginLeft="5dp"
-                        android:text="￥2"
+                        android:text="￥0"
                         android:textColor="@color/text_2B_green" />
                 </LinearLayout>
             </LinearLayout>

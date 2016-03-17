@@ -19,10 +19,13 @@ import com.means.rabbit.views.CartView.OnCartViewClickListener;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.EditText;
 import android.widget.TextView;
 
 /**
@@ -43,11 +46,16 @@ public class GroupOrderActivity extends RabbitBaseActivity {
 
 	int credit;
 
-	TextView telT;
+	EditText telT;
 
 	TextView shifuT;
 
-	int credit_s;
+	EditText jifenE;
+
+	TextView daikouT;
+
+	// 积分比例
+	float creditY;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +70,45 @@ public class GroupOrderActivity extends RabbitBaseActivity {
 		tuangouId = getIntent().getStringExtra("tuangouId");
 		cartView = (CartView) findViewById(R.id.cartView);
 		totalPriceT = (TextView) findViewById(R.id.total_price);
-		telT = (TextView) findViewById(R.id.tel);
+		
+		
+		jifenE = (EditText) findViewById(R.id.credit);
+		daikouT = (TextView) findViewById(R.id.credit_s);
+		shifuT = (TextView) findViewById(R.id.shifu);
+		jifenE.addTextChangedListener(new TextWatcher() {
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
+
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+				if (creditY != 0) {
+					
+					int jifen = Integer
+							.parseInt(jifenE.getText().toString()) ;
+					if(jifen>credit) {
+						showToast("你输入的积分超过了您的积分,请输入小于"+credit+"的数字!");
+						jifenE.setText(0);
+					} else {
+						float daikou = jifen / creditY;
+						daikouT.setText("￥" + daikou);
+						shifuT.setText(price - daikou + "");
+					}
+				}
+			}
+		});
+		
+		
+		telT = (EditText) findViewById(R.id.tel);
 
 		findViewById(R.id.submit).setOnClickListener(new OnClickListener() {
 
@@ -72,7 +118,6 @@ public class GroupOrderActivity extends RabbitBaseActivity {
 
 			}
 		});
-		shifuT = (TextView) findViewById(R.id.shifu);
 		getData();
 	}
 
@@ -98,8 +143,16 @@ public class GroupOrderActivity extends RabbitBaseActivity {
 
 							totalPriceT.setText("￥" + cartView.getCartNum()
 									* price);
-							shifuT.setText(cartView.getCartNum() * price
-									- credit_s + "");
+							
+							if (Integer.parseInt(jifenE.getText().toString()) == 0) {
+								shifuT.setText(cartView.getCartNum() * price
+										+ "");
+							} else {
+								shifuT.setText(cartView.getCartNum()
+										* price
+										- Integer.parseInt(jifenE.getText()
+												.toString()) / creditY + "");
+							}
 						}
 					});
 					totalPriceT.setText("￥" + price);
@@ -107,14 +160,22 @@ public class GroupOrderActivity extends RabbitBaseActivity {
 							"user_data");
 
 					credit = JSONUtil.getInt(user_dataJo, "credit");
-					ViewUtil.bindView(findViewById(R.id.credit), credit + "");
-					credit_s = JSONUtil.getInt(user_dataJo, "credit_s");
-					ViewUtil.bindView(findViewById(R.id.credit_s),
-							"￥" + JSONUtil.getString(user_dataJo, "credit_s"));
+					
+					
+					
+					int credit_s = JSONUtil.getInt(user_dataJo, "credit_s");
+					if (credit_s != 0) {
+						creditY = credit / (float) credit_s;
+
+					} else {
+						jifenE.setText(0);
+					}
+					
+					jifenE.setEnabled(credit_s==0?false:true);
 
 					ViewUtil.bindView(telT,
 							JSONUtil.getString(user_dataJo, "phone"));
-					shifuT.setText(price - credit_s + "");
+					shifuT.setText(price  + "");
 
 				}
 
@@ -128,7 +189,7 @@ public class GroupOrderActivity extends RabbitBaseActivity {
 		net.addParam("itemid", tuangouId);
 		net.addParam("buyerphone", telT.getText().toString());
 		net.addParam("ordercount", cartView.getCartNum());
-		net.addParam("credit", credit);
+		net.addParam("credit", jifenE.getText().toString());
 		net.doPostInDialog("提交中...", new NetTask(self) {
 
 			@Override

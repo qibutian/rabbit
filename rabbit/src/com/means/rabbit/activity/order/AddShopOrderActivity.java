@@ -22,6 +22,8 @@ import com.means.rabbit.views.CartView.OnCartViewClickListener;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -54,7 +56,12 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 
 	TextView shifuT;
 
-	int credit_s;
+	EditText jifenE;
+
+	TextView daikouT;
+
+	// 积分比例
+	float creditY;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +79,40 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 		telE = (EditText) findViewById(R.id.tel);
 		usernameE = (EditText) findViewById(R.id.username);
 		totalPriceT = (TextView) findViewById(R.id.total_price);
+		jifenE = (EditText) findViewById(R.id.jifen);
+		daikouT = (TextView) findViewById(R.id.dikou);
+		shifuT = (TextView) findViewById(R.id.shifu);
+		jifenE.addTextChangedListener(new TextWatcher() {
 
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
+
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+				if (creditY != 0) {
+					
+					int jifen = Integer
+							.parseInt(jifenE.getText().toString()) ;
+					if(jifen>credit) {
+						showToast("你输入的积分超过了您的积分,请输入小于"+credit+"的数字!");
+						jifenE.setText(0);
+					} else {
+						float daikou = jifen / creditY;
+						daikouT.setText("￥" + daikou);
+						shifuT.setText(price - daikou + "");
+					}
+				}
+			}
+		});
 		startDate = it.getStringExtra("startDate");
 		endDate = it.getStringExtra("endDate");
 
@@ -95,7 +135,6 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 
 			}
 		});
-		shifuT = (TextView) findViewById(R.id.shifu);
 		getData();
 	}
 
@@ -120,10 +159,15 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 							"user_data");
 
 					credit = JSONUtil.getInt(user_dataJo, "credit");
-					credit_s = JSONUtil.getInt(user_dataJo, "credit_s");
-					ViewUtil.bindView(findViewById(R.id.jifen), credit + "");
+					int credit_s = JSONUtil.getInt(user_dataJo, "credit_s");
+					if (credit_s != 0) {
+						creditY = credit / (float) credit_s;
 
-					ViewUtil.bindView(findViewById(R.id.dikou), "￥" + credit_s);
+					} else {
+						jifenE.setText(0);
+					}
+					
+					jifenE.setEnabled(credit_s==0?false:true);
 
 					ViewUtil.bindView(findViewById(R.id.tel),
 							JSONUtil.getString(user_dataJo, "phone"));
@@ -146,13 +190,19 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 
 							totalPriceT.setText("￥" + cartView.getCartNum()
 									* price);
-							shifuT.setText(cartView.getCartNum() * price
-									- credit_s + "");
+							if (Integer.parseInt(jifenE.getText().toString()) == 0) {
+								shifuT.setText(cartView.getCartNum() * price
+										+ "");
+							} else {
+								shifuT.setText(cartView.getCartNum()
+										* price
+										- Integer.parseInt(jifenE.getText()
+												.toString()) / creditY + "");
+							}
 						}
 					});
 					cartView.setMaxNum(JSONUtil.getInt(jo, "mincount"));
-					shifuT.setText(price - credit_s + "");
-
+					shifuT.setText(price+"");
 				}
 
 			}
@@ -171,7 +221,7 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 		net.addParam("buyername", usernameE.getText().toString());
 		net.addParam("buyerphone", telE.getText().toString());
 		net.addParam("ordercount", cartView.getCartNum());
-		net.addParam("credit", credit);
+		net.addParam("credit", jifenE.getText().toString());
 		net.doPostInDialog("提交中...", new NetTask(self) {
 
 			@Override
@@ -180,7 +230,7 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 					showToast("提交成功!");
 					JSONObject jo = response.jSON();
 					Intent it = new Intent(self, HotelOrderDetailActivity.class);
-					it.putExtra("orderid", JSONUtil.getInt(jo, "id"));
+					it.putExtra("orderid", JSONUtil.getString(jo, "id"));
 					startActivity(it);
 				}
 
@@ -188,4 +238,5 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 		});
 
 	}
+
 }
