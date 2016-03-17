@@ -2,14 +2,22 @@ package com.means.rabbit.activity.my.order;
 
 import java.util.Date;
 
+import org.json.JSONObject;
+
 import net.duohuo.dhroid.adapter.FieldMap;
 import net.duohuo.dhroid.adapter.NetJSONAdapter;
+import net.duohuo.dhroid.net.JSONUtil;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.means.rabbit.R;
+import com.means.rabbit.activity.order.GroupOrderActivity;
+import com.means.rabbit.activity.order.pay.GroupPayActivity;
+import com.means.rabbit.activity.order.pay.HotelOrderDetailActivity;
+import com.means.rabbit.activity.order.pay.InsteadShoppingPayActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.utils.DateUtils;
@@ -59,20 +67,37 @@ public class MyOrderActivity extends RabbitBaseActivity {
 			@Override
 			public Object fix(View itemV, Integer position, Object o, Object jo) {
 				// TODO Auto-generated method stub
-				return DateUtils.dateToStrLong(new Date(Long.parseLong(o.toString())*1000));
+				return DateUtils.dateToStrLong(new Date(Long.parseLong(o
+						.toString()) * 1000));
 			}
 		});
 		adapter.addField("title", R.id.title);
 		listV.setAdapter(adapter);
-		
-		contentListV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
+		contentListV
+				.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+					@Override
+					public void onItemClick(AdapterView<?> parent, View view,
+							int position, long id) {
+						JSONObject jo = adapter.getTItem(position);
+						Intent it;
+						int type = JSONUtil.getInt(jo, "type");
+						if (type == 1) {
+							it = new Intent(self, GroupPayActivity.class);
+
+						} else if (type == 2) {
+							it = new Intent(self,
+									HotelOrderDetailActivity.class);
+						} else {
+							it = new Intent(self,
+									InsteadShoppingPayActivity.class);
+						}
+						it.putExtra("orderid", JSONUtil.getString(jo, "id"));
+						startActivity(it);
+						// TODO Auto-generated method stub
+
+					}
+				});
 	}
 }

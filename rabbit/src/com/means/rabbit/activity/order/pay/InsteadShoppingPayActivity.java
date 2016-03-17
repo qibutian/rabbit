@@ -32,7 +32,7 @@ import android.widget.TextView;
  * 
  */
 public class InsteadShoppingPayActivity extends RabbitBaseActivity {
-	int daigouId;
+	String daigouId;
 
 	Button payB;
 
@@ -50,7 +50,7 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 	public void initView() {
 		// TODO Auto-generated method stub
 		setTitle(getString(R.string.insteadshopping));
-		daigouId = getIntent().getIntExtra("orderid", 0);
+		daigouId = getIntent().getStringExtra("orderid");
 		payB = (Button) findViewById(R.id.pay);
 		getData();
 	}
@@ -84,10 +84,10 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 					ViewUtil.bindView(findViewById(R.id.adddateline), orderTime);
 					ViewUtil.bindView(findViewById(R.id.buyerphone),
 							JSONUtil.getString(jo, "buyerphone"));
-					
+
 					ViewUtil.bindView(findViewById(R.id.buyername),
 							JSONUtil.getString(jo, "buyername"));
-					
+
 					ViewUtil.bindView(findViewById(R.id.buyernote),
 							JSONUtil.getString(jo, "buyernote"));
 
@@ -142,9 +142,7 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 					// "totalprice")-JSONUtil.getDouble(user_data, "credit_s"))
 					// + "");
 				}
-				
-				
-				
+
 			}
 		});
 	}

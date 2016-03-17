@@ -32,7 +32,7 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 			buyernoteT, buyerphoneT, buyernameT, creditT, credit_sT,
 			reality_moneyT;
 
-	int itemid;
+	String itemid;
 
 	Button grogshop_btn;
 
@@ -46,7 +46,7 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 	public void initView() {
 		setTitle(getString(R.string.grogshop_pay_order));
 
-		itemid = getIntent().getIntExtra("orderid", -1);
+		itemid = getIntent().getStringExtra("orderid");
 
 		titleT = (TextView) findViewById(R.id.title_name);
 		nameT = (TextView) findViewById(R.id.name);
@@ -94,9 +94,9 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 
 					dateT.setText("入住" + startdate + " 离开" + enddate);
 
-					signlpirceT.setText(JSONUtil.getString(jo, "signlpirce"));
+					signlpirceT.setText("￥"+JSONUtil.getString(jo, "singleprice"));
 					countT.setText(JSONUtil.getString(jo, "daycount"));
-					totalpriceT.setText(JSONUtil.getString(jo, "payprice"));
+					totalpriceT.setText("￥"+JSONUtil.getString(jo, "payprice"));
 					idT.setText(JSONUtil.getString(jo, "code"));
 					buyerphoneT.setText(JSONUtil.getString(jo, "buyerphone"));
 					buyernameT.setText(JSONUtil.getString(jo, "buyername"));
@@ -108,6 +108,9 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 							"credit_s"));
 					ViewUtil.bindView(findViewById(R.id.ercode),
 							JSONUtil.getString(jo, "ercode"));
+					
+					ViewUtil.bindView(findViewById(R.id.count),
+							JSONUtil.getString(jo, "count"));
 					grogshop_btn.setText(JSONUtil.getString(jo, "paystatus")
 							.equals("1") ? "支付订单" : "已支付");
 					grogshop_btn.setBackgroundResource(JSONUtil.getString(jo, "paystatus")
