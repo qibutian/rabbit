@@ -25,19 +25,22 @@ public class DateDialog {
 
 	OnDateResultListener onDateResultListener;
 
-	public void show(final Context context, final String dateformat, long minTimer) {
+	public void show(final Context context, final String dateformat,
+			long minTimer) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
 		View view = View.inflate(context, R.layout.time_dialog, null);
 		datePicker = (DatePicker) view.findViewById(R.id.date_picker);
 		bendi = System.currentTimeMillis();
 		builder.setView(view);
 		Calendar cal = Calendar.getInstance();
-		if (minTimer>0) {
-			datePicker.setMinDate(minTimer+86400000);
-		}else {
+		System.out.println("minTimer" + minTimer + "");
+		System.out.println("new Date().getTime():" + new Date().getTime() + "");
+		if (minTimer > 0) {
+			datePicker.setMinDate(minTimer + 86400000);
+		} else {
 			datePicker.setMinDate(new Date().getTime() - 10000);
 		}
-		
+
 		cal.setTimeInMillis(bendi);
 		datePicker.init(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH),
 				cal.get(Calendar.DAY_OF_MONTH), null);
@@ -67,6 +70,12 @@ public class DateDialog {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
+						
+						Date dt = new Date();
+						int chour = dt.getHours();
+						int cmin = dt.getMinutes();
+						int cmiao = dt.getSeconds();
+						
 						long time = date.getTime();
 
 						if (onDateResultListener != null) {
@@ -77,12 +86,12 @@ public class DateDialog {
 		Dialog dialog = builder.create();
 		dialog.show();
 	}
-	
-	public void setMinDate(long minDate){
-		datePicker.setMinDate(minDate-10000);
+
+	public void setMinDate(long minDate) {
+		datePicker.setMinDate(minDate - 10000);
 	}
-	
-	public void reset(){
+
+	public void reset() {
 		datePicker.setMinDate(new Date().getTime() - 10000);
 	}
 
