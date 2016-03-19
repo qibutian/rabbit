@@ -28,6 +28,7 @@
             <TextView
                 android:id="@+id/title"
                 style="@style/text_44_black_big"
+                android:singleLine="true"
                 android:text="李姐重庆小面(万达店)" />
 
             <LinearLayout

@@ -37,7 +37,7 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 	Button payB;
 
 	int credit_s;
-
+	public int pay = 1003;
 	TextView shifuT;
 
 	@Override
@@ -63,7 +63,7 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 			@Override
 			public void doInUI(Response response, Integer transfer) {
 				if (response.isSuccess()) {
-					JSONObject jo = response.jSONFromData();
+					final JSONObject jo = response.jSONFromData();
 
 					ViewUtil.bindView(findViewById(R.id.name),
 							JSONUtil.getString(jo, "title"));
@@ -107,19 +107,25 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 							JSONUtil.getInt(jo, "payprice") - credit_s + "");
 
 					final int paystatus = JSONUtil.getInt(jo, "paystatus");
-
+					payB.setTag(paystatus);
 					payB.setBackgroundResource(paystatus == 1 ? R.drawable.fillet_10_pink_bg
 							: R.drawable.fillet_10_green_bg);
 					payB.setText(paystatus == 1 ? "支付订单" : "已支付");
-
+					payB.setVisibility(View.VISIBLE);
 					payB.setOnClickListener(new OnClickListener() {
 
 						@Override
 						public void onClick(View v) {
 							Intent it;
-							if (paystatus == 1) {
+							if (payB.getTag().equals(1)) {
 								it = new Intent(self, PayOrderActivity.class);
-								startActivity(it);
+								it.putExtra("payprice",
+										JSONUtil.getString(jo, "payprice"));
+								it.putExtra("orderid",
+										JSONUtil.getString(jo, "id"));
+								it.putExtra("name",
+										JSONUtil.getString(jo, "title"));
+								startActivityForResult(it, pay);
 							}
 
 						}
@@ -138,6 +144,9 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 									+ JSONUtil.getString(user_addressJo,
 											"lxaddress"));
 
+					ViewUtil.bindView(findViewById(R.id.shifu),
+							JSONUtil.getString(jo, "payprice"));
+
 					// reality_moneyT.setText((JSONUtil.getDouble(jo,
 					// "totalprice")-JSONUtil.getDouble(user_data, "credit_s"))
 					// + "");
@@ -145,5 +154,17 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 
 			}
 		});
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+
+		if (requestCode == pay && resultCode == Activity.RESULT_OK) {
+			payB.setText("已支付");
+			payB.setBackgroundResource(R.drawable.fillet_10_green_bg);
+			payB.setTag(2);
+		}
 	}
 }

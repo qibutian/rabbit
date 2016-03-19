@@ -1,5 +1,6 @@
 package com.means.rabbit.activity.my;
 
+import net.duohuo.dhroid.view.BadgeView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -28,6 +29,8 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 			current_accountLl;
 
 	Button logoutBtn;
+
+	BadgeView msg_countT, order_countT;
 
 	public static MyIndexFragment getInstance() {
 		if (instance == null) {
@@ -72,6 +75,11 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 		commentV.setOnClickListener(this);
 		current_accountLl.setOnClickListener(this);
 		logoutBtn.setOnClickListener(this);
+
+		msg_countT = (BadgeView) mainV.findViewById(R.id.msg_count);
+		msg_countT.hide();
+		order_countT = (BadgeView) mainV.findViewById(R.id.order_count);
+		order_countT.hide();
 	}
 
 	@Override
@@ -91,9 +99,10 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 		// 商家订单
 		case R.id.business_order:
 			// it = new Intent(getActivity(), BusinessOrderActivity.class);
-//			it = new Intent(getActivity(), BusinessOrderDetailsActivity.class);
-//			startActivity(it);
-			CatPop pop = new CatPop(getActivity(),1);
+			// it = new Intent(getActivity(),
+			// BusinessOrderDetailsActivity.class);
+			// startActivity(it);
+			CatPop pop = new CatPop(getActivity(), 1);
 			pop.show(v);
 			break;
 		// 我的订单

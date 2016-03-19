@@ -232,6 +232,7 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 					Intent it = new Intent(self, HotelOrderDetailActivity.class);
 					it.putExtra("orderid", JSONUtil.getString(jo, "id"));
 					startActivity(it);
+					finishWithoutAnim();
 				}
 
 			}

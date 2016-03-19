@@ -11,6 +11,7 @@ import net.duohuo.dhroid.util.ViewUtil;
 import net.duohuo.dhroid.view.NormalGallery;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ import android.widget.TextView;
 import com.means.rabbit.R;
 import com.means.rabbit.activity.merchants.FoodListActivity;
 import com.means.rabbit.activity.merchants.HotelListActivity;
+import com.means.rabbit.activity.merchants.ShopDetailActivity;
 import com.means.rabbit.activity.travel.TravelActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.bean.CityEB;
@@ -135,13 +137,13 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 			}
 		});
 		
-		adapter.addField(new FieldMap("lng", R.id.distance) {
-
-			@Override
-			public Object fix(View itemV, Integer position, Object o, Object jo) {
-				return "距离" + o.toString();
-			}
-		});
+//		adapter.addField(new FieldMap("lng", R.id.distance) {
+//
+//			@Override
+//			public Object fix(View itemV, Integer position, Object o, Object jo) {
+//				return "距离" + o.toString();
+//			}
+//		});
 
 		listV.setAdapter(adapter);
 
@@ -150,6 +152,12 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1,
 					int position, long arg3) {
+				
+				JSONObject jo = adapter.getTItem(position
+						- contentListV.getHeaderViewsCount());
+				Intent it = new Intent(getActivity(), ShopDetailActivity.class);
+				it.putExtra("shopId", JSONUtil.getString(jo, "id"));
+				startActivity(it);
 
 			}
 		});

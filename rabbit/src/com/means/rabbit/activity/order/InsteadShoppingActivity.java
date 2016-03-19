@@ -242,6 +242,7 @@ public class InsteadShoppingActivity extends RabbitBaseActivity {
 							InsteadShoppingPayActivity.class);
 					it.putExtra("orderid", JSONUtil.getString(jo, "id"));
 					startActivity(it);
+					finishWithoutAnim();
 				}
 
 			}

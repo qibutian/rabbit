@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.RatingBar;
 
 import com.means.rabbit.R;
+import com.means.rabbit.activity.order.pay.FavorablePayMainActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.views.CommentView;
@@ -33,8 +35,9 @@ import com.means.rabbit.views.ShopDetailTuangouView;
 /**
  * 
  * 商家详情
+ * 
  * @author Administrator
- *
+ * 
  */
 public class ShopDetailActivity extends RabbitBaseActivity {
 
@@ -121,25 +124,37 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 		gallery = (NomalGallery) headV.findViewById(R.id.gallery);
 		ratingBar = (RatingBar) headV.findViewById(R.id.ratingbar);
 		pic_countT = (TextView) headV.findViewById(R.id.pic_count);
-		
+
 		gallery.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int position, long id) {
 				// TODO Auto-generated method stub
-				pic_countT.setText(position+1 + "/" + gallery.getCount());
+				pic_countT.setText(position + 1 + "/" + gallery.getCount());
 			}
 
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
 		getShopDetalData();
 		getTuangouList();
 		getCommentList();
+
+		findViewById(R.id.favorable).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+
+				Intent it = new Intent(self, FavorablePayMainActivity.class);
+				startActivity(it);
+
+			}
+		});
+
 	}
 
 	private void getShopDetalData() {
@@ -153,11 +168,11 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 					JSONObject detailJo = response.jSONFromData();
 					JSONArray image_data = JSONUtil.getJSONArray(detailJo,
 							"image_data");
-//					if (image_data != null && image_data.length() != 0) {
-//						pic_countT.setText(image_data.length() + "");
-//					} else {
-//						pic_countT.setText(0 + "");
-//					}
+					// if (image_data != null && image_data.length() != 0) {
+					// pic_countT.setText(image_data.length() + "");
+					// } else {
+					// pic_countT.setText(0 + "");
+					// }
 					galleryAdapter = new PSAdapter(self, R.layout.item_gallery);
 					galleryAdapter.addField("img_m", R.id.pic, "default");
 					galleryAdapter.addAll(image_data);

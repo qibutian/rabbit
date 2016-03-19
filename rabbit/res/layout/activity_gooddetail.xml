@@ -39,7 +39,7 @@
                     android:paddingTop="4dp" >
 
                     <TextView
-                        android:id="@+id/title"
+                        android:id="@+id/good_title"
                         style="@style/text_white_biger"
                         android:text="Daniel Wellington丹利尔惠019DW男式潮款皮带手表 超薄时尚款" />
                 </LinearLayout>

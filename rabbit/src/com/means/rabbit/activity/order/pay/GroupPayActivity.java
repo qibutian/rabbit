@@ -39,6 +39,8 @@ public class GroupPayActivity extends RabbitBaseActivity {
 	TextView shifuT;
 
 	Button payB;
+	
+	public int pay = 1003;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +65,7 @@ public class GroupPayActivity extends RabbitBaseActivity {
 			public void doInUI(Response response, Integer transfer) {
 				if (response.isSuccess()) {
 
-					JSONObject jo = response.jSONFromData();
+					final JSONObject jo = response.jSONFromData();
 					ViewUtil.bindView(findViewById(R.id.name),
 							JSONUtil.getString(jo, "title"));
 
@@ -104,15 +106,22 @@ public class GroupPayActivity extends RabbitBaseActivity {
 					payB.setBackgroundResource(paystatus == 1 ? R.drawable.fillet_10_pink_bg
 							: R.drawable.fillet_10_green_bg);
 					payB.setText(paystatus == 1 ? "支付订单" : "已支付");
-
+					payB.setVisibility(View.VISIBLE);
+					payB.setTag(paystatus);
 					payB.setOnClickListener(new OnClickListener() {
 
 						@Override
 						public void onClick(View v) {
 							Intent it;
-							if (paystatus == 1) {
+							if (payB.getTag().equals(1)) {
 								it = new Intent(self, PayOrderActivity.class);
-								startActivity(it);
+								it.putExtra("payprice",
+										JSONUtil.getString(jo, "payprice"));
+								it.putExtra("orderid",
+										JSONUtil.getString(jo, "id"));
+								it.putExtra("name",
+										JSONUtil.getString(jo, "title"));
+								startActivityForResult(it, pay);
 							}
 
 						}
@@ -122,5 +131,17 @@ public class GroupPayActivity extends RabbitBaseActivity {
 
 			}
 		});
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+
+		if (requestCode == pay && resultCode == Activity.RESULT_OK) {
+			payB.setText("已支付");
+			payB.setBackgroundResource(R.drawable.fillet_10_green_bg);
+			payB.setTag(2);
+		}
 	}
 }

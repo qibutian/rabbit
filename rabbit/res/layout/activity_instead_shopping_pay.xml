@@ -458,6 +458,7 @@
                 android:layout_marginBottom="15dp"
                 android:layout_marginLeft="23dp"
                 android:layout_marginRight="23dp"
+                android:visibility="gone"
                 android:background="@drawable/fillet_10_pink_bg"
                 android:text="@string/insteadshopping_pay_evaluate" />
         </LinearLayout>

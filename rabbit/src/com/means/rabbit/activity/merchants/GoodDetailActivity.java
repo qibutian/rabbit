@@ -117,7 +117,7 @@ public class GoodDetailActivity extends RabbitBaseActivity {
 					keyValueView.setData(field_dataJSA,
 							JSONUtil.getString(detailJo, "content"));
 
-					ViewUtil.bindView(findViewById(R.id.title),
+					ViewUtil.bindView(findViewById(R.id.good_title),
 							JSONUtil.getString(detailJo, "title"));
 
 					ViewUtil.bindView(findViewById(R.id.address),

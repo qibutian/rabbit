@@ -8,6 +8,8 @@ import net.duohuo.dhroid.util.ViewUtil;
 
 import org.json.JSONObject;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,6 +37,8 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 	String itemid;
 
 	Button grogshop_btn;
+
+	public int pay = 1003;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +87,7 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 			@Override
 			public void doInUI(Response response, Integer transfer) {
 				if (response.isSuccess()) {
-					JSONObject jo = response.jSONFromData();
+					final JSONObject jo = response.jSONFromData();
 					titleT.setText(JSONUtil.getString(jo, "title"));
 					nameT.setText(JSONUtil.getString(jo, "buyername"));
 
@@ -94,9 +98,11 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 
 					dateT.setText("入住" + startdate + " 离开" + enddate);
 
-					signlpirceT.setText("￥"+JSONUtil.getString(jo, "singleprice"));
+					signlpirceT.setText("￥"
+							+ JSONUtil.getString(jo, "singleprice"));
 					countT.setText(JSONUtil.getString(jo, "daycount"));
-					totalpriceT.setText("￥"+JSONUtil.getString(jo, "payprice"));
+					totalpriceT.setText("￥"
+							+ JSONUtil.getString(jo, "payprice"));
 					idT.setText(JSONUtil.getString(jo, "code"));
 					buyerphoneT.setText(JSONUtil.getString(jo, "buyerphone"));
 					buyernameT.setText(JSONUtil.getString(jo, "buyername"));
@@ -108,17 +114,39 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 							"credit_s"));
 					ViewUtil.bindView(findViewById(R.id.ercode),
 							JSONUtil.getString(jo, "ercode"));
-					
+
 					ViewUtil.bindView(findViewById(R.id.count),
 							JSONUtil.getString(jo, "count"));
-					grogshop_btn.setText(JSONUtil.getString(jo, "paystatus")
-							.equals("1") ? "支付订单" : "已支付");
-					grogshop_btn.setBackgroundResource(JSONUtil.getString(jo, "paystatus")
-							.equals("1") ?R.drawable.fillet_10_pink_bg:R.drawable.fillet_10_green_bg);
 
-					// reality_moneyT.setText((JSONUtil.getDouble(jo,
-					// "totalprice")-JSONUtil.getDouble(user_data, "credit_s"))
-					// + "");
+					final int paystatus = JSONUtil.getInt(jo, "paystatus");
+
+					grogshop_btn.setText(paystatus == 1 ? "支付订单" : "已支付");
+					grogshop_btn.setTag(paystatus);
+					grogshop_btn
+							.setBackgroundResource(paystatus == 1 ? R.drawable.fillet_10_pink_bg
+									: R.drawable.fillet_10_green_bg);
+					grogshop_btn.setVisibility(View.VISIBLE);
+					grogshop_btn.setOnClickListener(new OnClickListener() {
+
+						@Override
+						public void onClick(View arg0) {
+
+							Intent it;
+
+							if (grogshop_btn.getTag().equals(1)) {
+								it = new Intent(self, PayOrderActivity.class);
+								it.putExtra("payprice",
+										JSONUtil.getString(jo, "payprice"));
+								it.putExtra("orderid",
+										JSONUtil.getString(jo, "id"));
+								it.putExtra("name",
+										JSONUtil.getString(jo, "title"));
+								startActivityForResult(it, pay);
+							}
+
+						}
+					});
+					reality_moneyT.setText((JSONUtil.getString(jo, "payprice")));
 				}
 			}
 		});
@@ -140,6 +168,17 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 			}
 		});
 	}
-	
-	
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+
+		if (requestCode == pay && resultCode == Activity.RESULT_OK) {
+			grogshop_btn.setText("已支付");
+			grogshop_btn.setBackgroundResource(R.drawable.fillet_10_green_bg);
+			grogshop_btn.setTag(2);
+		}
+	}
+
 }

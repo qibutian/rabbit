@@ -75,7 +75,7 @@ public class FoodListActivity extends RabbitBaseActivity {
 						+ JSONUtil.getString(data, "score") + "/"
 						+ JSONUtil.getString(data, "views"));
 				// TODO Auto-generated method stub
-				return o;
+				return "￥"+o;
 			}
 		});
 

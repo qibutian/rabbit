@@ -148,5 +148,9 @@ public class API {
 
 	/** 代购详情 */
 	public static String daigouDetail = Baseurl + "/home/shop/dgview";
+	
+	/** 支付*/
+	public static String pay = Baseurl + "/home/shop/orderpay";
+	
 
 }

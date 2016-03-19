@@ -11,33 +11,38 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:orientation="vertical" >
-        
-         <LinearLayout
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:padding="@dimen/padding_leftandright" >
 
             <TextView
+                android:id="@+id/name"
                 style="@style/text_44_black_medium"
-                android:text="珍珠泉" />
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:maxWidth="170dp" />
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:gravity="right|center_vertical"
                 android:orientation="horizontal" >
 
                 <TextView
-                style="@style/text_44_black_medium"
-                android:textColor="@color/text_2B_green"
-                android:layout_marginRight="10dp"
-                android:text="￥288" />
+                    android:id="@+id/payprice"
+                    style="@style/text_44_black_medium"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/text_2B_green" />
             </LinearLayout>
         </LinearLayout>
-        <View style="@style/line_horizontal"
-            android:layout_height="10dp"
-             />
+
+        <View
+            style="@style/line_horizontal"
+            android:layout_height="10dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -61,7 +66,9 @@
                     android:src="@drawable/icon_right" />
             </LinearLayout>
         </LinearLayout>
+
         <View style="@style/line_horizontal" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,9 +91,11 @@
                     android:src="@drawable/icon_right" />
             </LinearLayout>
         </LinearLayout>
+
         <View style="@style/line_horizontal" />
-        
+
         <LinearLayout
+            android:id="@+id/paybymoney"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -95,14 +104,16 @@
             <TextView
                 style="@style/text_44_black_medium"
                 android:text="@string/pay_order_balance" />
+
             <TextView
+                android:id="@+id/money"
                 style="@style/text_44_black_medium"
-                android:singleLine="true"
-                android:ellipsize="end"
-                android:text="(￥288)" />
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="left" />
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="right|center_vertical"
                 android:orientation="horizontal" >
@@ -113,7 +124,6 @@
                     android:src="@drawable/icon_right" />
             </LinearLayout>
         </LinearLayout>
-        
     </LinearLayout>
 
 </LinearLayout>

@@ -34,6 +34,8 @@ public class MainActivity extends FragmentActivity {
 
 	View city_layoutV;
 
+	View search_layoutV;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -56,6 +58,16 @@ public class MainActivity extends FragmentActivity {
 				// TODO Auto-generated method stub
 				Intent it = new Intent(MainActivity.this,
 						SelectCityActivity.class);
+				startActivity(it);
+			}
+		});
+
+		search_layoutV = findViewById(R.id.search_layout);
+		search_layoutV.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				Intent it = new Intent(MainActivity.this, SearchActivity.class);
 				startActivity(it);
 			}
 		});

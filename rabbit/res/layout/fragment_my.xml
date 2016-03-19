@@ -51,6 +51,8 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <View style="@style/line_horizontal" />
+
             <LinearLayout
                 android:id="@+id/systemmsg"
                 android:layout_width="match_parent"
@@ -66,23 +68,20 @@
                 <TextView
                     style="@style/text_44_black_medium"
                     android:layout_marginLeft="10dp"
-                    android:text="@string/myfragment_systemmsg"
-                     />
+                    android:text="@string/myfragment_systemmsg" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="right|center_vertical"
                     android:orientation="horizontal" >
-                    
-                    <TextView
+
+                    <net.duohuo.dhroid.view.BadgeView
+                        android:id="@+id/msg_count"
                         style="@style/text_white_small"
-                        android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:gravity="center"
                         android:layout_marginRight="15dp"
-                        android:background="@drawable/icon_number"
-                        android:text="3" />
+                        android:textSize="@dimen/text_smaller"
+                        android:visibility="gone" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -90,7 +89,9 @@
                         android:src="@drawable/icon_right" />
                 </LinearLayout>
             </LinearLayout>
+
             <View style="@style/line_horizontal" />
+
             <LinearLayout
                 android:id="@+id/business_order"
                 android:layout_width="match_parent"
@@ -113,13 +114,16 @@
                     android:layout_height="wrap_content"
                     android:gravity="right|center_vertical"
                     android:orientation="horizontal" >
-                    
+
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/icon_right" />
                 </LinearLayout>
             </LinearLayout>
+
+            <View style="@style/line_horizontal" />
+
             <LinearLayout
                 android:id="@+id/comment"
                 android:layout_width="match_parent"
@@ -149,8 +153,9 @@
                         android:src="@drawable/icon_right" />
                 </LinearLayout>
             </LinearLayout>
-            
+
             <View style="@style/line_horizontal" />
+
             <LinearLayout
                 android:id="@+id/shipping_address"
                 android:layout_width="match_parent"
@@ -173,13 +178,16 @@
                     android:layout_height="wrap_content"
                     android:gravity="right|center_vertical"
                     android:orientation="horizontal" >
-                    
+
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/icon_right" />
                 </LinearLayout>
             </LinearLayout>
+
+            <View style="@style/line_horizontal" />
+
             <LinearLayout
                 android:id="@+id/my_order"
                 android:layout_width="match_parent"
@@ -202,15 +210,13 @@
                     android:layout_height="wrap_content"
                     android:gravity="right|center_vertical"
                     android:orientation="horizontal" >
-                    
-                    <TextView
+
+                    <net.duohuo.dhroid.view.BadgeView
+                        android:id="@+id/order_count"
                         style="@style/text_white_small"
-                        android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:gravity="center"
                         android:layout_marginRight="15dp"
-                        android:background="@drawable/icon_number"
-                        android:text="3" />
+                        android:textSize="@dimen/text_smaller"
+                        android:visibility="gone" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -218,7 +224,9 @@
                         android:src="@drawable/icon_right" />
                 </LinearLayout>
             </LinearLayout>
+
             <View style="@style/line_horizontal" />
+
             <LinearLayout
                 android:id="@+id/integral"
                 android:layout_width="match_parent"
@@ -241,13 +249,16 @@
                     android:layout_height="wrap_content"
                     android:gravity="right|center_vertical"
                     android:orientation="horizontal" >
-                    
+
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/icon_right" />
                 </LinearLayout>
             </LinearLayout>
+
+            <View style="@style/line_horizontal" />
+
             <LinearLayout
                 android:id="@+id/collect"
                 android:layout_width="match_parent"
@@ -270,14 +281,16 @@
                     android:layout_height="wrap_content"
                     android:gravity="right|center_vertical"
                     android:orientation="horizontal" >
-                    
+
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/icon_right" />
                 </LinearLayout>
             </LinearLayout>
+
             <View style="@style/line_horizontal" />
+
             <LinearLayout
                 android:id="@+id/current_account"
                 android:layout_width="match_parent"
@@ -300,36 +313,32 @@
                     android:layout_height="wrap_content"
                     android:gravity="right|center_vertical"
                     android:orientation="horizontal" >
-                    
+
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/icon_right" />
                 </LinearLayout>
             </LinearLayout>
-            
-            <LinearLayout 
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="23dp"
-                    android:paddingRight="23dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:background="@color/app_bg_color"
-                >
-                
-                <Button 
+                android:layout_height="wrap_content"
+                android:background="@color/app_bg_color"
+                android:paddingBottom="15dp"
+                android:paddingLeft="23dp"
+                android:paddingRight="23dp"
+                android:paddingTop="15dp" >
+
+                <Button
                     android:id="@+id/logout"
                     style="@style/text_44_black_medium"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:background="@drawable/fillet_10_frame_green_bg"
-                    android:textColor="@color/text_2B_green"
                     android:text="@string/myfragment_logout"
-                    />
-                
+                    android:textColor="@color/text_2B_green" />
             </LinearLayout>
-            
         </LinearLayout>
     </ScrollView>
 
