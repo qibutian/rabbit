@@ -57,20 +57,19 @@
             android:layout_toRightOf="@id/title"
             android:visibility="gone" />
 
-        <TextView
-            android:id="@+id/right_text"
+        <ImageView
+            android:id="@+id/right_icon"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:gravity="center"
-            android:paddingRight="12dp"
-            android:textColor="@color/text_44_black"
-            android:textSize="@dimen/text_medium"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:scaleType="center"
             android:visibility="gone" />
 
         <ImageView
-            android:id="@+id/right_icon"
+            android:id="@+id/right_icon2"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_alignParentRight="true"
