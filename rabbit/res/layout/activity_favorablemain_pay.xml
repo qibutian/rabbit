@@ -43,45 +43,7 @@
             style="@style/line_horizontal"
             android:layout_height="10dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="@dimen/padding_leftandright" >
-
-            <TextView
-                style="@style/text_44_black_medium"
-                android:text="@string/favorable_use_integral" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="right|center_vertical"
-                android:orientation="horizontal" >
-
-                <EditText
-                    android:id="@+id/credit"
-                    style="@style/text_99_grey_medium"
-                    android:background="@color/nothing"
-                    android:inputType="number"
-                    android:minWidth="30dp"
-                    android:text="请输入积分" />
-
-                <TextView
-                    style="@style/text_44_black_medium"
-                    android:layout_marginLeft="8dp"
-                    android:text="@string/favorable_deduction"
-                    android:textColor="@color/text_2B_green" />
-
-                <TextView
-                    android:id="@+id/credit_s"
-                    style="@style/text_44_black_medium"
-                    android:layout_marginLeft="5dp"
-                    android:text="￥0"
-                    android:textColor="@color/text_2B_green" />
-            </LinearLayout>
-        </LinearLayout>
+       
 
         <View style="@style/line_horizontal" />
 
@@ -106,15 +68,14 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/submit"
+            android:id="@+id/pay"
             style="@style/text_white_medium"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginBottom="15dp"
             android:layout_marginLeft="23dp"
             android:layout_marginRight="23dp"
-            android:background="@drawable/fillet_10_green_bg"
-            android:text="@string/grouporder_submit_order" />
+            android:background="@drawable/fillet_10_green_bg" />
     </LinearLayout>
 
 </LinearLayout>

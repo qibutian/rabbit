@@ -26,6 +26,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.TextView;
 
 /**
  * 
@@ -64,6 +65,18 @@ public class FinanceDetailActivity extends RabbitBaseActivity {
 
 			@Override
 			public Object fix(View itemV, Integer position, Object o, Object jo) {
+				
+				JSONObject data = (JSONObject) jo;
+				
+				TextView  typeT = (TextView) itemV.findViewById(R.id.type);
+				if(JSONUtil.getString(data, "method").equals("payout")) {
+					typeT.setText("支出");
+					typeT.setBackgroundResource(R.drawable.fillet_10_pink_bg);
+				} else {
+					typeT.setText("收入");
+					typeT.setBackgroundResource(R.drawable.fillet_10_green_bg);
+				}
+				
 
 				return "￥" + o;
 			}

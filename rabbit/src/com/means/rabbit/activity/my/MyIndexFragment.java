@@ -1,5 +1,12 @@
 package com.means.rabbit.activity.my;
 
+import org.json.JSONObject;
+
+import net.duohuo.dhroid.net.DhNet;
+import net.duohuo.dhroid.net.JSONUtil;
+import net.duohuo.dhroid.net.NetTask;
+import net.duohuo.dhroid.net.Response;
+import net.duohuo.dhroid.util.ViewUtil;
 import net.duohuo.dhroid.view.BadgeView;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,12 +16,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.means.rabbit.R;
 import com.means.rabbit.activity.finance.FinancialManagementActivity;
 import com.means.rabbit.activity.my.edit.EditInfoActivity;
 import com.means.rabbit.activity.my.order.MyOrderActivity;
+import com.means.rabbit.api.API;
 import com.means.rabbit.views.CatPop;
 
 public class MyIndexFragment extends Fragment implements OnClickListener {
@@ -80,6 +89,14 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 		msg_countT.hide();
 		order_countT = (BadgeView) mainV.findViewById(R.id.order_count);
 		order_countT.hide();
+
+	}
+
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		getinfo();
 	}
 
 	@Override
@@ -144,5 +161,35 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 		default:
 			break;
 		}
+	}
+
+	private void getinfo() {
+		DhNet net = new DhNet(API.userinfo);
+		net.doGetInDialog(new NetTask(getActivity()) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+
+				if (response.isSuccess()) {
+					JSONObject jo = response.jSONFromData();
+					ViewUtil.bindNetImage(
+							(ImageView) mainV.findViewById(R.id.head),
+							JSONUtil.getString(jo, "faceimg_s"), "head");
+					ViewUtil.bindView(mainV.findViewById(R.id.level),
+							JSONUtil.getString(jo, "groupname"));
+
+					int msgcount = JSONUtil.getInt(jo, "msgcount");
+					int ordercount = JSONUtil.getInt(jo, "ordercount");
+					msg_countT.setVisibility(msgcount == 0 ? View.GONE
+							: View.VISIBLE);
+					msg_countT.setText(msgcount + "");
+					order_countT.setVisibility(ordercount == 0 ? View.GONE
+							: View.VISIBLE);
+					order_countT.setText(ordercount + "");
+
+				}
+
+			}
+		});
 	}
 }

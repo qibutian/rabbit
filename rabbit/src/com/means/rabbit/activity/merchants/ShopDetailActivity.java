@@ -23,7 +23,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.RatingBar;
 
 import com.means.rabbit.R;
-import com.means.rabbit.activity.order.pay.FavorablePayMainActivity;
+import com.means.rabbit.activity.main.ErweimaActivity;
+import com.means.rabbit.activity.order.AddFavorableMainActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.views.CommentView;
@@ -76,6 +77,7 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 	@Override
 	public void initView() {
 		setTitle(getString(R.string.shop_detail));
+
 		shopId = getIntent().getStringExtra("shopId");
 		headV = LayoutInflater.from(self).inflate(R.layout.head_shop_detail,
 				null);
@@ -144,16 +146,6 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 		getTuangouList();
 		getCommentList();
 
-		findViewById(R.id.favorable).setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-
-				Intent it = new Intent(self, FavorablePayMainActivity.class);
-				startActivity(it);
-
-			}
-		});
 
 	}
 
@@ -165,7 +157,41 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 			@Override
 			public void doInUI(Response response, Integer transfer) {
 				if (response.isSuccess()) {
-					JSONObject detailJo = response.jSONFromData();
+					final JSONObject detailJo = response.jSONFromData();
+
+					setRightAction(R.drawable.erweima, new OnClickListener() {
+
+						@Override
+						public void onClick(View arg0) {
+							Intent it = new Intent(self, ErweimaActivity.class);
+							it.putExtra("url",
+									JSONUtil.getString(detailJo, "pic_qr"));
+							startActivity(it);
+						}
+					});
+
+					setRightAction2(R.drawable.fav_n, new OnClickListener() {
+
+						@Override
+						public void onClick(View arg0) {
+
+						}
+					});
+					
+					
+					findViewById(R.id.favorable).setOnClickListener(new OnClickListener() {
+
+						@Override
+						public void onClick(View arg0) {
+
+							Intent it = new Intent(self, AddFavorableMainActivity.class);
+							it.putExtra("contentid", JSONUtil.getString(detailJo, "id"));
+							it.putExtra("payprice", JSONUtil.getString(detailJo, "payprice"));
+							startActivity(it);
+
+						}
+					});
+
 					JSONArray image_data = JSONUtil.getJSONArray(detailJo,
 							"image_data");
 					// if (image_data != null && image_data.length() != 0) {

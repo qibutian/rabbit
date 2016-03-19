@@ -9,13 +9,17 @@ import net.duohuo.dhroid.net.JSONUtil;
 import net.duohuo.dhroid.net.NetTask;
 import net.duohuo.dhroid.net.Response;
 import net.duohuo.dhroid.util.ViewUtil;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.means.rabbit.R;
+import com.means.rabbit.activity.main.ErweimaActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.utils.DateUtils;
@@ -66,7 +70,27 @@ public class TravelDetailActivity extends RabbitBaseActivity {
 			public void doInUI(Response response, Integer transfer) {
 				// TODO Auto-generated method stub
 				if (response.isSuccess()) {
-					JSONObject jo = response.jSONFromData();
+					final JSONObject jo = response.jSONFromData();
+					setRightAction(R.drawable.erweima, new OnClickListener() {
+
+						@Override
+						public void onClick(View arg0) {
+							Intent it = new Intent(self, ErweimaActivity.class);
+							it.putExtra("url", JSONUtil.getString(jo, "pic_qr"));
+							startActivity(it);
+						}
+					});
+
+					setRightAction2(R.drawable.fav_n, new OnClickListener() {
+
+						@Override
+						public void onClick(View arg0) {
+
+						}
+					});
+					
+					
+					
 					ViewUtil.bindNetImage(picI, JSONUtil.getString(jo, "pic"),
 							"default");
 					ViewUtil.bindView(titleT, JSONUtil.getString(jo, "title"));

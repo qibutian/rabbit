@@ -351,6 +351,7 @@
     <string name="feedback">意见反馈</string>
     <string name="feedback_hint">谢谢您帮我们改进平台</string>
     <string name="feedback_submit">提交</string>
+    <string name="erweima">二维码</string>
     <string name="taking_pictures">Taking Pictures</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_register">RegisterActivity</string>

@@ -101,8 +101,8 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 					signlpirceT.setText("￥"
 							+ JSONUtil.getString(jo, "singleprice"));
 					countT.setText(JSONUtil.getString(jo, "daycount"));
-					totalpriceT.setText("￥"
-							+ JSONUtil.getString(jo, "payprice"));
+					totalpriceT.setText("￥" + JSONUtil.getInt(jo, "count")
+							* JSONUtil.getInt(jo, "singleprice"));
 					idT.setText(JSONUtil.getString(jo, "code"));
 					buyerphoneT.setText(JSONUtil.getString(jo, "buyerphone"));
 					buyernameT.setText(JSONUtil.getString(jo, "buyername"));
@@ -117,6 +117,8 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 
 					ViewUtil.bindView(findViewById(R.id.count),
 							JSONUtil.getString(jo, "count"));
+					ViewUtil.bindView(findViewById(R.id.name),
+							JSONUtil.getString(jo, "name"));
 
 					final int paystatus = JSONUtil.getInt(jo, "paystatus");
 
@@ -146,7 +148,7 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 
 						}
 					});
-					reality_moneyT.setText((JSONUtil.getString(jo, "payprice")));
+					reality_moneyT.setText((JSONUtil.getInt(jo, "payprice")));
 				}
 			}
 		});

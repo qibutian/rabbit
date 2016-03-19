@@ -75,7 +75,7 @@ public class GroupPayActivity extends RabbitBaseActivity {
 							JSONUtil.getString(jo, "code"));
 
 					ViewUtil.bindView(findViewById(R.id.total_price), "￥"
-							+ JSONUtil.getString(jo, "payprice"));
+							+ JSONUtil.getInt(jo, "singleprice")*JSONUtil.getInt(jo, "count"));
 					ViewUtil.bindView(findViewById(R.id.count),
 							JSONUtil.getString(jo, "count"));
 
@@ -99,7 +99,7 @@ public class GroupPayActivity extends RabbitBaseActivity {
 							JSONUtil.getString(jo, "ercode"));
 
 					ViewUtil.bindView(findViewById(R.id.shifu),
-							JSONUtil.getInt(jo, "payprice") - credit_s + "");
+							JSONUtil.getInt(jo, "payprice")  + "");
 
 					final int paystatus = JSONUtil.getInt(jo, "paystatus");
 

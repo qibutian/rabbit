@@ -23,15 +23,15 @@
                 android:orientation="horizontal"
                 android:padding="10dp" >
 
-                <ImageView
+                 <com.means.rabbit.views.RoundImageView
+                    android:id="@+id/head"
                     android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/icon_face" />
+                    android:layout_height="50dp" />
 
                 <TextView
+                    android:id="@+id/level"
                     style="@style/text_7b_black_medium"
-                    android:layout_marginLeft="10dp"
-                    android:text="Lv12" />
+                    android:layout_marginLeft="10dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -80,7 +80,6 @@
                         android:id="@+id/msg_count"
                         style="@style/text_white_small"
                         android:layout_marginRight="15dp"
-                        android:textSize="@dimen/text_smaller"
                         android:visibility="gone" />
 
                     <ImageView
@@ -215,7 +214,6 @@
                         android:id="@+id/order_count"
                         style="@style/text_white_small"
                         android:layout_marginRight="15dp"
-                        android:textSize="@dimen/text_smaller"
                         android:visibility="gone" />
 
                     <ImageView

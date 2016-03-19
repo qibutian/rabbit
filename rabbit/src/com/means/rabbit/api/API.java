@@ -121,16 +121,17 @@ public class API {
 
 	/** 团购订单详情 */
 	public static String tuangouOrderDetail = Baseurl + "/home/shop/orderview";
-	
+
 	/** 首页猜你喜欢分页列表 */
 	public static String likelist = Baseurl + "/home/index/likelist";
-	
+
 	/** 首页幻灯+中间内容列表 */
 	public static String configlist = Baseurl + "/home/index/configlist";
-	
+
 	/** 收获地址列表分页 */
-	public static String addressuserlist = Baseurl + "/home/cart/addressuserlist";
-	
+	public static String addressuserlist = Baseurl
+			+ "/home/cart/addressuserlist";
+
 	/** 添加收获地址 */
 	public static String addaddress = Baseurl + "/home/cart/addaddress";
 
@@ -148,9 +149,18 @@ public class API {
 
 	/** 代购详情 */
 	public static String daigouDetail = Baseurl + "/home/shop/dgview";
-	
-	/** 支付*/
+
+	/** 支付 */
 	public static String pay = Baseurl + "/home/shop/orderpay";
+
+	/** 获取个人信息 */
+	public static String userinfo = Baseurl + "/home/user/info";
+
+	/** 优惠买单 */
+	public static String youhuibuy = Baseurl + "/home/shop/shoppay";
+	
+	/** 我的积分 */
+	public static String paycredit = Baseurl + "home/shop/paycredit";
 	
 
 }

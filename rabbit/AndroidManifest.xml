@@ -141,8 +141,8 @@
             android:label="@string/title_activity_all_item" >
         </activity>
         <activity
-            android:name=".activity.order.pay.FavorablePayMainActivity"
-            android:label="@string/title_activity_favorable_pay_main" >
+            android:name=".activity.order.pay.FavorableMainPayActivity"
+            android:label="@string/title_activity_group_order" >
         </activity>
         <activity
             android:name=".activity.order.GroupOrderActivity"
@@ -150,6 +150,10 @@
         </activity>
         <activity
             android:name=".activity.order.AddShopOrderActivity"
+            android:label="@string/title_activity_grogshop_order" >
+        </activity>
+         <activity
+            android:name=".activity.order.AddFavorableMainActivity"
             android:label="@string/title_activity_grogshop_order" >
         </activity>
         <activity
@@ -235,6 +239,10 @@
         </activity>
         <activity
             android:name="com.means.rabbit.activity.main.SearchActivity"
+            android:label="@string/title_activity_search" >
+        </activity>
+        <activity
+            android:name="com.means.rabbit.activity.main.ErweimaActivity"
             android:label="@string/title_activity_search" >
         </activity>
     </application>

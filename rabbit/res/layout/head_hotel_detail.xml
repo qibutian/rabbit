@@ -43,39 +43,6 @@
     <View style="@style/line_horizontal" />
 
     <LinearLayout
-        android:id="@+id/comment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:padding="@dimen/padding_leftandright" >
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon_time" />
-
-        <TextView
-            android:id="@+id/time"
-            style="@style/text_66_black_medium"
-            android:layout_marginLeft="10dp"
-            android:text="营业时间: (没有字段)" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right|center_vertical"
-            android:orientation="horizontal" >
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_right" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <View style="@style/line_horizontal" />
-
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"

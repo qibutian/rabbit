@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
@@ -25,6 +26,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.means.rabbit.R;
+import com.means.rabbit.activity.main.ErweimaActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.views.CommentView;
@@ -162,7 +164,26 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 			@Override
 			public void doInUI(Response response, Integer transfer) {
 				if (response.isSuccess()) {
-					JSONObject detailJo = response.jSONFromData();
+					final JSONObject detailJo = response.jSONFromData();
+					
+					setRightAction(R.drawable.erweima, new OnClickListener() {
+
+						@Override
+						public void onClick(View arg0) {
+							Intent it = new Intent(self, ErweimaActivity.class);
+							it.putExtra("url", JSONUtil.getString(detailJo, "pic_qr"));
+							startActivity(it);
+						}
+					});
+
+					setRightAction2(R.drawable.fav_n, new OnClickListener() {
+
+						@Override
+						public void onClick(View arg0) {
+
+						}
+					});
+					
 					JSONArray image_data = JSONUtil.getJSONArray(detailJo,
 							"image_data");
 					galleryAdapter = new PSAdapter(self, R.layout.item_gallery);
@@ -174,8 +195,6 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 
 					ViewUtil.bindView(headV.findViewById(R.id.title),
 							JSONUtil.getString(detailJo, "title"));
-					ViewUtil.bindView(headV.findViewById(R.id.time),
-							JSONUtil.getString(detailJo, "yytime"));
 					ViewUtil.bindView(headV.findViewById(R.id.address),
 							JSONUtil.getString(detailJo, "address"));
 

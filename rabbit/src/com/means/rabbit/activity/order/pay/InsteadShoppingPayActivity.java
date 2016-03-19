@@ -73,8 +73,10 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 					ViewUtil.bindView(findViewById(R.id.code),
 							JSONUtil.getString(jo, "code"));
 
-					ViewUtil.bindView(findViewById(R.id.total_price), "￥"
-							+ JSONUtil.getString(jo, "payprice"));
+					ViewUtil.bindView(
+							findViewById(R.id.total_price),
+							"￥" + JSONUtil.getInt(jo, "count")
+									* JSONUtil.getInt(jo, "singleprice"));
 					ViewUtil.bindView(findViewById(R.id.count),
 							JSONUtil.getString(jo, "count"));
 
@@ -102,9 +104,6 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 							+ credit_s);
 					ViewUtil.bindView(findViewById(R.id.ercode),
 							JSONUtil.getString(jo, "ercode"));
-
-					ViewUtil.bindView(findViewById(R.id.shifu),
-							JSONUtil.getInt(jo, "payprice") - credit_s + "");
 
 					final int paystatus = JSONUtil.getInt(jo, "paystatus");
 					payB.setTag(paystatus);
@@ -155,7 +154,7 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 			}
 		});
 	}
-	
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
