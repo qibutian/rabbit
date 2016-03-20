@@ -71,7 +71,6 @@
                     style="@style/text_66_black_small"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:text="预付￥172(没有字段)"
                     android:textColor="@color/hotel_red" />
             </LinearLayout>
         </LinearLayout>

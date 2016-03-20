@@ -158,9 +158,11 @@ public class API {
 
 	/** 优惠买单 */
 	public static String youhuibuy = Baseurl + "/home/shop/shoppay";
-	
+
 	/** 我的积分 */
-	public static String paycredit = Baseurl + "home/shop/paycredit";
-	
+	public static String paycredit = Baseurl + "/home/shop/paycredit";
+
+	/** 翻译 */
+	public static String translation = Baseurl + "/home/index/fanyi";
 
 }

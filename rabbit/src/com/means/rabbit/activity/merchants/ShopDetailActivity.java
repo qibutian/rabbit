@@ -27,6 +27,8 @@ import com.means.rabbit.activity.main.ErweimaActivity;
 import com.means.rabbit.activity.order.AddFavorableMainActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
+import com.means.rabbit.manage.UserInfoManage;
+import com.means.rabbit.manage.UserInfoManage.LoginCallBack;
 import com.means.rabbit.views.CommentView;
 import com.means.rabbit.views.KeyVauleView;
 import com.means.rabbit.views.NomalGallery;
@@ -183,11 +185,24 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 
 						@Override
 						public void onClick(View arg0) {
+							
+							UserInfoManage.getInstance().checkLogin(self, new LoginCallBack() {
+								
+								@Override
+								public void onisLogin() {
+									Intent it = new Intent(self, AddFavorableMainActivity.class);
+									it.putExtra("contentid", JSONUtil.getString(detailJo, "id"));
+									it.putExtra("payprice", JSONUtil.getDouble(detailJo, "price"));
+									startActivity(it);
+								}
+								
+								@Override
+								public void onLoginFail() {
+									// TODO Auto-generated method stub
+									
+								}
+							});
 
-							Intent it = new Intent(self, AddFavorableMainActivity.class);
-							it.putExtra("contentid", JSONUtil.getString(detailJo, "id"));
-							it.putExtra("payprice", JSONUtil.getString(detailJo, "payprice"));
-							startActivity(it);
 
 						}
 					});

@@ -49,7 +49,10 @@ public class HotelYudingView extends LinearLayout {
 				ViewUtil.bindView(v.findViewById(R.id.title),
 						JSONUtil.getString(jo, "name"));
 				ViewUtil.bindView(v.findViewById(R.id.price),
-						"￥"+JSONUtil.getString(jo, "price"));
+						"￥" + JSONUtil.getString(jo, "price_o"));
+
+				ViewUtil.bindView(v.findViewById(R.id.pre_price), "￥"
+						+ JSONUtil.getString(jo, "price"));
 				ViewUtil.bindNetImage((ImageView) v.findViewById(R.id.pic),
 						JSONUtil.getString(jo, "pic"), "default");
 				ViewUtil.bindView(v.findViewById(R.id.des),

@@ -66,6 +66,7 @@
                     android:background="@color/nothing"
                     android:inputType="number"
                     android:minWidth="30dp"
+                    android:gravity="right"
                     android:text="请输入积分" />
 
                 <TextView

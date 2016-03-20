@@ -60,6 +60,7 @@ public class AddFavorableMainActivity extends RabbitBaseActivity {
 		setTitle(getString(R.string.favorable));
 		Intent it = getIntent();
 		payprice = it.getDoubleExtra("payprice", 0);
+		ViewUtil.bindView(findViewById(R.id.pay_price), "￥"+payprice);
 		contentid = it.getStringExtra("contentid");
 		shifuT = (TextView) findViewById(R.id.shifu);
 		jifenE = (EditText) findViewById(R.id.credit);
@@ -141,7 +142,8 @@ public class AddFavorableMainActivity extends RabbitBaseActivity {
 		DhNet net = new DhNet(API.youhuibuy);
 		net.addParam("contentid", contentid);
 		net.addParam("payprice", payprice);
-		net.doGetInDialog("提交中...", new NetTask(self) {
+//		net.addParam("credit", jifenE.getText().toString());
+		net.doPostInDialog("提交中...", new NetTask(self) {
 
 			@Override
 			public void doInUI(Response response, Integer transfer) {
