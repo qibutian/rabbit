@@ -1,11 +1,16 @@
 package com.means.rabbit.activity.main;
 
+import net.duohuo.dhroid.activity.ActivityTack;
+import net.duohuo.dhroid.dialog.IDialog;
+import net.duohuo.dhroid.ioc.IocContainer;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -16,11 +21,11 @@ import android.widget.TextView;
 import com.means.rabbit.R;
 import com.means.rabbit.activity.home.HomePageFragment;
 import com.means.rabbit.activity.home.SelectCityActivity;
+import com.means.rabbit.activity.home.TranslateActivity;
 import com.means.rabbit.activity.merchants.MerchatsFragment;
 import com.means.rabbit.activity.more.MoreFragment;
 import com.means.rabbit.activity.my.MyIndexFragment;
 import com.means.rabbit.activity.travel.TravelFragment;
-import com.means.rabbit.bean.CityEB;
 import com.means.rabbit.bean.User;
 import com.means.rabbit.manage.UserInfoManage;
 import com.means.rabbit.manage.UserInfoManage.LoginCallBack;
@@ -36,16 +41,23 @@ public class MainActivity extends FragmentActivity {
 
 	View search_layoutV;
 
+	ImageView translateI;
+
+	Handler mHandler;
+	private static boolean isExit = false;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		ActivityTack.getInstanse().addActivity(this);
 		initView();
 		initTab();
 		setTab(0);
 	}
 
 	private void initView() {
+		mHandler = new Handler();
 		// TODO Auto-generated method stub
 		fm = getSupportFragmentManager();
 		tabV = (LinearLayout) findViewById(R.id.tab);
@@ -71,6 +83,18 @@ public class MainActivity extends FragmentActivity {
 				startActivity(it);
 			}
 		});
+		translateI = (ImageView) findViewById(R.id.pic_translate);
+		translateI.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent it = new Intent(MainActivity.this,
+						TranslateActivity.class);
+				startActivity(it);
+			}
+		});
+
 	}
 
 	private void initTab() {
@@ -225,5 +249,36 @@ public class MainActivity extends FragmentActivity {
 		} catch (Exception e) {
 		}
 	}
+
+	static public class ExitRunnable implements Runnable {
+		@Override
+		public void run() {
+			isExit = false;
+		}
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			if (!isExit) {
+				isExit = true;
+				IocContainer.getShare().get(IDialog.class)
+						.showToastShort(getApplicationContext(), "再按一次退出程序");
+				mHandler.postDelayed(new ExitRunnable(), 2000);
+			} else {
+				// Intent it = new Intent(self, MsgService.class);
+				// stopService(it);
+				ActivityTack.getInstanse().exit(MainActivity.this);
+			}
+			return false;
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+	
+	@Override
+    public void finish() {
+        ActivityTack.getInstanse().removeActivity(this);
+        super.finish();
+    }
 
 }
