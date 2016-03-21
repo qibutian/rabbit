@@ -71,7 +71,7 @@
             </LinearLayout>
 
             <View style="@style/line_horizontal" />
-            
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -96,7 +96,7 @@
                         android:textColor="@color/text_2B_green" />
                 </LinearLayout>
             </LinearLayout>
-            
+
             <View style="@style/line_horizontal" />
 
             <LinearLayout
@@ -147,17 +147,19 @@
                         style="@style/text_44_black_big"
                         android:text="2300 58452 54845"
                         android:textColor="@color/text_2B_green" />
-                    
-                    <ImageView 
+
+                    <ImageView
+                        android:id="@+id/erweima"
                         android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/erweima"
-                    android:layout_marginLeft="10dp"
-                        />
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:padding="2dp"
+                        android:src="@drawable/erweima" />
                 </LinearLayout>
             </LinearLayout>
 
-            <View style="@style/line_horizontal"
+            <View
+                style="@style/line_horizontal"
                 android:layout_height="10dp" />
 
             <LinearLayout
@@ -236,8 +238,7 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <View
-                style="@style/line_horizontal" />
+            <View style="@style/line_horizontal" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -336,9 +337,9 @@
                 android:layout_marginBottom="15dp"
                 android:layout_marginLeft="23dp"
                 android:layout_marginRight="23dp"
-                android:visibility="gone"
                 android:background="@drawable/fillet_10_pink_bg"
-                android:text="@string/grouporder_pay_pay_order" />
+                android:text="@string/grouporder_pay_pay_order"
+                android:visibility="gone" />
         </LinearLayout>
     </ScrollView>
 

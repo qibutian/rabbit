@@ -11,12 +11,14 @@ import org.json.JSONObject;
 import com.means.rabbit.R;
 import com.means.rabbit.RabbitValueFix;
 import com.means.rabbit.R.layout;
+import com.means.rabbit.activity.main.ErweimaActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -146,6 +148,26 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 
 					ViewUtil.bindView(findViewById(R.id.shifu),
 							JSONUtil.getString(jo, "payprice"));
+					
+					
+					findViewById(R.id.erweima).setOnClickListener(
+							new OnClickListener() {
+
+								@Override
+								public void onClick(View v) {
+
+									if (TextUtils.isEmpty(JSONUtil.getString(
+											jo, "ercode_img"))) {
+										return;
+									}
+
+									Intent it = new Intent(self,
+											ErweimaActivity.class);
+									it.putExtra("url", JSONUtil.getString(jo,
+											"ercode_img"));
+									startActivity(it);
+								}
+							});
 
 					// reality_moneyT.setText((JSONUtil.getDouble(jo,
 					// "totalprice")-JSONUtil.getDouble(user_data, "credit_s"))

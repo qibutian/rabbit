@@ -174,9 +174,11 @@
                         android:textColor="@color/text_2B_green" />
 
                     <ImageView
+                        android:id="@+id/erweima"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
+                        android:padding="2dp"
                         android:src="@drawable/erweima" />
                 </LinearLayout>
             </LinearLayout>

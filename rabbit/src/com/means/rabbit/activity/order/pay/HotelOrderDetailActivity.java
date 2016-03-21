@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 
 import com.means.rabbit.R;
 import com.means.rabbit.RabbitValueFix;
+import com.means.rabbit.activity.main.ErweimaActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 
@@ -101,7 +103,8 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 					signlpirceT.setText(getString(R.string.money_symbol)
 							+ JSONUtil.getString(jo, "singleprice"));
 					countT.setText(JSONUtil.getString(jo, "daycount"));
-					totalpriceT.setText(getString(R.string.money_symbol) + JSONUtil.getInt(jo, "count")
+					totalpriceT.setText(getString(R.string.money_symbol)
+							+ JSONUtil.getInt(jo, "count")
 							* JSONUtil.getInt(jo, "singleprice"));
 					idT.setText(JSONUtil.getString(jo, "code"));
 					buyerphoneT.setText(JSONUtil.getString(jo, "buyerphone"));
@@ -148,7 +151,27 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 
 						}
 					});
-					reality_moneyT.setText(JSONUtil.getInt(jo, "payprice")+"");
+					reality_moneyT.setText(JSONUtil.getInt(jo, "payprice") + "");
+
+					findViewById(R.id.erweima).setOnClickListener(
+							new OnClickListener() {
+
+								@Override
+								public void onClick(View v) {
+
+									if (TextUtils.isEmpty(JSONUtil.getString(
+											jo, "ercode_img"))) {
+										return;
+									}
+
+									Intent it = new Intent(self,
+											ErweimaActivity.class);
+									it.putExtra("url", JSONUtil.getString(jo,
+											"ercode_img"));
+									startActivity(it);
+								}
+							});
+
 				}
 			}
 		});
