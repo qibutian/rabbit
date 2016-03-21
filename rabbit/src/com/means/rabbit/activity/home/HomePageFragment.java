@@ -3,7 +3,9 @@ package com.means.rabbit.activity.home;
 import net.duohuo.dhroid.adapter.FieldMap;
 import net.duohuo.dhroid.adapter.NetJSONAdapter;
 import net.duohuo.dhroid.adapter.PSAdapter;
+import net.duohuo.dhroid.ioc.IocContainer;
 import net.duohuo.dhroid.net.DhNet;
+import net.duohuo.dhroid.net.GlobalParams;
 import net.duohuo.dhroid.net.JSONUtil;
 import net.duohuo.dhroid.net.NetTask;
 import net.duohuo.dhroid.net.Response;
@@ -33,6 +35,7 @@ import com.means.rabbit.activity.merchants.ShopDetailActivity;
 import com.means.rabbit.activity.travel.TravelActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.bean.CityEB;
+import com.means.rabbit.utils.RabbitPerference;
 import com.means.rabbit.views.RefreshListViewAndMore;
 
 import de.greenrobot.event.EventBus;
@@ -51,11 +54,11 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 	ListView contentListV;
 
 	NetJSONAdapter adapter;
-	
+
 	NormalGallery gallery;
 	PSAdapter galleryAdapter;
-	//中间部分控件id
-	int [] pic_ids = {R.id.pic_1,R.id.pic_2,R.id.pic_3,R.id.pic_4};
+	// 中间部分控件id
+	int[] pic_ids = { R.id.pic_1, R.id.pic_2, R.id.pic_3, R.id.pic_4 };
 
 	// 美食点击按钮
 	View foodLayoutV;
@@ -86,7 +89,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 	// 货币兑换
 	View huobiV;
-	
+
 	public static HomePageFragment getInstance() {
 		if (instance == null) {
 			instance = new HomePageFragment();
@@ -112,7 +115,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		headV = mLayoutInflater.inflate(R.layout.head_home_index, null);
 		gallery = (NormalGallery) headV.findViewById(R.id.gallery);
 		getConfiglist();
-		
+
 		listV.addHeadView(headV);
 		contentListV = listV.getListView();
 		adapter = new NetJSONAdapter(API.likelist, getActivity(),
@@ -128,7 +131,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 				return "￥" + o.toString();
 			}
 		});
-		
+
 		adapter.addField(new FieldMap("ordercount", R.id.ordercount) {
 
 			@Override
@@ -136,14 +139,15 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 				return "已售" + o.toString();
 			}
 		});
-		
-//		adapter.addField(new FieldMap("lng", R.id.distance) {
-//
-//			@Override
-//			public Object fix(View itemV, Integer position, Object o, Object jo) {
-//				return "距离" + o.toString();
-//			}
-//		});
+
+		// adapter.addField(new FieldMap("lng", R.id.distance) {
+		//
+		// @Override
+		// public Object fix(View itemV, Integer position, Object o, Object jo)
+		// {
+		// return "距离" + o.toString();
+		// }
+		// });
 
 		listV.setAdapter(adapter);
 
@@ -152,7 +156,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1,
 					int position, long arg3) {
-				
+
 				JSONObject jo = adapter.getTItem(position
 						- contentListV.getHeaderViewsCount());
 				Intent it = new Intent(getActivity(), ShopDetailActivity.class);
@@ -184,30 +188,40 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		exclusive_characteristicsV.setOnClickListener(this);
 		huobiV.setOnClickListener(this);
 	}
-	
-	//获取首页幻灯+中间内容列表
-	private void getConfiglist(){
+
+	// 获取首页幻灯+中间内容列表
+	private void getConfiglist() {
 		DhNet net = new DhNet(API.configlist);
 		net.doGet(new NetTask(getActivity()) {
-			
+
 			@Override
 			public void doInUI(Response response, Integer transfer) {
 				if (response.isSuccess()) {
-					//幻灯
+					// 幻灯
 					JSONArray jsa1 = response.jSONArrayFromData();
-					galleryAdapter = new PSAdapter(getActivity(), R.layout.item_gallery);
+					galleryAdapter = new PSAdapter(getActivity(),
+							R.layout.item_gallery);
 					galleryAdapter.addField("pic", R.id.pic, "default");
 					galleryAdapter.addAll(jsa1);
 					gallery.setAdapter(galleryAdapter);
-					
-					//中间部分
+
+					// 中间部分
 					JSONArray jsa2 = response.jSONArrayFrom("data1");
-					if (jsa2!=null) {
-						ViewUtil.bindNetImage((ImageView) headV.findViewById(R.id.pic_0), JSONUtil.getString(JSONUtil.getJSONObjectAt(jsa2, 0), "pic"), "default");
-						((TextView) headV.findViewById(R.id.pic_0_title)).setText(JSONUtil.getString(JSONUtil.getJSONObjectAt(jsa2, 0), "title"));
-						for (int i = 0; i < pic_ids.length ; i++) {
-							ImageView view = (ImageView) headV.findViewById(pic_ids[i]);
-							ViewUtil.bindNetImage(view, JSONUtil.getString(JSONUtil.getJSONObjectAt(jsa2, i+1), "pic"), "default");
+					if (jsa2 != null) {
+						ViewUtil.bindNetImage((ImageView) headV
+								.findViewById(R.id.pic_0), JSONUtil.getString(
+								JSONUtil.getJSONObjectAt(jsa2, 0), "pic"),
+								"default");
+						((TextView) headV.findViewById(R.id.pic_0_title))
+								.setText(JSONUtil.getString(
+										JSONUtil.getJSONObjectAt(jsa2, 0),
+										"title"));
+						for (int i = 0; i < pic_ids.length; i++) {
+							ImageView view = (ImageView) headV
+									.findViewById(pic_ids[i]);
+							ViewUtil.bindNetImage(view, JSONUtil.getString(
+									JSONUtil.getJSONObjectAt(jsa2, i + 1),
+									"pic"), "default");
 						}
 					}
 				}
@@ -218,6 +232,8 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 	public void onEventMainThread(CityEB city) {
 		TextView cityT = (TextView) mainV.getRootView().findViewById(R.id.city);
 		cityT.setText(city.getCityname());
+		adapter.addparam("cityid", city.getCatid());
+		adapter.refresh();
 	}
 
 	@Override
@@ -229,7 +245,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		// 美食
 		case R.id.food_layout:
 			it = new Intent(getActivity(), FoodListActivity.class);
-			it.putExtra("title",getString(R.string.meishi));
+			it.putExtra("title", getString(R.string.meishi));
 			it.putExtra("catid", "1");
 			startActivity(it);
 			break;
@@ -260,7 +276,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		// 专享特色
 		case R.id.huobi:
 			it = new Intent(getActivity(), FoodListActivity.class);
-			it.putExtra("title",getString(R.string.huobiduihuan));
+			it.putExtra("title", getString(R.string.huobiduihuan));
 			it.putExtra("catid", "3");
 			startActivity(it);
 			break;

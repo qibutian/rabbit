@@ -148,7 +148,7 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 
 						}
 					});
-					reality_moneyT.setText((JSONUtil.getInt(jo, "payprice")));
+					reality_moneyT.setText(JSONUtil.getInt(jo, "payprice")+"");
 				}
 			}
 		});

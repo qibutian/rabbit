@@ -193,6 +193,7 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 									Intent it = new Intent(self, AddFavorableMainActivity.class);
 									it.putExtra("contentid", JSONUtil.getString(detailJo, "id"));
 									it.putExtra("payprice", JSONUtil.getDouble(detailJo, "price"));
+									it.putExtra("name", JSONUtil.getString(detailJo, "title"));
 									startActivity(it);
 								}
 								

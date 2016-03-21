@@ -12,6 +12,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
+import com.means.rabbit.utils.RabbitPerference;
 import com.means.rabbit.views.NomalDialog;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
@@ -106,6 +107,11 @@ public class RabbitApplication extends Application implements
 		GlobalParams globalParams = IocContainer.getShare().get(
 				GlobalParams.class);
 		globalParams.setGlobalParam("lang", "cn");
+		
+//		RabbitPerference per =  IocContainer.getShare().get(
+//				RabbitPerference.class);
+//		per.load();
+//		globalParams.setGlobalParam("cityid", "5");
 
 	}
 

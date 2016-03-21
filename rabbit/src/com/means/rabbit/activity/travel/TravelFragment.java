@@ -17,15 +17,19 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.means.rabbit.R;
 import com.means.rabbit.api.API;
+import com.means.rabbit.bean.CityEB;
 import com.means.rabbit.utils.DateUtils;
 import com.means.rabbit.views.RefreshListViewAndMore;
 import com.means.rabbit.views.TabView;
 import com.means.rabbit.views.TabView.OnTabSelectListener;
+
+import de.greenrobot.event.EventBus;
 
 public class TravelFragment extends Fragment implements OnClickListener {
 	static TravelFragment instance;
@@ -54,6 +58,7 @@ public class TravelFragment extends Fragment implements OnClickListener {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		EventBus.getDefault().register(this);
 		mainV = inflater.inflate(R.layout.fragment_travel, null);
 		mLayoutInflater = inflater;
 		initView();
@@ -119,6 +124,18 @@ public class TravelFragment extends Fragment implements OnClickListener {
 			}
 		});
 
+	}
+	
+	public void onEventMainThread(CityEB city) {
+		adapter.addparam("cityid", city.getCatid());
+		adapter.refresh();
+	}
+	
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		EventBus.getDefault().unregister(this);
 	}
 
 	@Override

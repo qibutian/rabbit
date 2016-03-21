@@ -16,6 +16,7 @@ import com.means.rabbit.base.RabbitBaseActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -54,10 +55,16 @@ public class PayOrderActivity extends RabbitBaseActivity {
 
 			@Override
 			public void onClick(View arg0) {
-				payByMoney();
+
+				if (!TextUtils.isEmpty(orderid)) {
+					payByMoney();
+				} else {
+					payByMoneyYH();
+				}
+
 			}
 		});
-		
+
 		getMyMoney();
 	}
 
@@ -79,17 +86,40 @@ public class PayOrderActivity extends RabbitBaseActivity {
 			}
 		});
 	}
-	
-	private  void  getMyMoney () {
+
+	// 优惠买单使用余额支付
+	private void payByMoneyYH() {
+		DhNet net = new DhNet(API.youhuibuy);
+		net.addParam("contentid", getIntent().getStringExtra("contentid"));
+		net.addParam("payprice", payprice);
+		// net.addParam("credit", jifenE.getText().toString());
+		net.doPostInDialog("提交中...", new NetTask(self) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+
+				if (response.isSuccess()) {
+					showToast("支付成功!");
+					Intent it = getIntent();
+					setResult(Activity.RESULT_OK, it);
+					finish();
+				}
+
+			}
+		});
+	}
+
+	private void getMyMoney() {
 		DhNet net = new DhNet(API.accountview);
 		net.doGetInDialog(new NetTask(self) {
-			
+
 			@Override
 			public void doInUI(Response response, Integer transfer) {
 				// TODO Auto-generated method stub
 				if (response.isSuccess()) {
 					JSONObject jo = response.jSONFromData();
-					ViewUtil.bindView(findViewById(R.id.money), "￥"+JSONUtil.getString(jo, "balance"));
+					ViewUtil.bindView(findViewById(R.id.money),
+							"￥" + JSONUtil.getString(jo, "balance"));
 				}
 			}
 		});

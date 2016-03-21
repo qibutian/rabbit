@@ -10,6 +10,7 @@ import net.duohuo.dhroid.util.ViewUtil;
 
 import com.means.rabbit.R;
 import com.means.rabbit.R.layout;
+import com.means.rabbit.activity.order.pay.PayOrderActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 
@@ -47,6 +48,8 @@ public class AddFavorableMainActivity extends RabbitBaseActivity {
 
 	int credit;
 
+	public int pay = 1003;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -60,7 +63,7 @@ public class AddFavorableMainActivity extends RabbitBaseActivity {
 		setTitle(getString(R.string.favorable));
 		Intent it = getIntent();
 		payprice = it.getDoubleExtra("payprice", 0);
-		ViewUtil.bindView(findViewById(R.id.pay_price), "￥"+payprice);
+		ViewUtil.bindView(findViewById(R.id.pay_price), "￥" + payprice);
 		contentid = it.getStringExtra("contentid");
 		shifuT = (TextView) findViewById(R.id.shifu);
 		jifenE = (EditText) findViewById(R.id.credit);
@@ -138,17 +141,21 @@ public class AddFavorableMainActivity extends RabbitBaseActivity {
 	}
 
 	private void submit() {
+		Intent it = new Intent(self, PayOrderActivity.class);
+		it.putExtra("payprice", payprice + "");
+		it.putExtra("contentid", contentid);
+		it.putExtra("name", getIntent().getStringExtra("name"));
+		startActivityForResult(it, pay);
 
-		DhNet net = new DhNet(API.youhuibuy);
-		net.addParam("contentid", contentid);
-		net.addParam("payprice", payprice);
-//		net.addParam("credit", jifenE.getText().toString());
-		net.doPostInDialog("提交中...", new NetTask(self) {
+	}
 
-			@Override
-			public void doInUI(Response response, Integer transfer) {
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
 
-			}
-		});
+		if (requestCode == pay && resultCode == Activity.RESULT_OK) {
+			finish();
+		}
 	}
 }
