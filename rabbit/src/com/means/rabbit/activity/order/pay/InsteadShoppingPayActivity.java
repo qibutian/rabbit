@@ -142,6 +142,7 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 							JSONUtil.getString(user_addressJo, "areaname")
 									+ JSONUtil.getString(user_addressJo,
 											"lxaddress"));
+					
 
 					ViewUtil.bindView(findViewById(R.id.shifu),
 							JSONUtil.getString(jo, "payprice"));
