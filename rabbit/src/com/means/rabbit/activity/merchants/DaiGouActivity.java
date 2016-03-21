@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
 import com.means.rabbit.R;
+import com.means.rabbit.activity.main.SearchActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.views.RefreshListViewAndMore;
@@ -40,6 +41,8 @@ public class DaiGouActivity extends RabbitBaseActivity {
 
 	TabView tabV;
 
+	String keywords;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -50,6 +53,18 @@ public class DaiGouActivity extends RabbitBaseActivity {
 	@Override
 	public void initView() {
 		setTitle(getString(R.string.Hotboom));
+		setRightAction2(R.drawable.icon_green_search,
+				new View.OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						Intent it = new Intent(self, SearchActivity.class);
+						startActivity(it);
+					}
+				});
+
+		keywords = getIntent().getStringExtra("keywords");
 
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		mLayoutInflater = LayoutInflater.from(self);
@@ -58,6 +73,7 @@ public class DaiGouActivity extends RabbitBaseActivity {
 		contentListV = listV.getListView();
 		adapter = new NetJSONAdapter(API.dgcontentlist, self,
 				R.layout.item_daigou_list);
+		adapter.addparam("keywords", keywords);
 		adapter.fromWhat("list");
 		adapter.addField("pic", R.id.pic);
 		adapter.addField("price", R.id.price);

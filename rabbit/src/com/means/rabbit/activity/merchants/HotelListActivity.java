@@ -28,6 +28,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.means.rabbit.R;
+import com.means.rabbit.activity.main.SearchActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.utils.DateUtils;
@@ -54,6 +55,8 @@ public class HotelListActivity extends RabbitBaseActivity {
 
 	String catid;
 
+	String keywords;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -66,7 +69,18 @@ public class HotelListActivity extends RabbitBaseActivity {
 	@Override
 	public void initView() {
 		setTitle(getString(R.string.hotel_list));
+		setRightAction2(R.drawable.icon_green_search,
+				new View.OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						Intent it = new Intent(self, SearchActivity.class);
+						startActivity(it);
+					}
+				});
 		catid = getIntent().getStringExtra("catid");
+		keywords = getIntent().getStringExtra("keywords");
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		contentListV = listV.getListView();
 		adapter = new NetJSONAdapter(API.hotelList, self,
@@ -76,6 +90,7 @@ public class HotelListActivity extends RabbitBaseActivity {
 				RabbitPerference.class);
 		per.load();
 		adapter.addparam("catid", catid);
+		adapter.addparam("keywords", keywords);
 		adapter.fromWhat("list");
 
 		adapter.addField("title", R.id.title);
@@ -185,17 +200,16 @@ public class HotelListActivity extends RabbitBaseActivity {
 				// calendar.add(Calendar.DAY_OF_MONTH, +1);
 				// Log.d("------calendar.getTimeInMillis()-----",calendar.getTimeInMillis()+"");
 
-				
-				SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd");
+				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 				try {
-					Date date =  formatter.parse(startDateT.getText().toString());
-					timeDialog.show(self, "-",date.getTime());
+					Date date = formatter
+							.parse(startDateT.getText().toString());
+					timeDialog.show(self, "-", date.getTime());
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
-				
+
 			}
 		});
 	}

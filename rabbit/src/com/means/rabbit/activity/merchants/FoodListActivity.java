@@ -16,6 +16,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
 
 import com.means.rabbit.R;
+import com.means.rabbit.activity.main.SearchActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.views.RefreshListViewAndMore;
@@ -37,6 +38,8 @@ public class FoodListActivity extends RabbitBaseActivity {
 	TabView tabV;
 
 	String catid;
+	
+	String keywords;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +51,17 @@ public class FoodListActivity extends RabbitBaseActivity {
 	@Override
 	public void initView() {
 		setTitle(getIntent().getStringExtra("title"));
+		setRightAction2(R.drawable.icon_green_search, new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent it = new Intent(self,SearchActivity.class);
+				startActivity(it);
+			}
+		});
 		catid = getIntent().getStringExtra("catid");
+		keywords = getIntent().getStringExtra("keywords");
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		mLayoutInflater = LayoutInflater.from(self);
 		headV = mLayoutInflater.inflate(R.layout.head_food_list, null);
@@ -57,6 +70,7 @@ public class FoodListActivity extends RabbitBaseActivity {
 		adapter = new NetJSONAdapter(API.foodList, self,
 				R.layout.item_food_list);
 		adapter.addparam("catid", catid);
+		adapter.addparam("keywords", keywords);
 		adapter.fromWhat("list");
 		adapter.addField("title", R.id.title);
 		adapter.addField("price", R.id.price);

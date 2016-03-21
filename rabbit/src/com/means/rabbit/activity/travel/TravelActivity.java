@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
 import com.means.rabbit.R;
+import com.means.rabbit.activity.main.SearchActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.utils.DateUtils;
@@ -40,10 +41,12 @@ public class TravelActivity extends RabbitBaseActivity {
 	ListView contentListV;
 
 	NetJSONAdapter adapter;
-	
+
 	TabView tabV;
-	
+
 	String catid;
+
+	String keywords;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,13 +58,25 @@ public class TravelActivity extends RabbitBaseActivity {
 	@Override
 	public void initView() {
 		setTitle(getIntent().getStringExtra("title"));
+		setRightAction2(R.drawable.icon_green_search,
+				new View.OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						Intent it = new Intent(self, SearchActivity.class);
+						startActivity(it);
+					}
+				});
 		catid = getIntent().getStringExtra("catid");
+		keywords = getIntent().getStringExtra("keywords");
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		contentListV = listV.getListView();
 		adapter = new NetJSONAdapter(API.contentlist, self,
 				R.layout.item_travel_list);
 		adapter.fromWhat("list");
 		adapter.addparam("catid", catid);
+		adapter.addparam("keywords", keywords);
 		adapter.addField("title", R.id.title);
 		adapter.addField(new FieldMap("views", R.id.views) {
 
@@ -93,7 +108,7 @@ public class TravelActivity extends RabbitBaseActivity {
 				startActivity(it);
 			}
 		});
-		
+
 		tabV = (TabView) findViewById(R.id.tab);
 		String tabName = getIntent().getStringExtra("name");
 		if (!TextUtils.isEmpty(tabName)) {

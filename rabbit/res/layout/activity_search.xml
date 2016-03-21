@@ -15,23 +15,25 @@
         android:padding="@dimen/padding_leftandright" >
 
         <EditText
+            android:id="@+id/content"
             style="@style/text_44_black_small"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/cancel"
+            android:background="@color/white"
             android:drawableLeft="@drawable/icon_green_search"
-            android:paddingLeft="5dp"
-            android:background="@color/white" />
-        
-        <TextView 
-            android:id="@+id/cancel"
-            style="@style/text_44_black_small"
-            android:textColor="@color/text_2B_green"
-            android:text="取消"
+            android:hint="@string/search_content"
+            android:drawablePadding="5dp" />
+
+        <TextView
+            android:id="@+id/search"
+            style="@style/text_44_black_medium"
             android:layout_alignParentRight="true"
-            />
+            android:layout_centerVertical="true"
+            android:text="@string/search"
+            android:textColor="@color/text_2B_green" />
     </RelativeLayout>
-    
-    <include layout="@layout/include_listview"/>
+
+    <include layout="@layout/include_listview" />
 
 </LinearLayout>

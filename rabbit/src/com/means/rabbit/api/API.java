@@ -164,5 +164,8 @@ public class API {
 
 	/** 翻译 */
 	public static String translation = Baseurl + "/home/index/fanyi";
+	
+	/** 首页搜索 */
+	public static String search = Baseurl + "/home/index/search";
 
 }

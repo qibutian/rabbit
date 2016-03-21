@@ -148,17 +148,15 @@
             android:name=".activity.order.GroupOrderActivity"
             android:label="@string/title_activity_group_order" >
         </activity>
-        
-         <activity
+        <activity
             android:name=".activity.order.pay.FavorableMainDetailActivity"
             android:label="@string/title_activity_group_order" >
         </activity>
-        
         <activity
             android:name=".activity.order.AddShopOrderActivity"
             android:label="@string/title_activity_grogshop_order" >
         </activity>
-         <activity
+        <activity
             android:name=".activity.order.AddFavorableMainActivity"
             android:label="@string/title_activity_grogshop_order" >
         </activity>
@@ -244,12 +242,16 @@
             android:label="@string/title_activity_feedback" >
         </activity>
         <activity
-            android:name="com.means.rabbit.activity.main.SearchActivity"
+            android:name=".activity.main.SearchActivity"
             android:label="@string/title_activity_search" >
         </activity>
         <activity
-            android:name="com.means.rabbit.activity.main.ErweimaActivity"
+            android:name=".activity.main.ErweimaActivity"
             android:label="@string/title_activity_search" >
+        </activity>
+        <activity
+            android:name="com.means.rabbit.activity.merchants.TuangouActivity"
+            android:label="@string/title_activity_tuangou" >
         </activity>
     </application>
 

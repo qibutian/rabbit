@@ -308,6 +308,8 @@
     <string name="hotel_detail">酒店详情</string>
     <!-- 酒店 -->
     <string name="hotel_list">酒店</string>
+    <!-- 团购 -->
+    <string name="tuangou">团购</string>
     <!-- 商家详情 -->
     <string name="shop_detail">商家详情</string>
     <string name="shop_detail_time">营业时间：</string>
@@ -318,6 +320,13 @@
     <string name="select_language">选择语言</string>
     <!-- 搜索 -->
     <string name="search">搜索</string>
+    <string name="search_content">请输入搜索内容</string>
+    <string name="search_text">个结果</string>
+    <string name="search_type1">资讯</string>
+    <string name="search_type2">商家</string>
+    <string name="search_type3">团购</string>
+    <string name="search_type4">代购</string>
+    <string name="search_type5">酒店</string>
     <!-- 商品详情 -->
     <string name="good_detail">商品详情</string>
     <!-- 团购详情 -->
@@ -399,5 +408,6 @@
     <string name="title_activity_district">DistrictActivity</string>
     <string name="title_activity_feedback">FeedbackActivity</string>
     <string name="title_activity_search">SearchActivity</string>
+    <string name="title_activity_tuangou">TuangouActivity</string>
 
 </resources>
