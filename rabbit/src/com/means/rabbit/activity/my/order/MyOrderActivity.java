@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.means.rabbit.R;
 import com.means.rabbit.activity.order.GroupOrderActivity;
@@ -53,12 +54,25 @@ public class MyOrderActivity extends RabbitBaseActivity {
 		adapter = new NetJSONAdapter(url, self, R.layout.item_order_list);
 		adapter.fromWhat("list");
 		adapter.addField("title", R.id.title);
-		adapter.addField("paystatus", R.id.paystatus);
+//		adapter.addField("paystatus", R.id.paystatus);
 		adapter.addField(new FieldMap("payprice", R.id.payprice) {
 
 			@Override
 			public Object fix(View itemV, Integer position, Object o, Object jo) {
+				
+				JSONObject data = (JSONObject) jo;
+				
 				// TODO Auto-generated method stub
+				TextView paystatusT = (TextView) itemV.findViewById(R.id.paystatus);
+				int paystatus = JSONUtil.getInt(data, "paystatus");
+				if(paystatus==1) {
+					paystatusT.setText("待支付");
+				} else if(paystatus==2) {
+					paystatusT.setText("已完成");
+				} else {
+					paystatusT.setText("支付失败");
+				}
+
 				return "￥  " + o.toString();
 			}
 		});

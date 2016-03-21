@@ -43,9 +43,10 @@ public class ShopDetailTuangouView extends LinearLayout {
 				View v = mLayoutInflater.inflate(
 						R.layout.item_shop_detail_tuangou, null);
 				ViewUtil.bindView(v.findViewById(R.id.price),
+						"￥"+
 						JSONUtil.getString(jo, "price"));
 				ViewUtil.bindView(v.findViewById(R.id.old_price),
-						JSONUtil.getString(jo, "oldprice"));
+						"￥"+JSONUtil.getString(jo, "oldprice"));
 				ViewUtil.bindView(v.findViewById(R.id.title),
 						JSONUtil.getString(jo, "title"));
 				ViewUtil.bindView(v.findViewById(R.id.count),
