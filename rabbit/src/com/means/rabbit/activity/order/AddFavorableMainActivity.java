@@ -63,7 +63,7 @@ public class AddFavorableMainActivity extends RabbitBaseActivity {
 		setTitle(getString(R.string.favorable));
 		Intent it = getIntent();
 		payprice = it.getDoubleExtra("payprice", 0);
-		ViewUtil.bindView(findViewById(R.id.pay_price), "￥" + payprice);
+		ViewUtil.bindView(findViewById(R.id.pay_price), getString(R.string.money_symbol)+payprice);
 		contentid = it.getStringExtra("contentid");
 		shifuT = (TextView) findViewById(R.id.shifu);
 		jifenE = (EditText) findViewById(R.id.credit);
@@ -92,7 +92,7 @@ public class AddFavorableMainActivity extends RabbitBaseActivity {
 						jifenE.setText(0);
 					} else {
 						float daikou = jifen / creditY;
-						daikouT.setText("￥" + daikou);
+						daikouT.setText(getString(R.string.money_symbol) + daikou);
 						shifuT.setText(payprice - daikou + "");
 					}
 				}
@@ -134,6 +134,7 @@ public class AddFavorableMainActivity extends RabbitBaseActivity {
 					}
 
 					jifenE.setEnabled(credit_s == 0 ? false : true);
+					shifuT.setText(payprice + "");
 				}
 
 			}

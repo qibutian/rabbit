@@ -75,7 +75,7 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 
 					ViewUtil.bindView(
 							findViewById(R.id.total_price),
-							"￥" + JSONUtil.getInt(jo, "count")
+							getString(R.string.money_symbol) + JSONUtil.getInt(jo, "count")
 									* JSONUtil.getInt(jo, "singleprice"));
 					ViewUtil.bindView(findViewById(R.id.count),
 							JSONUtil.getString(jo, "count"));
@@ -100,7 +100,7 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 							JSONUtil.getString(credit_dataJo, "credit"));
 
 					credit_s = JSONUtil.getInt(credit_dataJo, "credit");
-					ViewUtil.bindView(findViewById(R.id.credit_s), "￥"
+					ViewUtil.bindView(findViewById(R.id.credit_s), getString(R.string.money_symbol)
 							+ credit_s);
 					ViewUtil.bindView(findViewById(R.id.ercode),
 							JSONUtil.getString(jo, "ercode"));

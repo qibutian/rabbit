@@ -98,7 +98,7 @@ public class PhotoSelectorActivity extends Activity implements onItemClickListen
 
         initImageLoader();
 
-        mCacheDir = new File(getExternalCacheDir(), "CarPlay");
+        mCacheDir = new File(getExternalCacheDir(), "Rabbit");
         mCacheDir.mkdirs();
 
         photoSelectorDomain = new PhotoSelectorDomain(getApplicationContext());

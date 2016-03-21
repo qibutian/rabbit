@@ -1,16 +1,24 @@
 package com.means.rabbit.activity.more;
 
+import java.io.File;
+
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.means.rabbit.R;
 import com.means.rabbit.activity.comment.PostCommentMainActivity;
 import com.means.rabbit.activity.finance.FinanceDetailActivity;
+import com.means.rabbit.utils.FileUtil;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
  * 更多
@@ -25,6 +33,10 @@ public class MoreFragment extends Fragment implements OnClickListener {
 	LayoutInflater mLayoutInflater;
 	
 	View aboutV,langswitcherV,feedbackV,richscanV,versionV,helpV,wipe_cacheV;
+	
+	File mCacheDir;
+	
+	TextView cacheT;
 
 	public static MoreFragment getInstance() {
 		if (instance == null) {
@@ -55,6 +67,11 @@ public class MoreFragment extends Fragment implements OnClickListener {
 		helpV = mainV.findViewById(R.id.help);
 		wipe_cacheV = mainV.findViewById(R.id.wipe_cache);
 		
+		cacheT = (TextView) mainV.findViewById(R.id.cache);
+		mCacheDir = new File(getActivity().getExternalCacheDir(), "Rabbit");
+		cacheT.setText(String.valueOf(FileUtil.getFileOrDirSize(mCacheDir,
+                FileUtil.UNIT_SACLE.M)) + " m");
+		
 		aboutV.setOnClickListener(this);
 		langswitcherV.setOnClickListener(this);
 		feedbackV.setOnClickListener(this);
@@ -62,6 +79,14 @@ public class MoreFragment extends Fragment implements OnClickListener {
 		versionV.setOnClickListener(this);
 		helpV.setOnClickListener(this);
 		wipe_cacheV.setOnClickListener(this);
+		
+		try {
+			//获取当前版本
+			((TextView)mainV.findViewById(R.id.version_txt)).setText(getVersionName());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -98,11 +123,27 @@ public class MoreFragment extends Fragment implements OnClickListener {
 			break;
 			//清楚缓存
 		case R.id.wipe_cache:
-			
+			 ImageLoader.getInstance().getMemoryCache().clear();
+             ImageLoader.getInstance().getDiskCache().clear();
+             if (FileUtil.deleteFileOrDir(mCacheDir)) {
+                 Toast.makeText(getActivity(), getActivity().getString(R.string.wipe_cache_clear), Toast.LENGTH_SHORT).show();
+                 cacheT.setText("0 m");
+             } else {
+             }
 			break;
 
 		default:
 			break;
 		}
 	}
+	
+	 private String getVersionName() throws Exception
+	   {
+	           // 获取packagemanager的实例
+	           PackageManager packageManager = getActivity().getPackageManager();
+	           // getPackageName()是你当前类的包名，0代表是获取版本信息
+	           PackageInfo packInfo = packageManager.getPackageInfo(getActivity().getPackageName(),0);
+	           String version = packInfo.versionName;
+	           return version;
+	   }
 }

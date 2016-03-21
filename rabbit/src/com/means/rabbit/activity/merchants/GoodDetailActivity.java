@@ -149,12 +149,12 @@ public class GoodDetailActivity extends RabbitBaseActivity {
 							JSONUtil.getString(detailJo, "score") + "/"
 									+ JSONUtil.getString(detailJo, "comment"));
 					ViewUtil.bindView(findViewById(R.id.price),
-							"￥" + JSONUtil.getString(detailJo, "price"));
+							getString(R.string.money_symbol) + JSONUtil.getString(detailJo, "price"));
 					TextView goumaidesT = (TextView) findViewById(R.id.goumaides);
 					goumaidesT.setText(Html.fromHtml(JSONUtil.getString(
 							detailJo, "goumaides")));
 
-					ViewUtil.bindView(findViewById(R.id.old_price), "￥"
+					ViewUtil.bindView(findViewById(R.id.old_price), getString(R.string.money_symbol)
 							+ JSONUtil.getString(detailJo, "oldprice"));
 
 				}

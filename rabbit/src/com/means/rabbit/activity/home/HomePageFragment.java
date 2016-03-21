@@ -128,7 +128,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 			@Override
 			public Object fix(View itemV, Integer position, Object o, Object jo) {
-				return "￥" + o.toString();
+				return getString(R.string.money_symbol) + o.toString();
 			}
 		});
 

@@ -100,7 +100,7 @@ public class GroupOrderActivity extends RabbitBaseActivity {
 						jifenE.setText(0);
 					} else {
 						float daikou = jifen / creditY;
-						daikouT.setText("￥" + daikou);
+						daikouT.setText(getString(R.string.money_symbol) + daikou);
 						shifuT.setText(price - daikou + "");
 					}
 				}
@@ -134,14 +134,14 @@ public class GroupOrderActivity extends RabbitBaseActivity {
 					ViewUtil.bindView(findViewById(R.id.name),
 							JSONUtil.getString(jo, "title"));
 					price = JSONUtil.getDouble(jo, "price");
-					ViewUtil.bindView(findViewById(R.id.price), "￥" + price);
+					ViewUtil.bindView(findViewById(R.id.price), getString(R.string.money_symbol) + price);
 					cartView.setMaxNum(100);
 					cartView.setOnCartViewClickListener(new OnCartViewClickListener() {
 
 						@Override
 						public void onClick() {
 
-							totalPriceT.setText("￥" + cartView.getCartNum()
+							totalPriceT.setText(getString(R.string.money_symbol) + cartView.getCartNum()
 									* price);
 							
 							if (Integer.parseInt(jifenE.getText().toString()) == 0) {
@@ -155,7 +155,7 @@ public class GroupOrderActivity extends RabbitBaseActivity {
 							}
 						}
 					});
-					totalPriceT.setText("￥" + price);
+					totalPriceT.setText(getString(R.string.money_symbol) + price);
 					JSONObject user_dataJo = JSONUtil.getJSONObject(jo,
 							"user_data");
 

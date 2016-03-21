@@ -78,7 +78,7 @@ public class FinanceDetailActivity extends RabbitBaseActivity {
 				}
 				
 
-				return "￥" + o;
+				return getString(R.string.money_symbol) + o;
 			}
 		});
 		adapter.addField(new FieldMap("dateline", R.id.dateline) {

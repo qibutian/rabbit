@@ -107,7 +107,7 @@ public class HotelListActivity extends RabbitBaseActivity {
 				comment_desT.setText("评论" + JSONUtil.getString(data, "score")
 						+ "/" + JSONUtil.getString(data, "score"));
 
-				return "￥" + o + "起";
+				return getString(R.string.money_symbol) + o + "起";
 			}
 		});
 		adapter.addField("tuangoudes", R.id.order_des);
