@@ -76,12 +76,35 @@
     <!-- 翻译助手 -->
     <string name="translate">翻译助手</string>
     <string name="translate_hint">请输入中文···</string>
+    <string name="translate_text">中文 -</string>
     <string name="translate_language">语言</string>
     <string name="translate_translate">翻译</string>
     <string name="translate_result">翻译结果</string>
+    <!-- 选择语言 -->
     <string name="SelectLanguage_chinese">中文</string>
+    <string name="translate_chinese">中文</string>
     <string name="SelectLanguage_english">English</string>
+    <string name="translate_english">英文</string>
     <string name="SelectLanguage_japanese">日本語</string>
+    <string name="translate_japanese">日语</string>
+    <!-- 阿拉伯 -->
+    <string name="SelectLanguage_arab">العربية</string>
+    <string name="translate_arab">阿拉伯语</string>
+    <!-- 朝鲜 -->
+    <string name="SelectLanguage_korea">한국어</string>
+    <string name="translate_korea">韩语</string>
+    <!-- 菲律宾 -->
+    <string name="SelectLanguage_philippines">Pilipino</string>
+    <string name="translate_philippines">菲律宾语</string>
+    <!-- 印尼 -->
+    <string name="SelectLanguage_indonesia">Indonesia</string>
+    <string name="translate_indonesia">印尼语</string>
+    <!-- 西班牙 -->
+    <string name="SelectLanguage_spain">espanol</string>
+    <string name="translate_spain">西班牙语</string>
+    <!-- 意大利 -->
+    <string name="SelectLanguage_italy">In Italia</string>
+    <string name="translate_italy">意大利语</string>
     <string name="more_about_us">关于我们</string>
     <string name="more_langswitcher">语言切换</string>
     <string name="more_feedback">意见反馈</string>

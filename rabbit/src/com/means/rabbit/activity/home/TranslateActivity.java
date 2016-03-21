@@ -1,12 +1,13 @@
 package com.means.rabbit.activity.home;
 
-import org.json.JSONObject;
-
 import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.net.JSONUtil;
 import net.duohuo.dhroid.net.NetTask;
 import net.duohuo.dhroid.net.Response;
 import net.duohuo.dhroid.util.ViewUtil;
+
+import org.json.JSONObject;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -15,6 +16,7 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.means.rabbit.R;
 import com.means.rabbit.api.API;
@@ -41,6 +43,10 @@ public class TranslateActivity extends RabbitBaseActivity implements
 	String slang = "en";
 
 	EditText contentE;
+	
+	TextView tolanguageT;
+	
+	private final int LANGUAGECODE = 1; 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +60,7 @@ public class TranslateActivity extends RabbitBaseActivity implements
 		setTitle(getString(R.string.translate));
 		my_titlebarV = findViewById(R.id.my_titlebar);
 		// TODO Auto-generated method stub
+		tolanguageT = (TextView)findViewById(R.id.tolanguage);
 		languageLl = (LinearLayout) findViewById(R.id.language);
 
 		languageLl.setOnClickListener(this);
@@ -80,7 +87,7 @@ public class TranslateActivity extends RabbitBaseActivity implements
 		switch (v.getId()) {
 		case R.id.language:
 			it = new Intent(self, SelectLanguageActivity.class);
-			startActivity(it);
+			startActivityForResult(it, LANGUAGECODE);
 			break;
 
 		case R.id.voice:
@@ -116,6 +123,19 @@ public class TranslateActivity extends RabbitBaseActivity implements
 
 			}
 		});
+	}
+	
+	@Override
+	protected void onActivityResult(int arg0, int arg1, Intent arg2) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(arg0, arg1, arg2);
+		
+		if (arg1 == RESULT_OK) {
+			if (arg0 == LANGUAGECODE) {
+				slang = arg2.getStringExtra("language");
+				tolanguageT.setText(arg2.getStringExtra("label"));
+			}
+		}
 	}
 
 }

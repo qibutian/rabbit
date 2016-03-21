@@ -201,11 +201,13 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 					gallery.setAdapter(galleryAdapter);
 					
 					//中间部分
-					JSONArray jsa2 = response.jSONArrayFrom("data2");
+					JSONArray jsa2 = response.jSONArrayFrom("data1");
 					if (jsa2!=null) {
-						for (int i = 0; i < jsa2.length(); i++) {
+						ViewUtil.bindNetImage((ImageView) headV.findViewById(R.id.pic_0), JSONUtil.getString(JSONUtil.getJSONObjectAt(jsa2, 0), "pic"), "default");
+						((TextView) headV.findViewById(R.id.pic_0_title)).setText(JSONUtil.getString(JSONUtil.getJSONObjectAt(jsa2, 0), "title"));
+						for (int i = 0; i < pic_ids.length ; i++) {
 							ImageView view = (ImageView) headV.findViewById(pic_ids[i]);
-							ViewUtil.bindNetImage(view, JSONUtil.getString(JSONUtil.getJSONObjectAt(jsa2, i), "pic"), "default");
+							ViewUtil.bindNetImage(view, JSONUtil.getString(JSONUtil.getJSONObjectAt(jsa2, i+1), "pic"), "default");
 						}
 					}
 				}

@@ -71,7 +71,12 @@
 
                     <TextView
                         style="@style/text_7b_black_medium"
-                        android:text="中文 - 英文" />
+                        android:text="@string/translate_text" />
+                    
+                    <TextView
+                        android:id="@+id/tolanguage"
+                        style="@style/text_7b_black_medium"
+                        android:text="@string/translate_english" />
 
                     <ImageView
                         android:layout_width="wrap_content"
