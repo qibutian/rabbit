@@ -98,10 +98,10 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 
 					dateT.setText("入住" + startdate + " 离开" + enddate);
 
-					signlpirceT.setText("￥"
+					signlpirceT.setText(getString(R.string.money_symbol)
 							+ JSONUtil.getString(jo, "singleprice"));
 					countT.setText(JSONUtil.getString(jo, "daycount"));
-					totalpriceT.setText("￥" + JSONUtil.getInt(jo, "count")
+					totalpriceT.setText(getString(R.string.money_symbol) + JSONUtil.getInt(jo, "count")
 							* JSONUtil.getInt(jo, "singleprice"));
 					idT.setText(JSONUtil.getString(jo, "code"));
 					buyerphoneT.setText(JSONUtil.getString(jo, "buyerphone"));

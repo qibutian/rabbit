@@ -128,7 +128,7 @@ public class InsteadShoppingActivity extends RabbitBaseActivity {
 						jifenE.setText(0);
 					} else {
 						float daikou = jifen / creditY;
-						daikouT.setText("￥" + daikou);
+						daikouT.setText(getString(R.string.money_symbol) + daikou);
 						shifuT.setText(price - daikou + "");
 					}
 				}
@@ -165,7 +165,7 @@ public class InsteadShoppingActivity extends RabbitBaseActivity {
 
 					jifenE.setEnabled(credit_s == 0 ? false : true);
 					ViewUtil.bindView(findViewById(R.id.youfei),
-							"￥" + JSONUtil.getString(jo, "emoney"));
+							getString(R.string.money_symbol) + JSONUtil.getString(jo, "emoney"));
 
 					ViewUtil.bindView(findViewById(R.id.tel),
 							JSONUtil.getString(user_dataJo, "phone"));
@@ -174,16 +174,16 @@ public class InsteadShoppingActivity extends RabbitBaseActivity {
 							JSONUtil.getString(user_dataJo, "nickname"));
 					price = JSONUtil.getDouble(jo, "price");
 
-					totalPriceT.setText("￥" + price);
+					totalPriceT.setText(getString(R.string.money_symbol) + price);
 
-					ViewUtil.bindView(findViewById(R.id.price), "￥" + price);
+					ViewUtil.bindView(findViewById(R.id.price), getString(R.string.money_symbol) + price);
 
 					cartView.setOnCartViewClickListener(new OnCartViewClickListener() {
 
 						@Override
 						public void onClick() {
 
-							totalPriceT.setText("￥" + cartView.getCartNum()
+							totalPriceT.setText(getString(R.string.money_symbol) + cartView.getCartNum()
 									* price);
 
 							if (Integer.parseInt(jifenE.getText().toString()) == 0) {

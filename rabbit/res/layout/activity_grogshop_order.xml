@@ -351,7 +351,7 @@
                 <TextView
                     style="@style/text_44_black_medium"
                     android:layout_marginLeft="8dp"
-                    android:text="￥"
+                    android:text="@string/money_symbol"
                     android:textColor="@color/text_2B_green" />
 
                 <TextView

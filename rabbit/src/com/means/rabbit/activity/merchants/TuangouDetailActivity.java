@@ -93,7 +93,7 @@ public class TuangouDetailActivity extends RabbitBaseActivity {
 			@Override
 			public Object fix(View itemV, Integer position, Object o, Object jo) {
 				// TODO Auto-generated method stub
-				return "￥" + o + "/人";
+				return getString(R.string.money_symbol) + o + "/人";
 			}
 		});
 
@@ -175,10 +175,10 @@ public class TuangouDetailActivity extends RabbitBaseActivity {
 					ViewUtil.bindView(headV.findViewById(R.id.comment_des),
 							JSONUtil.getString(detailJo, "score") + "/"
 									+ JSONUtil.getString(detailJo, "comment"));
-					ViewUtil.bindView(headV.findViewById(R.id.price), "￥"
+					ViewUtil.bindView(headV.findViewById(R.id.price), getString(R.string.money_symbol)
 							+ JSONUtil.getString(detailJo, "price"));
 
-					ViewUtil.bindView(headV.findViewById(R.id.old_price), "￥"
+					ViewUtil.bindView(headV.findViewById(R.id.old_price), getString(R.string.money_symbol)
 							+ JSONUtil.getString(detailJo, "oldprice"));
 					TextView goumaidesT = (TextView) findViewById(R.id.goumaides);
 					goumaidesT.setText(Html.fromHtml(JSONUtil.getString(

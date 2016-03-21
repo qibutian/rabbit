@@ -66,7 +66,7 @@ public class FinancialManagementActivity extends RabbitBaseActivity implements
 				// TODO Auto-generated method stub
 				if (response.isSuccess()) {
 					JSONObject jo = response.jSONFromData();
-					balanceT.setText("￥"+JSONUtil.getString(jo, "balance"));
+					balanceT.setText(getString(R.string.money_symbol)+JSONUtil.getString(jo, "balance"));
 				}
 			}
 		});
