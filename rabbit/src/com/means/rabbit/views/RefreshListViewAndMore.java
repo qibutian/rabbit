@@ -1,7 +1,5 @@
 package com.means.rabbit.views;
 
-
-
 import com.means.rabbit.R;
 
 import in.srain.cube.views.ptr.PtrDefaultHandler;
@@ -31,7 +29,7 @@ public class RefreshListViewAndMore extends LinearLayout {
 
 	Context mContext;
 
-	FixRequestDisallowTouchEventPtrFrameLayout mPtrFrame;
+	PtrFrameLayout mPtrFrame;
 
 	ListView listV;
 
@@ -50,30 +48,30 @@ public class RefreshListViewAndMore extends LinearLayout {
 		this.mContext = context;
 		initView();
 	}
-	
+
 	private void initView() {
 		LayoutInflater.from(mContext).inflate(
 				R.layout.include_refresh_listview_base, this);
 		emptyLayout = (LinearLayout) findViewById(R.id.empty_layout);
-		
+
 		listV = (ListView) findViewById(R.id.listview);
-		mPtrFrame = (FixRequestDisallowTouchEventPtrFrameLayout) findViewById(R.id.ptr_frame);
+		mPtrFrame = (PtrFrameLayout) findViewById(R.id.ptr_frame);
+		mPtrFrame.disableWhenHorizontalMove(true);
 		loadMoreListViewContainer = (LoadMoreListViewContainer) findViewById(R.id.load_more_list_view_container);
-		LoadMoreFootView  footView = new LoadMoreFootView(mContext);
+		LoadMoreFootView footView = new LoadMoreFootView(mContext);
 		loadMoreListViewContainer.setLoadMoreView(footView);
 		loadMoreListViewContainer.setLoadMoreUIHandler(footView);
-		final StoreHouseHeader header = new StoreHouseHeader(mContext); 
+		final StoreHouseHeader header = new StoreHouseHeader(mContext);
 		header.setPadding(0, DhUtil.dip2px(mContext, 15), 0,
 				DhUtil.dip2px(mContext, 10));
-		
+
 		header.initWithString("LazyBunny");
 		header.setTextColor(getResources().getColor(R.color.text_2B_green));
 		mPtrFrame.addPtrUIHandler(header);
 		mPtrFrame.setHeaderView(header);
 		mPtrFrame.setPinContent(false);
-		
 
-//		loadMoreListViewContainer.useDefaultHeader();
+		// loadMoreListViewContainer.useDefaultHeader();
 		loadMoreListViewContainer.setAutoLoadMore(true);
 
 		loadMoreListViewContainer.setLoadMoreHandler(new LoadMoreHandler() {
@@ -186,8 +184,7 @@ public class RefreshListViewAndMore extends LinearLayout {
 					}
 
 					loadMoreListViewContainer
-							.setShowLoadingForFirstPage(mAdapter
-									.hasMore());
+							.setShowLoadingForFirstPage(mAdapter.hasMore());
 					loadMoreListViewContainer.loadMoreFinish(
 							!mAdapter.hasMore(), mAdapter.hasMore());
 				} else {

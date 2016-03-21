@@ -340,6 +340,14 @@
                 android:background="@drawable/fillet_10_pink_bg"
                 android:text="@string/grouporder_pay_pay_order"
                 android:visibility="gone" />
+            
+            
+            <TextView
+                android:id="@+id/cancle"
+                style="@style/text_44_black_medium"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="12dp"
+                android:text="@string/cancle_order" />
         </LinearLayout>
     </ScrollView>
 

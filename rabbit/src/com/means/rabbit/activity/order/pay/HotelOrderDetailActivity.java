@@ -151,7 +151,7 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 
 						}
 					});
-					reality_moneyT.setText(JSONUtil.getInt(jo, "payprice") + "");
+					reality_moneyT.setText(JSONUtil.getString(jo, "payprice"));
 
 					findViewById(R.id.erweima).setOnClickListener(
 							new OnClickListener() {

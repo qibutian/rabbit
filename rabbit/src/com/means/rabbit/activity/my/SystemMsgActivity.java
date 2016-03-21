@@ -27,88 +27,90 @@ import com.means.rabbit.views.dialog.DelectDialog.OnDelectResultListener;
 
 /**
  * 系统消息
+ * 
  * @author dell
- *
+ * 
  */
 public class SystemMsgActivity extends RabbitBaseActivity {
 	RefreshListViewAndMore listV;
 	ListView contentListV;
 
 	NetJSONAdapter adapter;
-	
-	ImageView img_isread;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_system_msg);
-		
+
 	}
+
 	@Override
 	public void initView() {
 		// TODO Auto-generated method stub
 		setTitle(getString(R.string.systemmsg));
-		
+
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		String url = API.msglist;
 		contentListV = listV.getListView();
-		
-		adapter = new NetJSONAdapter(url, self,
-				R.layout.item_system_msg);
+
+		adapter = new NetJSONAdapter(url, self, R.layout.item_system_msg);
 		adapter.fromWhat("list");
 		adapter.addField("content", R.id.content);
-		adapter.addField(new FieldMap("dateline",R.id.dateline) {
-			
+		adapter.addField(new FieldMap("dateline", R.id.dateline) {
+
 			@Override
 			public Object fix(View itemV, Integer position, Object o, Object jo) {
-				return DateUtils.dateToStr(new Date(Long.parseLong(o.toString())*1000));
-			}
-		});
-		adapter.addField(new FieldMap("isread",R.id.isread) {
-			
-			@Override
-			public Object fix(View itemV, Integer position, Object o, Object jo) {
-				img_isread = (ImageView) itemV.findViewById(R.id.isread);
-				if(o.toString().equals("1")){
+
+				JSONObject data = (JSONObject) jo;
+
+				ImageView img_isread = (ImageView) itemV
+						.findViewById(R.id.isread);
+				if (JSONUtil.getString(data, "isread").equals("1")) {
 					img_isread.setVisibility(View.INVISIBLE);
-				}else {
+				} else {
 					img_isread.setVisibility(View.VISIBLE);
 				}
-				return "";
+
+				return DateUtils.dateToStr(new Date(
+						Long.parseLong(o.toString()) * 1000));
 			}
 		});
 		listV.setAdapter(adapter);
-		
-		contentListV.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
-			@Override
-			public boolean onItemLongClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				final int index = position;
-				final JSONObject jo = (JSONObject) adapter.getItem(position);
-				DelectDialog dialog = new DelectDialog(self);
-				dialog.show();
-				dialog.setOnDelectResultListener(new OnDelectResultListener() {
-					
+		contentListV
+				.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
 					@Override
-					public void onResult() {
-						DhNet net = new DhNet(API.msgdelete);
-						net.addParam("id", JSONUtil.getString(jo, "id"));
-						net.doPost(new NetTask(self) {
-							
+					public boolean onItemLongClick(AdapterView<?> parent,
+							View view, int position, long id) {
+						final int index = position;
+						final JSONObject jo = (JSONObject) adapter
+								.getItem(position);
+						DelectDialog dialog = new DelectDialog(self);
+						dialog.show();
+						dialog.setOnDelectResultListener(new OnDelectResultListener() {
+
 							@Override
-							public void doInUI(Response response, Integer transfer) {
-								// TODO Auto-generated method stub
-								if (response.isSuccess()) {
-									adapter.remove(index);
-									adapter.notifyDataSetChanged();
-								}
+							public void onResult() {
+								DhNet net = new DhNet(API.msgdelete);
+								net.addParam("id", JSONUtil.getString(jo, "id"));
+								net.doPost(new NetTask(self) {
+
+									@Override
+									public void doInUI(Response response,
+											Integer transfer) {
+										// TODO Auto-generated method stub
+										if (response.isSuccess()) {
+											adapter.remove(index);
+											adapter.notifyDataSetChanged();
+										}
+									}
+								});
 							}
 						});
+						// TODO Auto-generated method stub
+						return false;
 					}
 				});
-				// TODO Auto-generated method stub
-				return false;
-			}
-		});
 	}
 }

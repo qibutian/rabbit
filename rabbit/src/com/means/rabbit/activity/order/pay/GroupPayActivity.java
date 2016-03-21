@@ -41,7 +41,7 @@ public class GroupPayActivity extends RabbitBaseActivity {
 	TextView shifuT;
 
 	Button payB;
-	
+
 	public int pay = 1003;
 
 	@Override
@@ -55,6 +55,13 @@ public class GroupPayActivity extends RabbitBaseActivity {
 		setTitle(getString(R.string.grouporder));
 		orderId = getIntent().getStringExtra("orderid");
 		payB = (Button) findViewById(R.id.pay);
+		findViewById(R.id.cancle).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				cancleOrder();
+			}
+		});
 		getData();
 	}
 
@@ -76,8 +83,11 @@ public class GroupPayActivity extends RabbitBaseActivity {
 					ViewUtil.bindView(findViewById(R.id.code),
 							JSONUtil.getString(jo, "code"));
 
-					ViewUtil.bindView(findViewById(R.id.total_price), getString(R.string.money_symbol)
-							+ JSONUtil.getInt(jo, "singleprice")*JSONUtil.getInt(jo, "count"));
+					ViewUtil.bindView(
+							findViewById(R.id.total_price),
+							getString(R.string.money_symbol)
+									+ JSONUtil.getInt(jo, "singleprice")
+									* JSONUtil.getInt(jo, "count"));
 					ViewUtil.bindView(findViewById(R.id.count),
 							JSONUtil.getString(jo, "count"));
 
@@ -95,13 +105,13 @@ public class GroupPayActivity extends RabbitBaseActivity {
 							JSONUtil.getString(credit_dataJo, "credit"));
 
 					credit_s = JSONUtil.getInt(credit_dataJo, "credit");
-					ViewUtil.bindView(findViewById(R.id.credit_s), getString(R.string.money_symbol)
-							+ credit_s);
+					ViewUtil.bindView(findViewById(R.id.credit_s),
+							getString(R.string.money_symbol) + credit_s);
 					ViewUtil.bindView(findViewById(R.id.ercode),
 							JSONUtil.getString(jo, "ercode"));
 
 					ViewUtil.bindView(findViewById(R.id.shifu),
-							JSONUtil.getInt(jo, "payprice")  + "");
+							JSONUtil.getDouble(jo, "payprice") + "");
 
 					final int paystatus = JSONUtil.getInt(jo, "paystatus");
 
@@ -128,8 +138,7 @@ public class GroupPayActivity extends RabbitBaseActivity {
 
 						}
 					});
-					
-					
+
 					findViewById(R.id.erweima).setOnClickListener(
 							new OnClickListener() {
 
@@ -154,7 +163,7 @@ public class GroupPayActivity extends RabbitBaseActivity {
 			}
 		});
 	}
-	
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
@@ -165,5 +174,22 @@ public class GroupPayActivity extends RabbitBaseActivity {
 			payB.setBackgroundResource(R.drawable.fillet_10_green_bg);
 			payB.setTag(2);
 		}
+	}
+
+	private void cancleOrder() {
+		DhNet net = new DhNet(API.cancelOrder);
+		net.addParam("orderid", orderId);
+		net.doPostInDialog("取消中...", new NetTask(self) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+
+				if (response.isSuccess()) {
+					showToast("取消成功!");
+					finish();
+				}
+
+			}
+		});
 	}
 }

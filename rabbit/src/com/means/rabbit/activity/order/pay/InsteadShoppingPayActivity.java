@@ -54,6 +54,14 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 		setTitle(getString(R.string.insteadshopping));
 		daigouId = getIntent().getStringExtra("orderid");
 		payB = (Button) findViewById(R.id.pay);
+		
+		findViewById(R.id.cancle).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				cancleOrder();
+			}
+		});
 		getData();
 	}
 
@@ -188,5 +196,23 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 			payB.setBackgroundResource(R.drawable.fillet_10_green_bg);
 			payB.setTag(2);
 		}
+	}
+	
+	
+	private void cancleOrder() {
+		DhNet net = new DhNet(API.cancelOrder);
+		net.addParam("orderid", daigouId);
+		net.doPostInDialog("取消中...", new NetTask(self) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+
+				if (response.isSuccess()) {
+					showToast("取消成功!");
+					finish();
+				}
+
+			}
+		});
 	}
 }
