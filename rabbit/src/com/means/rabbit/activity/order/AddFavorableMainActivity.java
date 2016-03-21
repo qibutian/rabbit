@@ -131,6 +131,7 @@ public class AddFavorableMainActivity extends RabbitBaseActivity {
 					}
 
 					jifenE.setEnabled(credit_s == 0 ? false : true);
+					shifuT.setText(payprice + "");
 				}
 
 			}
