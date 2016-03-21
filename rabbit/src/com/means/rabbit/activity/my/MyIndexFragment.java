@@ -119,8 +119,8 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 			// it = new Intent(getActivity(),
 			// BusinessOrderDetailsActivity.class);
 			// startActivity(it);
-			CatPop pop = new CatPop(getActivity(), 1);
-			pop.show(v);
+//			CatPop pop = new CatPop(getActivity(), 1);
+//			pop.show(v);
 			break;
 		// 我的订单
 		case R.id.my_order:

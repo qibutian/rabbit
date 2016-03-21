@@ -100,8 +100,8 @@ public class MoreFragment extends Fragment implements OnClickListener {
 			break;
 			//语言选择
 		case R.id.langswitcher:
-			it = new Intent(getActivity(),PostCommentMainActivity.class);
-			startActivity(it);
+//			it = new Intent(getActivity(),PostCommentMainActivity.class);
+//			startActivity(it);
 			break;
 			//反馈
 		case R.id.feedback:
@@ -110,8 +110,6 @@ public class MoreFragment extends Fragment implements OnClickListener {
 			break;
 			//扫一扫
 		case R.id.richscan:
-			it = new Intent(getActivity(),FinanceDetailActivity.class);
-			startActivity(it);
 			break;
 			//版本更新
 		case R.id.version:
