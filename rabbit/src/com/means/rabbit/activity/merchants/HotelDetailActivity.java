@@ -132,20 +132,20 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 
 		startDateT.setText(lastIntent.getStringExtra("startDate"));
 		endDateT.setText(lastIntent.getStringExtra("endDate"));
-		
+
 		gallery.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int position, long id) {
 				// TODO Auto-generated method stub
-				pic_countT.setText(position+1 + "/" + gallery.getCount());
+				pic_countT.setText(position + 1 + "/" + gallery.getCount());
 			}
 
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
 
@@ -165,13 +165,14 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 			public void doInUI(Response response, Integer transfer) {
 				if (response.isSuccess()) {
 					final JSONObject detailJo = response.jSONFromData();
-					
+
 					setRightAction(R.drawable.erweima, new OnClickListener() {
 
 						@Override
 						public void onClick(View arg0) {
 							Intent it = new Intent(self, ErweimaActivity.class);
-							it.putExtra("url", JSONUtil.getString(detailJo, "pic_qr"));
+							it.putExtra("url",
+									JSONUtil.getString(detailJo, "pic_qr"));
 							startActivity(it);
 						}
 					});
@@ -183,7 +184,7 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 
 						}
 					});
-					
+
 					JSONArray image_data = JSONUtil.getJSONArray(detailJo,
 							"image_data");
 					galleryAdapter = new PSAdapter(self, R.layout.item_gallery);
@@ -287,8 +288,7 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 			public void doInUI(Response response, Integer transfer) {
 
 				if (response.isSuccess()) {
-					// commentView.setData(response
-					// .jSONArrayFrom("list"));
+//					commentView.setData(response.jSONArrayFrom("list"));
 				}
 
 			}

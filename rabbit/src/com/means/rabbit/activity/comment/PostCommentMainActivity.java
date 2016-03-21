@@ -226,7 +226,7 @@ public class PostCommentMainActivity extends RabbitBaseActivity {
 		net.addParam("contentid", 6); // 团购/代购ID
 		net.addParam("content", content);
 		net.addParam("score", ratingBar.getRating());
-		net.addParam("type", type); // 类型1是团购商家2是酒店3是代购
+		net.addParam("type", 2); // 类型1是团购商家2是酒店3是代购
 		net.addParam("slidepic", picArray.toString());
 		net.doPostInDialog(new NetTask(self) {
 

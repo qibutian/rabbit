@@ -49,7 +49,8 @@ public class PayOrderActivity extends RabbitBaseActivity {
 		payprice = it.getStringExtra("payprice");
 		orderid = it.getStringExtra("orderid");
 		ViewUtil.bindView(findViewById(R.id.name), it.getStringExtra("name"));
-		ViewUtil.bindView(findViewById(R.id.payprice), getString(R.string.money_symbol) + payprice);
+		ViewUtil.bindView(findViewById(R.id.payprice),
+				getString(R.string.money_symbol) + payprice);
 
 		findViewById(R.id.paybymoney).setOnClickListener(new OnClickListener() {
 
@@ -92,7 +93,7 @@ public class PayOrderActivity extends RabbitBaseActivity {
 		DhNet net = new DhNet(API.youhuibuy);
 		net.addParam("contentid", getIntent().getStringExtra("contentid"));
 		net.addParam("payprice", payprice);
-		// net.addParam("credit", jifenE.getText().toString());
+		net.addParam("credit", getIntent().getStringExtra("credit"));
 		net.doPostInDialog("提交中...", new NetTask(self) {
 
 			@Override
@@ -118,7 +119,10 @@ public class PayOrderActivity extends RabbitBaseActivity {
 				// TODO Auto-generated method stub
 				if (response.isSuccess()) {
 					JSONObject jo = response.jSONFromData();
-					ViewUtil.bindView(findViewById(R.id.money), getString(R.string.money_symbol)+JSONUtil.getString(jo, "balance"));
+					ViewUtil.bindView(
+							findViewById(R.id.money),
+							getString(R.string.money_symbol)
+									+ JSONUtil.getString(jo, "balance"));
 				}
 			}
 		});

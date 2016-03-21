@@ -70,7 +70,7 @@ public class MoreFragment extends Fragment implements OnClickListener {
 		cacheT = (TextView) mainV.findViewById(R.id.cache);
 		mCacheDir = new File(getActivity().getExternalCacheDir(), "Rabbit");
 		cacheT.setText(String.valueOf(FileUtil.getFileOrDirSize(mCacheDir,
-                FileUtil.UNIT_SACLE.M)) + " m");
+                FileUtil.UNIT_SACLE.M)) + " M");
 		
 		aboutV.setOnClickListener(this);
 		langswitcherV.setOnClickListener(this);
@@ -100,8 +100,8 @@ public class MoreFragment extends Fragment implements OnClickListener {
 			break;
 			//语言选择
 		case R.id.langswitcher:
-//			it = new Intent(getActivity(),PostCommentMainActivity.class);
-//			startActivity(it);
+			it = new Intent(getActivity(),PostCommentMainActivity.class);
+			startActivity(it);
 			break;
 			//反馈
 		case R.id.feedback:
@@ -125,7 +125,7 @@ public class MoreFragment extends Fragment implements OnClickListener {
              ImageLoader.getInstance().getDiskCache().clear();
              if (FileUtil.deleteFileOrDir(mCacheDir)) {
                  Toast.makeText(getActivity(), getActivity().getString(R.string.wipe_cache_clear), Toast.LENGTH_SHORT).show();
-                 cacheT.setText("0 m");
+                 cacheT.setText("0 M");
              } else {
              }
 			break;
