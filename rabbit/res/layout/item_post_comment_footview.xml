@@ -8,6 +8,7 @@
         android:id="@+id/addphoto"
         android:layout_width="77dp"
         android:layout_height="77dp"
-        android:background="@drawable/icon_add_photo" />
+        android:background="@color/app_bg_color"
+        android:src="@drawable/icon_add_photo" />
 
 </LinearLayout>

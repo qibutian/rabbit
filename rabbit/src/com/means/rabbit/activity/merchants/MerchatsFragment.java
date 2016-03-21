@@ -9,9 +9,12 @@ import net.duohuo.dhroid.net.JSONUtil;
 import com.means.rabbit.R;
 import com.means.rabbit.activity.home.HomePageFragment;
 import com.means.rabbit.api.API;
+import com.means.rabbit.bean.CityEB;
 import com.means.rabbit.views.RefreshListViewAndMore;
 import com.means.rabbit.views.TabView;
 import com.means.rabbit.views.TabView.OnTabSelectListener;
+
+import de.greenrobot.event.EventBus;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -57,6 +60,7 @@ public class MerchatsFragment extends Fragment {
 			Bundle savedInstanceState) {
 		mainV = inflater.inflate(R.layout.fragment_travel, null);
 		mLayoutInflater = inflater;
+		EventBus.getDefault().unregister(this);
 		initView();
 		// TODO Auto-generated method stub
 		return mainV;
@@ -126,6 +130,18 @@ public class MerchatsFragment extends Fragment {
 				adapter.refreshDialog();
 			}
 		});
+	}
+
+	public void onEventMainThread(CityEB city) {
+		adapter.addparam("cityid", city.getCatid());
+		adapter.refresh();
+	}
+
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		EventBus.getDefault().unregister(this);
 	}
 
 }

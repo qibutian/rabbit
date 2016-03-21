@@ -2,6 +2,7 @@ package com.means.rabbit.activity.home;
 
 import net.duohuo.dhroid.ioc.IocContainer;
 import net.duohuo.dhroid.net.DhNet;
+import net.duohuo.dhroid.net.GlobalParams;
 import net.duohuo.dhroid.net.JSONUtil;
 import net.duohuo.dhroid.net.NetTask;
 import net.duohuo.dhroid.net.Response;
@@ -69,6 +70,11 @@ public class SelectCityActivity extends RabbitBaseActivity {
 					per.catid = JSONUtil.getString(jo, "id");
 					per.cityname = JSONUtil.getString(jo, "name");
 					per.commit();
+					
+//					GlobalParams globalParams = IocContainer.getShare().get(
+//							GlobalParams.class);
+//					globalParams.setGlobalParam("cityid", JSONUtil.getString(jo, "id"));
+					
 					CityEB city = new CityEB();
 					city.setCatid(JSONUtil.getString(jo, "id"));
 					city.setCityname(JSONUtil.getString(jo, "name"));
@@ -93,6 +99,11 @@ public class SelectCityActivity extends RabbitBaseActivity {
 				per.catid = JSONUtil.getString(jo, "id");
 				per.cityname = JSONUtil.getString(jo, "name");
 				per.commit();
+				
+//				GlobalParams globalParams = IocContainer.getShare().get(
+//						GlobalParams.class);
+//				globalParams.setGlobalParam("cityid", JSONUtil.getString(jo, "id"));
+				
 				CityEB city = new CityEB();
 				city.setCatid(JSONUtil.getString(jo, "id"));
 				city.setCityname(JSONUtil.getString(jo, "name"));
