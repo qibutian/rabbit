@@ -145,6 +145,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
+                        android:id="@+id/version_txt"
                         style="@style/text_44_black_medium"
                         android:text="V1.6" />
 
@@ -203,6 +204,11 @@
                     android:layout_height="wrap_content"
                     android:gravity="right|center_vertical"
                     android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/cache"
+                        style="@style/text_44_black_medium"
+                        android:text="0m" />
 
                     <ImageView
                         android:layout_width="wrap_content"
