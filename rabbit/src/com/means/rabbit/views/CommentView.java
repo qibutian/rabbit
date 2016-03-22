@@ -43,7 +43,7 @@ public class CommentView extends LinearLayout {
 					JSONUtil.getString(jo, "username"));
 			ViewUtil.bindView(v.findViewById(R.id.time),
 					JSONUtil.getString(jo, "dateline"), "neartime");
-			ViewUtil.bindNetImage((ImageView) v.findViewById(R.id.head),
+			ViewUtil.bindNetImage((RoundImageView) v.findViewById(R.id.head),
 					JSONUtil.getString(jo, "faceimg_s"), "head");
 
 			JSONArray picJsa = JSONUtil.getJSONArray(jo, "image_data");
@@ -55,8 +55,9 @@ public class CommentView extends LinearLayout {
 
 					if (j < 4) {
 						ImageView picI = (ImageView) picV.getChildAt(j);
+						picI.setVisibility(View.VISIBLE);
 						try {
-							ViewUtil.bindNetImage(picI, picJsa.getString(j),
+							ViewUtil.bindNetImage(picI, picJsa.getJSONObject(j).getString("img_m "),
 									"head");
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block

@@ -174,6 +174,7 @@ public class GoodDetailActivity extends RabbitBaseActivity {
 			public void doInUI(Response response, Integer transfer) {
 
 				if (response.isSuccess()) {
+					commentView.setData(response.jSONArrayFrom("list"));
 				}
 
 			}
