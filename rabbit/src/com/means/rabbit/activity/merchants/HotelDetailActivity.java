@@ -288,7 +288,7 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 			public void doInUI(Response response, Integer transfer) {
 
 				if (response.isSuccess()) {
-//					commentView.setData(response.jSONArrayFrom("list"));
+					commentView.setData(response.jSONArrayFrom("list"));
 				}
 
 			}
