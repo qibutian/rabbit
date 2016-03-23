@@ -276,7 +276,7 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 		});
 	}
 
-	//评论列表
+	// 评论列表
 	private void getCommentList() {
 		DhNet net = new DhNet(API.commentlist);
 		net.addParam("contentid", hotelId);
