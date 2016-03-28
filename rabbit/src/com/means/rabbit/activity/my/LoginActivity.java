@@ -71,11 +71,11 @@ public class LoginActivity extends RabbitBaseActivity implements
 	}
 
 	private void login() {
-		// final String nickname = nicknameEt.getText().toString();
-		// final String password = passwordEt.getText().toString();
+		 final String nickname = nicknameEt.getText().toString();
+		 final String password = passwordEt.getText().toString();
 
-		final String nickname = "qqq";
-		final String password = "q111111";
+//		final String nickname = "qqq";
+//		final String password = "q111111";
 		if (TextUtils.isEmpty(nickname)) {
 			showToast("请输入昵称/用户名");
 			return;
@@ -100,6 +100,11 @@ public class LoginActivity extends RabbitBaseActivity implements
 				if (response.isSuccess()) {
 					User.getInstance().setLogin(true);
 					JSONObject jo = response.jSONFromData();
+					if (TextUtils.isEmpty(JSONUtil.getString(jo, "type"))) {
+						User.getInstance().setType(1);
+					} else {
+						User.getInstance().setType(JSONUtil.getInt(jo, "type"));
+					}
 					per = IocContainer.getShare().get(RabbitPerference.class);
 					per.load();
 					per.setLogin(true);

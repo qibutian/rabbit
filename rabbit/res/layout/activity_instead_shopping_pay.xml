@@ -155,7 +155,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="@dimen/padding_leftandright" >
+                android:padding="@dimen/padding_leftandright"
+                android:visibility="gone" >
 
                 <TextView
                     style="@style/text_44_black_medium"

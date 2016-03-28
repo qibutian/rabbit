@@ -107,6 +107,13 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 
 					signlpirceT.setText(getString(R.string.money_symbol)
 							+ JSONUtil.getString(jo, "singleprice"));
+
+					ViewUtil.bindView(
+							findViewById(R.id.yingfu),
+							getString(R.string.money_symbol)
+									+ JSONUtil.getDouble(jo, "singleprice")
+									* JSONUtil.getDouble(jo, ""));
+
 					countT.setText(JSONUtil.getString(jo, "daycount"));
 					totalpriceT.setText(getString(R.string.money_symbol)
 							+ JSONUtil.getInt(jo, "count")
@@ -131,14 +138,14 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 					final int paystatus = JSONUtil.getInt(jo, "paystatus");
 					servicestatus = JSONUtil.getInt(jo, "servicestatus");
 					grogshop_btn.setText(paystatus == 1 ? "支付订单" : "已支付");
-					
-					if(paystatus==1) {
+
+					if (paystatus == 1) {
 						grogshop_btn.setText("支付订单");
 					} else {
-//						if(servicestatus)
-						
+						// if(servicestatus)
+
 					}
-					
+
 					grogshop_btn.setTag(paystatus);
 					grogshop_btn
 							.setBackgroundResource(paystatus == 1 ? R.drawable.fillet_10_pink_bg

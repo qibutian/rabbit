@@ -97,10 +97,10 @@ public class MyOrderActivity extends RabbitBaseActivity {
 						JSONObject jo = adapter.getTItem(position);
 						Intent it;
 						int type = JSONUtil.getInt(jo, "type");
-						if (type == 1) {
+						if (type == 2) {
 							it = new Intent(self, GroupPayActivity.class);
 
-						} else if (type == 2) {
+						} else if (type == 1) {
 							it = new Intent(self,
 									HotelOrderDetailActivity.class);
 						} else {

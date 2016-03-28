@@ -49,7 +49,7 @@ public class BusinessOrderActivity extends RabbitBaseActivity {
 		setTitle(getString(R.string.business_order));
 		
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
-		String url = API.orderlist;
+		String url = API.orderbusinesslist;
 		contentListV = listV.getListView();
 
 		adapter = new NetJSONAdapter(url, self, R.layout.item_order_list);

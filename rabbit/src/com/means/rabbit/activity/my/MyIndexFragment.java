@@ -47,7 +47,7 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 	Button logoutBtn;
 
 	BadgeView msg_countT, order_countT;
-	
+
 	RabbitPerference per;
 
 	public static MyIndexFragment getInstance() {
@@ -98,6 +98,21 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 		msg_countT.hide();
 		order_countT = (BadgeView) mainV.findViewById(R.id.order_count);
 		order_countT.hide();
+
+		User user = User.getInstance();
+		if (user.getType() == 1) {
+			business_orderLl.setVisibility(View.GONE);
+			mainV.findViewById(R.id.b_line).setVisibility(View.GONE);
+			
+			my_orderLl.setVisibility(View.VISIBLE);
+			mainV.findViewById(R.id.m_line).setVisibility(View.VISIBLE);
+		} else {
+			my_orderLl.setVisibility(View.GONE);
+			mainV.findViewById(R.id.m_line).setVisibility(View.GONE);
+			
+			business_orderLl.setVisibility(View.VISIBLE);
+			mainV.findViewById(R.id.b_line).setVisibility(View.VISIBLE);
+		}
 
 	}
 
@@ -166,11 +181,11 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 			break;
 		}
 	}
-	
-	private void logout(){
+
+	private void logout() {
 		DhNet net = new DhNet(API.logout);
 		net.doPostInDialog(new NetTask(getActivity()) {
-			
+
 			@Override
 			public void doInUI(Response response, Integer transfer) {
 				// TODO Auto-generated method stub

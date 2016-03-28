@@ -16,7 +16,7 @@ public class API {
 
 	/** 用户登录 */
 	public static String login = Baseurl + "/home/user/login";
-	
+
 	/** 退出登录 */
 	public static String logout = Baseurl + "/home/user/logout";
 
@@ -167,12 +167,22 @@ public class API {
 
 	/** 翻译 */
 	public static String translation = Baseurl + "/home/index/fanyi";
-	
+
 	/** 首页搜索 */
 	public static String search = Baseurl + "/home/index/search";
-	
+
 	/** 首页搜索 */
 	public static String uploadImg = Baseurl + "/home/attachment/uploadimage";
-	
+
+	/** 商家订单列表 */
+	public static String orderbusinesslist = Baseurl
+			+ "/home/hotel/orderbusinesslist";
+
+	/** 商家订单列详情 */
+	public static String orderbusinessdetail = Baseurl
+			+ "/home/shop/orderbusinessview";
+
+	/** 使用消费码 */
+	public static String usecode = Baseurl + "/home/shop/ercodepay";
 
 }
