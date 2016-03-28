@@ -148,7 +148,6 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 		getTuangouList();
 		getCommentList();
 
-
 	}
 
 	private void getShopDetalData() {
@@ -179,34 +178,46 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 
 						}
 					});
-					
-					
-					findViewById(R.id.favorable).setOnClickListener(new OnClickListener() {
 
-						@Override
-						public void onClick(View arg0) {
-							
-							UserInfoManage.getInstance().checkLogin(self, new LoginCallBack() {
-								
+					findViewById(R.id.favorable).setOnClickListener(
+							new OnClickListener() {
+
 								@Override
-								public void onisLogin() {
-									Intent it = new Intent(self, AddFavorableMainActivity.class);
-									it.putExtra("contentid", JSONUtil.getString(detailJo, "id"));
-									it.putExtra("payprice", JSONUtil.getDouble(detailJo, "price"));
-									it.putExtra("name", JSONUtil.getString(detailJo, "title"));
-									startActivity(it);
-								}
-								
-								@Override
-								public void onLoginFail() {
-									// TODO Auto-generated method stub
-									
+								public void onClick(View arg0) {
+
+									UserInfoManage.getInstance().checkLogin(
+											self, new LoginCallBack() {
+
+												@Override
+												public void onisLogin() {
+													Intent it = new Intent(
+															self,
+															AddFavorableMainActivity.class);
+													it.putExtra("contentid",
+															JSONUtil.getString(
+																	detailJo,
+																	"id"));
+													it.putExtra("payprice",
+															JSONUtil.getDouble(
+																	detailJo,
+																	"price"));
+													it.putExtra("name",
+															JSONUtil.getString(
+																	detailJo,
+																	"title"));
+													startActivity(it);
+												}
+
+												@Override
+												public void onLoginFail() {
+													// TODO Auto-generated
+													// method stub
+
+												}
+											});
+
 								}
 							});
-
-
-						}
-					});
 
 					JSONArray image_data = JSONUtil.getJSONArray(detailJo,
 							"image_data");
@@ -234,9 +245,12 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 					ViewUtil.bindView(headV.findViewById(R.id.comment_des),
 							JSONUtil.getString(detailJo, "score") + "/"
 									+ JSONUtil.getString(detailJo, "comment"));
-					ViewUtil.bindView(headV.findViewById(R.id.price), getString(R.string.money_symbol)
-							+ JSONUtil.getString(detailJo, "price") + "/"
-							+ JSONUtil.getString(detailJo, "price_o"));
+					ViewUtil.bindView(
+							headV.findViewById(R.id.price),
+							getString(R.string.money_symbol)
+									+ JSONUtil.getString(detailJo, "price")
+									+ "/"
+									+ JSONUtil.getString(detailJo, "price_o"));
 					ratingBar.setRating(JSONUtil.getFloat(detailJo, "score"));
 
 					JSONArray field_dataJSA = JSONUtil.getJSONArray(detailJo,
@@ -279,8 +293,7 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 			public void doInUI(Response response, Integer transfer) {
 
 				if (response.isSuccess()) {
-					 commentView.setData(response
-					 .jSONArrayFrom("list"));
+					commentView.setData(response.jSONArrayFrom("list"));
 				}
 
 			}

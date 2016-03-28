@@ -11,6 +11,7 @@ import net.duohuo.dhroid.util.ViewUtil;
 import com.means.rabbit.R;
 import com.means.rabbit.R.layout;
 import com.means.rabbit.RabbitValueFix;
+import com.means.rabbit.activity.comment.PostCommentMainActivity;
 import com.means.rabbit.activity.main.ErweimaActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
@@ -43,6 +44,10 @@ public class GroupPayActivity extends RabbitBaseActivity {
 	Button payB;
 
 	public int pay = 1003;
+
+	public int comment = 1004;
+
+	int servicestatus;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -134,6 +139,15 @@ public class GroupPayActivity extends RabbitBaseActivity {
 								it.putExtra("name",
 										JSONUtil.getString(jo, "title"));
 								startActivityForResult(it, pay);
+							} else {
+								if (servicestatus == 1) {
+									it = new Intent(self,
+											PostCommentMainActivity.class);
+									it.putExtra("contentid",
+											JSONUtil.getString(jo, "id"));
+									it.putExtra("type", "1");
+									startActivityForResult(it, comment);
+								}
 							}
 
 						}
@@ -173,6 +187,13 @@ public class GroupPayActivity extends RabbitBaseActivity {
 			payB.setText("已支付");
 			payB.setBackgroundResource(R.drawable.fillet_10_green_bg);
 			payB.setTag(2);
+		}
+
+		if (requestCode == comment && resultCode == Activity.RESULT_OK) {
+			payB.setText("已评论");
+			payB.setBackgroundResource(R.drawable.fillet_10_green_bg);
+			payB.setTag(2);
+			servicestatus = 2;
 		}
 	}
 

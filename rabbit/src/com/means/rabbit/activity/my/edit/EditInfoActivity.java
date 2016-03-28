@@ -198,7 +198,7 @@ public class EditInfoActivity extends RabbitBaseActivity implements
 				hidenProgressDialog();
 				if (response.isSuccess()
 						&& Integer.parseInt(response.getBundle("proccess")
-								.toString()) == 1) {
+								.toString()) == 100) {
 					System.out.println(response.toString());
 					Bitmap bmp = PhotoUtil.getLocalImage(new File(mPhotoPath));
 					headI.setImageBitmap(ImageUtil.toRoundCorner(bmp, 1000));

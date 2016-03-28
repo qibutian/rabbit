@@ -31,6 +31,10 @@ public class CommentView extends LinearLayout {
 	}
 
 	public void setData(JSONArray jsa) {
+		if (jsa == null) {
+			return;
+		}
+
 		mLayoutInflater = LayoutInflater.from(mContext);
 		for (int i = 0; i < jsa.length(); i++) {
 
@@ -49,6 +53,14 @@ public class CommentView extends LinearLayout {
 			JSONArray picJsa = JSONUtil.getJSONArray(jo, "image_data");
 
 			if (picJsa != null && picJsa.length() != 0) {
+				
+				
+				
+				
+				
+				
+				
+				
 				LinearLayout picV = (LinearLayout) v
 						.findViewById(R.id.pic_layout);
 				for (int j = 0; j < picJsa.length(); j++) {
@@ -57,11 +69,13 @@ public class CommentView extends LinearLayout {
 						ImageView picI = (ImageView) picV.getChildAt(j);
 						picI.setVisibility(View.VISIBLE);
 						try {
-							ViewUtil.bindNetImage(picI, picJsa.getJSONObject(j).getString("img_m "),
-									"head");
-						} catch (JSONException e) {
+							JSONObject imajo = picJsa.getJSONObject(j);
+							ViewUtil.bindNetImage(picI,
+									JSONUtil.getString(imajo, "img_s"),
+									"default");
+						} catch (JSONException e1) {
 							// TODO Auto-generated catch block
-							e.printStackTrace();
+							e1.printStackTrace();
 						}
 					}
 

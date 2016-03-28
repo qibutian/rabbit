@@ -170,5 +170,9 @@ public class API {
 	
 	/** 首页搜索 */
 	public static String search = Baseurl + "/home/index/search";
+	
+	/** 首页搜索 */
+	public static String uploadImg = Baseurl + "/home/attachment/uploadimage";
+	
 
 }

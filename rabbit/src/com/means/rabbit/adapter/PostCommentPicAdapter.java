@@ -43,10 +43,12 @@ public class PostCommentPicAdapter extends
 
 		if (viewType == TYPE_ITEM) {
 			// inflate your layout and pass it to view holder
-			View view = LayoutInflater.from(mContext).inflate(R.layout.item_post_comment, parent, false);
+			View view = LayoutInflater.from(mContext).inflate(
+					R.layout.item_post_comment, parent, false);
 			return new VHItem(view);
 		} else if (viewType == TYPE_FOOTER) {
-			View view = LayoutInflater.from(mContext).inflate(R.layout.item_post_comment_footview, parent, false);
+			View view = LayoutInflater.from(mContext).inflate(
+					R.layout.item_post_comment_footview, parent, false);
 			// inflate your layout and pass it to view holder
 			return new VHFooter(view);
 		}
@@ -59,28 +61,32 @@ public class PostCommentPicAdapter extends
 
 		if (holder instanceof VHItem) {
 			final JSONObject jo = getItem(position);
-			Bitmap bm = PhotoUtil.getLocalImage(new File(JSONUtil.getString(jo, "path")));
+			Bitmap bm = PhotoUtil.getLocalImage(new File(JSONUtil.getString(jo,
+					"mPhotoPath")));
 			((VHItem) holder).photo.setImageBitmap(bm);
-			((VHItem) holder).photo.setOnLongClickListener(new View.OnLongClickListener() {
-				
-				@Override
-				public boolean onLongClick(View v) {
-					// TODO Auto-generated method stub
-					((PostCommentMainActivity)mContext).delectPhoto(JSONUtil.getInt(jo, "id"));
-					return false;
-				}
-			});
-//			Log.d(">>>>>>>>>>>photioid:   ", JSONUtil.getInt(jo, "id")+"");
+			((VHItem) holder).photo
+					.setOnLongClickListener(new View.OnLongClickListener() {
+
+						@Override
+						public boolean onLongClick(View v) {
+							// TODO Auto-generated method stub
+							((PostCommentMainActivity) mContext)
+									.delectPhoto(JSONUtil.getInt(jo, "id"));
+							return false;
+						}
+					});
+			// Log.d(">>>>>>>>>>>photioid:   ", JSONUtil.getInt(jo, "id")+"");
 		} else if (holder instanceof VHFooter) {
-			((VHFooter) holder).addphoto.setOnClickListener(new View.OnClickListener() {
-				
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					((PostCommentMainActivity)mContext).showPop();
-//					Toast.makeText(mContext, "添加", 0).show();
-				}
-			});
+			((VHFooter) holder).addphoto
+					.setOnClickListener(new View.OnClickListener() {
+
+						@Override
+						public void onClick(View v) {
+							// TODO Auto-generated method stub
+							((PostCommentMainActivity) mContext).showPop();
+							// Toast.makeText(mContext, "添加", 0).show();
+						}
+					});
 			// cast holder to VHHeader and set data for header.
 		}
 
@@ -88,10 +94,13 @@ public class PostCommentPicAdapter extends
 
 	@Override
 	public int getItemCount() {
-		 if (data == null) {
-		 return 1;
-		 }
-		return data.length() + 1;
+		if (data == null) {
+			return 1;
+		} else if (data.length() < 4) {
+			return data.length() + 1;
+		} else {
+			return 4;
+		}
 	}
 
 	public void setData(JSONArray data) {
@@ -100,9 +109,9 @@ public class PostCommentPicAdapter extends
 	}
 
 	public JSONObject getItem(int position) {
-		 if (data == null) {
-		 return null;
-		 }
+		if (data == null) {
+			return null;
+		}
 		try {
 			return (JSONObject) data.get(position);
 		} catch (JSONException e) {
@@ -121,10 +130,13 @@ public class PostCommentPicAdapter extends
 	}
 
 	private boolean isPositionFooter(int position) {
-		if (getItemCount() == position + 1) {
+
+		if (data != null && data.length() == 4) {
+			return false;
+		} else if (getItemCount() == position + 1) {
 			return true;
 		}
-		
+
 		return false;
 	}
 

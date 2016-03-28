@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.means.rabbit.R;
 import com.means.rabbit.RabbitValueFix;
+import com.means.rabbit.activity.comment.PostCommentMainActivity;
 import com.means.rabbit.activity.main.ErweimaActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
@@ -41,6 +42,10 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 	Button grogshop_btn;
 
 	public int pay = 1003;
+
+	public int comment = 1004;
+
+	int servicestatus;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -124,8 +129,16 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 							JSONUtil.getString(jo, "name"));
 
 					final int paystatus = JSONUtil.getInt(jo, "paystatus");
-
+					servicestatus = JSONUtil.getInt(jo, "servicestatus");
 					grogshop_btn.setText(paystatus == 1 ? "支付订单" : "已支付");
+					
+					if(paystatus==1) {
+						grogshop_btn.setText("支付订单");
+					} else {
+//						if(servicestatus)
+						
+					}
+					
 					grogshop_btn.setTag(paystatus);
 					grogshop_btn
 							.setBackgroundResource(paystatus == 1 ? R.drawable.fillet_10_pink_bg
@@ -147,6 +160,15 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 								it.putExtra("name",
 										JSONUtil.getString(jo, "title"));
 								startActivityForResult(it, pay);
+							} else {
+								if (servicestatus == 1) {
+									it = new Intent(self,
+											PostCommentMainActivity.class);
+									it.putExtra("contentid",
+											JSONUtil.getString(jo, "id"));
+									it.putExtra("type", "2");
+									startActivityForResult(it, comment);
+								}
 							}
 
 						}
@@ -204,6 +226,14 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 			grogshop_btn.setBackgroundResource(R.drawable.fillet_10_green_bg);
 			grogshop_btn.setTag(2);
 		}
+
+		if (requestCode == comment && resultCode == Activity.RESULT_OK) {
+			grogshop_btn.setText("已评论");
+			grogshop_btn.setBackgroundResource(R.drawable.fillet_10_green_bg);
+			grogshop_btn.setTag(2);
+			servicestatus = 2;
+		}
+
 	}
 
 }

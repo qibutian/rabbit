@@ -7,6 +7,7 @@ import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.net.JSONUtil;
 import net.duohuo.dhroid.net.NetTask;
 import net.duohuo.dhroid.net.Response;
+import net.duohuo.dhroid.util.ImageUtil;
 import net.duohuo.dhroid.util.PhotoUtil;
 
 import org.json.JSONArray;
@@ -40,6 +41,7 @@ import com.means.rabbit.views.MyToast;
 import com.means.rabbit.views.dialog.DateTimerDialog;
 import com.means.rabbit.views.dialog.DateTimerDialog.OnDateTimerResultListener;
 import com.means.rabbit.views.pop.SelectPicturePop;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
  * 
@@ -129,11 +131,18 @@ public class PostCommentMainActivity extends RabbitBaseActivity {
 		pop.setAlbumListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(self, PhotoSelectorActivity.class);
-				intent.putExtra(PhotoSelectorActivity.KEY_MAX, 9);
-				intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-				startActivityForResult(intent, Constant.PICK_PHOTO);
-				pop.dismiss();
+				// Intent intent = new Intent(self,
+				// PhotoSelectorActivity.class);
+				// intent.putExtra(PhotoSelectorActivity.KEY_MAX, 9);
+				// intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+				// startActivityForResult(intent, Constant.PICK_PHOTO);
+				// pop.dismiss();
+
+				Intent getImage = new Intent(Intent.ACTION_GET_CONTENT);
+				getImage.addCategory(Intent.CATEGORY_OPENABLE);
+				getImage.setType("image/jpeg");
+				startActivityForResult(getImage, Constant.PICK_PHOTO);
+
 			}
 		});
 		pop.show();
@@ -143,34 +152,43 @@ public class PostCommentMainActivity extends RabbitBaseActivity {
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (resultCode == RESULT_OK) {
 			switch (requestCode) {
+
 			case Constant.PICK_PHOTO:
-				if (data != null && data.getExtras() != null) {
-					List<PhotoModel> photos = (List<PhotoModel>) data
-							.getExtras().getSerializable("photos");
-					if (photos == null || photos.isEmpty()) {
-						showToast("没有选择图片!");
-					} else {
-						uploadPhotoCount += photos.size();
-						for (int i = 0; i < photos.size(); i++) {
-							String newPhotoPath = new File(mCacheDir,
-									System.currentTimeMillis() + ".jpg")
-									.getAbsolutePath();
-							Bitmap btp = PhotoUtil.getLocalImage(new File(
-									photos.get(i).getOriginalPath()));
-							PhotoUtil.saveLocalImageSquare(btp, new File(
-									newPhotoPath));
-							addPhoto(newPhotoPath);
-						}
-					}
-				}
+				PhotoUtil.onPhotoFromPick(self, Constant.ZOOM_PIC, mPhotoPath,
+						data, 1, 1, 1000);
 				break;
+			case Constant.ZOOM_PIC:
+				uploadPic(mPhotoPath);
+				break;
+
+			// case Constant.PICK_PHOTO:
+			// if (data != null && data.getExtras() != null) {
+			// List<PhotoModel> photos = (List<PhotoModel>) data
+			// .getExtras().getSerializable("photos");
+			// if (photos == null || photos.isEmpty()) {
+			// showToast("没有选择图片!");
+			// } else {
+			// uploadPhotoCount += photos.size();
+			// for (int i = 0; i < photos.size(); i++) {
+			// String newPhotoPath = new File(mCacheDir,
+			// System.currentTimeMillis() + ".jpg")
+			// .getAbsolutePath();
+			// Bitmap btp = PhotoUtil.getLocalImage(new File(
+			// photos.get(i).getOriginalPath()));
+			// PhotoUtil.saveLocalImageSquare(btp, new File(
+			// newPhotoPath));
+			// addPhoto(newPhotoPath);
+			// }
+			// }
+			// }
+			// break;
 			case Constant.TAKE_PHOTO:
-				Bitmap btp1 = PhotoUtil.getLocalImage(new File(mPhotoPath));
-				int degree = PhotoUtil.getBitmapDegree(mPhotoPath);
-				String newPath = PhotoUtil.saveLocalImage(btp1, degree, self);
-				btp1.recycle();
-				uploadPhotoCount++;
-				addPhoto(newPath);
+
+				String newPath = new File(mCacheDir, System.currentTimeMillis()
+						+ ".jpg").getAbsolutePath();
+				String path = PhotoUtil.onPhotoFromCamera(self,
+						Constant.ZOOM_PIC, mPhotoPath, 1, 1, 1000, newPath);
+				mPhotoPath = path;
 				break;
 			}
 		}
@@ -191,6 +209,37 @@ public class PostCommentMainActivity extends RabbitBaseActivity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	private void uploadPic(String path) {
+		showProgressDialog("上传中...");
+		DhNet net = new DhNet(API.uploadImg);
+		net.upload("upfile", new File(path), new NetTask(self) {
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+				hidenProgressDialog();
+				if (response.isSuccess()
+						&& Integer.parseInt(response.getBundle("proccess")
+								.toString()) == 100) {
+					hidenProgressDialog();
+
+					JSONObject jo1 = response.jSONFromData();
+					JSONObject jo = new JSONObject();
+					try {
+						jo.put("id", JSONUtil.getString(jo1, "id"));
+						jo.put("path", JSONUtil.getString(jo1, "path"));
+						jo.put("mPhotoPath", mPhotoPath);
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					picArray.put(jo);
+					mAdapter.setData(picArray);
+
+				}
+			}
+
+		});
 	}
 
 	// 删除图片
@@ -223,10 +272,10 @@ public class PostCommentMainActivity extends RabbitBaseActivity {
 		}
 
 		DhNet net = new DhNet(API.addcomment);
-		net.addParam("contentid", 6); // 团购/代购ID
+		net.addParam("contentid", getIntent().getStringExtra("contentid")); // 团购/代购ID
 		net.addParam("content", content);
 		net.addParam("score", ratingBar.getRating());
-		net.addParam("type", 2); // 类型1是团购商家2是酒店3是代购
+		net.addParam("type", getIntent().getStringExtra("type")); // 类型1是团购商家2是酒店3是代购
 		net.addParam("slidepic", picArray.toString());
 		net.doPostInDialog(new NetTask(self) {
 

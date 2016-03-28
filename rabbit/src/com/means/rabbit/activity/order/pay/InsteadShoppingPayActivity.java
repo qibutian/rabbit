@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import com.means.rabbit.R;
 import com.means.rabbit.RabbitValueFix;
 import com.means.rabbit.R.layout;
+import com.means.rabbit.activity.comment.PostCommentMainActivity;
 import com.means.rabbit.activity.main.ErweimaActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
@@ -41,6 +42,8 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 	int credit_s;
 	public int pay = 1003;
 	TextView shifuT;
+	public int comment = 1004;
+	int servicestatus;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +57,7 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 		setTitle(getString(R.string.insteadshopping));
 		daigouId = getIntent().getStringExtra("orderid");
 		payB = (Button) findViewById(R.id.pay);
-		
+
 		findViewById(R.id.cancle).setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -85,7 +88,8 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 
 					ViewUtil.bindView(
 							findViewById(R.id.total_price),
-							getString(R.string.money_symbol) + JSONUtil.getInt(jo, "count")
+							getString(R.string.money_symbol)
+									+ JSONUtil.getInt(jo, "count")
 									* JSONUtil.getInt(jo, "singleprice"));
 					ViewUtil.bindView(findViewById(R.id.count),
 							JSONUtil.getString(jo, "count"));
@@ -110,12 +114,13 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 							JSONUtil.getString(credit_dataJo, "credit"));
 
 					credit_s = JSONUtil.getInt(credit_dataJo, "credit");
-					ViewUtil.bindView(findViewById(R.id.credit_s), getString(R.string.money_symbol)
-							+ credit_s);
+					ViewUtil.bindView(findViewById(R.id.credit_s),
+							getString(R.string.money_symbol) + credit_s);
 					ViewUtil.bindView(findViewById(R.id.ercode),
 							JSONUtil.getString(jo, "ercode"));
 
 					final int paystatus = JSONUtil.getInt(jo, "paystatus");
+					servicestatus = JSONUtil.getInt(jo, "servicestatus");
 					payB.setTag(paystatus);
 					payB.setBackgroundResource(paystatus == 1 ? R.drawable.fillet_10_pink_bg
 							: R.drawable.fillet_10_green_bg);
@@ -135,6 +140,15 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 								it.putExtra("name",
 										JSONUtil.getString(jo, "title"));
 								startActivityForResult(it, pay);
+							} else {
+								if (servicestatus == 1) {
+									it = new Intent(self,
+											PostCommentMainActivity.class);
+									it.putExtra("contentid",
+											JSONUtil.getString(jo, "id"));
+									it.putExtra("type", "3");
+									startActivityForResult(it, comment);
+								}
 							}
 
 						}
@@ -152,12 +166,10 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 							JSONUtil.getString(user_addressJo, "areaname")
 									+ JSONUtil.getString(user_addressJo,
 											"lxaddress"));
-					
 
 					ViewUtil.bindView(findViewById(R.id.shifu),
 							JSONUtil.getString(jo, "payprice"));
-					
-					
+
 					findViewById(R.id.erweima).setOnClickListener(
 							new OnClickListener() {
 
@@ -196,9 +208,15 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 			payB.setBackgroundResource(R.drawable.fillet_10_green_bg);
 			payB.setTag(2);
 		}
+
+		if (requestCode == comment && resultCode == Activity.RESULT_OK) {
+			payB.setText("已评论");
+			payB.setBackgroundResource(R.drawable.fillet_10_green_bg);
+			payB.setTag(2);
+			servicestatus = 2;
+		}
 	}
-	
-	
+
 	private void cancleOrder() {
 		DhNet net = new DhNet(API.cancelOrder);
 		net.addParam("orderid", daigouId);
