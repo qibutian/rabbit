@@ -60,7 +60,7 @@ public class MerchatsFragment extends Fragment {
 			Bundle savedInstanceState) {
 		mainV = inflater.inflate(R.layout.fragment_travel, null);
 		mLayoutInflater = inflater;
-		EventBus.getDefault().unregister(this);
+		EventBus.getDefault().register(this);
 		initView();
 		// TODO Auto-generated method stub
 		return mainV;

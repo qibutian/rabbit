@@ -16,7 +16,6 @@ public class UserInfoManage {
 		}
 		return instance;
 	}
-
 	public boolean checkLogin(final Activity context,
 			final LoginCallBack loginCallBack) {
 		boolean islogin = User.getInstance().isLogin();
