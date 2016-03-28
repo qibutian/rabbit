@@ -16,6 +16,9 @@ public class API {
 
 	/** 用户登录 */
 	public static String login = Baseurl + "/home/user/login";
+	
+	/** 退出登录 */
+	public static String logout = Baseurl + "/home/user/logout";
 
 	/** 修改密码 */
 	public static String resetpswdbyphone = Baseurl

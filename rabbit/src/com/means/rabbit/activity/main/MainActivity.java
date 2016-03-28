@@ -26,9 +26,13 @@ import com.means.rabbit.activity.merchants.MerchatsFragment;
 import com.means.rabbit.activity.more.MoreFragment;
 import com.means.rabbit.activity.my.MyIndexFragment;
 import com.means.rabbit.activity.travel.TravelFragment;
+import com.means.rabbit.bean.BackHomeEB;
+import com.means.rabbit.bean.CityEB;
 import com.means.rabbit.bean.User;
 import com.means.rabbit.manage.UserInfoManage;
 import com.means.rabbit.manage.UserInfoManage.LoginCallBack;
+
+import de.greenrobot.event.EventBus;
 
 public class MainActivity extends FragmentActivity {
 
@@ -50,6 +54,7 @@ public class MainActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		EventBus.getDefault().register(this);
 		ActivityTack.getInstanse().addActivity(this);
 		initView();
 		initTab();
@@ -280,5 +285,9 @@ public class MainActivity extends FragmentActivity {
         ActivityTack.getInstanse().removeActivity(this);
         super.finish();
     }
+	
+	public void onEventMainThread(BackHomeEB event) {
+		setTab(event.getIndex());
+	}
 
 }

@@ -14,10 +14,24 @@ public class RabbitPerference extends Perference {
 	public String sex;
 	public String faceimg_s;
 	public String msgcount;
-	public boolean login;
+	public boolean login = false;
 	public String catid = "1";
 	public String cityname;
 	public String password;
+	
+	public void clear(){
+		this.name = "";
+		this.groupname = "";
+		this.nickname = "";
+		this.ordercount = "";
+		this.phone = "";
+		this.sex = "";
+		this.faceimg_s = "";
+		this.msgcount = "";
+		this.password = "";
+		this.login = false;
+		commit();
+	}
 	
 	public String getPassword() {
 		return password;

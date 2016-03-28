@@ -2,6 +2,7 @@ package com.means.rabbit.activity.my;
 
 import org.json.JSONObject;
 
+import net.duohuo.dhroid.ioc.IocContainer;
 import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.net.JSONUtil;
 import net.duohuo.dhroid.net.NetTask;
@@ -22,9 +23,15 @@ import android.widget.LinearLayout;
 import com.means.rabbit.R;
 import com.means.rabbit.activity.finance.FinancialManagementActivity;
 import com.means.rabbit.activity.my.edit.EditInfoActivity;
+import com.means.rabbit.activity.my.order.BusinessOrderActivity;
 import com.means.rabbit.activity.my.order.MyOrderActivity;
 import com.means.rabbit.api.API;
+import com.means.rabbit.bean.BackHomeEB;
+import com.means.rabbit.bean.User;
+import com.means.rabbit.utils.RabbitPerference;
 import com.means.rabbit.views.CatPop;
+
+import de.greenrobot.event.EventBus;
 
 public class MyIndexFragment extends Fragment implements OnClickListener {
 	static MyIndexFragment instance;
@@ -40,6 +47,8 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 	Button logoutBtn;
 
 	BadgeView msg_countT, order_countT;
+	
+	RabbitPerference per;
 
 	public static MyIndexFragment getInstance() {
 		if (instance == null) {
@@ -115,12 +124,8 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 			break;
 		// 商家订单
 		case R.id.business_order:
-			// it = new Intent(getActivity(), BusinessOrderActivity.class);
-			// it = new Intent(getActivity(),
-			// BusinessOrderDetailsActivity.class);
-			// startActivity(it);
-//			CatPop pop = new CatPop(getActivity(), 1);
-//			pop.show(v);
+			it = new Intent(getActivity(), BusinessOrderActivity.class);
+			startActivity(it);
 			break;
 		// 我的订单
 		case R.id.my_order:
@@ -155,12 +160,30 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 			break;
 		// 退出当前用户
 		case R.id.logout:
-			it = new Intent(getActivity(), LoginActivity.class);
-			startActivity(it);
+			logout();
 			break;
 		default:
 			break;
 		}
+	}
+	
+	private void logout(){
+		DhNet net = new DhNet(API.logout);
+		net.doPostInDialog(new NetTask(getActivity()) {
+			
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+				// TODO Auto-generated method stub
+				if (response.isSuccess()) {
+					per = IocContainer.getShare().get(RabbitPerference.class);
+					per.clear();
+					User.getInstance().setLogin(false);
+					EventBus.getDefault().post(new BackHomeEB());
+					Intent it = new Intent(getActivity(), LoginActivity.class);
+					startActivity(it);
+				}
+			}
+		});
 	}
 
 	private void getinfo() {

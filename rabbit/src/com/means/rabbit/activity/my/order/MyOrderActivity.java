@@ -73,7 +73,7 @@ public class MyOrderActivity extends RabbitBaseActivity {
 					paystatusT.setText("支付失败");
 				}
 
-				return "￥  " + o.toString();
+				return getString(R.string.money_symbol)+"  " + o.toString();
 			}
 		});
 		adapter.addField(new FieldMap("adddateline", R.id.adddateline) {
