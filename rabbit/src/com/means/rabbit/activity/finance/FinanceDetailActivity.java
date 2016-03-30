@@ -70,10 +70,10 @@ public class FinanceDetailActivity extends RabbitBaseActivity {
 				
 				TextView  typeT = (TextView) itemV.findViewById(R.id.type);
 				if(JSONUtil.getString(data, "method").equals("payout")) {
-					typeT.setText("支出");
+					typeT.setText(getString(R.string.expend));
 					typeT.setBackgroundResource(R.drawable.fillet_10_pink_bg);
 				} else {
-					typeT.setText("收入");
+					typeT.setText(getString(R.string.income));
 					typeT.setBackgroundResource(R.drawable.fillet_10_green_bg);
 				}
 				

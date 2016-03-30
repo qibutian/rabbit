@@ -8,6 +8,7 @@
     android:paddingTop="10dp" >
 
     <LinearLayout
+        android:id="@+id/classify"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -22,6 +23,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/type"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"

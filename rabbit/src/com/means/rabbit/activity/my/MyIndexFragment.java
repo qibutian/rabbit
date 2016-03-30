@@ -99,6 +99,11 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 		order_countT = (BadgeView) mainV.findViewById(R.id.order_count);
 		order_countT.hide();
 
+		getUserType();
+
+	}
+	
+	private void getUserType(){
 		User user = User.getInstance();
 		if (user.getType() == 1) {
 			business_orderLl.setVisibility(View.GONE);
@@ -113,7 +118,6 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 			business_orderLl.setVisibility(View.VISIBLE);
 			mainV.findViewById(R.id.b_line).setVisibility(View.VISIBLE);
 		}
-
 	}
 
 	@Override
@@ -121,6 +125,7 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 		// TODO Auto-generated method stub
 		super.onResume();
 		getinfo();
+		getUserType();
 	}
 
 	@Override

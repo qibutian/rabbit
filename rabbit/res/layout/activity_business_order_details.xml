@@ -149,6 +149,7 @@
                         android:gravity="center_vertical"
                         android:hint="@string/businessorderdetails_putconsumercode"
                         android:textColor="@color/text_2B_green"
+                        android:background="@color/nothing"
                         android:textColorHint="@color/text_2B_green" />
 
                     <ImageView

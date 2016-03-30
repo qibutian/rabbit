@@ -124,6 +124,8 @@ public class BusinessOrderDetailsActivity extends RabbitBaseActivity {
 						public void onClick(View v) {
 							if (payB.getTag().equals(1)) {
 								usecode();
+							}else {
+								finish();
 							}
 
 						}

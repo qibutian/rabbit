@@ -250,8 +250,12 @@
             android:label="@string/title_activity_search" >
         </activity>
         <activity
-            android:name="com.means.rabbit.activity.merchants.TuangouActivity"
+            android:name=".activity.merchants.TuangouActivity"
             android:label="@string/title_activity_tuangou" >
+        </activity>
+        <activity
+            android:name="com.means.rabbit.activity.merchants.GuessLikeActivity"
+            android:label="@string/title_activity_guess_like" >
         </activity>
     </application>
 

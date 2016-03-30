@@ -96,18 +96,7 @@ public class BusinessOrderActivity extends RabbitBaseActivity {
 					public void onItemClick(AdapterView<?> parent, View view,
 							int position, long id) {
 						JSONObject jo = adapter.getTItem(position);
-						Intent it;
-						int type = JSONUtil.getInt(jo, "type");
-						if (type == 1) {
-							it = new Intent(self, GroupPayActivity.class);
-
-						} else if (type == 2) {
-							it = new Intent(self,
-									HotelOrderDetailActivity.class);
-						} else {
-							it = new Intent(self,
-									InsteadShoppingPayActivity.class);
-						}
+						Intent it = new Intent(self, BusinessOrderDetailsActivity.class);
 						it.putExtra("orderid", JSONUtil.getString(jo, "id"));
 						startActivity(it);
 						// TODO Auto-generated method stub

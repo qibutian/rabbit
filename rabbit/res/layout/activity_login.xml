@@ -63,7 +63,6 @@
             android:id="@+id/login"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:layout_marginBottom="15dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginTop="60dp"
@@ -76,8 +75,14 @@
             android:id="@+id/forgetpswd"
             style="@style/text_66_black_medium"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="15dp"
+            android:padding="15dp"
             android:text="@string/login_forget_pswd" />
+        <TextView
+            android:id="@+id/register"
+            style="@style/text_66_black_medium"
+            android:layout_gravity="center_horizontal"
+            android:padding="15dp"
+            android:text="@string/login_register" />
     </LinearLayout>
 
 </LinearLayout>

@@ -19,6 +19,7 @@
                 android:orientation="horizontal" >
                 
                 <TextView
+                    android:id="@+id/status"
                 style="@style/text_white_medium"
                 android:paddingLeft="3dp"
                 android:paddingRight="3dp"
@@ -27,10 +28,7 @@
                 android:background="@drawable/fillet_10_green_bg"
                 android:text="收入" />
                 <TextView
-                style="@style/text_44_black_medium"
-                android:layout_marginLeft="5dp"
-                android:text="100" />
-                <TextView
+                    android:id="@+id/note"
                 style="@style/text_44_black_medium"
                 android:layout_marginLeft="5dp"
                 android:text="消费奖励" />
@@ -44,6 +42,7 @@
                 android:orientation="horizontal" >
                 
                 <TextView
+                    android:id="@+id/dateline"
                 style="@style/text_66_black_small"
                 android:text="2016-2-7 00:52" />
                 

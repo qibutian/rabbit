@@ -24,6 +24,9 @@ public class API {
 	public static String resetpswdbyphone = Baseurl
 			+ "/home/user/resetpswdbyphone";
 
+	/** 商家/酒店列表猜你喜欢列表 */
+	public static String guesslikelist = Baseurl + "/home/index/contentlist";
+	
 	/** 修改昵称 */
 	public static String editaction = Baseurl + "/home/user/editaction";
 
@@ -184,5 +187,13 @@ public class API {
 
 	/** 使用消费码 */
 	public static String usecode = Baseurl + "/home/shop/ercodepay";
+	
+	/** 积分记录 */
+	public static String creditloglist = Baseurl + "/home/shop/creditloglist";
+	 
+	/** 全部评论 */
+	public static String commentuserlist = Baseurl + "/home/shop/commentuserlist";
+	
+
 
 }

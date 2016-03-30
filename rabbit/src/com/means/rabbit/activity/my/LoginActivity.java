@@ -29,7 +29,7 @@ public class LoginActivity extends RabbitBaseActivity implements
 
 	private EditText nicknameEt, passwordEt;
 	private Button loginBtn;
-	private TextView forgetpswdT;
+	private TextView forgetpswdT, registerT;
 
 	RabbitPerference per;
 
@@ -48,14 +48,17 @@ public class LoginActivity extends RabbitBaseActivity implements
 		passwordEt = (EditText) findViewById(R.id.password);
 		loginBtn = (Button) findViewById(R.id.login);
 		forgetpswdT = (TextView) findViewById(R.id.forgetpswd);
+		registerT = (TextView) findViewById(R.id.register);
 
 		loginBtn.setOnClickListener(this);
 		forgetpswdT.setOnClickListener(this);
+		registerT.setOnClickListener(this);
 
 	}
 
 	@Override
 	public void onClick(View v) {
+		Intent it;
 		switch (v.getId()) {
 		// 登录
 		case R.id.login:
@@ -63,19 +66,24 @@ public class LoginActivity extends RabbitBaseActivity implements
 			break;
 		// 忘记密码
 		case R.id.forgetpswd:
-			Intent it = new Intent(self, ForgetPswdActivity.class);
+			it = new Intent(self, ForgetPswdActivity.class);
 			startActivity(it);
 			break;
-
+		// 注册
+		case R.id.register:
+			it = new Intent(self, RegisterActivity.class);
+			startActivity(it);
+			break;
 		}
+
 	}
 
 	private void login() {
-		 final String nickname = nicknameEt.getText().toString();
-		 final String password = passwordEt.getText().toString();
+		final String nickname = nicknameEt.getText().toString();
+		final String password = passwordEt.getText().toString();
 
-//		final String nickname = "qqq";
-//		final String password = "q111111";
+//		 final String nickname = "18151906146";
+//		 final String password = "123456 a";
 		if (TextUtils.isEmpty(nickname)) {
 			showToast("请输入昵称/用户名");
 			return;
