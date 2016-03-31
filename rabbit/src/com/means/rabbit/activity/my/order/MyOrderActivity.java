@@ -77,7 +77,7 @@ public class MyOrderActivity extends RabbitBaseActivity implements
 					adapter.addparam("type ", tag);
 					adapter.refresh();
 				}else {
-					showToast(tag);
+//					showToast(tag);
 					adapter.addparam("status ", tag);
 					adapter.refresh();
 				}
