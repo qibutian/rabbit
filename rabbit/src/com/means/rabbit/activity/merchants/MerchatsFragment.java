@@ -71,6 +71,15 @@ public class MerchatsFragment extends Fragment {
 		listV = (RefreshListViewAndMore) mainV.findViewById(R.id.my_listview);
 		mLayoutInflater = LayoutInflater.from(getActivity());
 		headV = mLayoutInflater.inflate(R.layout.head_food_list, null);
+		headV.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent it = new Intent(getActivity(), GuessLikeActivity.class);
+				startActivity(it);
+			}
+		});
 		listV.addHeadView(headV);
 		contentListV = listV.getListView();
 		adapter = new NetJSONAdapter(API.foodList, getActivity(),

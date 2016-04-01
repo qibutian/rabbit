@@ -1,5 +1,7 @@
 package com.means.rabbit.activity.merchants;
 
+import java.util.Date;
+
 import org.json.JSONObject;
 
 import net.duohuo.dhroid.adapter.FieldMap;
@@ -11,6 +13,7 @@ import com.means.rabbit.R.layout;
 import com.means.rabbit.activity.main.SearchActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
+import com.means.rabbit.utils.DateUtils;
 import com.means.rabbit.views.RefreshListViewAndMore;
 import com.means.rabbit.views.TabView;
 import com.means.rabbit.views.TabView.OnTabSelectListener;
@@ -45,9 +48,9 @@ public class GuessLikeActivity extends RabbitBaseActivity {
 
 	NetJSONAdapter adapter;
 
-	String catid;
-	
-	String keywords;
+//	String catid;
+//	
+//	String keywords;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +60,7 @@ public class GuessLikeActivity extends RabbitBaseActivity {
 
 	@Override
 	public void initView() {
-		setTitle(getIntent().getStringExtra("title"));
+		setTitle(getString(R.string.guesslike));
 		setRightAction2(R.drawable.icon_green_search, new View.OnClickListener() {
 			
 			@Override
@@ -67,34 +70,32 @@ public class GuessLikeActivity extends RabbitBaseActivity {
 				startActivity(it);
 			}
 		});
-		catid = getIntent().getStringExtra("catid");
-		keywords = getIntent().getStringExtra("keywords");
+//		catid = getIntent().getStringExtra("catid");
+//		keywords = getIntent().getStringExtra("keywords");
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		mLayoutInflater = LayoutInflater.from(self);
 		contentListV = listV.getListView();
 		adapter = new NetJSONAdapter(API.guesslikelist, self,
-				R.layout.item_food_list);
-		adapter.addparam("catid", catid);
-		adapter.addparam("keywords", keywords);
+				R.layout.item_guess_like);
+//		adapter.addparam("catid", catid);
+//		adapter.addparam("keywords", keywords);
 		adapter.fromWhat("list");
 		adapter.addField("title", R.id.title);
-		adapter.addField("price", R.id.price);
 		adapter.addField("pic", R.id.pic);
-		adapter.addField("tuangoudes", R.id.des);
-		adapter.addField("tuidingdes", R.id.order_des);
-		adapter.addField("areaname", R.id.area);
 		adapter.addField(new FieldMap("price", R.id.price) {
 
 			@Override
 			public Object fix(View itemV, Integer position, Object o, Object jo) {
-				JSONObject data = (JSONObject) jo;
-				TextView comment_desT = (TextView) itemV
-						.findViewById(R.id.comment_des);
-				comment_desT.setText("评分   "
-						+ JSONUtil.getString(data, "score") + "/"
-						+ JSONUtil.getString(data, "views"));
 				// TODO Auto-generated method stub
 				return getString(R.string.money_symbol)+o;
+			}
+		});
+		adapter.addField(new FieldMap("adddateline", R.id.adddateline) {
+
+			@Override
+			public Object fix(View itemV, Integer position, Object o, Object jo) {
+				return DateUtils.dateToStrLong(new Date(
+						Long.parseLong(o.toString()) * 1000));
 			}
 		});
 

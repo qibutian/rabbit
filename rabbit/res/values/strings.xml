@@ -9,6 +9,7 @@
     <string name="money_symbol">￥</string>
     <string name="income">收入</string>
     <string name="expend">支出</string>
+    <string name="inexpensive">优惠</string>
     <string name="home_title">首页</string>
     <string name="order_title">订单</string>
     <string name="my_title">我的</string>
@@ -24,6 +25,8 @@
     <string name="myfragment_logout">退出当前账户</string>
     <!-- 系统消息 -->
     <string name="systemmsg">系统消息</string>
+    <!-- 猜你喜欢 -->
+    <string name="guesslike">猜你喜欢</string>
     <!-- 编辑资料 -->
     <string name="editinfo">编辑资料</string>
     <string name="editinfo_edithead">修改头像</string>
