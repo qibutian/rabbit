@@ -16,6 +16,14 @@
 campusshopping/project.properties
 
 
+/zxing-lib/bin
+/zxing-lib/.settings
+/zxing-lib/gen
+/zxing-lib/build
+/zxing-lib/.classpath
+/zxing-lib/project.properties
+/zxing-lib/project
+
 
 .gradle
 /local.properties
