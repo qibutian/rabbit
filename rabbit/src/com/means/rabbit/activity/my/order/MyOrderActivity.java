@@ -56,7 +56,7 @@ public class MyOrderActivity extends RabbitBaseActivity implements
 
 		classifyLl = (LinearLayout) findViewById(R.id.classify);
 		typeLl = (LinearLayout) findViewById(R.id.type);
-		
+
 		classifyLl.setOnClickListener(this);
 		typeLl.setOnClickListener(this);
 
@@ -70,14 +70,14 @@ public class MyOrderActivity extends RabbitBaseActivity implements
 		MyOrderPop pop;
 		pop = new MyOrderPop(self, type);
 		pop.setOnReslutClickListener(new OnReslutClickListener() {
-			
+
 			@Override
-			public void result(int type,String catname, String tag) {
+			public void result(int type, String catname, String tag) {
 				if (type == 0) {
 					adapter.addparam("type ", tag);
 					adapter.refresh();
-				}else {
-//					showToast(tag);
+				} else {
+					// showToast(tag);
 					adapter.addparam("status ", tag);
 					adapter.refresh();
 				}
@@ -104,11 +104,16 @@ public class MyOrderActivity extends RabbitBaseActivity implements
 				TextView paystatusT = (TextView) itemV
 						.findViewById(R.id.paystatus);
 				int paystatus = JSONUtil.getInt(data, "paystatus");
-				if (paystatus == 1) {
+
+				if (JSONUtil.getInt(data, "orderstatus") == 2) {
+					paystatusT.setText("已完成");
+				} else if (JSONUtil.getInt(data, "orderstatus") == 3) {
+					paystatusT.setText("已取消");
+				} else if (paystatus == 1) {
 					paystatusT.setText("待支付");
 				} else if (paystatus == 2) {
-					paystatusT.setText("已完成");
-				} else {
+					paystatusT.setText("已支付");
+				} else if (paystatus == 3) {
 					paystatusT.setText("支付失败");
 				}
 
@@ -156,15 +161,15 @@ public class MyOrderActivity extends RabbitBaseActivity implements
 
 	@Override
 	public void onClick(View v) {
-		
+
 		switch (v.getId()) {
-		//分类
+		// 分类
 		case R.id.classify:
-			showPop(0,v);
+			showPop(0, v);
 			break;
-		//状态
+		// 状态
 		case R.id.type:
-			showPop(1,v);
+			showPop(1, v);
 			break;
 
 		default:

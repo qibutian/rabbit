@@ -99,16 +99,22 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 			@Override
 			public void afterTextChanged(Editable s) {
 				if (creditY != 0) {
-					
-					int jifen = Integer
-							.parseInt(jifenE.getText().toString()) ;
-					if(jifen>credit) {
-						showToast("你输入的积分超过了您的积分,请输入小于"+credit+"的数字!");
-						jifenE.setText(0);
+
+					int jifen = Integer.parseInt(jifenE.getText().toString());
+					if (jifen > credit) {
+						showToast("你输入的积分超过了您的积分,请输入小于" + credit + "的数字!");
+						jifenE.setText(0+"");
 					} else {
 						float daikou = jifen / creditY;
-						daikouT.setText(getString(R.string.money_symbol) + daikou);
-						shifuT.setText(price - daikou + "");
+						if (daikou > price) {
+							showToast("本单最多只能使用" + price * creditY + "积分");
+							jifenE.setText(0+"");
+							shifuT.setText(price + "");
+						} else {
+							daikouT.setText(getString(R.string.money_symbol)
+									+ daikou);
+							shifuT.setText(price - daikou + "");
+						}
 					}
 				}
 			}
@@ -164,10 +170,10 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 						creditY = credit / (float) credit_s;
 
 					} else {
-						jifenE.setText(0+"");
+						jifenE.setText(0 + "");
 					}
-					
-					jifenE.setEnabled(credit_s==0?false:true);
+
+					jifenE.setEnabled(credit_s == 0 ? false : true);
 
 					ViewUtil.bindView(findViewById(R.id.tel),
 							JSONUtil.getString(user_dataJo, "phone"));
@@ -176,20 +182,26 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 							JSONUtil.getString(user_dataJo, "nickname"));
 					price = JSONUtil.getDouble(jo, "dayprice");
 
-					totalPriceT.setText(getString(R.string.money_symbol) + price);
+					totalPriceT.setText(getString(R.string.money_symbol)
+							+ price);
 
-					ViewUtil.bindView(findViewById(R.id.price),
-							getString(R.string.money_symbol) + JSONUtil.getString(jo, "dayprice") + "/晚");
+					ViewUtil.bindView(
+							findViewById(R.id.price),
+							getString(R.string.money_symbol)
+									+ JSONUtil.getString(jo, "dayprice") + "/晚");
 
-					ViewUtil.bindView(findViewById(R.id.old_price), getString(R.string.money_symbol)
-							+ JSONUtil.getString(jo, "dayprice") + "/晚");
+					ViewUtil.bindView(
+							findViewById(R.id.old_price),
+							getString(R.string.money_symbol)
+									+ JSONUtil.getString(jo, "dayprice") + "/晚");
 					cartView.setOnCartViewClickListener(new OnCartViewClickListener() {
 
 						@Override
 						public void onClick() {
 
-							totalPriceT.setText(getString(R.string.money_symbol) + cartView.getCartNum()
-									* price);
+							totalPriceT
+									.setText(getString(R.string.money_symbol)
+											+ cartView.getCartNum() * price);
 							if (Integer.parseInt(jifenE.getText().toString()) == 0) {
 								shifuT.setText(cartView.getCartNum() * price
 										+ "");
@@ -202,7 +214,7 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 						}
 					});
 					cartView.setMaxNum(JSONUtil.getInt(jo, "mincount"));
-					shifuT.setText(price+"");
+					shifuT.setText(price + "");
 				}
 
 			}

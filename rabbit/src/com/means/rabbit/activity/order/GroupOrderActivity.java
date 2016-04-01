@@ -97,11 +97,18 @@ public class GroupOrderActivity extends RabbitBaseActivity {
 							.parseInt(jifenE.getText().toString()) ;
 					if(jifen>credit) {
 						showToast("你输入的积分超过了您的积分,请输入小于"+credit+"的数字!");
-						jifenE.setText(0);
+						jifenE.setText(0+"");
 					} else {
 						float daikou = jifen / creditY;
-						daikouT.setText(getString(R.string.money_symbol) + daikou);
-						shifuT.setText(price - daikou + "");
+						if (daikou > price) {
+							showToast("本单最多只能使用" + price * creditY + "积分");
+							jifenE.setText(0+"");
+							shifuT.setText(price + "");
+						} else {
+							daikouT.setText(getString(R.string.money_symbol)
+									+ daikou);
+							shifuT.setText(price - daikou + "");
+						}
 					}
 				}
 			}

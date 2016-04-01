@@ -124,7 +124,27 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 					payB.setTag(paystatus);
 					payB.setBackgroundResource(paystatus == 1 ? R.drawable.fillet_10_pink_bg
 							: R.drawable.fillet_10_green_bg);
-					payB.setText(paystatus == 1 ? "支付订单" : "已支付");
+					// payB.setText(paystatus == 1 ? "支付订单" : "已支付");
+
+					if (paystatus == 2 && servicestatus == 2
+							&& JSONUtil.getInt(jo, "orderstatus") == 2) {
+						payB.setText("已完成");
+						payB.setBackgroundResource(R.drawable.fillet_10_green_bg);
+					} else if (JSONUtil.getInt(jo, "orderstatus") == 3) {
+						payB.setText("已取消");
+						payB.setBackgroundResource(R.drawable.fillet_10_pink_bg);
+					} else if (servicestatus == 1
+							&& JSONUtil.getInt(jo, "orderstatus") == 2) {
+						payB.setText("发布评论");
+						payB.setBackgroundResource(R.drawable.fillet_10_pink_bg);
+					} else if (paystatus == 1) {
+						payB.setText("支付订单");
+						payB.setBackgroundResource(R.drawable.fillet_10_pink_bg);
+					} else if (paystatus == 2) {
+						payB.setText("已支付");
+						payB.setBackgroundResource(R.drawable.fillet_10_green_bg);
+					}
+
 					payB.setVisibility(View.VISIBLE);
 					payB.setOnClickListener(new OnClickListener() {
 
@@ -141,14 +161,15 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 										JSONUtil.getString(jo, "title"));
 								startActivityForResult(it, pay);
 							} else {
-								if (servicestatus == 1) {
+//								if (servicestatus == 1
+//										&& JSONUtil.getInt(jo, "orderstatus") == 2) {
 									it = new Intent(self,
 											PostCommentMainActivity.class);
 									it.putExtra("contentid",
-											JSONUtil.getString(jo, "id"));
+											JSONUtil.getString(jo, "contentid"));
 									it.putExtra("type", "3");
 									startActivityForResult(it, comment);
-								}
+//								}
 							}
 
 						}

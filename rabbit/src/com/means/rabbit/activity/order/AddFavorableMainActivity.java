@@ -90,12 +90,18 @@ public class AddFavorableMainActivity extends RabbitBaseActivity {
 					int jifen = Integer.parseInt(jifenE.getText().toString());
 					if (jifen > credit) {
 						showToast("你输入的积分超过了您的积分,请输入小于" + credit + "的数字!");
-						jifenE.setText(0);
+						jifenE.setText(0+"");
 					} else {
 						float daikou = jifen / creditY;
-						daikouT.setText(getString(R.string.money_symbol)
-								+ daikou);
-						shifuT.setText(payprice - daikou + "");
+						if (daikou > payprice) {
+							showToast("本单最多只能使用" + payprice * creditY + "积分");
+							jifenE.setText(0+"");
+							shifuT.setText(payprice + "");
+						} else {
+							daikouT.setText(getString(R.string.money_symbol)
+									+ daikou);
+							shifuT.setText(payprice - daikou + "");
+						}
 					}
 				}
 			}

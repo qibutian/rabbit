@@ -15,6 +15,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -283,6 +284,9 @@ public class PostCommentMainActivity extends RabbitBaseActivity {
 			public void doInUI(Response response, Integer transfer) {
 				// TODO Auto-generated method stub
 				if (response.isSuccess()) {
+					finish();
+					Intent it = getIntent();
+					setResult(Activity.RESULT_OK, it);
 					showToast("发布成功!");
 				}
 			}

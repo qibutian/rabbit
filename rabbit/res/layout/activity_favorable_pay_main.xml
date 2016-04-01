@@ -64,14 +64,16 @@
                     android:id="@+id/credit"
                     style="@style/text_99_grey_medium"
                     android:background="@color/nothing"
+                    android:gravity="right"
+                    android:hint="请输入积分"
                     android:inputType="number"
                     android:minWidth="30dp"
-                    android:gravity="right"
-                    android:text="请输入积分" />
+                      android:gravity="right"
+                    android:paddingRight="6dp" />
 
                 <TextView
                     style="@style/text_44_black_medium"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="5dp"
                     android:text="@string/favorable_deduction"
                     android:textColor="@color/text_2B_green" />
 
@@ -99,10 +101,15 @@
                 android:text="@string/favorable_reality_money" />
 
             <TextView
-                android:id="@+id/shifu"
                 style="@style/text_44_black_medium"
                 android:layout_marginLeft="5dp"
-                android:text="￥197"
+                android:text="￥"
+                android:textColor="@color/text_2B_green" />
+
+            <TextView
+                android:id="@+id/shifu"
+                style="@style/text_44_black_medium"
+                android:text="197"
                 android:textColor="@color/text_2B_green" />
         </LinearLayout>
 
