@@ -68,7 +68,6 @@
                     android:hint="请输入积分"
                     android:inputType="number"
                     android:minWidth="30dp"
-                      android:gravity="right"
                     android:paddingRight="6dp" />
 
                 <TextView

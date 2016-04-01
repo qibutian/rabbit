@@ -24,6 +24,9 @@
             <TextView
                 android:id="@+id/name"
                 style="@style/text_44_black_medium"
+                android:ellipsize="end"
+                android:maxWidth="210dp"
+                android:singleLine="true"
                 android:text="珍珠泉环球" />
 
             <LinearLayout

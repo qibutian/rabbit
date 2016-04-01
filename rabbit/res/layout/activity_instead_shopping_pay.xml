@@ -28,6 +28,9 @@
                 <TextView
                     android:id="@+id/name"
                     style="@style/text_44_black_medium"
+                    android:ellipsize="end"
+                    android:maxWidth="210dp"
+                    android:singleLine="true"
                     android:text="丹尼尔惠灵顿" />
 
                 <LinearLayout
@@ -461,12 +464,10 @@
                 android:layout_marginBottom="15dp"
                 android:layout_marginLeft="23dp"
                 android:layout_marginRight="23dp"
-                android:visibility="gone"
                 android:background="@drawable/fillet_10_pink_bg"
-                android:text="@string/insteadshopping_pay_evaluate" />
-            
-            
-            
+                android:text="@string/insteadshopping_pay_evaluate"
+                android:visibility="gone" />
+
             <TextView
                 android:id="@+id/cancle"
                 style="@style/text_44_black_medium"

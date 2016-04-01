@@ -29,6 +29,9 @@
                 <TextView
                     android:id="@+id/name"
                     style="@style/text_44_black_medium"
+                    android:ellipsize="end"
+                    android:maxWidth="210dp"
+                    android:singleLine="true"
                     android:text="珍珠温泉度假村" />
 
                 <LinearLayout
@@ -340,8 +343,7 @@
                 android:background="@drawable/fillet_10_pink_bg"
                 android:text="@string/grouporder_pay_pay_order"
                 android:visibility="gone" />
-            
-            
+
             <TextView
                 android:id="@+id/cancle"
                 style="@style/text_44_black_medium"

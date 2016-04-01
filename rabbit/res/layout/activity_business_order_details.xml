@@ -29,7 +29,10 @@
                 <TextView
                     android:id="@+id/name"
                     style="@style/text_44_black_medium"
-                    android:text="珍珠温泉度假村" />
+                    android:ellipsize="end"
+                    android:maxWidth="210dp"
+                    android:singleLine="true"
+                    android:text="" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -145,11 +148,11 @@
                     <EditText
                         android:id="@+id/erweima_code"
                         style="@style/text_7b_black_medium"
+                        android:background="@color/nothing"
                         android:drawablePadding="5dp"
-                        android:gravity="center_vertical"
+                        android:gravity="center_vertical|right"
                         android:hint="@string/businessorderdetails_putconsumercode"
                         android:textColor="@color/text_2B_green"
-                        android:background="@color/nothing"
                         android:textColorHint="@color/text_2B_green" />
 
                     <ImageView
@@ -344,8 +347,6 @@
                 android:background="@drawable/fillet_10_pink_bg"
                 android:text="@string/grouporder_pay_pay_order"
                 android:visibility="gone" />
-            
-            
         </LinearLayout>
     </ScrollView>
 

@@ -1,33 +1,29 @@
 package com.means.rabbit.activity.my.order;
 
-import org.json.JSONObject;
-
 import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.net.JSONUtil;
 import net.duohuo.dhroid.net.NetTask;
 import net.duohuo.dhroid.net.Response;
 import net.duohuo.dhroid.util.ViewUtil;
 
-import com.means.rabbit.R;
-import com.means.rabbit.RabbitValueFix;
-import com.means.rabbit.R.layout;
-import com.means.rabbit.activity.comment.PostCommentMainActivity;
-import com.means.rabbit.activity.main.ErweimaActivity;
-import com.means.rabbit.activity.order.pay.PayOrderActivity;
-import com.means.rabbit.api.API;
-import com.means.rabbit.base.RabbitBaseActivity;
+import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.zxing.client.android.CaptureActivity;
+import com.google.zxing.client.android.Intents;
+import com.means.rabbit.R;
+import com.means.rabbit.RabbitValueFix;
+import com.means.rabbit.api.API;
+import com.means.rabbit.base.RabbitBaseActivity;
 
 /**
  * 商家订单详情
@@ -46,6 +42,8 @@ public class BusinessOrderDetailsActivity extends RabbitBaseActivity {
 	Button payB;
 
 	EditText errcodeE;
+
+	public final int REQUEST_CODE = 10086;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -124,7 +122,7 @@ public class BusinessOrderDetailsActivity extends RabbitBaseActivity {
 						public void onClick(View v) {
 							if (payB.getTag().equals(1)) {
 								usecode();
-							}else {
+							} else {
 								finish();
 							}
 
@@ -136,17 +134,17 @@ public class BusinessOrderDetailsActivity extends RabbitBaseActivity {
 
 								@Override
 								public void onClick(View v) {
-
-									if (TextUtils.isEmpty(JSONUtil.getString(
-											jo, "ercode_img"))) {
-										return;
-									}
-
-									Intent it = new Intent(self,
-											ErweimaActivity.class);
-									it.putExtra("url", JSONUtil.getString(jo,
-											"ercode_img"));
-									startActivity(it);
+									callCapture();
+									// if (TextUtils.isEmpty(JSONUtil.getString(
+									// jo, "ercode_img"))) {
+									// return;
+									// }
+									//
+									// Intent it = new Intent(self,
+									// ErweimaActivity.class);
+									// it.putExtra("url", JSONUtil.getString(jo,
+									// "ercode_img"));
+									// startActivity(it);
 								}
 							});
 
@@ -164,7 +162,7 @@ public class BusinessOrderDetailsActivity extends RabbitBaseActivity {
 		DhNet net = new DhNet(API.usecode);
 		net.addParam("orderid", orderid);
 		net.addParam("ercode", errcodeE.getText().toString());
-		net.doGetInDialog("提交中...", new NetTask(self) {
+		net.doPostInDialog("提交中...", new NetTask(self) {
 
 			@Override
 			public void doInUI(Response response, Integer transfer) {
@@ -177,5 +175,33 @@ public class BusinessOrderDetailsActivity extends RabbitBaseActivity {
 
 			}
 		});
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (null != data && requestCode == REQUEST_CODE) {
+			switch (resultCode) {
+			case Activity.RESULT_OK:
+				errcodeE.setText(data.getStringExtra(Intents.Scan.RESULT));
+				usecode();
+
+				break;
+			default:
+				break;
+			}
+		}
+	}
+
+	private void callCapture() {
+		Intent intent = new Intent();
+		intent.setAction(Intents.Scan.ACTION);
+		// intent.putExtra(Intents.Scan.MODE, Intents.Scan.QR_CODE_MODE);
+		intent.putExtra(Intents.Scan.CHARACTER_SET, "UTF-8");
+		intent.putExtra(Intents.Scan.WIDTH, 600);
+		intent.putExtra(Intents.Scan.HEIGHT, 600);
+		// intent.putExtra(Intents.Scan.PROMPT_MESSAGE,
+		// "type your prompt message");
+		intent.setClass(this, CaptureActivity.class);
+		startActivityForResult(intent, REQUEST_CODE);
 	}
 }

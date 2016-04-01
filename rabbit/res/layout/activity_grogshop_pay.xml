@@ -39,6 +39,9 @@
                     <TextView
                         android:id="@+id/title_name"
                         style="@style/text_99_grey_medium"
+                        android:ellipsize="end"
+                        android:maxWidth="210dp"
+                        android:singleLine="true"
                         android:text="2" />
                 </LinearLayout>
             </LinearLayout>
@@ -255,8 +258,8 @@
                         android:id="@+id/erweima"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="2dp"
                         android:layout_marginLeft="10dp"
+                        android:padding="2dp"
                         android:src="@drawable/erweima" />
                 </LinearLayout>
             </LinearLayout>
@@ -492,9 +495,9 @@
                 android:layout_marginBottom="15dp"
                 android:layout_marginLeft="23dp"
                 android:layout_marginRight="23dp"
-                android:visibility="gone"
                 android:background="@drawable/fillet_10_green_bg"
-                android:text="@string/grogshop_pay_pay_finish" />
+                android:text="@string/grogshop_pay_pay_finish"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/cancle"
