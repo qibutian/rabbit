@@ -48,10 +48,6 @@ public class GuessLikeActivity extends RabbitBaseActivity {
 
 	NetJSONAdapter adapter;
 
-//	String catid;
-//	
-//	String keywords;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -61,24 +57,11 @@ public class GuessLikeActivity extends RabbitBaseActivity {
 	@Override
 	public void initView() {
 		setTitle(getString(R.string.guesslike));
-		setRightAction2(R.drawable.icon_green_search, new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent it = new Intent(self,SearchActivity.class);
-				startActivity(it);
-			}
-		});
-//		catid = getIntent().getStringExtra("catid");
-//		keywords = getIntent().getStringExtra("keywords");
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		mLayoutInflater = LayoutInflater.from(self);
 		contentListV = listV.getListView();
 		adapter = new NetJSONAdapter(API.guesslikelist, self,
 				R.layout.item_guess_like);
-//		adapter.addparam("catid", catid);
-//		adapter.addparam("keywords", keywords);
 		adapter.fromWhat("list");
 		adapter.addField("title", R.id.title);
 		adapter.addField("pic", R.id.pic);
@@ -94,7 +77,7 @@ public class GuessLikeActivity extends RabbitBaseActivity {
 
 			@Override
 			public Object fix(View itemV, Integer position, Object o, Object jo) {
-				return DateUtils.dateToStrLong(new Date(
+				return DateUtils.dateToStr(new Date(
 						Long.parseLong(o.toString()) * 1000));
 			}
 		});
