@@ -104,20 +104,20 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 	}
 	
 	private void getUserType(){
-		User user = User.getInstance();
-		if (user.getType() == 1) {
-			business_orderLl.setVisibility(View.GONE);
-			mainV.findViewById(R.id.b_line).setVisibility(View.GONE);
-			
-			my_orderLl.setVisibility(View.VISIBLE);
-			mainV.findViewById(R.id.m_line).setVisibility(View.VISIBLE);
-		} else {
-			my_orderLl.setVisibility(View.GONE);
-			mainV.findViewById(R.id.m_line).setVisibility(View.GONE);
-			
-			business_orderLl.setVisibility(View.VISIBLE);
-			mainV.findViewById(R.id.b_line).setVisibility(View.VISIBLE);
-		}
+//		User user = User.getInstance();
+//		if (user.getType() == 1) {
+//			business_orderLl.setVisibility(View.GONE);
+//			mainV.findViewById(R.id.b_line).setVisibility(View.GONE);
+//			
+//			my_orderLl.setVisibility(View.VISIBLE);
+//			mainV.findViewById(R.id.m_line).setVisibility(View.VISIBLE);
+//		} else {
+//			my_orderLl.setVisibility(View.GONE);
+//			mainV.findViewById(R.id.m_line).setVisibility(View.GONE);
+//			
+//			business_orderLl.setVisibility(View.VISIBLE);
+//			mainV.findViewById(R.id.b_line).setVisibility(View.VISIBLE);
+//		}
 	}
 
 	@Override

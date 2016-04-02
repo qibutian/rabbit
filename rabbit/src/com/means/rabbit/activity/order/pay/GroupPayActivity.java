@@ -37,7 +37,7 @@ public class GroupPayActivity extends RabbitBaseActivity {
 
 	String orderId;
 
-	int credit_s;
+	Double credit_s;
 
 	TextView shifuT;
 
@@ -91,8 +91,7 @@ public class GroupPayActivity extends RabbitBaseActivity {
 					ViewUtil.bindView(
 							findViewById(R.id.total_price),
 							getString(R.string.money_symbol)
-									+ JSONUtil.getInt(jo, "singleprice")
-									* JSONUtil.getInt(jo, "count"));
+									+ JSONUtil.getDouble(jo, "orderprice"));
 					ViewUtil.bindView(findViewById(R.id.count),
 							JSONUtil.getString(jo, "count"));
 
@@ -104,12 +103,12 @@ public class GroupPayActivity extends RabbitBaseActivity {
 							JSONUtil.getString(jo, "buyerphone"));
 
 					JSONObject credit_dataJo = JSONUtil.getJSONObject(jo,
-							"credit_data");
+							"user_data");
 
 					ViewUtil.bindView(findViewById(R.id.credit),
 							JSONUtil.getString(credit_dataJo, "credit"));
 
-					credit_s = JSONUtil.getInt(credit_dataJo, "credit");
+					credit_s = JSONUtil.getDouble(credit_dataJo, "credit_s");
 					ViewUtil.bindView(findViewById(R.id.credit_s),
 							getString(R.string.money_symbol) + credit_s);
 					ViewUtil.bindView(findViewById(R.id.ercode),
@@ -157,7 +156,8 @@ public class GroupPayActivity extends RabbitBaseActivity {
 										JSONUtil.getString(jo, "title"));
 								startActivityForResult(it, pay);
 							} else {
-								if (servicestatus == 1&& JSONUtil.getInt(jo, "orderstatus") == 2) {
+								if (servicestatus == 1
+										&& JSONUtil.getInt(jo, "orderstatus") == 2) {
 									it = new Intent(self,
 											PostCommentMainActivity.class);
 									it.putExtra("contentid",

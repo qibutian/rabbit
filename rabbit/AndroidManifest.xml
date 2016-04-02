@@ -23,8 +23,10 @@
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-    <uses-permission android:name="android.permission.CAMERA" />　　
+    <uses-permission android:name="android.permission.CAMERA" />
+　　
 
+    
     <application
         android:name=".RabbitApplication"
         android:allowBackup="true"
@@ -32,7 +34,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".activity.main.MainActivity"
+            android:name=".activity.main.SplashActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,6 +43,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.main.PhotoSelectorActivity" />
+        <activity android:name=".activity.main.MainActivity" />
         <activity
             android:name=".activity.my.edit.EditInfoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" >
@@ -258,8 +261,7 @@
             android:name="com.means.rabbit.activity.merchants.GuessLikeActivity"
             android:label="@string/title_activity_guess_like" >
         </activity>
-        
-         <activity
+        <activity
             android:name="com.google.zxing.client.android.CaptureActivity"
             android:label="@string/title_activity_guess_like" >
         </activity>

@@ -83,7 +83,7 @@
     <!-- 翻译助手 -->
     <string name="translate">翻译助手</string>
     <string name="translate_hint">请输入中文···</string>
-    <string name="translate_text">中文 -</string>
+    <string name="translate_text">中文 </string>
     <string name="translate_language">语言</string>
     <string name="translate_translate">翻译</string>
     <string name="translate_result">翻译结果</string>

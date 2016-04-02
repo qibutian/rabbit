@@ -96,8 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:padding="@dimen/padding_leftandright"
-                android:visibility="gone" >
+                android:padding="@dimen/padding_leftandright">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -124,8 +123,7 @@
 
             <View 
                 android:id="@+id/b_line"
-                style="@style/line_horizontal"
-                android:visibility="gone" />
+                style="@style/line_horizontal" />
 
             <LinearLayout
                 android:id="@+id/comment"
@@ -196,8 +194,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:padding="@dimen/padding_leftandright"
-                android:visibility="gone">
+                android:padding="@dimen/padding_leftandright">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -230,8 +227,7 @@
 
             <View 
                 android:id="@+id/m_line"
-                style="@style/line_horizontal"
-                android:visibility="gone" />
+                style="@style/line_horizontal"/>
 
             <LinearLayout
                 android:id="@+id/integral"

@@ -32,8 +32,6 @@ import com.means.rabbit.views.TranslatePop;
 public class TranslateActivity extends RabbitBaseActivity implements
 		OnClickListener {
 
-	LinearLayout languageLl;
-
 	ImageView voiceI;
 
 	View my_titlebarV;
@@ -42,11 +40,15 @@ public class TranslateActivity extends RabbitBaseActivity implements
 
 	String slang = "en";
 
+	String lang = "zh";
+
 	EditText contentE;
-	
-	TextView tolanguageT;
-	
-	private final int LANGUAGECODE = 1; 
+
+	TextView rightText, leftText;
+
+	private final int LANGUAGECODELEFT = 1;
+
+	private final int LANGUAGECODERIGHT = 2;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -60,10 +62,11 @@ public class TranslateActivity extends RabbitBaseActivity implements
 		setTitle(getString(R.string.translate));
 		my_titlebarV = findViewById(R.id.my_titlebar);
 		// TODO Auto-generated method stub
-		tolanguageT = (TextView)findViewById(R.id.tolanguage);
-		languageLl = (LinearLayout) findViewById(R.id.language);
+		rightText = (TextView) findViewById(R.id.right_text);
+		leftText = (TextView) findViewById(R.id.left_lang);
 
-		languageLl.setOnClickListener(this);
+		rightText.setOnClickListener(this);
+		leftText.setOnClickListener(this);
 
 		voiceI = (ImageView) findViewById(R.id.voice);
 		voiceI.setOnClickListener(this);
@@ -85,9 +88,14 @@ public class TranslateActivity extends RabbitBaseActivity implements
 		Intent it;
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
-		case R.id.language:
+		case R.id.left_lang:
 			it = new Intent(self, SelectLanguageActivity.class);
-			startActivityForResult(it, LANGUAGECODE);
+			startActivityForResult(it, LANGUAGECODELEFT);
+			break;
+
+		case R.id.right_text:
+			it = new Intent(self, SelectLanguageActivity.class);
+			startActivityForResult(it, LANGUAGECODERIGHT);
 			break;
 
 		case R.id.voice:
@@ -108,6 +116,7 @@ public class TranslateActivity extends RabbitBaseActivity implements
 
 		DhNet net = new DhNet(API.translation);
 		net.addParam("slang", slang);
+		net.addParam("lang", lang);
 		net.addParam("q", contentE.getText().toString());
 		net.doGetInDialog("翻译中...", new NetTask(self) {
 
@@ -124,16 +133,21 @@ public class TranslateActivity extends RabbitBaseActivity implements
 			}
 		});
 	}
-	
+
 	@Override
 	protected void onActivityResult(int arg0, int arg1, Intent arg2) {
 		// TODO Auto-generated method stub
 		super.onActivityResult(arg0, arg1, arg2);
-		
+
 		if (arg1 == RESULT_OK) {
-			if (arg0 == LANGUAGECODE) {
+			if (arg0 == LANGUAGECODERIGHT) {
 				slang = arg2.getStringExtra("language");
-				tolanguageT.setText(arg2.getStringExtra("label"));
+				rightText.setText(arg2.getStringExtra("label"));
+			}
+
+			if (arg0 == LANGUAGECODELEFT) {
+				lang = arg2.getStringExtra("language");
+				leftText.setText(arg2.getStringExtra("label"));
 			}
 		}
 	}

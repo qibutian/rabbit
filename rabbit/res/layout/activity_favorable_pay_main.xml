@@ -32,10 +32,21 @@
                 android:orientation="horizontal" >
 
                 <TextView
+                    style="@style/text_44_black_big"
+                    android:text="￥"
+                    android:textColor="@color/text_2B_green" />
+                
+                <EditText
                     android:id="@+id/pay_price"
                     style="@style/text_44_black_big"
-                    android:text="￥199"
+                    android:minWidth="30dp"
+                    android:paddingLeft="3dp"
+                    android:paddingRight="5dp"
+                    android:inputType="numberDecimal"
+                    android:background="@color/nothing"
                     android:textColor="@color/text_2B_green" />
+                
+                
             </LinearLayout>
         </LinearLayout>
 

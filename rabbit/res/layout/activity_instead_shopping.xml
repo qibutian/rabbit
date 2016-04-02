@@ -206,6 +206,7 @@
                         style="@style/text_99_grey_medium"
                         android:layout_width="fill_parent"
                         android:background="@color/nothing"
+                        android:minWidth="80dp"
                         android:gravity="right" />
                 </LinearLayout>
             </LinearLayout>

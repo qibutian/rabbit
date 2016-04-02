@@ -20,6 +20,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -70,8 +71,7 @@ public class GroupOrderActivity extends RabbitBaseActivity {
 		tuangouId = getIntent().getStringExtra("tuangouId");
 		cartView = (CartView) findViewById(R.id.cartView);
 		totalPriceT = (TextView) findViewById(R.id.total_price);
-		
-		
+
 		jifenE = (EditText) findViewById(R.id.credit);
 		daikouT = (TextView) findViewById(R.id.credit_s);
 		shifuT = (TextView) findViewById(R.id.shifu);
@@ -92,29 +92,37 @@ public class GroupOrderActivity extends RabbitBaseActivity {
 			@Override
 			public void afterTextChanged(Editable s) {
 				if (creditY != 0) {
-					
-					int jifen = Integer
-							.parseInt(jifenE.getText().toString()) ;
-					if(jifen>credit) {
-						showToast("你输入的积分超过了您的积分,请输入小于"+credit+"的数字!");
-						jifenE.setText(0+"");
-					} else {
-						float daikou = jifen / creditY;
-						if (daikou > price) {
-							showToast("本单最多只能使用" + price * creditY + "积分");
-							jifenE.setText(0+"");
-							shifuT.setText(price + "");
+					if (!TextUtils.isEmpty(jifenE.getText().toString())) {
+
+						int jifen = Integer.parseInt(jifenE.getText()
+								.toString());
+						if (jifen > credit) {
+							showToast("你输入的积分超过了您的积分,请输入小于" + credit + "的数字!");
+							jifenE.setText(0 + "");
 						} else {
-							daikouT.setText(getString(R.string.money_symbol)
-									+ daikou);
-							shifuT.setText(price - daikou + "");
+							float daikou = jifen / creditY;
+							if (daikou > price) {
+								showToast("本单最多只能使用" + price * creditY + "积分");
+								jifenE.setText(0 + "");
+								shifuT.setText(price + "");
+							} else {
+								daikouT.setText(getString(R.string.money_symbol)
+										+ daikou);
+								shifuT.setText(price - daikou + "");
+							}
 						}
+
+					} else {
+
+						jifenE.setText(0 + "");
+						shifuT.setText(price + "");
+						// jifenE.setText(0 + "");
 					}
+
 				}
 			}
 		});
-		
-		
+
 		telT = (EditText) findViewById(R.id.tel);
 
 		findViewById(R.id.submit).setOnClickListener(new OnClickListener() {
@@ -141,16 +149,18 @@ public class GroupOrderActivity extends RabbitBaseActivity {
 					ViewUtil.bindView(findViewById(R.id.name),
 							JSONUtil.getString(jo, "title"));
 					price = JSONUtil.getDouble(jo, "price");
-					ViewUtil.bindView(findViewById(R.id.price), getString(R.string.money_symbol) + price);
+					ViewUtil.bindView(findViewById(R.id.price),
+							getString(R.string.money_symbol) + price);
 					cartView.setMaxNum(100);
 					cartView.setOnCartViewClickListener(new OnCartViewClickListener() {
 
 						@Override
 						public void onClick() {
 
-							totalPriceT.setText(getString(R.string.money_symbol) + cartView.getCartNum()
-									* price);
-							
+							totalPriceT
+									.setText(getString(R.string.money_symbol)
+											+ cartView.getCartNum() * price);
+
 							if (Integer.parseInt(jifenE.getText().toString()) == 0) {
 								shifuT.setText(cartView.getCartNum() * price
 										+ "");
@@ -162,27 +172,26 @@ public class GroupOrderActivity extends RabbitBaseActivity {
 							}
 						}
 					});
-					totalPriceT.setText(getString(R.string.money_symbol) + price);
+					totalPriceT.setText(getString(R.string.money_symbol)
+							+ price);
 					JSONObject user_dataJo = JSONUtil.getJSONObject(jo,
 							"user_data");
 
 					credit = JSONUtil.getInt(user_dataJo, "credit");
-					
-					
-					
+
 					int credit_s = JSONUtil.getInt(user_dataJo, "credit_s");
 					if (credit_s != 0) {
 						creditY = credit / (float) credit_s;
 
 					} else {
-						jifenE.setText(0+"");
+						jifenE.setText(0 + "");
 					}
-					
-					jifenE.setEnabled(credit_s==0?false:true);
+
+					jifenE.setEnabled(credit_s == 0 ? false : true);
 
 					ViewUtil.bindView(telT,
 							JSONUtil.getString(user_dataJo, "phone"));
-					shifuT.setText(price  + "");
+					shifuT.setText(price + "");
 
 				}
 

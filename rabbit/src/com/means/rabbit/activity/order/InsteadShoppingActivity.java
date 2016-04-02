@@ -23,6 +23,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -121,23 +122,31 @@ public class InsteadShoppingActivity extends RabbitBaseActivity {
 			@Override
 			public void afterTextChanged(Editable s) {
 				if (creditY != 0) {
-
-					int jifen = Integer.parseInt(jifenE.getText().toString());
-					if (jifen > credit) {
-						showToast("你输入的积分超过了您的积分,请输入小于" + credit + "的数字!");
-						jifenE.setText(0+"");
-					} else {
-						float daikou = jifen / creditY;
-						if (daikou > price) {
-							showToast("本单最多只能使用" + price * creditY + "积分");
-							jifenE.setText(0+"");
-							shifuT.setText(price + "");
+					if (!TextUtils.isEmpty(jifenE.getText().toString())) {
+						int jifen = Integer.parseInt(jifenE.getText()
+								.toString());
+						if (jifen > credit) {
+							showToast("你输入的积分超过了您的积分,请输入小于" + credit + "的数字!");
+							jifenE.setText(0 + "");
 						} else {
-							daikouT.setText(getString(R.string.money_symbol)
-									+ daikou);
-							shifuT.setText(price - daikou + "");
+							float daikou = jifen / creditY;
+							if (daikou > price) {
+								showToast("本单最多只能使用" + price * creditY + "积分");
+								jifenE.setText(0 + "");
+								shifuT.setText(price + "");
+							} else {
+								daikouT.setText(getString(R.string.money_symbol)
+										+ daikou);
+								shifuT.setText(price - daikou + "");
+							}
 						}
+					} else {
+
+						jifenE.setText(0 + "");
+						shifuT.setText(price + "");
+						// jifenE.setText(0 + "");
 					}
+
 				}
 			}
 		});
@@ -167,12 +176,14 @@ public class InsteadShoppingActivity extends RabbitBaseActivity {
 						creditY = credit / (float) credit_s;
 
 					} else {
-						jifenE.setText(0+"");
+						jifenE.setText(0 + "");
 					}
 
 					jifenE.setEnabled(credit_s == 0 ? false : true);
-					ViewUtil.bindView(findViewById(R.id.youfei),
-							getString(R.string.money_symbol) + JSONUtil.getString(jo, "emoney"));
+					ViewUtil.bindView(
+							findViewById(R.id.youfei),
+							getString(R.string.money_symbol)
+									+ JSONUtil.getString(jo, "emoney"));
 
 					ViewUtil.bindView(findViewById(R.id.tel),
 							JSONUtil.getString(user_dataJo, "phone"));
@@ -181,17 +192,20 @@ public class InsteadShoppingActivity extends RabbitBaseActivity {
 							JSONUtil.getString(user_dataJo, "nickname"));
 					price = JSONUtil.getDouble(jo, "price");
 
-					totalPriceT.setText(getString(R.string.money_symbol) + price);
+					totalPriceT.setText(getString(R.string.money_symbol)
+							+ price);
 
-					ViewUtil.bindView(findViewById(R.id.price), getString(R.string.money_symbol) + price);
+					ViewUtil.bindView(findViewById(R.id.price),
+							getString(R.string.money_symbol) + price);
 
 					cartView.setOnCartViewClickListener(new OnCartViewClickListener() {
 
 						@Override
 						public void onClick() {
 
-							totalPriceT.setText(getString(R.string.money_symbol) + cartView.getCartNum()
-									* price);
+							totalPriceT
+									.setText(getString(R.string.money_symbol)
+											+ cartView.getCartNum() * price);
 
 							if (Integer.parseInt(jifenE.getText().toString()) == 0) {
 								shifuT.setText(cartView.getCartNum() * price

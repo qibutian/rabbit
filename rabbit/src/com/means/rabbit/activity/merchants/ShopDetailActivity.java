@@ -96,6 +96,7 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 		adapter.addField("title", R.id.title);
 		adapter.addField("oldprice", R.id.oldprice);
 		adapter.addField("ordercount", R.id.sell_count);
+		adapter.addField("des", R.id.des);
 		adapter.addField(new FieldMap("price", R.id.price) {
 
 			@Override

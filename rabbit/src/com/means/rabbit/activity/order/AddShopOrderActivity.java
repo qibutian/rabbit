@@ -23,6 +23,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -99,23 +100,31 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 			@Override
 			public void afterTextChanged(Editable s) {
 				if (creditY != 0) {
-
-					int jifen = Integer.parseInt(jifenE.getText().toString());
-					if (jifen > credit) {
-						showToast("你输入的积分超过了您的积分,请输入小于" + credit + "的数字!");
-						jifenE.setText(0+"");
-					} else {
-						float daikou = jifen / creditY;
-						if (daikou > price) {
-							showToast("本单最多只能使用" + price * creditY + "积分");
-							jifenE.setText(0+"");
-							shifuT.setText(price + "");
+					if (!TextUtils.isEmpty(jifenE.getText().toString())) {
+						int jifen = Integer.parseInt(jifenE.getText()
+								.toString());
+						if (jifen > credit) {
+							showToast("你输入的积分超过了您的积分,请输入小于" + credit + "的数字!");
+							jifenE.setText(0 + "");
 						} else {
-							daikouT.setText(getString(R.string.money_symbol)
-									+ daikou);
-							shifuT.setText(price - daikou + "");
+							float daikou = jifen / creditY;
+							if (daikou > price) {
+								showToast("本单最多只能使用" + price * creditY + "积分");
+								jifenE.setText(0 + "");
+								shifuT.setText(price + "");
+							} else {
+								daikouT.setText(getString(R.string.money_symbol)
+										+ daikou);
+								shifuT.setText(price - daikou + "");
+							}
 						}
+					} else {
+
+						jifenE.setText(0 + "");
+						shifuT.setText(price + "");
+						// jifenE.setText(0 + "");
 					}
+
 				}
 			}
 		});

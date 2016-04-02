@@ -18,6 +18,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,7 +36,7 @@ import android.widget.TextView;
  */
 public class AddFavorableMainActivity extends RabbitBaseActivity {
 
-	double payprice;
+	// double payprice;
 
 	String contentid;
 
@@ -50,6 +51,8 @@ public class AddFavorableMainActivity extends RabbitBaseActivity {
 
 	public int pay = 1003;
 
+	EditText payPriceE;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -62,9 +65,10 @@ public class AddFavorableMainActivity extends RabbitBaseActivity {
 		// TODO Auto-generated method stub
 		setTitle(getString(R.string.favorable));
 		Intent it = getIntent();
-		payprice = it.getDoubleExtra("payprice", 0);
-		ViewUtil.bindView(findViewById(R.id.pay_price),
-				getString(R.string.money_symbol) + payprice);
+		// payprice = it.getDoubleExtra("payprice", 0);
+		// ViewUtil.bindView(findViewById(R.id.pay_price),
+		// getString(R.string.money_symbol) + payprice);
+		payPriceE = (EditText) findViewById(R.id.pay_price);
 		contentid = it.getStringExtra("contentid");
 		shifuT = (TextView) findViewById(R.id.shifu);
 		jifenE = (EditText) findViewById(R.id.credit);
@@ -74,35 +78,61 @@ public class AddFavorableMainActivity extends RabbitBaseActivity {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count) {
-
 			}
 
 			@Override
 			public void beforeTextChanged(CharSequence s, int start, int count,
 					int after) {
-
 			}
 
 			@Override
 			public void afterTextChanged(Editable s) {
+
 				if (creditY != 0) {
 
-					int jifen = Integer.parseInt(jifenE.getText().toString());
-					if (jifen > credit) {
-						showToast("你输入的积分超过了您的积分,请输入小于" + credit + "的数字!");
-						jifenE.setText(0+"");
-					} else {
-						float daikou = jifen / creditY;
-						if (daikou > payprice) {
-							showToast("本单最多只能使用" + payprice * creditY + "积分");
-							jifenE.setText(0+"");
-							shifuT.setText(payprice + "");
+					if (!TextUtils.isEmpty(jifenE.getText().toString())) {
+
+						int jifen = Integer.parseInt(jifenE.getText()
+								.toString());
+						if (jifen > credit) {
+							showToast("你输入的积分超过了您的积分,请输入小于" + credit + "的数字!");
+							jifenE.setText(0 + "");
+							System.out.println("111111111111");
 						} else {
-							daikouT.setText(getString(R.string.money_symbol)
-									+ daikou);
-							shifuT.setText(payprice - daikou + "");
+
+							if (TextUtils.isEmpty(payPriceE.getText()
+									.toString())) {
+								showToast("请输入消费金额!");
+								System.out.println("222222222222");
+								// jifenE.setText(0 + "");
+							} else {
+								float price = Integer.parseInt(payPriceE
+										.getText().toString());
+								float daikou = jifen / creditY;
+								if (daikou > price) {
+									showToast("本单最多只能使用" + price * creditY
+											+ "积分");
+									System.out.println("33333333333");
+									jifenE.setText(0 + "");
+									shifuT.setText(price + "");
+								} else {
+									System.out.println("44444444444");
+									daikouT.setText(getString(R.string.money_symbol)
+											+ daikou);
+									shifuT.setText(price - daikou + "");
+								}
+							}
+
+						}
+					} else {
+
+						if (!TextUtils.isEmpty(payPriceE.getText().toString())) {
+							jifenE.setText(0 + "");
+							shifuT.setText(payPriceE.getText().toString());
+							// jifenE.setText(0 + "");
 						}
 					}
+
 				}
 			}
 		});
@@ -142,7 +172,7 @@ public class AddFavorableMainActivity extends RabbitBaseActivity {
 					}
 
 					jifenE.setEnabled(credit_s == 0 ? false : true);
-					shifuT.setText(payprice + "");
+					// shifuT.setText(payprice + "");
 				}
 
 			}
@@ -150,8 +180,12 @@ public class AddFavorableMainActivity extends RabbitBaseActivity {
 	}
 
 	private void submit() {
+		if (TextUtils.isEmpty(payPriceE.getText().toString())) {
+			showToast("请输入消费金额!");
+			return;
+		}
 		Intent it = new Intent(self, PayOrderActivity.class);
-		it.putExtra("payprice", payprice + "");
+		it.putExtra("payprice", shifuT.getText().toString() + "");
 		it.putExtra("contentid", contentid);
 		it.putExtra("credit", jifenE.getText().toString());
 		it.putExtra("name", getIntent().getStringExtra("name"));

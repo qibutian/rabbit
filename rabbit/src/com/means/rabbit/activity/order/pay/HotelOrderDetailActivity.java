@@ -111,19 +111,18 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 					ViewUtil.bindView(
 							findViewById(R.id.yingfu),
 							getString(R.string.money_symbol)
-									+ JSONUtil.getDouble(jo, "singleprice")
-									* JSONUtil.getDouble(jo, ""));
+									+ JSONUtil.getDouble(jo, "orderprice"));
 
 					countT.setText(JSONUtil.getString(jo, "daycount"));
 					totalpriceT.setText(getString(R.string.money_symbol)
 							+ JSONUtil.getInt(jo, "count")
-							* JSONUtil.getInt(jo, "singleprice"));
+							* JSONUtil.getDouble(jo, "singleprice"));
 					idT.setText(JSONUtil.getString(jo, "code"));
 					buyerphoneT.setText(JSONUtil.getString(jo, "buyerphone"));
 					buyernameT.setText(JSONUtil.getString(jo, "buyername"));
 					buyernoteT.setText(JSONUtil.getString(jo, "buyernote"));
 					JSONObject credit_data = JSONUtil.getJSONObject(jo,
-							"credit_data");
+							"user_data");
 					creditT.setText(JSONUtil.getString(credit_data, "credit"));
 					credit_sT.setText(JSONUtil.getString(credit_data,
 							"credit_s"));
