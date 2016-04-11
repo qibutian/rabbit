@@ -21,8 +21,7 @@ campusshopping/project.properties
 /zxing-lib/gen
 /zxing-lib/build
 /zxing-lib/.classpath
-/zxing-lib/project.properties
-/zxing-lib/project
+
 
 
 .gradle
