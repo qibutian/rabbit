@@ -198,4 +198,7 @@ public class API {
 	/** 获取城市 */
 	public static String getcity = Baseurl + "/home/index/getcityid";
 
+	/** 列表广告位 */
+	public static String listad = Baseurl + "/home/index/adtoplist";
+
 }

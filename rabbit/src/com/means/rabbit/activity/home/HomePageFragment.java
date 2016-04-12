@@ -41,6 +41,7 @@ import com.means.rabbit.activity.travel.TravelDetailActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.bean.CityEB;
 import com.means.rabbit.utils.RabbitPerference;
+import com.means.rabbit.utils.RabbitUtils;
 import com.means.rabbit.views.RefreshListViewAndMore;
 
 import de.greenrobot.event.EventBus;
@@ -217,7 +218,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 							JSONObject data = (JSONObject) galleryAdapter
 									.getTItem(position);
-							ImgIntent(JSONUtil.getInt(data, "type"),
+							RabbitUtils.ImgIntent(getActivity(),JSONUtil.getInt(data, "type"),
 									JSONUtil.getString(data, "id"));
 
 						}
@@ -244,7 +245,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 								@Override
 								public void onClick(View v) {
-									ImgIntent(JSONUtil.getInt(jo, "type"),
+									RabbitUtils.ImgIntent(getActivity(),JSONUtil.getInt(jo, "type"),
 											JSONUtil.getString(jo, "id"));
 								}
 							});
@@ -352,41 +353,5 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		EventBus.getDefault().unregister(this);
 	}
 
-	private void ImgIntent(int type, String id) {
-
-		Intent it = null;
-
-		switch (type) {
-		case 1:
-			it = new Intent(getActivity(), TravelDetailActivity.class);
-			it.putExtra("id", Integer.parseInt(id));
-			break;
-
-		case 2:
-			it = new Intent(getActivity(), HotelDetailActivity.class);
-			it.putExtra("hotelId", id);
-			break;
-
-		case 3:
-			it = new Intent(getActivity(), ShopDetailActivity.class);
-			it.putExtra("shopId", id);
-			break;
-
-		case 4:
-			it = new Intent(getActivity(), TuangouDetailActivity.class);
-			it.putExtra("tuangouId", id);
-			break;
-
-		case 5:
-			it = new Intent(getActivity(), GoodDetailActivity.class);
-			it.putExtra("daigouId", id);
-			break;
-
-		default:
-			break;
-		}
-
-		startActivity(it);
-
-	}
+	
 }
