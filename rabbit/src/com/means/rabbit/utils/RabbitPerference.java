@@ -14,12 +14,11 @@ public class RabbitPerference extends Perference {
 	public String sex;
 	public String faceimg_s;
 	public String msgcount;
-	public boolean login = false;
 	public String catid = "1";
 	public String cityname;
 	public String password;
-	
-	public void clear(){
+
+	public void clear() {
 		this.name = "";
 		this.groupname = "";
 		this.nickname = "";
@@ -29,10 +28,9 @@ public class RabbitPerference extends Perference {
 		this.faceimg_s = "";
 		this.msgcount = "";
 		this.password = "";
-		this.login = false;
 		commit();
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}
@@ -105,14 +103,6 @@ public class RabbitPerference extends Perference {
 		this.msgcount = msgcount;
 	}
 
-	public boolean isLogin() {
-		return login;
-	}
-
-	public void setLogin(boolean login) {
-		this.login = login;
-	}
-
 	public String getCatid() {
 		return catid;
 	}
@@ -128,7 +118,14 @@ public class RabbitPerference extends Perference {
 	public void setCityname(String cityname) {
 		this.cityname = cityname;
 	}
-	
-	
 
+	public int getIsFirst() {
+		return isFirst;
+	}
+
+	public void setIsFirst(int isFirst) {
+		this.isFirst = isFirst;
+	}
+
+	
 }

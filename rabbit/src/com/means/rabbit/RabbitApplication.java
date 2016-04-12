@@ -8,8 +8,10 @@ import net.duohuo.dhroid.ioc.IocContainer;
 import net.duohuo.dhroid.net.GlobalCodeHandler;
 import net.duohuo.dhroid.net.GlobalParams;
 import net.duohuo.dhroid.net.cache.DaoHelper;
+import net.duohuo.dhroid.util.UserLocation;
 import android.app.Application;
 import android.content.Context;
+import android.text.TextUtils;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.means.rabbit.utils.RabbitPerference;
@@ -54,10 +56,10 @@ public class RabbitApplication extends Application implements
 		Const.response_data = "data";
 		Const.netadapter_step_default = 10;
 		Const.DATABASE_VERSION = 18;
-//		Const.response_success = "status";
-//		Const.response_msg = "info";
-//		Const.response_result_status = "1";
-//		Const.netadapter_no_more = "";
+		// Const.response_success = "status";
+		// Const.response_msg = "info";
+		// Const.response_result_status = "1";
+		// Const.netadapter_no_more = "";
 
 		// Const.postType = 2;
 		IocContainer.getShare().initApplication(this);
@@ -98,6 +100,7 @@ public class RabbitApplication extends Application implements
 				// default
 				.imageDownloader(new BaseImageDownloader(this))
 				// default
+				
 				.imageDecoder(new BaseImageDecoder(false))
 				// default
 				.defaultDisplayImageOptions(DisplayImageOptions.createSimple())
@@ -107,11 +110,13 @@ public class RabbitApplication extends Application implements
 		GlobalParams globalParams = IocContainer.getShare().get(
 				GlobalParams.class);
 		globalParams.setGlobalParam("lang", "cn");
-		
-//		RabbitPerference per =  IocContainer.getShare().get(
-//				RabbitPerference.class);
-//		per.load();
-//		globalParams.setGlobalParam("cityid", "5");
+
+		RabbitPerference per = IocContainer.getShare().get(
+				RabbitPerference.class);
+		per.load();
+		if (!TextUtils.isEmpty(per.catid)) {
+			globalParams.setGlobalParam("cityid", per.catid);
+		}
 
 	}
 

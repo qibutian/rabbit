@@ -9,7 +9,7 @@
     <net.duohuo.dhroid.view.NormalGallery
         android:id="@+id/gallery"
         android:layout_width="fill_parent"
-        android:layout_height="170dp"/>
+        android:layout_height="170dp" />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -73,7 +73,7 @@
             android:layout_weight="0.3" />
 
         <LinearLayout
-            android:id="@+id/huobi"
+            android:id="@+id/daigou"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -85,13 +85,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="7dp"
-                android:src="@drawable/icon_huobi"
+                android:src="@drawable/icon_daigou"
                 my:heightToWidth="1.0" />
 
             <TextView
                 style="@style/text_66_black_small"
                 android:layout_marginTop="2dp"
-                android:text="货币兑换" />
+                android:text="代购" />
         </LinearLayout>
 
         <View

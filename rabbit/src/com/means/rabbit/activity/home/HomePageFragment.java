@@ -29,10 +29,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.means.rabbit.R;
+import com.means.rabbit.activity.merchants.DaiGouActivity;
 import com.means.rabbit.activity.merchants.FoodListActivity;
+import com.means.rabbit.activity.merchants.GoodDetailActivity;
+import com.means.rabbit.activity.merchants.HotelDetailActivity;
 import com.means.rabbit.activity.merchants.HotelListActivity;
 import com.means.rabbit.activity.merchants.ShopDetailActivity;
+import com.means.rabbit.activity.merchants.TuangouDetailActivity;
 import com.means.rabbit.activity.travel.TravelActivity;
+import com.means.rabbit.activity.travel.TravelDetailActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.bean.CityEB;
 import com.means.rabbit.utils.RabbitPerference;
@@ -87,8 +92,8 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 	// 专享特色
 	View exclusive_characteristicsV;
 
-	// 货币兑换
-	View huobiV;
+	// 代购
+	View daigouV;
 
 	public static HomePageFragment getInstance() {
 		if (instance == null) {
@@ -176,7 +181,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		entertainmentV = headV.findViewById(R.id.entertainment);
 		exclusive_characteristicsV = headV
 				.findViewById(R.id.exclusive_characteristics);
-		huobiV = headV.findViewById(R.id.huobi);
+		daigouV = headV.findViewById(R.id.daigou);
 		foodLayoutV.setOnClickListener(this);
 		hotelLayoutV.setOnClickListener(this);
 		redpacketLayoutV.setOnClickListener(this);
@@ -186,7 +191,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		travel_servicesV.setOnClickListener(this);
 		entertainmentV.setOnClickListener(this);
 		exclusive_characteristicsV.setOnClickListener(this);
-		huobiV.setOnClickListener(this);
+		daigouV.setOnClickListener(this);
 	}
 
 	// 获取首页幻灯+中间内容列表
@@ -204,6 +209,19 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 					galleryAdapter.addField("pic", R.id.pic, "default");
 					galleryAdapter.addAll(jsa1);
 					gallery.setAdapter(galleryAdapter);
+					gallery.setOnItemClickListener(new OnItemClickListener() {
+
+						@Override
+						public void onItemClick(AdapterView<?> parent,
+								View view, int position, long id) {
+
+							JSONObject data = (JSONObject) galleryAdapter
+									.getTItem(position);
+							ImgIntent(JSONUtil.getInt(data, "type"),
+									JSONUtil.getString(data, "id"));
+
+						}
+					});
 
 					// 中间部分
 					JSONArray jsa2 = response.jSONArrayFrom("data1");
@@ -219,6 +237,18 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 						for (int i = 0; i < pic_ids.length; i++) {
 							ImageView view = (ImageView) headV
 									.findViewById(pic_ids[i]);
+
+							final JSONObject jo = JSONUtil.getJSONObjectAt(
+									jsa2, i + 1);
+							view.setOnClickListener(new OnClickListener() {
+
+								@Override
+								public void onClick(View v) {
+									ImgIntent(JSONUtil.getInt(jo, "type"),
+											JSONUtil.getString(jo, "id"));
+								}
+							});
+
 							ViewUtil.bindNetImage(view, JSONUtil.getString(
 									JSONUtil.getJSONObjectAt(jsa2, i + 1),
 									"pic"), "default");
@@ -273,11 +303,11 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 			it.putExtra("catid", "7");
 			startActivity(it);
 			break;
-		// 专享特色
-		case R.id.huobi:
-			it = new Intent(getActivity(), FoodListActivity.class);
-			it.putExtra("title", getString(R.string.huobiduihuan));
-			it.putExtra("catid", "3");
+		// 代购
+		case R.id.daigou:
+			it = new Intent(getActivity(), DaiGouActivity.class);
+			// it.putExtra("title", getString(R.string.huobiduihuan));
+			// it.putExtra("catid", "3");
 			startActivity(it);
 			break;
 
@@ -320,5 +350,43 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 	public void onDestroy() {
 		super.onDestroy();
 		EventBus.getDefault().unregister(this);
+	}
+
+	private void ImgIntent(int type, String id) {
+
+		Intent it = null;
+
+		switch (type) {
+		case 1:
+			it = new Intent(getActivity(), TravelDetailActivity.class);
+			it.putExtra("id", Integer.parseInt(id));
+			break;
+
+		case 2:
+			it = new Intent(getActivity(), HotelDetailActivity.class);
+			it.putExtra("hotelId", id);
+			break;
+
+		case 3:
+			it = new Intent(getActivity(), ShopDetailActivity.class);
+			it.putExtra("shopId", id);
+			break;
+
+		case 4:
+			it = new Intent(getActivity(), TuangouDetailActivity.class);
+			it.putExtra("tuangouId", id);
+			break;
+
+		case 5:
+			it = new Intent(getActivity(), GoodDetailActivity.class);
+			it.putExtra("daigouId", id);
+			break;
+
+		default:
+			break;
+		}
+
+		startActivity(it);
+
 	}
 }

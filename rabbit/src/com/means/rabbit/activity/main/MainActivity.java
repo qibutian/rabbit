@@ -31,6 +31,7 @@ import com.means.rabbit.bean.CityEB;
 import com.means.rabbit.bean.User;
 import com.means.rabbit.manage.UserInfoManage;
 import com.means.rabbit.manage.UserInfoManage.LoginCallBack;
+import com.means.rabbit.utils.RabbitPerference;
 
 import de.greenrobot.event.EventBus;
 
@@ -62,6 +63,15 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	private void initView() {
+
+		TextView cityT = (TextView) findViewById(R.id.city);
+
+		RabbitPerference per = IocContainer.getShare().get(
+				RabbitPerference.class);
+		per.load();
+
+		cityT.setText(per.cityname);
+
 		mHandler = new Handler();
 		// TODO Auto-generated method stub
 		fm = getSupportFragmentManager();
@@ -279,13 +289,13 @@ public class MainActivity extends FragmentActivity {
 		}
 		return super.onKeyDown(keyCode, event);
 	}
-	
+
 	@Override
-    public void finish() {
-        ActivityTack.getInstanse().removeActivity(this);
-        super.finish();
-    }
-	
+	public void finish() {
+		ActivityTack.getInstanse().removeActivity(this);
+		super.finish();
+	}
+
 	public void onEventMainThread(BackHomeEB event) {
 		setTab(event.getIndex());
 	}

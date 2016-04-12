@@ -31,7 +31,6 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.Switch;
 
-import com.amap.api.services.poisearch.Hotel;
 import com.means.rabbit.R;
 import com.means.rabbit.activity.merchants.DaiGouActivity;
 import com.means.rabbit.activity.merchants.FoodListActivity;

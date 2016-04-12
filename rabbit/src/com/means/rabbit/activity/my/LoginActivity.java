@@ -82,8 +82,8 @@ public class LoginActivity extends RabbitBaseActivity implements
 		final String nickname = nicknameEt.getText().toString();
 		final String password = passwordEt.getText().toString();
 
-//		 final String nickname = "18151906146";
-//		 final String password = "123456 a";
+		// final String nickname = "18151906146";
+		// final String password = "123456 a";
 		if (TextUtils.isEmpty(nickname)) {
 			showToast("请输入昵称/用户名");
 			return;
@@ -115,7 +115,6 @@ public class LoginActivity extends RabbitBaseActivity implements
 					}
 					per = IocContainer.getShare().get(RabbitPerference.class);
 					per.load();
-					per.setLogin(true);
 					per.setName(JSONUtil.getString(jo, "name"));
 					per.setNickname(JSONUtil.getString(jo, "nickname"));
 					per.setPhone(JSONUtil.getString(jo, "phone"));
