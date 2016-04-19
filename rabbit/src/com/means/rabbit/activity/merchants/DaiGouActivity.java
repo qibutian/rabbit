@@ -1,14 +1,21 @@
 package com.means.rabbit.activity.merchants;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import net.duohuo.dhroid.adapter.NetJSONAdapter;
+import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.net.JSONUtil;
+import net.duohuo.dhroid.net.NetTask;
+import net.duohuo.dhroid.net.Response;
+import net.duohuo.dhroid.util.ViewUtil;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -16,6 +23,7 @@ import com.means.rabbit.R;
 import com.means.rabbit.activity.main.SearchActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
+import com.means.rabbit.utils.RabbitUtils;
 import com.means.rabbit.views.RefreshListViewAndMore;
 import com.means.rabbit.views.TabView;
 import com.means.rabbit.views.TabView.OnTabSelectListener;
@@ -110,6 +118,60 @@ public class DaiGouActivity extends RabbitBaseActivity {
 			public void onCenterSelect(String result) {
 				adapter.addparam("catid", result);
 				adapter.refreshDialog();
+			}
+		});
+
+		getAD();
+	}
+
+	private void getAD() {
+		DhNet net = new DhNet(API.listad);
+		net.doGetInDialog(new NetTask(self) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+
+				if (response.isSuccess()) {
+
+					JSONArray jsa = response.jSONArrayFrom("data");
+					if (jsa != null) {
+						if (jsa.length() == 2) {
+							final JSONObject jo1 = JSONUtil.getJSONObjectAt(
+									jsa, 0);
+							ImageView pic1I = (ImageView) headV
+									.findViewById(R.id.pic1);
+							pic1I.setOnClickListener(new OnClickListener() {
+
+								@Override
+								public void onClick(View arg0) {
+									RabbitUtils.ImgIntent(self,
+											JSONUtil.getInt(jo1, "type"),
+											JSONUtil.getString(jo1, "id"));
+								}
+							});
+							ViewUtil.bindNetImage(pic1I,
+									JSONUtil.getString(jo1, "pic"), "default");
+
+							final JSONObject jo2 = JSONUtil.getJSONObjectAt(
+									jsa, 1);
+							ImageView pic2I = (ImageView) headV
+									.findViewById(R.id.pic2);
+							pic2I.setOnClickListener(new OnClickListener() {
+
+								@Override
+								public void onClick(View arg0) {
+									RabbitUtils.ImgIntent(self,
+											JSONUtil.getInt(jo2, "type"),
+											JSONUtil.getString(jo2, "id"));
+								}
+							});
+							ViewUtil.bindNetImage(pic2I,
+									JSONUtil.getString(jo2, "pic"), "default");
+						}
+					}
+
+				}
+
 			}
 		});
 	}

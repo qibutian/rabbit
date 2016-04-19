@@ -105,16 +105,21 @@ public class MyOrderActivity extends RabbitBaseActivity implements
 						.findViewById(R.id.paystatus);
 				int paystatus = JSONUtil.getInt(data, "paystatus");
 
-				if (JSONUtil.getInt(data, "orderstatus") == 2) {
+				int servicestatus = JSONUtil.getInt(data, "servicestatus");
+				// grogshop_btn.setText(paystatus == 1 ? "支付订单" : "已支付");
+
+				if (paystatus == 2 && servicestatus == 2
+						&& JSONUtil.getInt(data, "orderstatus") == 2) {
 					paystatusT.setText("已完成");
 				} else if (JSONUtil.getInt(data, "orderstatus") == 3) {
 					paystatusT.setText("已取消");
+				} else if (servicestatus == 1
+						&& JSONUtil.getInt(data, "orderstatus") == 2) {
+					paystatusT.setText("待评论");
 				} else if (paystatus == 1) {
 					paystatusT.setText("待支付");
 				} else if (paystatus == 2) {
-					paystatusT.setText("已支付");
-				} else if (paystatus == 3) {
-					paystatusT.setText("支付失败");
+					paystatusT.setText("待消费");
 				}
 
 				return getString(R.string.money_symbol) + "  " + o.toString();
