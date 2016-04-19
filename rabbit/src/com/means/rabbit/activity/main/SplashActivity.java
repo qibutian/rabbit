@@ -173,6 +173,8 @@ public class SplashActivity extends RabbitBaseActivity {
 	}
 
 	public void onEventMainThread(CityEB city) {
+		per.isFirst = 1;
+		per.commit();
 		Intent intent = new Intent(self, MainActivity.class);
 		startActivity(intent);
 		finishWithoutAnim();

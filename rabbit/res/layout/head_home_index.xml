@@ -319,7 +319,7 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="300dp" >
 
         <LinearLayout
             android:layout_width="0dp"
@@ -329,7 +329,7 @@
 
             <ImageView
                 android:id="@+id/pic_1"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:scaleType="fitXY"
                 android:src="@drawable/model_yuandan" />
@@ -344,13 +344,13 @@
             <ImageView
                 android:id="@+id/pic_2"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="120dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/model_shengdan" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="180dp" >
 
                 <ImageView
                     android:id="@+id/pic_3"
