@@ -29,6 +29,7 @@ import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.manage.UserInfoManage;
 import com.means.rabbit.manage.UserInfoManage.LoginCallBack;
+import com.means.rabbit.utils.RabbitUtils;
 import com.means.rabbit.views.CommentView;
 import com.means.rabbit.views.KeyVauleView;
 import com.means.rabbit.views.NomalGallery;
@@ -240,6 +241,16 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 
 					ViewUtil.bindView(headV.findViewById(R.id.tel),
 							JSONUtil.getString(detailJo, "lxphone"));
+
+					findViewById(R.id.tel_layout).setOnClickListener(
+							new OnClickListener() {
+
+								@Override
+								public void onClick(View v) {
+									RabbitUtils.call(self, JSONUtil.getString(
+											detailJo, "lxphone"));
+								}
+							});
 
 					ViewUtil.bindView(headV.findViewById(R.id.time),
 							JSONUtil.getString(detailJo, "yytime"));

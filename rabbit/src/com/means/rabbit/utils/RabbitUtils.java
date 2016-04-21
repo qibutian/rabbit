@@ -6,6 +6,7 @@ import java.util.Calendar;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 
 import com.means.rabbit.activity.merchants.GoodDetailActivity;
 import com.means.rabbit.activity.merchants.HotelDetailActivity;
@@ -35,6 +36,12 @@ public class RabbitUtils {
 		long between_days = (time2 - time1) / (1000 * 3600 * 24);
 
 		return Integer.parseInt(String.valueOf(between_days));
+	}
+
+	public static void call(Context context, String number) {
+		Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"
+				+ number));
+		context.startActivity(intent);
 	}
 
 	public static void ImgIntent(Context context, int type, String id) {

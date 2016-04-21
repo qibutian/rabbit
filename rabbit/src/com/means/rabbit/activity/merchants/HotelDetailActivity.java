@@ -29,6 +29,7 @@ import com.means.rabbit.R;
 import com.means.rabbit.activity.main.ErweimaActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
+import com.means.rabbit.utils.RabbitUtils;
 import com.means.rabbit.views.CommentView;
 import com.means.rabbit.views.HotelYudingView;
 import com.means.rabbit.views.NomalGallery;
@@ -201,6 +202,16 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 
 					ViewUtil.bindView(headV.findViewById(R.id.tel),
 							JSONUtil.getString(detailJo, "lxphone"));
+
+					findViewById(R.id.tel_layout).setOnClickListener(
+							new OnClickListener() {
+
+								@Override
+								public void onClick(View v) {
+									RabbitUtils.call(self, JSONUtil.getString(
+											detailJo, "lxphone"));
+								}
+							});
 
 					JSONArray label_inJsa = JSONUtil.getJSONArray(detailJo,
 							"label_in");

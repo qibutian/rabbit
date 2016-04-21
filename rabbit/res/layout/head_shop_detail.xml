@@ -122,7 +122,7 @@
     <View style="@style/line_horizontal" />
 
     <LinearLayout
-        android:id="@+id/comment"
+        android:id="@+id/tel_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
