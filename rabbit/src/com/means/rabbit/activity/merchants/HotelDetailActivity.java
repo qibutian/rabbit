@@ -178,13 +178,8 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 						}
 					});
 
-					setRightAction2(R.drawable.fav_n, new OnClickListener() {
-
-						@Override
-						public void onClick(View arg0) {
-
-						}
-					});
+					setRightAction2(JSONUtil.getInt(detailJo, "is_collect"),
+							JSONUtil.getString(detailJo, "id"), "3");
 
 					JSONArray image_data = JSONUtil.getJSONArray(detailJo,
 							"image_data");

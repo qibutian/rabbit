@@ -101,10 +101,10 @@ public class SelectCityActivity extends RabbitBaseActivity {
 				per.cityname = JSONUtil.getString(jo, "name");
 				per.commit();
 
-				// GlobalParams globalParams = IocContainer.getShare().get(
-				// GlobalParams.class);
-				// globalParams.setGlobalParam("cityid", JSONUtil.getString(jo,
-				// "id"));
+				GlobalParams globalParams = IocContainer.getShare().get(
+						GlobalParams.class);
+				globalParams.setGlobalParam("cityid",
+						JSONUtil.getString(jo, "id"));
 
 				CityEB city = new CityEB();
 				city.setCatid(JSONUtil.getString(jo, "id"));

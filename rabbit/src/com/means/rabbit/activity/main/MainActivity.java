@@ -3,6 +3,7 @@ package com.means.rabbit.activity.main;
 import net.duohuo.dhroid.activity.ActivityTack;
 import net.duohuo.dhroid.dialog.IDialog;
 import net.duohuo.dhroid.ioc.IocContainer;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,6 +19,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.zxing.client.android.CaptureActivity;
+import com.google.zxing.client.android.Intents;
 import com.means.rabbit.R;
 import com.means.rabbit.activity.home.HomePageFragment;
 import com.means.rabbit.activity.home.SelectCityActivity;
@@ -50,6 +53,8 @@ public class MainActivity extends FragmentActivity {
 
 	Handler mHandler;
 	private static boolean isExit = false;
+
+	public final int REQUEST_CODE = 10086;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +114,26 @@ public class MainActivity extends FragmentActivity {
 				startActivity(it);
 			}
 		});
+
+		findViewById(R.id.top_erweima).setOnClickListener(
+				new OnClickListener() {
+
+					@Override
+					public void onClick(View arg0) {
+						Intent intent = new Intent();
+						intent.setAction(Intents.Scan.ACTION);
+						// intent.putExtra(Intents.Scan.MODE,
+						// Intents.Scan.QR_CODE_MODE);
+						intent.putExtra(Intents.Scan.CHARACTER_SET, "UTF-8");
+						intent.putExtra(Intents.Scan.WIDTH, 600);
+						intent.putExtra(Intents.Scan.HEIGHT, 600);
+						// intent.putExtra(Intents.Scan.PROMPT_MESSAGE,
+						// "type your prompt message");
+						intent.setClass(MainActivity.this,
+								CaptureActivity.class);
+						startActivityForResult(intent, REQUEST_CODE);
+					}
+				});
 
 	}
 
@@ -298,6 +323,21 @@ public class MainActivity extends FragmentActivity {
 
 	public void onEventMainThread(BackHomeEB event) {
 		setTab(event.getIndex());
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (null != data && requestCode == REQUEST_CODE) {
+			switch (resultCode) {
+			case Activity.RESULT_OK:
+				// errcodeE.setText(data.getStringExtra(Intents.Scan.RESULT));
+				// usecode();
+
+				break;
+			default:
+				break;
+			}
+		}
 	}
 
 }

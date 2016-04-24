@@ -81,21 +81,15 @@ public class TravelDetailActivity extends RabbitBaseActivity {
 						}
 					});
 
-					setRightAction2(R.drawable.fav_n, new OnClickListener() {
+					setRightAction2(JSONUtil.getInt(jo, "is_collect"),
+							JSONUtil.getString(jo, "id"), "1");
 
-						@Override
-						public void onClick(View arg0) {
-
-						}
-					});
-					
-					
-					
 					ViewUtil.bindNetImage(picI, JSONUtil.getString(jo, "pic"),
 							"default");
 					ViewUtil.bindView(titleT, JSONUtil.getString(jo, "title"));
-					contentT.loadDataWithBaseURL(null,JSONUtil.getString(jo,
-							"content"),"text/html", "utf-8",null);
+					contentT.loadDataWithBaseURL(null,
+							JSONUtil.getString(jo, "content"), "text/html",
+							"utf-8", null);
 					ViewUtil.bindView(
 							adddatelineT,
 							"发布时间 "

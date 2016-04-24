@@ -69,6 +69,53 @@ public class AddFavorableMainActivity extends RabbitBaseActivity {
 		// ViewUtil.bindView(findViewById(R.id.pay_price),
 		// getString(R.string.money_symbol) + payprice);
 		payPriceE = (EditText) findViewById(R.id.pay_price);
+		payPriceE.addTextChangedListener(new TextWatcher() {
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+
+				if (!TextUtils.isEmpty(payPriceE.getText().toString())) {
+
+					if (creditY != 0) {
+						if (!TextUtils.isEmpty(jifenE.getText().toString())) {
+							int jifen = Integer.parseInt(jifenE.getText()
+									.toString());
+							float price = Integer.parseInt(payPriceE.getText()
+									.toString());
+							float daikou = jifen / creditY;
+							if (daikou > price) {
+								showToast("本单最多只能使用" + price * creditY + "积分");
+								jifenE.setText(0 + "");
+								shifuT.setText(price + "");
+							} else {
+								daikouT.setText(getString(R.string.money_symbol)
+										+ daikou);
+								shifuT.setText(price - daikou + "");
+							}
+						} else {
+							shifuT.setText(payPriceE.getText().toString());
+						}
+					} else {
+						shifuT.setText(payPriceE.getText().toString());
+					}
+
+				} else {
+					shifuT.setText(0 + "");
+				}
+
+			}
+		});
+
 		contentid = it.getStringExtra("contentid");
 		shifuT = (TextView) findViewById(R.id.shifu);
 		jifenE = (EditText) findViewById(R.id.credit);

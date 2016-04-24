@@ -74,7 +74,8 @@ public class GoodDetailActivity extends RabbitBaseActivity {
 
 							@Override
 							public void onisLogin() {
-								Intent it = new Intent(self, InsteadShoppingActivity.class);
+								Intent it = new Intent(self,
+										InsteadShoppingActivity.class);
 								it.putExtra("daigouId", daigouId);
 								startActivity(it);
 
@@ -86,12 +87,10 @@ public class GoodDetailActivity extends RabbitBaseActivity {
 
 							}
 						});
-				
-				
 
 			}
 		});
-		
+
 		getData();
 		getCommentList();
 	}
@@ -106,25 +105,21 @@ public class GoodDetailActivity extends RabbitBaseActivity {
 
 				if (response.isSuccess()) {
 					final JSONObject detailJo = response.jSONFromData();
-					
+
 					setRightAction(R.drawable.erweima, new OnClickListener() {
 
 						@Override
 						public void onClick(View arg0) {
 							Intent it = new Intent(self, ErweimaActivity.class);
-							it.putExtra("url", JSONUtil.getString(detailJo, "pic_qr"));
+							it.putExtra("url",
+									JSONUtil.getString(detailJo, "pic_qr"));
 							startActivity(it);
 						}
 					});
 
-					setRightAction2(R.drawable.fav_n, new OnClickListener() {
+					setRightAction2(JSONUtil.getInt(detailJo, "is_collect"),
+							JSONUtil.getString(detailJo, "id"), "5");
 
-						@Override
-						public void onClick(View arg0) {
-
-						}
-					});
-					
 					JSONArray image_data = JSONUtil.getJSONArray(detailJo,
 							"image_data");
 					galleryAdapter = new PSAdapter(self, R.layout.item_gallery);
@@ -148,14 +143,18 @@ public class GoodDetailActivity extends RabbitBaseActivity {
 					ViewUtil.bindView(findViewById(R.id.comment_des),
 							JSONUtil.getString(detailJo, "score") + "/"
 									+ JSONUtil.getString(detailJo, "comment"));
-					ViewUtil.bindView(findViewById(R.id.price),
-							getString(R.string.money_symbol) + JSONUtil.getString(detailJo, "price"));
+					ViewUtil.bindView(
+							findViewById(R.id.price),
+							getString(R.string.money_symbol)
+									+ JSONUtil.getString(detailJo, "price"));
 					TextView goumaidesT = (TextView) findViewById(R.id.goumaides);
 					goumaidesT.setText(Html.fromHtml(JSONUtil.getString(
 							detailJo, "goumaides")));
 
-					ViewUtil.bindView(findViewById(R.id.old_price), getString(R.string.money_symbol)
-							+ JSONUtil.getString(detailJo, "oldprice"));
+					ViewUtil.bindView(
+							findViewById(R.id.old_price),
+							getString(R.string.money_symbol)
+									+ JSONUtil.getString(detailJo, "oldprice"));
 
 				}
 

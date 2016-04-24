@@ -64,6 +64,7 @@
             android:src="@drawable/icon_yuyin" />
 
         <ImageView
+            android:id="@+id/top_erweima"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:scaleType="center"

@@ -173,13 +173,8 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 						}
 					});
 
-					setRightAction2(R.drawable.fav_n, new OnClickListener() {
-
-						@Override
-						public void onClick(View arg0) {
-
-						}
-					});
+					setRightAction2(JSONUtil.getInt(detailJo, "is_collect"),
+							JSONUtil.getString(detailJo, "id"), "2");
 
 					findViewById(R.id.favorable).setOnClickListener(
 							new OnClickListener() {

@@ -201,4 +201,13 @@ public class API {
 	/** 列表广告位 */
 	public static String listad = Baseurl + "/home/index/adtoplist";
 
+	/** 收藏 */
+	public static String collect = Baseurl + "/home/index/collect";
+
+	/** 取消收藏 */
+	public static String collectdel = Baseurl + "/home/index/collectdel";
+
+	/** 收藏列表 */
+	public static String collectlist = Baseurl + "/home/index/collectlist";
+
 }
