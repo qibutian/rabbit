@@ -22,6 +22,7 @@ import com.means.rabbit.activity.my.edit.ForgetPswdActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.bean.User;
+import com.means.rabbit.manage.UserInfoManage.LoginCallBack;
 import com.means.rabbit.utils.RabbitPerference;
 
 public class LoginActivity extends RabbitBaseActivity implements
@@ -32,6 +33,8 @@ public class LoginActivity extends RabbitBaseActivity implements
 	private TextView forgetpswdT, registerT;
 
 	RabbitPerference per;
+	public static LoginCallBack loginCall;
+	boolean isLogin = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -125,10 +128,24 @@ public class LoginActivity extends RabbitBaseActivity implements
 					per.setGroupname(JSONUtil.getString(jo, "groupname"));
 					per.setPassword(password);
 					per.commit();
+					isLogin = true;
 					finish();
 				}
 			}
 		});
+	}
+
+	@Override
+	public void finish() {
+		super.finish();
+		if (loginCall != null) {
+			if (isLogin) {
+				loginCall.onisLogin();
+			} else {
+				loginCall.onLoginFail();
+			}
+		}
+		loginCall = null;
 	}
 
 }

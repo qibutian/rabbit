@@ -26,6 +26,7 @@ import android.widget.AdapterView.OnItemClickListener;
 
 import com.means.rabbit.R;
 import com.means.rabbit.activity.main.ErweimaActivity;
+import com.means.rabbit.activity.main.MapActivity;
 import com.means.rabbit.activity.order.GroupOrderActivity;
 import com.means.rabbit.activity.order.InsteadShoppingActivity;
 import com.means.rabbit.api.API;
@@ -150,6 +151,7 @@ public class TuangouDetailActivity extends RabbitBaseActivity {
 
 	private void getShopDetalData() {
 		DhNet net = new DhNet(API.tuangouDetail);
+		net.addParam("key", getIntent().getStringExtra("key"));
 		net.addParam("id", tuangouId);
 		net.doGet(new NetTask(self) {
 
@@ -209,6 +211,21 @@ public class TuangouDetailActivity extends RabbitBaseActivity {
 							"field_data");
 					keyValueView.setData(field_dataJSA,
 							JSONUtil.getString(detailJo, "content"));
+
+					headV.findViewById(R.id.address_layout).setOnClickListener(
+							new OnClickListener() {
+
+								@Override
+								public void onClick(View v) {
+
+									Intent it = new Intent(self,
+											MapActivity.class);
+									it.putExtra("url", JSONUtil.getString(
+											detailJo, "map_url"));
+									startActivity(it);
+
+								}
+							});
 				}
 
 			}

@@ -16,6 +16,7 @@ public class UserInfoManage {
 		}
 		return instance;
 	}
+
 	public boolean checkLogin(final Activity context,
 			final LoginCallBack loginCallBack) {
 		boolean islogin = User.getInstance().isLogin();
@@ -29,6 +30,26 @@ public class UserInfoManage {
 				loginCallBack.onisLogin();
 			}
 		}
+		return islogin;
+	}
+
+	public boolean checkLogin2(final Activity context,
+			final LoginCallBack loginCallBack) {
+		boolean islogin = User.getInstance().isLogin();
+		if (!islogin) {
+			LoginActivity.loginCall = loginCallBack;
+			Intent it = new Intent(context, LoginActivity.class);
+			context.startActivity(it);
+			return false;
+
+		}
+
+		if (loginCallBack != null) {
+			if (islogin) {
+				loginCallBack.onisLogin();
+			}
+		}
+
 		return islogin;
 	}
 

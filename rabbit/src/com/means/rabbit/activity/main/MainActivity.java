@@ -1,8 +1,12 @@
 package com.means.rabbit.activity.main;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import net.duohuo.dhroid.activity.ActivityTack;
 import net.duohuo.dhroid.dialog.IDialog;
 import net.duohuo.dhroid.ioc.IocContainer;
+import net.duohuo.dhroid.net.JSONUtil;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,6 +39,7 @@ import com.means.rabbit.bean.User;
 import com.means.rabbit.manage.UserInfoManage;
 import com.means.rabbit.manage.UserInfoManage.LoginCallBack;
 import com.means.rabbit.utils.RabbitPerference;
+import com.means.rabbit.utils.RabbitUtils;
 
 import de.greenrobot.event.EventBus;
 
@@ -330,8 +335,17 @@ public class MainActivity extends FragmentActivity {
 		if (null != data && requestCode == REQUEST_CODE) {
 			switch (resultCode) {
 			case Activity.RESULT_OK:
-				// errcodeE.setText(data.getStringExtra(Intents.Scan.RESULT));
-				// usecode();
+				String result = data.getStringExtra(Intents.Scan.RESULT);
+				try {
+					JSONObject jo = new JSONObject(result);
+					RabbitUtils.erweimaIntent(MainActivity.this,
+							JSONUtil.getString(jo, "type"),
+							JSONUtil.getString(jo, "id"),
+							JSONUtil.getString(jo, "key"));
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
 				break;
 			default:

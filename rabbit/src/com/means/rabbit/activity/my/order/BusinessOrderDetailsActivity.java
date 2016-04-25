@@ -6,6 +6,7 @@ import net.duohuo.dhroid.net.NetTask;
 import net.duohuo.dhroid.net.Response;
 import net.duohuo.dhroid.util.ViewUtil;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
@@ -22,8 +23,13 @@ import com.google.zxing.client.android.CaptureActivity;
 import com.google.zxing.client.android.Intents;
 import com.means.rabbit.R;
 import com.means.rabbit.RabbitValueFix;
+import com.means.rabbit.activity.main.MainActivity;
+import com.means.rabbit.activity.order.pay.GroupPayActivity;
+import com.means.rabbit.activity.order.pay.HotelOrderDetailActivity;
+import com.means.rabbit.activity.order.pay.InsteadShoppingPayActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
+import com.means.rabbit.utils.RabbitUtils;
 
 /**
  * 商家订单详情
@@ -113,6 +119,10 @@ public class BusinessOrderDetailsActivity extends RabbitBaseActivity {
 					payB.setBackgroundResource(paystatus == 1 ? R.drawable.fillet_10_pink_bg
 							: R.drawable.fillet_10_green_bg);
 					payB.setText(paystatus == 1 ? "输入消费码" : "消费完成");
+					if (paystatus != 1) {
+						errcodeE.setEnabled(false);
+						errcodeE.setHint("已消费完成");
+					}
 					payB.setVisibility(View.VISIBLE);
 					payB.setTag(paystatus);
 					payB.setOnClickListener(new OnClickListener() {
@@ -170,6 +180,21 @@ public class BusinessOrderDetailsActivity extends RabbitBaseActivity {
 					payB.setText("消费完成");
 					payB.setBackgroundResource(R.drawable.fillet_10_green_bg);
 					payB.setTag(2);
+
+					JSONObject jo = response.jSON();
+					Intent it;
+					int type = JSONUtil.getInt(jo, "type");
+					if (type == 2) {
+						it = new Intent(self, GroupPayActivity.class);
+
+					} else if (type == 1) {
+						it = new Intent(self, HotelOrderDetailActivity.class);
+					} else {
+						it = new Intent(self, InsteadShoppingPayActivity.class);
+					}
+					it.putExtra("orderid", JSONUtil.getString(jo, "id"));
+					self.startActivity(it);
+
 				}
 
 			}
@@ -181,8 +206,24 @@ public class BusinessOrderDetailsActivity extends RabbitBaseActivity {
 		if (null != data && requestCode == REQUEST_CODE) {
 			switch (resultCode) {
 			case Activity.RESULT_OK:
-				errcodeE.setText(data.getStringExtra(Intents.Scan.RESULT));
-				usecode();
+
+				String result = data.getStringExtra(Intents.Scan.RESULT);
+				try {
+					JSONObject jo = new JSONObject(result);
+					// if (JSONUtil.getString(jo, "type").equals("order")) {
+					// errcodeE.setText(JSONUtil.getString(jo, "key"));
+					// usecode();
+					// } else {
+					RabbitUtils.erweimaIntent(self,
+							JSONUtil.getString(jo, "type"),
+							JSONUtil.getString(jo, "id"),
+							JSONUtil.getString(jo, "key"));
+					// }
+
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
 				break;
 			default:

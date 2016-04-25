@@ -63,6 +63,7 @@ public class TravelDetailActivity extends RabbitBaseActivity {
 
 	private void getTravelDetail() {
 		DhNet net = new DhNet(API.contentview);
+		net.addParam("key", getIntent().getStringExtra("key"));
 		net.addParam("id", id);
 		net.doGetInDialog(new NetTask(self) {
 

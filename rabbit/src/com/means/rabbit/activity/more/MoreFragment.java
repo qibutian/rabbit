@@ -14,9 +14,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.zxing.client.android.CaptureActivity;
+import com.google.zxing.client.android.Intents;
 import com.means.rabbit.R;
 import com.means.rabbit.activity.comment.PostCommentMainActivity;
 import com.means.rabbit.activity.finance.FinanceDetailActivity;
+import com.means.rabbit.activity.main.MainActivity;
 import com.means.rabbit.utils.FileUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -39,6 +42,8 @@ public class MoreFragment extends Fragment implements OnClickListener {
 	File mCacheDir;
 
 	TextView cacheT;
+
+	public final int REQUEST_CODE = 10086;
 
 	public static MoreFragment getInstance() {
 		if (instance == null) {
@@ -113,6 +118,19 @@ public class MoreFragment extends Fragment implements OnClickListener {
 			break;
 		// 扫一扫
 		case R.id.richscan:
+
+			Intent intent = new Intent();
+			intent.setAction(Intents.Scan.ACTION);
+			// intent.putExtra(Intents.Scan.MODE,
+			// Intents.Scan.QR_CODE_MODE);
+			intent.putExtra(Intents.Scan.CHARACTER_SET, "UTF-8");
+			intent.putExtra(Intents.Scan.WIDTH, 600);
+			intent.putExtra(Intents.Scan.HEIGHT, 600);
+			// intent.putExtra(Intents.Scan.PROMPT_MESSAGE,
+			// "type your prompt message");
+			intent.setClass(getActivity(), CaptureActivity.class);
+			getActivity().startActivityForResult(intent, REQUEST_CODE);
+
 			break;
 		// 版本更新
 		case R.id.version:

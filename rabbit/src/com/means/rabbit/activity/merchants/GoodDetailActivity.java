@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.means.rabbit.R;
 import com.means.rabbit.activity.main.ErweimaActivity;
+import com.means.rabbit.activity.main.MapActivity;
 import com.means.rabbit.activity.order.GroupOrderActivity;
 import com.means.rabbit.activity.order.InsteadShoppingActivity;
 import com.means.rabbit.api.API;
@@ -97,6 +98,7 @@ public class GoodDetailActivity extends RabbitBaseActivity {
 
 	private void getData() {
 		DhNet net = new DhNet(API.daigouDetail);
+		net.addParam("key", getIntent().getStringExtra("key"));
 		net.addParam("id", daigouId);
 		net.doGet(new NetTask(self) {
 
@@ -155,6 +157,21 @@ public class GoodDetailActivity extends RabbitBaseActivity {
 							findViewById(R.id.old_price),
 							getString(R.string.money_symbol)
 									+ JSONUtil.getString(detailJo, "oldprice"));
+
+					findViewById(R.id.address_layout).setOnClickListener(
+							new OnClickListener() {
+
+								@Override
+								public void onClick(View v) {
+
+									Intent it = new Intent(self,
+											MapActivity.class);
+									it.putExtra("url", JSONUtil.getString(
+											detailJo, "map_url"));
+									startActivity(it);
+
+								}
+							});
 
 				}
 

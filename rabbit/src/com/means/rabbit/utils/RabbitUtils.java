@@ -4,15 +4,32 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import org.json.JSONObject;
+
+import net.duohuo.dhroid.dialog.IDialog;
+import net.duohuo.dhroid.ioc.IocContainer;
+import net.duohuo.dhroid.net.DhNet;
+import net.duohuo.dhroid.net.JSONUtil;
+import net.duohuo.dhroid.net.NetTask;
+import net.duohuo.dhroid.net.Response;
+
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.text.TextUtils;
 
+import com.means.rabbit.R;
 import com.means.rabbit.activity.merchants.GoodDetailActivity;
 import com.means.rabbit.activity.merchants.HotelDetailActivity;
 import com.means.rabbit.activity.merchants.ShopDetailActivity;
 import com.means.rabbit.activity.merchants.TuangouDetailActivity;
+import com.means.rabbit.activity.order.pay.GroupPayActivity;
+import com.means.rabbit.activity.order.pay.HotelOrderDetailActivity;
+import com.means.rabbit.activity.order.pay.InsteadShoppingPayActivity;
 import com.means.rabbit.activity.travel.TravelDetailActivity;
+import com.means.rabbit.api.API;
+import com.means.rabbit.manage.UserInfoManage;
 
 public class RabbitUtils {
 	// 是否包含字母
@@ -80,5 +97,92 @@ public class RabbitUtils {
 
 		context.startActivity(it);
 
+	}
+
+	public static void erweimaIntent(final Context context, String type,
+			final String id, final String key) {
+
+		Intent it = null;
+
+		if (type.equals("shop")) {
+
+			it = new Intent(context, ShopDetailActivity.class);
+			it.putExtra("shopId", id);
+			it.putExtra("key", key);
+		} else if (type.equals("hotel")) {
+
+			it = new Intent(context, HotelDetailActivity.class);
+			it.putExtra("hotelId", id);
+			it.putExtra("key", key);
+		} else if (type.equals("tuangou")) {
+
+			it = new Intent(context, TuangouDetailActivity.class);
+			it.putExtra("tuangouId", id);
+			it.putExtra("key", key);
+		} else if (type.equals("daigou")) {
+
+			it = new Intent(context, GoodDetailActivity.class);
+			it.putExtra("daigouId", id);
+			it.putExtra("key", key);
+		} else if (type.equals("article")) {
+
+			it = new Intent(context, TravelDetailActivity.class);
+			it.putExtra("key", key);
+			it.putExtra("id", Integer.parseInt(id));
+		} else if (type.equals("order")) {
+			UserInfoManage.getInstance().checkLogin2((Activity) context,
+					new UserInfoManage.LoginCallBack() {
+
+						@Override
+						public void onisLogin() {
+							usecode(context, id, key);
+						}
+
+						@Override
+						public void onLoginFail() {
+							// TODO Auto-generated method stub
+
+						}
+					});
+		}
+
+		if (it != null) {
+			context.startActivity(it);
+		}
+
+	}
+
+	private static void usecode(final Context context, String orderid,
+			String code) {
+		DhNet net = new DhNet(API.usecode);
+		net.addParam("orderid", orderid);
+		net.addParam("ercode", code);
+		net.doPostInDialog("提交中...", new NetTask(context) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+
+				if (response.isSuccess()) {
+
+					IocContainer.getShare().get(IDialog.class)
+							.showToastShort(context, "消费成功!");
+					JSONObject jo = response.jSON();
+					Intent it;
+					int type = JSONUtil.getInt(jo, "type");
+					if (type == 2) {
+						it = new Intent(context, GroupPayActivity.class);
+
+					} else if (type == 1) {
+						it = new Intent(context, HotelOrderDetailActivity.class);
+					} else {
+						it = new Intent(context,
+								InsteadShoppingPayActivity.class);
+					}
+					it.putExtra("orderid", JSONUtil.getString(jo, "id"));
+					context.startActivity(it);
+				}
+
+			}
+		});
 	}
 }

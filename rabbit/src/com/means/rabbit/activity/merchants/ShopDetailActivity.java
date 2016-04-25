@@ -24,6 +24,7 @@ import android.widget.RatingBar;
 
 import com.means.rabbit.R;
 import com.means.rabbit.activity.main.ErweimaActivity;
+import com.means.rabbit.activity.main.MapActivity;
 import com.means.rabbit.activity.order.AddFavorableMainActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
@@ -155,6 +156,7 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 	private void getShopDetalData() {
 		DhNet net = new DhNet(API.shopDetail);
 		net.addParam("id", shopId);
+		net.addParam("key", getIntent().getStringExtra("key"));
 		net.doGet(new NetTask(self) {
 
 			@Override
@@ -264,6 +266,21 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 							"field_data");
 					keyValueView.setData(field_dataJSA,
 							JSONUtil.getString(detailJo, "content"));
+
+					headV.findViewById(R.id.address_layout).setOnClickListener(
+							new OnClickListener() {
+
+								@Override
+								public void onClick(View v) {
+
+									Intent it = new Intent(self,
+											MapActivity.class);
+									it.putExtra("url", JSONUtil.getString(
+											detailJo, "map_url"));
+									startActivity(it);
+
+								}
+							});
 				}
 
 			}

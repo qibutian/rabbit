@@ -8,7 +8,6 @@
 
     <include layout="@layout/include_title_bar" />
 
-    <include layout="@layout/include_order_classify" />
 
     <View style="@style/line_horizontal" />
 

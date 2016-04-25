@@ -27,6 +27,7 @@ import android.widget.TextView;
 
 import com.means.rabbit.R;
 import com.means.rabbit.activity.main.ErweimaActivity;
+import com.means.rabbit.activity.main.MapActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.utils.RabbitUtils;
@@ -159,6 +160,7 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 	// 获取详情数据
 	private void getHotelDetalData() {
 		DhNet net = new DhNet(API.hoteldetail);
+		net.addParam("key", getIntent().getStringExtra("key"));
 		net.addParam("id", hotelId);
 		net.doGet(new NetTask(self) {
 
@@ -235,6 +237,21 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 									+ JSONUtil.getString(detailJo, "comment"));
 
 					ratingBar.setRating(JSONUtil.getFloat(detailJo, "score"));
+
+					headV.findViewById(R.id.address_layout).setOnClickListener(
+							new OnClickListener() {
+
+								@Override
+								public void onClick(View v) {
+
+									Intent it = new Intent(self,
+											MapActivity.class);
+									it.putExtra("url", JSONUtil.getString(
+											detailJo, "map_url"));
+									startActivity(it);
+
+								}
+							});
 
 				}
 

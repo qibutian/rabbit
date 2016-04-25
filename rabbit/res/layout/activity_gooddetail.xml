@@ -97,7 +97,7 @@
             <View style="@style/line_horizontal" />
 
             <LinearLayout
-                android:id="@+id/comment"
+                android:id="@+id/address_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -205,7 +205,7 @@
                 android:paddingLeft="30dp"
                 android:paddingTop="14dp" >
 
-              <TextView
+               <TextView
                     android:id="@+id/goumaides"
                     style="@style/text_66_black_medium"
                     android:layout_marginTop="2dp"
