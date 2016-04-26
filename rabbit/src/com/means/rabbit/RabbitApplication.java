@@ -9,6 +9,7 @@ import net.duohuo.dhroid.net.GlobalCodeHandler;
 import net.duohuo.dhroid.net.GlobalParams;
 import net.duohuo.dhroid.net.cache.DaoHelper;
 import net.duohuo.dhroid.util.UserLocation;
+import net.duohuo.dhroid.util.UserLocation.OnLocationChanged;
 import android.app.Application;
 import android.content.Context;
 import android.text.TextUtils;
@@ -100,7 +101,7 @@ public class RabbitApplication extends Application implements
 				// default
 				.imageDownloader(new BaseImageDownloader(this))
 				// default
-				
+
 				.imageDecoder(new BaseImageDecoder(false))
 				// default
 				.defaultDisplayImageOptions(DisplayImageOptions.createSimple())
@@ -116,6 +117,11 @@ public class RabbitApplication extends Application implements
 		per.load();
 		if (!TextUtils.isEmpty(per.catid)) {
 			globalParams.setGlobalParam("cityid", per.catid);
+		}
+
+		if (per.isFirst != 0) {
+			UserLocation location = UserLocation.getInstance();
+			location.init(this);
 		}
 
 	}

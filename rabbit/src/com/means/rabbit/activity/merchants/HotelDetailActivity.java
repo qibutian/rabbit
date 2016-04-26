@@ -180,7 +180,8 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 						}
 					});
 
-					setRightAction2(JSONUtil.getInt(detailJo, "is_collect"),
+					setRightAction2(
+							JSONUtil.getBoolean(detailJo, "is_collect"),
 							JSONUtil.getString(detailJo, "id"), "3");
 
 					JSONArray image_data = JSONUtil.getJSONArray(detailJo,
@@ -244,10 +245,20 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 								@Override
 								public void onClick(View v) {
 
+									String url = "http://cn.lazybunny.c.wanruankeji.com/home/index/mapnav?tolng="
+											+ JSONUtil
+													.getFloat(detailJo, "lng")
+											+ "&tolat="
+											+ JSONUtil
+													.getFloat(detailJo, "lat");
+
 									Intent it = new Intent(self,
 											MapActivity.class);
-									it.putExtra("url", JSONUtil.getString(
-											detailJo, "map_url"));
+									it.putExtra("url", url);
+									it.putExtra("tolat",
+											JSONUtil.getFloat(detailJo, "lat"));
+									it.putExtra("tolng",
+											JSONUtil.getFloat(detailJo, "lng"));
 									startActivity(it);
 
 								}

@@ -82,7 +82,7 @@ public class TravelDetailActivity extends RabbitBaseActivity {
 						}
 					});
 
-					setRightAction2(JSONUtil.getInt(jo, "is_collect"),
+					setRightAction2(JSONUtil.getBoolean(jo, "is_collect"),
 							JSONUtil.getString(jo, "id"), "1");
 
 					ViewUtil.bindNetImage(picI, JSONUtil.getString(jo, "pic"),

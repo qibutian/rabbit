@@ -171,7 +171,8 @@ public class TuangouDetailActivity extends RabbitBaseActivity {
 						}
 					});
 
-					setRightAction2(JSONUtil.getInt(detailJo, "is_collect"),
+					setRightAction2(
+							JSONUtil.getBoolean(detailJo, "is_collect"),
 							JSONUtil.getString(detailJo, "id"), "4");
 
 					JSONArray image_data = JSONUtil.getJSONArray(detailJo,
@@ -222,6 +223,10 @@ public class TuangouDetailActivity extends RabbitBaseActivity {
 											MapActivity.class);
 									it.putExtra("url", JSONUtil.getString(
 											detailJo, "map_url"));
+									it.putExtra("tolat",
+											JSONUtil.getFloat(detailJo, "lat"));
+									it.putExtra("tolng",
+											JSONUtil.getFloat(detailJo, "lng"));
 									startActivity(it);
 
 								}
