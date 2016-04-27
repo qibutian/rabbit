@@ -104,10 +104,12 @@ public class HotelListActivity extends RabbitBaseActivity {
 				.findViewById(R.id.comment_des);
 				JSONObject data = (JSONObject) jo;
 
-				comment_desT.setText("评论" + JSONUtil.getString(data, "score")
-						+ "/" + JSONUtil.getString(data, "score"));
+				comment_desT.setText(getString(R.string.hotel_comment_des)
+						+ JSONUtil.getString(data, "score") + "/"
+						+ JSONUtil.getString(data, "score"));
 
-				return getString(R.string.money_symbol) + o + "起";
+				return getString(R.string.money_symbol) + o
+						+ getString(R.string.hotel_price_des);
 			}
 		});
 		adapter.addField("tuangoudes", R.id.order_des);
@@ -135,11 +137,11 @@ public class HotelListActivity extends RabbitBaseActivity {
 		tabV = (TabView) findViewById(R.id.tab);
 		String name = getIntent().getStringExtra("name");
 		if (TextUtils.isEmpty(name)) {
-			tabV.setLeftText("酒店");
+			tabV.setLeftText(getString(R.string.hotel_list));
 		} else {
 			tabV.setLeftText(name);
 		}
-		tabV.setCentertText("附近", "");
+		tabV.setCentertText(getString(R.string.food_near), "");
 		tabV.setOnTabSelectListener(new OnTabSelectListener() {
 
 			@Override

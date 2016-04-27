@@ -79,7 +79,7 @@ public class TravelFragment extends Fragment implements OnClickListener {
 			@Override
 			public Object fix(View itemV, Integer position, Object o, Object jo) {
 
-				return "阅读  " + o;
+				return getString(R.string.travel_des) + o;
 			}
 		});
 		adapter.addField("des", R.id.des);

@@ -41,8 +41,7 @@
                         style="@style/text_99_grey_medium"
                         android:ellipsize="end"
                         android:maxWidth="210dp"
-                        android:singleLine="true"
-                        android:text="2" />
+                        android:singleLine="true"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -67,8 +66,7 @@
 
                     <TextView
                         android:id="@+id/name"
-                        style="@style/text_99_grey_medium"
-                        android:text="2" />
+                        style="@style/text_99_grey_medium" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -93,8 +91,7 @@
 
                     <TextView
                         android:id="@+id/date"
-                        style="@style/text_99_grey_medium"
-                        android:text="2" />
+                        style="@style/text_99_grey_medium" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -119,8 +116,7 @@
 
                     <TextView
                         android:id="@+id/signlpirce"
-                        style="@style/text_99_grey_medium"
-                        android:text="2" />
+                        style="@style/text_99_grey_medium" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -145,8 +141,7 @@
 
                     <TextView
                         android:id="@+id/yingfu"
-                        style="@style/text_99_grey_medium"
-                        android:text="暂无字段" />
+                        style="@style/text_99_grey_medium" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -198,7 +193,6 @@
                     <TextView
                         android:id="@+id/totalprice"
                         style="@style/text_44_black_big"
-                        android:text="￥156"
                         android:textColor="@color/text_2B_green" />
                 </LinearLayout>
             </LinearLayout>
@@ -224,8 +218,7 @@
 
                     <TextView
                         android:id="@+id/id"
-                        style="@style/text_99_grey_medium"
-                        android:text="2151235484212" />
+                        style="@style/text_99_grey_medium" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -251,7 +244,6 @@
                     <TextView
                         android:id="@+id/ercode"
                         style="@style/text_44_black_big"
-                        android:text="2300 58452 54845"
                         android:textColor="@color/text_2B_green" />
 
                     <ImageView
@@ -287,8 +279,7 @@
 
                     <TextView
                         android:id="@+id/buyerphone"
-                        style="@style/text_99_grey_medium"
-                        android:text="15888888888" />
+                        style="@style/text_99_grey_medium" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -313,8 +304,7 @@
 
                     <TextView
                         android:id="@+id/buyername"
-                        style="@style/text_99_grey_medium"
-                        android:text="15888888888" />
+                        style="@style/text_99_grey_medium" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -342,8 +332,7 @@
                         style="@style/text_99_grey_medium"
                         android:ellipsize="end"
                         android:maxWidth="200dp"
-                        android:singleLine="true"
-                        android:text="@string/grogshop_pay_fill_in" />
+                        android:singleLine="true" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -367,8 +356,7 @@
                     android:orientation="horizontal" >
 
                     <TextView
-                        style="@style/text_99_grey_medium"
-                        android:text="2016-2-25 13:55" />
+                        style="@style/text_99_grey_medium" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -443,8 +431,7 @@
 
                     <TextView
                         android:id="@+id/credit"
-                        style="@style/text_99_grey_medium"
-                        android:text="200" />
+                        style="@style/text_99_grey_medium" />
 
                     <TextView
                         style="@style/text_44_black_medium"
@@ -456,7 +443,6 @@
                         android:id="@+id/credit_s"
                         style="@style/text_44_black_medium"
                         android:layout_marginLeft="5dp"
-                        android:text="￥2"
                         android:textColor="@color/text_2B_green" />
                 </LinearLayout>
             </LinearLayout>
@@ -483,7 +469,6 @@
                     android:id="@+id/reality_money"
                     style="@style/text_44_black_medium"
                     android:layout_marginLeft="5dp"
-                    android:text="197"
                     android:textColor="@color/text_2B_green" />
             </LinearLayout>
 

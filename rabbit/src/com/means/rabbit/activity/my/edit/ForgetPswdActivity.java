@@ -65,33 +65,33 @@ public class ForgetPswdActivity extends RabbitBaseActivity implements
 			break;
 		}
 	}
-	
+
 	private void forget() {
 		String tel = phoneEt.getText().toString();
 		final String password = passwordEt.getText().toString();
 		String code = verificationEt.getText().toString();
 		if (TextUtils.isEmpty(tel)) {
-			showToast("请输入手机号");
+			showToast(getString(R.string.editinfo_tel_des1));
 			return;
 		}
 		if (tel.length() != 11) {
-			showToast("手机号格式不正确");
+			showToast(getString(R.string.editinfo_tel_des));
 			return;
 		}
 		if (TextUtils.isEmpty(code)) {
-			showToast("请输入验证码");
+			showToast(getString(R.string.editinfo_code_des));
 			return;
 		}
 		if (TextUtils.isEmpty(password)) {
-			showToast("请输入密码");
+			showToast(getString(R.string.edit_phone_hint_password));
 			return;
 		}
 		if (password.length() < 6 || password.length() > 15) {
-			showToast("密码为6-15位字母和数字");
+			showToast(getString(R.string.editinfo_pswd_des));
 			return;
 		}
 		if (!RabbitUtils.isLetter(password)) {
-			showToast("密码中必须包含字母");
+			showToast(getString(R.string.editinfo_pswd_des1));
 			return;
 		}
 
@@ -105,9 +105,9 @@ public class ForgetPswdActivity extends RabbitBaseActivity implements
 			public void doInUI(Response response, Integer transfer) {
 				// TODO Auto-generated method stub
 				if (response.isSuccess()) {
-					showToast("修改成功");
-					Intent it = new Intent(self,EditInfoActivity.class);
-					it.putExtra("password",password);
+					showToast(getString(R.string.editinfo_success));
+					Intent it = new Intent(self, EditInfoActivity.class);
+					it.putExtra("password", password);
 					setResult(RESULT_OK, it);
 					finish();
 				}
@@ -120,11 +120,11 @@ public class ForgetPswdActivity extends RabbitBaseActivity implements
 	private void getMobileCode() {
 		String tel = phoneEt.getText().toString();
 		if (TextUtils.isEmpty(tel)) {
-			showToast("请输入手机号");
+			showToast(getString(R.string.editinfo_tel_des1));
 			return;
 		}
 		if (tel.length() != 11) {
-			showToast("手机号格式不正确");
+			showToast(getString(R.string.editinfo_tel_des));
 			return;
 		}
 		DhNet smsNet = new DhNet(API.mobilecode);
@@ -149,14 +149,14 @@ public class ForgetPswdActivity extends RabbitBaseActivity implements
 
 		@Override
 		public void onFinish() {
-			getverificationT.setText("重新发送");
+			getverificationT.setText(getString(R.string.editinfo_code_release));
 			getverificationT.setEnabled(true);
 		}
 
 		@Override
 		public void onTick(long millisUntilFinished) {
 			getverificationT.setEnabled(false);
-			getverificationT.setText(millisUntilFinished / 1000 + "秒");
+			getverificationT.setText(millisUntilFinished / 1000 + "s");
 
 		}
 	}

@@ -307,8 +307,11 @@ public class MainActivity extends FragmentActivity {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			if (!isExit) {
 				isExit = true;
-				IocContainer.getShare().get(IDialog.class)
-						.showToastShort(getApplicationContext(), "再按一次退出程序");
+				IocContainer
+						.getShare()
+						.get(IDialog.class)
+						.showToastShort(getApplicationContext(),
+								getString(R.string.exit_des));
 				mHandler.postDelayed(new ExitRunnable(), 2000);
 			} else {
 				// Intent it = new Intent(self, MsgService.class);

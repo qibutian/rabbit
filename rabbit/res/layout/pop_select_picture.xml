@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black40"
-    android:orientation="vertical">
+    android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -12,7 +12,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="12dp"
         android:background="@color/nothing"
-        android:orientation="vertical">
+        android:orientation="vertical" >
 
         <TextView
             android:id="@+id/photograph"
@@ -24,9 +24,8 @@
             android:layout_marginRight="12dp"
             android:background="@drawable/fillet_10_white_bg"
             android:gravity="center"
-            android:text="拍照"
+            android:text="@string/photo_take"
             android:textColor="@color/text_blue" />
-
 
         <TextView
             android:id="@+id/album"
@@ -38,7 +37,7 @@
             android:layout_marginRight="12dp"
             android:background="@drawable/fillet_10_white_bg"
             android:gravity="center"
-            android:text="相册"
+            android:text="@string/photo_picker"
             android:textColor="@color/text_blue" />
 
         <TextView
@@ -51,17 +50,17 @@
             android:layout_marginRight="12dp"
             android:background="@drawable/fillet_10_white_bg"
             android:gravity="center"
-            android:visibility="gone"
             android:text="已上传图片"
-            android:textColor="@color/text_blue" />
+            android:textColor="@color/text_blue"
+            android:visibility="gone" />
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
             android:layout_marginLeft="13dp"
             android:layout_marginRight="13dp"
-            android:orientation="horizontal">
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal" >
 
             <TextView
                 android:id="@+id/cancel"
@@ -71,12 +70,10 @@
                 android:layout_weight="1"
                 android:background="@drawable/fillet_10_white_bg"
                 android:gravity="center"
-                android:text="取消"
-                android:textSize="@dimen/text_medium"
-                android:textColor="@color/text_blue" />
-
+                android:text="@string/photo_cancle"
+                android:textColor="@color/text_blue"
+                android:textSize="@dimen/text_medium" />
         </LinearLayout>
-
     </LinearLayout>
 
 </RelativeLayout>

@@ -29,8 +29,7 @@
                     android:id="@+id/name"
                     style="@style/text_66_black_small"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="小明" />
+                    android:layout_weight="1" />
 
                 <RatingBar
                     android:id="@+id/ratingbar"
@@ -46,8 +45,7 @@
             <TextView
                 android:id="@+id/content"
                 style="@style/text_44_black_medium"
-                android:layout_marginTop="2dp"
-                android:text="我真心强烈推荐这家,服务超一流" />
+                android:layout_marginTop="2dp" />
 
             <LinearLayout
                 android:id="@+id/pic_layout"
@@ -90,8 +88,7 @@
             <TextView
                 android:id="@+id/time"
                 style="@style/text_66_black_small"
-                android:layout_marginTop="6dp"
-                android:text="今天 08:30" />
+                android:layout_marginTop="6dp" />
         </LinearLayout>
     </LinearLayout>
 

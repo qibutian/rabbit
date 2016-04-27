@@ -26,15 +26,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
-
- 
-
-　　
-
-    
-    
-    
-    
+　　   
     
     <application
         android:name=".RabbitApplication"
@@ -63,161 +55,86 @@
             android:name=".activity.my.edit.EditInfoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" >
         </activity>
-        <activity
-            android:name=".activity.my.SystemMsgActivity"
-            android:label="@string/title_activity_system_msg" >
+        <activity android:name=".activity.my.SystemMsgActivity" >
         </activity>
-        <activity
-            android:name=".activity.my.order.MyOrderActivity"
-            android:label="@string/title_activity_my_order" >
+        <activity android:name=".activity.my.order.MyOrderActivity" >
         </activity>
-        <activity
-            android:name=".activity.my.order.BusinessOrderActivity"
-            android:label="@string/title_activity_business_order" >
+        <activity android:name=".activity.my.order.BusinessOrderActivity" >
         </activity>
-        <activity
-            android:name=".activity.my.order.BusinessOrderDetailsActivity"
-            android:label="@string/title_activity_business_order_details" >
+        <activity android:name=".activity.my.order.BusinessOrderDetailsActivity" >
         </activity>
-        <activity
-            android:name=".activity.merchants.FoodListActivity"
-            android:label="@string/title_activity_business_order_details" >
+        <activity android:name=".activity.merchants.FoodListActivity" >
         </activity>
-        <activity
-            android:name=".activity.my.ShippingAddressActivity"
-            android:label="@string/title_activity_shipping_address" >
+        <activity android:name=".activity.my.ShippingAddressActivity" >
         </activity>
-        <activity
-            android:name=".activity.my.AddShippingAddressActivity"
-            android:label="@string/title_activity_add_shipping_address" >
+        <activity android:name=".activity.my.AddShippingAddressActivity" >
         </activity>
-        <activity
-            android:name=".activity.my.MyCollectActivity"
-            android:label="@string/title_activity_my_collect" >
+        <activity android:name=".activity.my.MyCollectActivity" >
         </activity>
-        <activity
-            android:name=".activity.my.MyIntegralActivity"
-            android:label="@string/title_activity_my_integral" >
+        <activity android:name=".activity.my.MyIntegralActivity" >
         </activity>
-        <activity
-            android:name=".activity.merchants.DaiGouActivity"
-            android:label="@string/title_activity_my_integral" >
+        <activity android:name=".activity.merchants.DaiGouActivity" >
         </activity>
-        <activity
-            android:name=".activity.merchants.HotelListActivity"
-            android:label="@string/title_activity_my_integral" >
+        <activity android:name=".activity.merchants.HotelListActivity" >
         </activity>
-        <activity
-            android:name=".activity.home.TranslateActivity"
-            android:label="@string/title_activity_my_integral" >
+        <activity android:name=".activity.home.TranslateActivity" >
         </activity>
-        <activity
-            android:name=".activity.home.SelectLanguageActivity"
-            android:label="@string/title_activity_select_language" >
+        <activity android:name=".activity.home.SelectLanguageActivity" >
         </activity>
-        <activity
-            android:name=".activity.home.SelectCityActivity"
-            android:label="@string/title_activity_select_city" >
+        <activity android:name=".activity.home.SelectCityActivity" >
         </activity>
-        <activity
-            android:name=".activity.merchants.ShopDetailActivity"
-            android:label="@string/title_activity_my_integral" >
+        <activity android:name=".activity.merchants.ShopDetailActivity" >
         </activity>
-        <activity
-            android:name=".activity.merchants.HotelDetailActivity"
-            android:label="@string/title_activity_my_integral" >
+        <activity android:name=".activity.merchants.HotelDetailActivity" >
         </activity>
-        <activity
-            android:name=".activity.merchants.GoodDetailActivity"
-            android:label="@string/title_activity_my_integral" >
+        <activity android:name=".activity.merchants.GoodDetailActivity" >
         </activity>
-        <activity
-            android:name=".activity.travel.TravelActivity"
-            android:label="@string/title_activity_my_integral" >
+        <activity android:name=".activity.travel.TravelActivity" >
         </activity>
-        <activity
-            android:name=".activity.main.HelpActivity"
-            android:label="@string/title_activity_my_integral" >
+        <activity android:name=".activity.main.HelpActivity" >
         </activity>
-        <activity
-            android:name=".activity.travel.TravelDetailActivity"
-            android:label="@string/title_activity_my_integral" >
+        <activity android:name=".activity.travel.TravelDetailActivity" >
         </activity>
-        <activity
-            android:name=".activity.home.AllItemActivity"
-            android:label="@string/title_activity_all_item" >
+        <activity android:name=".activity.home.AllItemActivity" >
         </activity>
-        <activity
-            android:name=".activity.my.LoginActivity"
-            android:label="@string/title_activity_all_item" >
+        <activity android:name=".activity.my.LoginActivity" >
         </activity>
-        <activity
-            android:name=".activity.my.RegisterActivity"
-            android:label="@string/title_activity_all_item" >
+        <activity android:name=".activity.my.RegisterActivity" >
         </activity>
-        <activity
-            android:name=".activity.my.edit.ForgetPswdActivity"
-            android:label="@string/title_activity_all_item" >
+        <activity android:name=".activity.my.edit.ForgetPswdActivity" >
         </activity>
-        <activity
-            android:name=".activity.order.pay.FavorableMainPayActivity"
-            android:label="@string/title_activity_group_order" >
+        <activity android:name=".activity.order.pay.FavorableMainPayActivity" >
         </activity>
-        <activity
-            android:name=".activity.order.GroupOrderActivity"
-            android:label="@string/title_activity_group_order" >
+        <activity android:name=".activity.order.GroupOrderActivity" >
         </activity>
-        <activity
-            android:name=".activity.order.pay.FavorableMainDetailActivity"
-            android:label="@string/title_activity_group_order" >
+        <activity android:name=".activity.order.pay.FavorableMainDetailActivity" >
         </activity>
-        <activity
-            android:name=".activity.order.AddShopOrderActivity"
-            android:label="@string/title_activity_grogshop_order" >
+        <activity android:name=".activity.order.AddShopOrderActivity" >
         </activity>
-        <activity
-            android:name=".activity.order.AddFavorableMainActivity"
-            android:label="@string/title_activity_grogshop_order" >
+        <activity android:name=".activity.order.AddFavorableMainActivity" >
         </activity>
-        <activity
-            android:name=".activity.my.CommentListActivity"
-            android:label="@string/title_activity_grogshop_order" />
-        <activity
-            android:name=".activity.order.TakeAwayOrderActivity"
-            android:label="@string/title_activity_take_away_order" >
+        <activity android:name=".activity.my.CommentListActivity" />
+        <activity android:name=".activity.order.TakeAwayOrderActivity" >
         </activity>
-        <activity
-            android:name=".activity.order.pay.GroupPayActivity"
-            android:label="@string/title_activity_groupshop_pay" >
+        <activity android:name=".activity.order.pay.GroupPayActivity" >
         </activity>
         <activity android:name=".activity.order.pay.HotelOrderDetailActivity" >
         </activity>
         <activity android:name=".activity.order.pay.TakeAwayPayActivity" >
         </activity>
-        <activity
-            android:name=".activity.order.InsteadShoppingActivity"
-            android:label="@string/title_activity_instead_shopping" >
+        <activity android:name=".activity.order.InsteadShoppingActivity" >
         </activity>
-        <activity
-            android:name=".activity.order.pay.InsteadShoppingPayActivity"
-            android:label="@string/title_activity_instead_shopping_pay" >
+        <activity android:name=".activity.order.pay.InsteadShoppingPayActivity" >
         </activity>
-        <activity
-            android:name=".activity.my.edit.EditNickNameActivity"
-            android:label="@string/title_activity_edit_nick_name" >
+        <activity android:name=".activity.my.edit.EditNickNameActivity" >
         </activity>
-        <activity
-            android:name=".activity.my.edit.EditPhoneActivity"
-            android:label="@string/title_activity_edit_phone" >
+        <activity android:name=".activity.my.edit.EditPhoneActivity" >
         </activity>
-        <activity
-            android:name=".activity.more.AboutUsActivity"
-            android:label="@string/title_activity_about_us" >
+        <activity android:name=".activity.more.AboutUsActivity" >
         </activity>
         <activity
             android:name=".activity.comment.PostCommentMainActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_post_comment_main" >
+            android:configChanges="orientation|keyboardHidden|screenSize" >
         </activity>
         <activity
             android:name=".BasePhotoPreviewActivityBasePhotoPreviewActivity"
@@ -228,61 +145,33 @@
             android:screenOrientation="portrait" />
         <activity android:name=".activity.merchants.TuangouDetailActivity" >
         </activity>
-        <activity
-            android:name=".activity.finance.FinancialManagementActivity"
-            android:label="@string/title_activity_financial_management" >
+        <activity android:name=".activity.finance.FinancialManagementActivity" >
         </activity>
-        <activity
-            android:name=".activity.order.pay.PayOrderActivity"
-            android:label="@string/title_activity_pay_order" >
+        <activity android:name=".activity.order.pay.PayOrderActivity" >
         </activity>
-        <activity
-            android:name=".activity.finance.WithdrawCardActivity"
-            android:label="@string/title_activity_withdraw_card" >
+        <activity android:name=".activity.finance.WithdrawCardActivity" >
         </activity>
-        <activity
-            android:name=".activity.finance.RechargeActivity"
-            android:label="@string/title_activity_recharge" >
+        <activity android:name=".activity.finance.RechargeActivity" >
         </activity>
-        <activity
-            android:name=".activity.finance.FinanceDetailActivity"
-            android:label="@string/title_activity_finance_detail" >
+        <activity android:name=".activity.finance.FinanceDetailActivity" >
         </activity>
-        <activity
-            android:name=".activity.home.SelectDistrictActivity"
-            android:label="@string/title_activity_district" >
+        <activity android:name=".activity.home.SelectDistrictActivity" >
         </activity>
-        <activity
-            android:name=".activity.merchants.GraphicDetailActivity"
-            android:label="@string/title_activity_finance_detail" >
+        <activity android:name=".activity.merchants.GraphicDetailActivity" >
         </activity>
-        <activity
-            android:name=".activity.more.FeedbackActivity"
-            android:label="@string/title_activity_feedback" >
+        <activity android:name=".activity.more.FeedbackActivity" >
         </activity>
-        <activity
-            android:name=".activity.main.SearchActivity"
-            android:label="@string/title_activity_search" >
+        <activity android:name=".activity.main.SearchActivity" >
         </activity>
-        <activity
-            android:name=".activity.main.ErweimaActivity"
-            android:label="@string/title_activity_search" >
+        <activity android:name=".activity.main.ErweimaActivity" >
         </activity>
-        <activity
-            android:name=".activity.merchants.TuangouActivity"
-            android:label="@string/title_activity_tuangou" >
+        <activity android:name=".activity.merchants.TuangouActivity" >
         </activity>
-        <activity
-            android:name=".activity.main.MapActivity"
-            android:label="@string/title_activity_tuangou" >
+        <activity android:name=".activity.main.MapActivity" >
         </activity>
-        <activity
-            android:name="com.means.rabbit.activity.merchants.GuessLikeActivity"
-            android:label="@string/title_activity_guess_like" >
+        <activity android:name="com.means.rabbit.activity.merchants.GuessLikeActivity" >
         </activity>
-        <activity
-            android:name="com.google.zxing.client.android.CaptureActivity"
-            android:label="@string/title_activity_guess_like" >
+        <activity android:name="com.google.zxing.client.android.CaptureActivity" >
         </activity>
     </application>
 

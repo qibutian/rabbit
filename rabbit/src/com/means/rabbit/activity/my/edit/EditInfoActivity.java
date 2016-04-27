@@ -202,7 +202,7 @@ public class EditInfoActivity extends RabbitBaseActivity implements
 					System.out.println(response.toString());
 					Bitmap bmp = PhotoUtil.getLocalImage(new File(mPhotoPath));
 					headI.setImageBitmap(ImageUtil.toRoundCorner(bmp, 1000));
-					showToast("更换头像成功");
+					showToast(getString(R.string.editinfo_head_success));
 					JSONObject jo = response.jSONFromData();
 					String head_url = per.getFaceimg_s();
 					boolean a = ImageLoader.getInstance().getDiskCache()

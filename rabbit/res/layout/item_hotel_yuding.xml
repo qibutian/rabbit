@@ -15,8 +15,7 @@
             android:id="@+id/pic"
             android:layout_width="73dp"
             android:layout_height="73dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/model_tuangou" />
+            android:scaleType="fitXY"/>
 
         <LinearLayout
             android:layout_width="0dp"
@@ -27,8 +26,7 @@
 
             <TextView
                 android:id="@+id/title"
-                style="@style/text_44_black_big"
-                android:text="高级双床房" />
+                style="@style/text_44_black_big" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -39,8 +37,9 @@
                     android:id="@+id/des"
                     style="@style/text_66_black_small"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="双床 1.2m 2-5层 有窗(没有字段)" />
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/yuding"
@@ -50,7 +49,7 @@
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
                     android:paddingTop="4dp"
-                    android:text="预定" />
+                    android:text="@string/hotel_detail_order" />
             </LinearLayout>
 
             <LinearLayout
@@ -63,7 +62,6 @@
                     android:id="@+id/price"
                     style="@style/text_44_black_medium"
                     android:gravity="left"
-                    android:text="￥172"
                     android:textColor="@color/text_2B_green" />
 
                 <TextView

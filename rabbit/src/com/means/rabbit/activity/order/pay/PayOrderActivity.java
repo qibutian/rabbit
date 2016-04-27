@@ -73,12 +73,12 @@ public class PayOrderActivity extends RabbitBaseActivity {
 		DhNet net = new DhNet(API.pay);
 		net.addParam("orderid", orderid);
 		net.addParam("payprice", payprice);
-		net.doPostInDialog("支付中...", new NetTask(self) {
+		net.doPostInDialog(getString(R.string.pay_paying), new NetTask(self) {
 
 			@Override
 			public void doInUI(Response response, Integer transfer) {
 				if (response.isSuccess()) {
-					showToast("支付成功!");
+					showToast(getString(R.string.pay_success));
 					Intent it = getIntent();
 					setResult(Activity.RESULT_OK, it);
 					finish();
@@ -94,13 +94,13 @@ public class PayOrderActivity extends RabbitBaseActivity {
 		net.addParam("contentid", getIntent().getStringExtra("contentid"));
 		net.addParam("payprice", payprice);
 		net.addParam("credit", getIntent().getStringExtra("credit"));
-		net.doPostInDialog("提交中...", new NetTask(self) {
+		net.doPostInDialog(getString(R.string.pay_paying), new NetTask(self) {
 
 			@Override
 			public void doInUI(Response response, Integer transfer) {
 
 				if (response.isSuccess()) {
-					showToast("支付成功!");
+					showToast(getString(R.string.pay_success));
 					Intent it = getIntent();
 					setResult(Activity.RESULT_OK, it);
 					finish();

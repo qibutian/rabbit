@@ -71,15 +71,16 @@ public class BusinessOrderActivity extends RabbitBaseActivity {
 						.findViewById(R.id.paystatus);
 				int paystatus = JSONUtil.getInt(data, "paystatus");
 				if (JSONUtil.getInt(data, "orderstatus") == 2) {
-					paystatusT.setText("已完成");
+					paystatusT
+							.setText(getString(R.string.order_status_complete));
 				} else if (JSONUtil.getInt(data, "orderstatus") == 3) {
-					paystatusT.setText("已取消");
+					paystatusT.setText(getString(R.string.order_status_cancle));
 				} else if (paystatus == 1) {
-					paystatusT.setText("待支付");
+					paystatusT.setText(getString(R.string.order_status_pay));
 				} else if (paystatus == 2) {
-					paystatusT.setText("已支付");
+					paystatusT.setText(getString(R.string.order_status_payed));
 				} else if (paystatus == 3) {
-					paystatusT.setText("支付失败");
+					paystatusT.setText(getString(R.string.order_status_failed));
 				}
 
 				return getString(R.string.money_symbol) + "  " + o.toString();

@@ -16,13 +16,15 @@ import com.means.rabbit.base.RabbitBaseActivity;
 
 /**
  * 修改昵称
+ * 
  * @author Administrator
- *
+ * 
  */
 public class EditNickNameActivity extends RabbitBaseActivity {
-	
+
 	EditText nicknameEt;
 	Button saveBtn;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,43 +34,43 @@ public class EditNickNameActivity extends RabbitBaseActivity {
 	@Override
 	public void initView() {
 		setTitle(getString(R.string.editinfo));
-		
+
 		nicknameEt = (EditText) findViewById(R.id.nickname);
 		saveBtn = (Button) findViewById(R.id.save);
-		
+
 		nicknameEt.setText(getIntent().getStringExtra("nickname"));
-		
+
 		saveBtn.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				editNickName();
 			}
 		});
 	}
-	
-	public void editNickName(){
+
+	public void editNickName() {
 		final String name = nicknameEt.getText().toString();
 		if (TextUtils.isEmpty(name)) {
-			showToast("昵称不能为空");
+			showToast(getString(R.string.editinfo_name_des));
 			return;
 		}
-		if (name.length()>14) {
-			showToast("昵称位数不能超过14位");
+		if (name.length() > 14) {
+			showToast(getString(R.string.editinfo_name_des1));
 			return;
 		}
-		
+
 		DhNet net = new DhNet(API.editaction);
 		net.addParam("nickname", name);
 		net.doPostInDialog(new NetTask(self) {
-			
+
 			@Override
 			public void doInUI(Response response, Integer transfer) {
 				// TODO Auto-generated method stub
 				if (response.isSuccess()) {
-					showToast("修改成功");
-					Intent it = new Intent(self,EditInfoActivity.class);
-					it.putExtra("nickname",name);
+					showToast(getString(R.string.editinfo_success));
+					Intent it = new Intent(self, EditInfoActivity.class);
+					it.putExtra("nickname", name);
 					setResult(RESULT_OK, it);
 					finish();
 				}

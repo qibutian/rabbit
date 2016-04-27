@@ -19,14 +19,12 @@
 
             <TextView
                 android:id="@+id/name"
-                style="@style/text_44_black_small"
-                android:text="鱼摆摆" />
+                style="@style/text_44_black_small" />
 
             <TextView
                 android:id="@+id/type"
                 style="@style/text_44_black_small"
-                android:layout_marginLeft="5dp"
-                android:text="商家" />
+                android:layout_marginLeft="5dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -37,8 +35,7 @@
 
             <TextView
                 android:id="@+id/count"
-                style="@style/text_44_black_small"
-                android:text="1个结果" />
+                style="@style/text_44_black_small" />
 
             <ImageView
                 android:layout_width="wrap_content"

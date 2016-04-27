@@ -20,7 +20,7 @@
     <TextView 
         android:id="@+id/text"
         style="@style/text_white_small"
-        android:text="请对准麦克风说话"
+        android:text="@string/translate_des"
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"

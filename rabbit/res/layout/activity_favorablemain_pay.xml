@@ -34,7 +34,6 @@
                 <TextView
                     android:id="@+id/pay_price"
                     style="@style/text_44_black_big"
-                    android:text="￥199"
                     android:textColor="@color/text_2B_green" />
             </LinearLayout>
         </LinearLayout>
@@ -63,7 +62,6 @@
                 android:id="@+id/shifu"
                 style="@style/text_44_black_medium"
                 android:layout_marginLeft="5dp"
-                android:text="￥197"
                 android:textColor="@color/text_2B_green" />
         </LinearLayout>
 

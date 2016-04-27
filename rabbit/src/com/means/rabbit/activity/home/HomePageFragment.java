@@ -142,7 +142,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 			@Override
 			public Object fix(View itemV, Integer position, Object o, Object jo) {
-				return "已售" + o.toString();
+				return getString(R.string.home_selled) + o.toString();
 			}
 		});
 
@@ -218,7 +218,8 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 							JSONObject data = (JSONObject) galleryAdapter
 									.getTItem(position);
-							RabbitUtils.ImgIntent(getActivity(),JSONUtil.getInt(data, "type"),
+							RabbitUtils.ImgIntent(getActivity(),
+									JSONUtil.getInt(data, "type"),
 									JSONUtil.getString(data, "id"));
 
 						}
@@ -245,7 +246,8 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 								@Override
 								public void onClick(View v) {
-									RabbitUtils.ImgIntent(getActivity(),JSONUtil.getInt(jo, "type"),
+									RabbitUtils.ImgIntent(getActivity(),
+											JSONUtil.getInt(jo, "type"),
 											JSONUtil.getString(jo, "id"));
 								}
 							});
@@ -353,5 +355,4 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 		EventBus.getDefault().unregister(this);
 	}
 
-	
 }

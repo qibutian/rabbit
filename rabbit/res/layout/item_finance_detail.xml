@@ -2,15 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-     >
+    android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:padding="@dimen/padding_leftandright"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:padding="@dimen/padding_leftandright" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,29 +24,27 @@
                 android:paddingBottom="2dp"
                 android:paddingLeft="3dp"
                 android:paddingRight="3dp"
-                android:paddingTop="2dp"
-                android:text="收入" />
+                android:paddingTop="2dp" />
 
             <TextView
                 android:id="@+id/balance"
                 style="@style/text_44_black_medium"
-                android:layout_marginLeft="@dimen/padding_leftandright"
-                android:text="￥100" />
+                android:layout_marginLeft="@dimen/padding_leftandright" />
 
             <TextView
                 android:id="@+id/note"
                 style="@style/text_44_black_medium"
                 android:layout_marginLeft="@dimen/padding_leftandright"
-                android:singleLine="true"
                 android:ellipsize="end"
-                android:text="支付宝充值" />
+                android:singleLine="true" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/dateline"
             style="@style/text_99_grey_small"
-            android:layout_marginTop="3dp"
-            android:text="2016-03-09 16:44:23" />
+            android:layout_marginTop="3dp" />
     </LinearLayout>
-	<View style="@style/line_horizontal" />
+
+    <View style="@style/line_horizontal" />
+
 </LinearLayout>

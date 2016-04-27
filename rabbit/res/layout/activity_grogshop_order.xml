@@ -67,8 +67,7 @@
 
                     <TextView
                         android:id="@+id/fangxing"
-                        style="@style/text_99_grey_medium"
-                        android:text="无字段" />
+                        style="@style/text_99_grey_medium" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -93,8 +92,7 @@
 
                     <TextView
                         android:id="@+id/date"
-                        style="@style/text_99_grey_medium"
-                        android:text="入住 1晚" />
+                        style="@style/text_99_grey_medium" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -119,8 +117,7 @@
 
                     <TextView
                         android:id="@+id/old_price"
-                        style="@style/text_99_grey_medium"
-                        android:text="￥78/晚" />
+                        style="@style/text_99_grey_medium" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -145,8 +142,7 @@
 
                     <TextView
                         android:id="@+id/price"
-                        style="@style/text_99_grey_medium"
-                        android:text="￥78/晚" />
+                        style="@style/text_99_grey_medium" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -199,7 +195,6 @@
                     <TextView
                         android:id="@+id/total_price"
                         style="@style/text_44_black_big"
-                        android:text="￥156"
                         android:textColor="@color/text_2B_green" />
                 </LinearLayout>
             </LinearLayout>
@@ -231,8 +226,7 @@
                         android:layout_width="fill_parent"
                         android:background="@color/nothing"
                         android:gravity="right"
-                        android:minWidth="80dp"
-                        android:text="15188888888" />
+                        android:minWidth="80dp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -260,8 +254,7 @@
                         style="@style/text_99_grey_medium"
                         android:layout_width="fill_parent"
                         android:background="@color/nothing"
-                        android:gravity="right"
-                        android:text="张三" />
+                        android:gravity="right" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -289,8 +282,7 @@
                         style="@style/text_99_grey_medium"
                         android:layout_width="fill_parent"
                         android:background="@color/nothing"
-                        android:gravity="right"
-                        android:text="备注" />
+                        android:gravity="right" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -318,7 +310,7 @@
                         style="@style/text_99_grey_medium"
                         android:background="@color/nothing"
                         android:gravity="right"
-                        android:hint="请输入积分"
+                        android:hint="@string/jifen_init"
                         android:inputType="number"
                         android:minWidth="30dp"
                         android:paddingRight="6dp" />
@@ -333,7 +325,7 @@
                         android:id="@+id/dikou"
                         style="@style/text_44_black_medium"
                         android:layout_marginLeft="5dp"
-                        android:text="￥0"
+                        android:text="@string/money_hint"
                         android:textColor="@color/text_2B_green" />
                 </LinearLayout>
             </LinearLayout>

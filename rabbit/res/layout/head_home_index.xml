@@ -37,7 +37,7 @@
             <TextView
                 style="@style/text_66_black_small"
                 android:layout_marginTop="2dp"
-                android:text="美食" />
+                android:text="@string/meishi" />
         </LinearLayout>
 
         <View
@@ -64,7 +64,7 @@
             <TextView
                 style="@style/text_66_black_small"
                 android:layout_marginTop="2dp"
-                android:text="酒店" />
+                android:text="@string/my_order_pop_hotel" />
         </LinearLayout>
 
         <View
@@ -91,7 +91,7 @@
             <TextView
                 style="@style/text_66_black_small"
                 android:layout_marginTop="2dp"
-                android:text="代购" />
+                android:text="@string/my_order_pop_daigou" />
         </LinearLayout>
 
         <View
@@ -118,7 +118,7 @@
             <TextView
                 style="@style/text_66_black_small"
                 android:layout_marginTop="2dp"
-                android:text="出行服务" />
+                android:text="@string/chuxingfuwu" />
         </LinearLayout>
 
         <View
@@ -145,7 +145,7 @@
             <TextView
                 style="@style/text_66_black_small"
                 android:layout_marginTop="2dp"
-                android:text="旅行小秘" />
+                android:text="@string/travel" />
         </LinearLayout>
     </LinearLayout>
 
@@ -175,7 +175,7 @@
             <TextView
                 style="@style/text_66_black_small"
                 android:layout_marginTop="2dp"
-                android:text="休闲娱乐" />
+                android:text="@string/xiuxianyule" />
         </LinearLayout>
 
         <View
@@ -202,7 +202,7 @@
             <TextView
                 style="@style/text_66_black_small"
                 android:layout_marginTop="2dp"
-                android:text="专享特色" />
+                android:text="@string/zhuanxiangtese" />
         </LinearLayout>
 
         <View
@@ -229,7 +229,7 @@
             <TextView
                 style="@style/text_66_black_small"
                 android:layout_marginTop="2dp"
-                android:text="随身翻译" />
+                android:text="@string/suishenfanyi" />
         </LinearLayout>
 
         <View
@@ -256,7 +256,7 @@
             <TextView
                 style="@style/text_66_black_small"
                 android:layout_marginTop="2dp"
-                android:text="紧急求助" />
+                android:text="@string/jinjiqiuzhu" />
         </LinearLayout>
 
         <View
@@ -283,7 +283,7 @@
             <TextView
                 style="@style/text_66_black_small"
                 android:layout_marginTop="2dp"
-                android:text="全部分类" />
+                android:text="@string/all_item" />
         </LinearLayout>
     </LinearLayout>
 
@@ -378,6 +378,6 @@
         android:background="@color/app_bg_color"
         android:gravity="center_vertical"
         android:paddingLeft="10dp"
-        android:text="猜你喜欢" />
+        android:text="@string/guesslike" />
 
 </LinearLayout>

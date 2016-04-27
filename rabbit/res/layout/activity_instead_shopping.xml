@@ -41,8 +41,7 @@
 
                     <TextView
                         android:id="@+id/price"
-                        style="@style/text_99_grey_medium"
-                        android:text="￥78" />
+                        style="@style/text_99_grey_medium" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -94,8 +93,7 @@
 
                     <TextView
                         android:id="@+id/youfei"
-                        style="@style/text_99_grey_medium"
-                        android:text="￥78" />
+                        style="@style/text_99_grey_medium" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -121,7 +119,6 @@
                     <TextView
                         android:id="@+id/total_price"
                         style="@style/text_44_black_big"
-                        android:text="￥156"
                         android:textColor="@color/text_2B_green" />
                 </LinearLayout>
             </LinearLayout>
@@ -150,14 +147,12 @@
 
                         <TextView
                             android:id="@+id/add_username"
-                            style="@style/text_44_black_medium"
-                            android:text="李四" />
+                            style="@style/text_44_black_medium" />
 
                         <TextView
                             android:id="@+id/add_tel"
                             style="@style/text_44_black_medium"
-                            android:layout_marginLeft="5dp"
-                            android:text="15188888888" />
+                            android:layout_marginLeft="5dp" />
                     </LinearLayout>
 
                     <TextView
@@ -165,8 +160,7 @@
                         style="@style/text_44_black_medium"
                         android:layout_marginTop="3dp"
                         android:ellipsize="end"
-                        android:singleLine="true"
-                        android:text="中国黑龙江省齐齐哈尔市富拉尔基区" />
+                        android:singleLine="true" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -206,8 +200,8 @@
                         style="@style/text_99_grey_medium"
                         android:layout_width="fill_parent"
                         android:background="@color/nothing"
-                        android:minWidth="80dp"
-                        android:gravity="right" />
+                        android:gravity="right"
+                        android:minWidth="80dp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -291,7 +285,7 @@
                         style="@style/text_99_grey_medium"
                         android:background="@color/nothing"
                         android:gravity="right"
-                        android:hint="请输入积分"
+                        android:hint="@string/jifen_init"
                         android:inputType="number"
                         android:minWidth="30dp"
                         android:paddingRight="6dp" />
@@ -306,7 +300,7 @@
                         android:id="@+id/credit_s"
                         style="@style/text_44_black_medium"
                         android:layout_marginLeft="5dp"
-                        android:text="￥0"
+                        android:text="@string/money_hint"
                         android:textColor="@color/text_2B_green" />
                 </LinearLayout>
             </LinearLayout>
@@ -333,7 +327,6 @@
                     android:id="@+id/shifu"
                     style="@style/text_44_black_medium"
                     android:layout_marginLeft="5dp"
-                    android:text="197"
                     android:textColor="@color/text_2B_green" />
             </LinearLayout>
 

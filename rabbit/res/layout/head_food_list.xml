@@ -23,7 +23,7 @@
 
         <TextView
             style="@style/text_66_black_medium"
-            android:text="猜你喜欢" />
+            android:text="@string/guesslike" />
 
         <LinearLayout
             android:layout_width="fill_parent"

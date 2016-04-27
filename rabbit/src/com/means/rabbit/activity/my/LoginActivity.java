@@ -88,15 +88,15 @@ public class LoginActivity extends RabbitBaseActivity implements
 		// final String nickname = "18151906146";
 		// final String password = "123456 a";
 		if (TextUtils.isEmpty(nickname)) {
-			showToast("请输入昵称/用户名");
+			showToast(getString(R.string.login_name_des));
 			return;
 		}
 		if (TextUtils.isEmpty(password)) {
-			showToast("请输入密码");
+			showToast(getString(R.string.login_pswd_hint));
 			return;
 		}
 		if (password.length() < 6 || password.length() > 15) {
-			showToast("密码为6-15位字母或数字的组合");
+			showToast(getString(R.string.editinfo_pswd_des));
 			return;
 		}
 		DhNet smsNet = new DhNet(API.login);

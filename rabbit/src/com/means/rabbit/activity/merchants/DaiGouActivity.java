@@ -105,7 +105,7 @@ public class DaiGouActivity extends RabbitBaseActivity {
 
 		tabV = (TabView) findViewById(R.id.tab);
 		tabV.setLeftText(getString(R.string.Hotboom));
-		tabV.setCentertText("品牌", "品牌");
+		tabV.setCentertText(getString(R.string.Hotboom_brand), "品牌");
 		tabV.setOnTabSelectListener(new OnTabSelectListener() {
 
 			@Override

@@ -68,23 +68,23 @@ public class MyCollectActivity extends RabbitBaseActivity {
 				String typename = "";
 				switch (type) {
 				case 1:
-					typename = "资讯";
+					typename = getString(R.string.search_type1);
 					break;
 
 				case 2:
-					typename = "商家";
+					typename = getString(R.string.search_type2);
 					break;
 
 				case 3:
-					typename = "酒店";
+					typename = getString(R.string.search_type5);
 					break;
 
 				case 4:
-					typename = "团购";
+					typename = getString(R.string.search_type3);
 					break;
 
 				case 5:
-					typename = "代购";
+					typename = getString(R.string.search_type4);
 					break;
 
 				default:
@@ -125,7 +125,8 @@ public class MyCollectActivity extends RabbitBaseActivity {
 
 				case 4:
 					it = new Intent(self, TuangouDetailActivity.class);
-					it.putExtra("tuangouId", JSONUtil.getString(jo, "contentid"));
+					it.putExtra("tuangouId",
+							JSONUtil.getString(jo, "contentid"));
 					break;
 
 				case 5:

@@ -33,7 +33,7 @@
 
                 <TextView
                     style="@style/text_44_black_big"
-                    android:text="￥"
+                    android:text="@string/money_symbol"
                     android:textColor="@color/text_2B_green" />
 
                 <EditText
@@ -75,7 +75,7 @@
                     style="@style/text_99_grey_medium"
                     android:background="@color/nothing"
                     android:gravity="right"
-                    android:hint="请输入积分"
+                    android:hint="@string/jifen_init"
                     android:inputType="number"
                     android:minWidth="30dp"
                     android:paddingRight="6dp" />
@@ -90,7 +90,7 @@
                     android:id="@+id/credit_s"
                     style="@style/text_44_black_medium"
                     android:layout_marginLeft="5dp"
-                    android:text="￥0"
+                   android:text="@string/money_hint"
                     android:textColor="@color/text_2B_green" />
             </LinearLayout>
         </LinearLayout>
@@ -112,7 +112,7 @@
             <TextView
                 style="@style/text_44_black_medium"
                 android:layout_marginLeft="5dp"
-                android:text="￥"
+                android:text="@string/money_symbol"
                 android:textColor="@color/text_2B_green" />
 
             <TextView

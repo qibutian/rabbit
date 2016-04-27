@@ -9,8 +9,7 @@
         android:id="@+id/name"
         style="@style/text_44_black_medium"
         android:layout_centerInParent="true"
-        android:layout_margin="@dimen/padding_leftandright"
-        android:text="中国" />
+        android:layout_margin="@dimen/padding_leftandright" />
 
     <View
         style="@style/line_horizontal"

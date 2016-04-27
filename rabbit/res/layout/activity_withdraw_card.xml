@@ -32,7 +32,7 @@
                     android:id="@+id/money"
                     style="@style/text_44_black_big"
                     android:background="@color/white"
-                    android:hint="@string/withdraw_card_input_money"
+                    android:hint="@string/withdrawcard_money_des"
                     android:inputType="number"
                     android:gravity="right"
                     android:textColor="@color/text_2B_green" />
@@ -63,7 +63,7 @@
                     android:id="@+id/cardid"
                     style="@style/text_44_black_big"
                     android:background="@color/white"
-                    android:hint="@string/withdraw_card_input_cardid"
+                    android:hint="@string/withdrawcard_code_des"
                     android:inputType="number"
                     android:gravity="right"
                     android:textColor="@color/text_2B_green" />
@@ -92,7 +92,7 @@
                     android:id="@+id/name"
                     style="@style/text_44_black_big"
                     android:background="@color/white"
-                    android:hint="@string/withdraw_card_input_name"
+                    android:hint="@string/withdrawcard_name_des"
                     android:gravity="right"
                     android:textColor="@color/text_2B_green" />
             </LinearLayout>

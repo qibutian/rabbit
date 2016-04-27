@@ -98,7 +98,7 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 			@Override
 			public Object fix(View itemV, Integer position, Object o, Object jo) {
 				// TODO Auto-generated method stub
-				return getString(R.string.money_symbol) + o + "/人";
+				return getString(R.string.money_symbol) + o + getString(R.string.hotel_people);
 			}
 		});
 
@@ -191,7 +191,7 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 					galleryAdapter.addAll(image_data);
 					gallery.setAdapter(galleryAdapter);
 
-					priceT.setText(JSONUtil.getString(detailJo, "price") + "起");
+					priceT.setText(JSONUtil.getString(detailJo, "price") + getString(R.string.hotel_price_des));
 
 					ViewUtil.bindView(headV.findViewById(R.id.title),
 							JSONUtil.getString(detailJo, "title"));

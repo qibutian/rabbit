@@ -94,7 +94,9 @@ public class AddFavorableMainActivity extends RabbitBaseActivity {
 									.toString());
 							float daikou = jifen / creditY;
 							if (daikou > price) {
-								showToast("本单最多只能使用" + price * creditY + "积分");
+								showToast(getString(R.string.favorable_des)
+										+ price * creditY
+										+ getString(R.string.favorable_credit));
 								jifenE.setText(0 + "");
 								shifuT.setText(price + "");
 							} else {
@@ -142,28 +144,25 @@ public class AddFavorableMainActivity extends RabbitBaseActivity {
 						int jifen = Integer.parseInt(jifenE.getText()
 								.toString());
 						if (jifen > credit) {
-							showToast("你输入的积分超过了您的积分,请输入小于" + credit + "的数字!");
+							showToast(getString(R.string.favorable_des1) + credit + getString(R.string.favorable_num));
 							jifenE.setText(0 + "");
-							System.out.println("111111111111");
 						} else {
 
 							if (TextUtils.isEmpty(payPriceE.getText()
 									.toString())) {
-								showToast("请输入消费金额!");
-								System.out.println("222222222222");
+								showToast(getString(R.string.favorable_money));
 								// jifenE.setText(0 + "");
 							} else {
 								float price = Integer.parseInt(payPriceE
 										.getText().toString());
 								float daikou = jifen / creditY;
 								if (daikou > price) {
-									showToast("本单最多只能使用" + price * creditY
-											+ "积分");
-									System.out.println("33333333333");
+									showToast(getString(R.string.favorable_des)
+											+ price * creditY
+											+ getString(R.string.favorable_credit));
 									jifenE.setText(0 + "");
 									shifuT.setText(price + "");
 								} else {
-									System.out.println("44444444444");
 									daikouT.setText(getString(R.string.money_symbol)
 											+ daikou);
 									shifuT.setText(price - daikou + "");
@@ -228,7 +227,7 @@ public class AddFavorableMainActivity extends RabbitBaseActivity {
 
 	private void submit() {
 		if (TextUtils.isEmpty(payPriceE.getText().toString())) {
-			showToast("请输入消费金额!");
+			showToast(getString(R.string.favorable_money));
 			return;
 		}
 		Intent it = new Intent(self, PayOrderActivity.class);

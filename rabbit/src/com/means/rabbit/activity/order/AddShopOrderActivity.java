@@ -104,12 +104,16 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 						int jifen = Integer.parseInt(jifenE.getText()
 								.toString());
 						if (jifen > credit) {
-							showToast("你输入的积分超过了您的积分,请输入小于" + credit + "的数字!");
+							showToast(getString(R.string.favorable_des1)
+									+ credit
+									+ getString(R.string.favorable_num));
 							jifenE.setText(0 + "");
 						} else {
 							float daikou = jifen / creditY;
 							if (daikou > price) {
-								showToast("本单最多只能使用" + price * creditY + "积分");
+								showToast(getString(R.string.favorable_des)
+										+ price * creditY
+										+ getString(R.string.favorable_credit));
 								jifenE.setText(0 + "");
 								shifuT.setText(price + "");
 							} else {
@@ -133,8 +137,10 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 
 		try {
 			int days = RabbitUtils.daysBetween(startDate, endDate);
-			ViewUtil.bindView(findViewById(R.id.date), "入住" + startDate + "离开"
-					+ endDate + " [" + days + "]晚");
+			ViewUtil.bindView(findViewById(R.id.date),
+					getString(R.string.hotel_ruzhu) + startDate
+							+ getString(R.string.hotel_likai) + endDate + " ["
+							+ days + "]" + getString(R.string.hotel_des));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -197,12 +203,14 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 					ViewUtil.bindView(
 							findViewById(R.id.price),
 							getString(R.string.money_symbol)
-									+ JSONUtil.getString(jo, "dayprice") + "/晚");
+									+ JSONUtil.getString(jo, "dayprice") + "/"
+									+ getString(R.string.hotel_des));
 
 					ViewUtil.bindView(
 							findViewById(R.id.old_price),
 							getString(R.string.money_symbol)
-									+ JSONUtil.getString(jo, "dayprice") + "/晚");
+									+ JSONUtil.getString(jo, "dayprice") + "/"
+									+ getString(R.string.hotel_des));
 					cartView.setOnCartViewClickListener(new OnCartViewClickListener() {
 
 						@Override
@@ -243,12 +251,12 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 		net.addParam("buyerphone", telE.getText().toString());
 		net.addParam("ordercount", cartView.getCartNum());
 		net.addParam("credit", jifenE.getText().toString());
-		net.doPostInDialog("提交中...", new NetTask(self) {
+		net.doPostInDialog(getString(R.string.submiting), new NetTask(self) {
 
 			@Override
 			public void doInUI(Response response, Integer transfer) {
 				if (response.isSuccess()) {
-					showToast("提交成功!");
+					showToast(getString(R.string.submit_success));
 					JSONObject jo = response.jSON();
 					Intent it = new Intent(self, HotelOrderDetailActivity.class);
 					it.putExtra("orderid", JSONUtil.getString(jo, "id"));

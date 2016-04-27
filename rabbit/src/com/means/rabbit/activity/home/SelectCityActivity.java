@@ -119,18 +119,19 @@ public class SelectCityActivity extends RabbitBaseActivity {
 
 	private void getData() {
 		DhNet net = new DhNet(API.citylist);
-		net.doGetInDialog("加载中...", new NetTask(self) {
+		net.doGetInDialog(getString(R.string.progress_doing),
+				new NetTask(self) {
 
-			@Override
-			public void doInUI(Response response, Integer transfer) {
+					@Override
+					public void doInUI(Response response, Integer transfer) {
 
-				if (response.isSuccess()) {
-					jsa = response.jSONArrayFromData();
-					countryAdapter.setData(jsa);
-				}
+						if (response.isSuccess()) {
+							jsa = response.jSONArrayFromData();
+							countryAdapter.setData(jsa);
+						}
 
-			}
-		});
+					}
+				});
 	}
 
 }

@@ -31,8 +31,7 @@
                 <TextView
                     android:id="@+id/balance"
                 style="@style/text_44_black_big"
-                android:textColor="@color/text_2B_green"
-                android:text="￥288" />
+                android:textColor="@color/text_2B_green" />
             </LinearLayout>
         </LinearLayout>
         <View style="@style/line_horizontal"

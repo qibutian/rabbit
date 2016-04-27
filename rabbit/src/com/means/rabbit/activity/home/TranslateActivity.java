@@ -110,7 +110,7 @@ public class TranslateActivity extends RabbitBaseActivity implements
 
 	private void translate() {
 		if (TextUtils.isEmpty(contentE.getText().toString())) {
-			showToast("请输入翻译内容!");
+			showToast(getString(R.string.translate_content_hint));
 			return;
 		}
 
@@ -118,7 +118,7 @@ public class TranslateActivity extends RabbitBaseActivity implements
 		net.addParam("slang", slang);
 		net.addParam("lang", lang);
 		net.addParam("q", contentE.getText().toString());
-		net.doGetInDialog("翻译中...", new NetTask(self) {
+		net.doGetInDialog(getString(R.string.translate_ing), new NetTask(self) {
 
 			@Override
 			public void doInUI(Response response, Integer transfer) {

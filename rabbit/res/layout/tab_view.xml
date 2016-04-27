@@ -24,7 +24,7 @@
                 style="@style/text_66_black_medium"
                 android:drawablePadding="2dp"
                 android:drawableRight="@drawable/icon_down"
-                android:text="酒店" />
+                android:text="@string/my_order_pop_hotel" />
         </LinearLayout>
 
         <LinearLayout
@@ -39,7 +39,7 @@
                 style="@style/text_66_black_medium"
                 android:drawablePadding="2dp"
                 android:drawableRight="@drawable/icon_down"
-                android:text="品牌"
+                android:text="@string/Hotboom_brand"
                 android:visibility="invisible" />
         </LinearLayout>
 
@@ -55,7 +55,7 @@
                 style="@style/text_66_black_medium"
                 android:drawablePadding="2dp"
                 android:drawableRight="@drawable/icon_down"
-                android:text="排序" />
+                android:text="@string/sort" />
         </LinearLayout>
     </LinearLayout>
 

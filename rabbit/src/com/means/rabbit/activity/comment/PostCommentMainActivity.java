@@ -213,7 +213,7 @@ public class PostCommentMainActivity extends RabbitBaseActivity {
 	}
 
 	private void uploadPic(String path) {
-		showProgressDialog("上传中...");
+		showProgressDialog(getString(R.string.uploading));
 		DhNet net = new DhNet(API.uploadImg);
 		net.upload("upfile", new File(path), new NetTask(self) {
 			@Override
@@ -287,7 +287,7 @@ public class PostCommentMainActivity extends RabbitBaseActivity {
 					finish();
 					Intent it = getIntent();
 					setResult(Activity.RESULT_OK, it);
-					showToast("发布成功!");
+					showToast(getString(R.string.release_success));
 				}
 			}
 		});

@@ -40,8 +40,7 @@
 
                     <TextView
                         android:id="@+id/good_title"
-                        style="@style/text_white_biger"
-                        android:text="Daniel Wellington丹利尔惠019DW男式潮款皮带手表 超薄时尚款" />
+                        style="@style/text_white_biger" />
                 </LinearLayout>
             </RelativeLayout>
 
@@ -54,15 +53,13 @@
                     android:id="@+id/price"
                     style="@style/text_44_black_medium"
                     android:gravity="left"
-                    android:text="￥5499"
                     android:textColor="@color/text_2B_green" />
 
                 <TextView
                     android:id="@+id/old_price"
                     style="@style/text_66_black_small"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:text="￥12453" />
+                    android:layout_marginRight="10dp" />
 
                 <TextView
                     style="@style/text_66_black_small"
@@ -79,7 +76,7 @@
                     android:paddingLeft="12dp"
                     android:paddingRight="12dp"
                     android:paddingTop="6dp"
-                    android:text="立即购买" />
+                    android:text="@string/gooddetail_buy" />
             </LinearLayout>
 
             <LinearLayout
@@ -90,8 +87,7 @@
 
                 <TextView
                     android:id="@+id/name"
-                    style="@style/text_44_black_medium"
-                    android:text="ABC代购中心(没字段) " />
+                    style="@style/text_44_black_medium" />
             </LinearLayout>
 
             <View style="@style/line_horizontal" />
@@ -111,8 +107,7 @@
                 <TextView
                     android:id="@+id/address"
                     style="@style/text_66_black_medium"
-                    android:layout_marginLeft="10dp"
-                    android:text="南京市秦淮区中山东路11号 " />
+                    android:layout_marginLeft="10dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -147,8 +142,7 @@
                 <TextView
                     android:id="@+id/comment_des"
                     style="@style/text_66_black_medium"
-                    android:layout_marginLeft="10dp"
-                    android:text="2.7/113人" />
+                    android:layout_marginLeft="10dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -186,7 +180,7 @@
 
                 <TextView
                     style="@style/text_44_black_medium"
-                    android:text="团购 " />
+                    android:text="@string/my_order_pop_group" />
             </LinearLayout>
 
             <View style="@style/line_horizontal" />
@@ -196,7 +190,7 @@
                 android:layout_width="fill_parent"
                 android:background="@color/app_bg_color"
                 android:padding="@dimen/padding_leftandright"
-                android:text="购买须知" />
+                android:text="@string/gooddetail_buy_des" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -205,11 +199,10 @@
                 android:paddingLeft="30dp"
                 android:paddingTop="14dp" >
 
-               <TextView
+                <TextView
                     android:id="@+id/goumaides"
                     style="@style/text_66_black_medium"
-                    android:layout_marginTop="2dp"
-                    android:text="一周内发货" />
+                    android:layout_marginTop="2dp" />
             </LinearLayout>
 
             <View

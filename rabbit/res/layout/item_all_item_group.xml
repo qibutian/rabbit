@@ -21,8 +21,7 @@
         <TextView
             android:id="@+id/name"
             style="@style/text_44_black_medium"
-            android:layout_marginLeft="5dp"
-            android:text="@string/all_item_hot" />
+            android:layout_marginLeft="5dp"/>
     </LinearLayout>
 
     <View style="@style/line_horizontal" />

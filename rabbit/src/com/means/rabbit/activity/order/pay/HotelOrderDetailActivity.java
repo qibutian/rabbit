@@ -140,27 +140,29 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 
 					if (paystatus == 2 && servicestatus == 2
 							&& JSONUtil.getInt(jo, "orderstatus") == 2) {
-						grogshop_btn.setText("已完成");
+						grogshop_btn.setText(getString(R.string.order_status_complete));
 						grogshop_btn
 								.setBackgroundResource(R.drawable.fillet_10_green_bg);
 					} else if (JSONUtil.getInt(jo, "orderstatus") == 3) {
-						grogshop_btn.setText("已取消");
+						grogshop_btn.setText(getString(R.string.order_status_cancle));
 						grogshop_btn
 								.setBackgroundResource(R.drawable.fillet_10_pink_bg);
 					} else if (servicestatus == 1
 							&& JSONUtil.getInt(jo, "orderstatus") == 2) {
-						grogshop_btn.setText("发布评论");
+						grogshop_btn.setText(getString(R.string.order_status_release_comment));
 						grogshop_btn
 								.setBackgroundResource(R.drawable.fillet_10_pink_bg);
 					} else if (paystatus == 1) {
-						grogshop_btn.setText("支付订单");
+						grogshop_btn.setText(getString(R.string.order_status_pay_order));
 						grogshop_btn
 								.setBackgroundResource(R.drawable.fillet_10_pink_bg);
 					} else if (paystatus == 2) {
-						grogshop_btn.setText("已支付");
+						grogshop_btn.setText(getString(R.string.order_status_payed));
 						grogshop_btn
 								.setBackgroundResource(R.drawable.fillet_10_green_bg);
 					}
+					
+					
 
 					// if (paystatus == 1) {
 					// grogshop_btn.setText("支付订单");

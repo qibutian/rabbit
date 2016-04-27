@@ -16,7 +16,6 @@
         android:id="@+id/pic"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/model_xiezi"
         android:scaleType="centerCrop"
         my:heightToWidth="1.0" />
     
@@ -33,13 +32,11 @@
     <TextView 
         android:id="@+id/title"
         style="@style/text_44_black_big"
-        android:text="Nike女式大童款运动鞋 轻跑鞋 只有35码 290直邮到手!"
         />
     
     <TextView 
         android:id="@+id/des"
         style="@style/text_66_black_small"
-        android:text="年底盘点咯,现在下单,年前还能收到货"
         android:layout_marginTop="5dp"
         />
     
@@ -59,20 +56,17 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:gravity="left"
-                    android:text="￥150"
                     android:textColor="@color/text_2B_green" />
 
                 <TextView
                     android:id="@+id/score"
                     style="@style/text_66_black_small"
-                    android:layout_marginRight="10dp"
-                    android:text="评分 4.8/1298" />
+                    android:layout_marginRight="10dp" />
 
 
                 <TextView
                     android:id="@+id/catname"
-                    style="@style/text_66_black_small"
-                    android:text="鞋类" />
+                    style="@style/text_66_black_small"/>
             </LinearLayout>
     </LinearLayout>
  <View style="@style/line_horizontal" />

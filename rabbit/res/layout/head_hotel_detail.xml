@@ -19,8 +19,7 @@
             android:layout_alignParentBottom="true"
             android:layout_margin="15dp"
             android:background="@drawable/num_bg"
-            android:padding="2dp"
-            android:text="1/30" />
+            android:padding="2dp" />
 
         <TextView
             android:id="@+id/price"
@@ -29,16 +28,14 @@
             android:layout_alignParentRight="true"
             android:layout_margin="15dp"
             android:background="@drawable/num_bg"
-            android:padding="2dp"
-            android:text="188元	起" />
+            android:padding="2dp" />
     </RelativeLayout>
 
     <TextView
         android:id="@+id/title"
         style="@style/text_44_black_biger"
         android:layout_width="fill_parent"
-        android:padding="@dimen/padding_leftandright"
-        android:text="速8酒店南京中山陵景区店" />
+        android:padding="@dimen/padding_leftandright" />
 
     <View style="@style/line_horizontal" />
 
@@ -57,8 +54,7 @@
         <TextView
             android:id="@+id/address"
             style="@style/text_66_black_medium"
-            android:layout_marginLeft="10dp"
-            android:text="南京市秦淮区中山东路11号 " />
+            android:layout_marginLeft="10dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -90,8 +86,7 @@
         <TextView
             android:id="@+id/tel"
             style="@style/text_66_black_medium"
-            android:layout_marginLeft="10dp"
-            android:text="025-12345678 " />
+            android:layout_marginLeft="10dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -126,8 +121,7 @@
         <TextView
             android:id="@+id/comment_des"
             style="@style/text_66_black_medium"
-            android:layout_marginLeft="10dp"
-            android:text="2.7/113人" />
+            android:layout_marginLeft="10dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -152,8 +146,7 @@
 
         <TextView
             android:id="@+id/label"
-            style="@style/text_66_black_medium"
-            android:text="Wifi,电视,宽带,热水洗浴,免费饮料 " />
+            style="@style/text_66_black_medium" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -183,7 +176,7 @@
 
         <TextView
             style="@style/text_44_black_medium"
-            android:text="预定 " />
+            android:text="@string/hotel_detail_order" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -193,23 +186,21 @@
 
             <TextView
                 style="@style/text_44_black_medium"
-                android:text="入住 " />
+                android:text="@string/hotel_ruzhu" />
 
             <TextView
                 android:id="@+id/start_date"
-                style="@style/text_44_black_medium"
-                android:text="2016-2-13 离开2016-214 " />
+                style="@style/text_44_black_medium" />
 
             <TextView
                 style="@style/text_44_black_medium"
                 android:layout_marginLeft="5dp"
-                android:text="离开 " />
+                android:text="@string/hotel_likai" />
 
             <TextView
                 android:id="@+id/end_date"
                 style="@style/text_44_black_medium"
-                android:layout_marginRight="40dp"
-                android:text="2016-214 " />
+                android:layout_marginRight="40dp" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -239,7 +230,7 @@
 
         <TextView
             style="@style/text_44_black_medium"
-            android:text="团购 " />
+            android:text="@string/tuangou" />
     </LinearLayout>
 
     <View style="@style/line_horizontal" />
@@ -259,6 +250,6 @@
         android:layout_width="fill_parent"
         android:background="@color/app_bg_color"
         android:padding="@dimen/padding_leftandright"
-        android:text="附近团购 " />
+        android:text="@string/tuangou_near" />
 
 </LinearLayout>

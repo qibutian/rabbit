@@ -24,7 +24,7 @@ public class MapActivity extends RabbitBaseActivity {
 	@Override
 	public void initView() {
 
-		setTitle("地图");
+		setTitle(getString(R.string.map_title));
 		webV = (WebView) findViewById(R.id.content);
 		WebSettings webSettings = webV.getSettings();
 		webSettings.setJavaScriptEnabled(true);

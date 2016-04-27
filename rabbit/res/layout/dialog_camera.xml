@@ -30,7 +30,7 @@
                     style="@style/text_44_black_small"
                     android:paddingBottom="10dp"
                     android:paddingTop="10dp"
-                    android:text="拍照" />
+                    android:text="@string/photo_take" />
             </LinearLayout>
 
             <View
@@ -50,7 +50,7 @@
                     style="@style/text_44_black_small"
                     android:paddingBottom="10dp"
                     android:paddingTop="10dp"
-                    android:text="从相册选择" />
+                    android:text="@string/photo_picker" />
             </LinearLayout>
         </LinearLayout>
 
@@ -66,7 +66,7 @@
                 style="@style/text_44_black_small"
                 android:paddingBottom="10dp"
                 android:paddingTop="10dp"
-                android:text="取消" />
+                android:text="@string/photo_cancle" />
         </LinearLayout>
     </LinearLayout>
 

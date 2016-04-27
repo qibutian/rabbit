@@ -103,7 +103,7 @@ public class FoodListActivity extends RabbitBaseActivity {
 				JSONObject data = (JSONObject) jo;
 				TextView comment_desT = (TextView) itemV
 						.findViewById(R.id.comment_des);
-				comment_desT.setText("评分   "
+				comment_desT.setText(getString(R.string.food_comment_des)
 						+ JSONUtil.getString(data, "score") + "/"
 						+ JSONUtil.getString(data, "views"));
 				// TODO Auto-generated method stub
@@ -134,7 +134,7 @@ public class FoodListActivity extends RabbitBaseActivity {
 		} else {
 			tabV.setLeftText(getIntent().getStringExtra("title"));
 		}
-		tabV.setCentertText("附近", "");
+		tabV.setCentertText(getString(R.string.food_near), "");
 		tabV.setOnTabSelectListener(new OnTabSelectListener() {
 
 			@Override

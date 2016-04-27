@@ -14,7 +14,7 @@
 
         <TextView
             style="@style/text_44_black_medium"
-            android:text="查看更多" />
+            android:text="@string/look_more" />
     </LinearLayout>
 
     <View

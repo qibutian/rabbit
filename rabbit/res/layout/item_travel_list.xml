@@ -25,16 +25,14 @@
             <TextView
                 android:id="@+id/title"
                 style="@style/text_44_black_big"
-                android:singleLine="true"
-                android:text="青海蜜月" />
+                android:singleLine="true" />
 
             <TextView
                 android:id="@+id/des"
                 style="@style/text_66_black_small"
                 android:layout_marginTop="9dp"
                 android:ellipsize="end"
-                android:singleLine="true"
-                android:text="领结婚证后,结婚仪式之前的度假,快快行动吧,赶快加入有惊喜" />
+                android:singleLine="true" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -45,13 +43,11 @@
                     android:id="@+id/views"
                     style="@style/text_66_black_small"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="阅读521" />
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/adddateline"
-                    style="@style/text_66_black_small"
-                    android:text="2015-10-21" />
+                    style="@style/text_66_black_small" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

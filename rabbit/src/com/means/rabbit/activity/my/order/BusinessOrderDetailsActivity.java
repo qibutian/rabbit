@@ -69,115 +69,124 @@ public class BusinessOrderDetailsActivity extends RabbitBaseActivity {
 	private void getData() {
 		DhNet net = new DhNet(API.orderbusinessdetail);
 		net.addParam("orderid", orderid);
-		net.doGetInDialog("加载中...", new NetTask(self) {
+		net.doGetInDialog(getString(R.string.progress_doing),
+				new NetTask(self) {
 
-			@Override
-			public void doInUI(Response response, Integer transfer) {
+					@Override
+					public void doInUI(Response response, Integer transfer) {
 
-				if (response.isSuccess()) {
+						if (response.isSuccess()) {
 
-					final JSONObject jo = response.jSONFromData();
-					ViewUtil.bindView(findViewById(R.id.name),
-							JSONUtil.getString(jo, "title"));
+							final JSONObject jo = response.jSONFromData();
+							ViewUtil.bindView(findViewById(R.id.name),
+									JSONUtil.getString(jo, "title"));
 
-					ViewUtil.bindView(findViewById(R.id.price),
-							JSONUtil.getString(jo, "singleprice"));
-					ViewUtil.bindView(findViewById(R.id.code),
-							JSONUtil.getString(jo, "code"));
+							ViewUtil.bindView(findViewById(R.id.price),
+									JSONUtil.getString(jo, "singleprice"));
+							ViewUtil.bindView(findViewById(R.id.code),
+									JSONUtil.getString(jo, "code"));
 
-					ViewUtil.bindView(
-							findViewById(R.id.total_price),
-							getString(R.string.money_symbol)
-									+ JSONUtil.getDouble(jo, "orderprice"));
-					ViewUtil.bindView(findViewById(R.id.count),
-							JSONUtil.getString(jo, "count"));
+							ViewUtil.bindView(
+									findViewById(R.id.total_price),
+									getString(R.string.money_symbol)
+											+ JSONUtil.getDouble(jo,
+													"orderprice"));
+							ViewUtil.bindView(findViewById(R.id.count),
+									JSONUtil.getString(jo, "count"));
 
-					String orderTime = RabbitValueFix.getStandardTime(
-							JSONUtil.getLong(jo, "adddateline"), "yyyy-MM-dd");
+							String orderTime = RabbitValueFix.getStandardTime(
+									JSONUtil.getLong(jo, "adddateline"),
+									"yyyy-MM-dd");
 
-					ViewUtil.bindView(findViewById(R.id.order_time), orderTime);
-					ViewUtil.bindView(findViewById(R.id.tel),
-							JSONUtil.getString(jo, "buyerphone"));
+							ViewUtil.bindView(findViewById(R.id.order_time),
+									orderTime);
+							ViewUtil.bindView(findViewById(R.id.tel),
+									JSONUtil.getString(jo, "buyerphone"));
 
-					JSONObject credit_dataJo = JSONUtil.getJSONObject(jo,
-							"user_data");
+							JSONObject credit_dataJo = JSONUtil.getJSONObject(
+									jo, "user_data");
 
-					ViewUtil.bindView(findViewById(R.id.credit),
-							JSONUtil.getString(credit_dataJo, "credit"));
+							ViewUtil.bindView(findViewById(R.id.credit),
+									JSONUtil.getString(credit_dataJo, "credit"));
 
-					credit_s = JSONUtil.getDouble(credit_dataJo, "credit_s");
-					ViewUtil.bindView(findViewById(R.id.credit_s),
-							getString(R.string.money_symbol) + credit_s);
-					// ViewUtil.bindView(findViewById(R.id.ercode),
-					// JSONUtil.getString(jo, "ercode"));
+							credit_s = JSONUtil.getDouble(credit_dataJo,
+									"credit_s");
+							ViewUtil.bindView(findViewById(R.id.credit_s),
+									getString(R.string.money_symbol) + credit_s);
+							// ViewUtil.bindView(findViewById(R.id.ercode),
+							// JSONUtil.getString(jo, "ercode"));
 
-					ViewUtil.bindView(findViewById(R.id.shifu),
-							JSONUtil.getDouble(jo, "payprice") + "");
+							ViewUtil.bindView(findViewById(R.id.shifu),
+									JSONUtil.getDouble(jo, "payprice") + "");
 
-					final int paystatus = JSONUtil.getInt(jo, "orderstatus");
+							final int paystatus = JSONUtil.getInt(jo,
+									"orderstatus");
 
-					payB.setBackgroundResource(paystatus == 1 ? R.drawable.fillet_10_pink_bg
-							: R.drawable.fillet_10_green_bg);
-					payB.setText(paystatus == 1 ? "输入消费码" : "消费完成");
-					if (paystatus != 1) {
-						errcodeE.setEnabled(false);
-						errcodeE.setHint("已消费完成");
-					}
-					payB.setVisibility(View.VISIBLE);
-					payB.setTag(paystatus);
-					payB.setOnClickListener(new OnClickListener() {
-
-						@Override
-						public void onClick(View v) {
-							if (payB.getTag().equals(1)) {
-								usecode();
-							} else {
-								finish();
+							payB.setBackgroundResource(paystatus == 1 ? R.drawable.fillet_10_pink_bg
+									: R.drawable.fillet_10_green_bg);
+							payB.setText(paystatus == 1 ? getString(R.string.business_order_des)
+									: getString(R.string.business_order_des1));
+							if (paystatus != 1) {
+								errcodeE.setEnabled(false);
+								errcodeE.setHint(getString(R.string.business_order_des2));
 							}
-
-						}
-					});
-
-					findViewById(R.id.erweima).setOnClickListener(
-							new OnClickListener() {
+							payB.setVisibility(View.VISIBLE);
+							payB.setTag(paystatus);
+							payB.setOnClickListener(new OnClickListener() {
 
 								@Override
 								public void onClick(View v) {
-									callCapture();
-									// if (TextUtils.isEmpty(JSONUtil.getString(
-									// jo, "ercode_img"))) {
-									// return;
-									// }
-									//
-									// Intent it = new Intent(self,
-									// ErweimaActivity.class);
-									// it.putExtra("url", JSONUtil.getString(jo,
-									// "ercode_img"));
-									// startActivity(it);
+									if (payB.getTag().equals(1)) {
+										usecode();
+									} else {
+										finish();
+									}
+
 								}
 							});
 
-				}
+							findViewById(R.id.erweima).setOnClickListener(
+									new OnClickListener() {
 
-			}
-		});
+										@Override
+										public void onClick(View v) {
+											callCapture();
+											// if
+											// (TextUtils.isEmpty(JSONUtil.getString(
+											// jo, "ercode_img"))) {
+											// return;
+											// }
+											//
+											// Intent it = new Intent(self,
+											// ErweimaActivity.class);
+											// it.putExtra("url",
+											// JSONUtil.getString(jo,
+											// "ercode_img"));
+											// startActivity(it);
+										}
+									});
+
+						}
+
+					}
+				});
 	}
 
 	private void usecode() {
 		if (TextUtils.isEmpty(errcodeE.getText().toString())) {
-			showToast("请输入消费码!");
+			showToast(getString(R.string.business_order_des3));
 			return;
 		}
 		DhNet net = new DhNet(API.usecode);
 		net.addParam("orderid", orderid);
 		net.addParam("ercode", errcodeE.getText().toString());
-		net.doPostInDialog("提交中...", new NetTask(self) {
+		net.doPostInDialog(getString(R.string.submiting), new NetTask(self) {
 
 			@Override
 			public void doInUI(Response response, Integer transfer) {
 
 				if (response.isSuccess()) {
-					payB.setText("消费完成");
+					payB.setText(getString(R.string.business_order_des1));
 					payB.setBackgroundResource(R.drawable.fillet_10_green_bg);
 					payB.setTag(2);
 

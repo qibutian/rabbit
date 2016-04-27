@@ -21,28 +21,26 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal" >
-                
+
                 <TextView
                     android:id="@+id/lxname"
-                style="@style/text_44_black_big"
-                android:text="张三" />
+                    style="@style/text_44_black_big" />
+
                 <TextView
                     android:id="@+id/lxphone"
-                style="@style/text_44_black_big"
-                android:layout_marginLeft="3dp"
-                android:text="15111111111" />
-                
+                    style="@style/text_44_black_big"
+                    android:layout_marginLeft="3dp" />
+
                 <TextView
                     android:id="@+id/dft"
-                style="@style/text_white_big"
-                android:layout_marginLeft="15dp"
-                android:paddingLeft="3dp"
-                android:paddingRight="3dp"
-                android:paddingTop="2dp"
-                android:paddingBottom="2dp"
-                android:background="@drawable/fillet_10_green_bg"
-                android:text="@string/item_shippingaddress_default" />
-                
+                    style="@style/text_white_big"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/fillet_10_green_bg"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="3dp"
+                    android:paddingRight="3dp"
+                    android:paddingTop="2dp"
+                    android:text="@string/item_shippingaddress_default" />
             </LinearLayout>
 
             <LinearLayout
@@ -50,12 +48,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:orientation="horizontal" >
-                
+
                 <TextView
                     android:id="@+id/lxaddress"
-                style="@style/text_66_black_small"
-                android:text="中国江苏省南京市秦淮区中山东路1号210000" />
-                
+                    style="@style/text_66_black_small" />
             </LinearLayout>
         </LinearLayout>
 

@@ -15,8 +15,7 @@
             android:id="@+id/pic"
             android:layout_width="83dp"
             android:layout_height="83dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/model_tuangou" />
+            android:scaleType="fitXY" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -27,14 +26,12 @@
 
             <TextView
                 android:id="@+id/title"
-                style="@style/text_44_black_big"
-                android:text="李姐重庆小面(万达店)" />
+                style="@style/text_44_black_big" />
 
             <TextView
                 android:id="@+id/des"
                 style="@style/text_66_black_small"
-                android:layout_marginTop="6dp"
-                android:text="没有字段" />
+                android:layout_marginTop="6dp" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -46,21 +43,18 @@
                     android:id="@+id/price"
                     style="@style/text_44_black_medium"
                     android:gravity="left"
-                    android:text="￥18/人"
                     android:textColor="@color/text_2B_green" />
 
                 <TextView
                     android:id="@+id/oldprice"
                     style="@style/text_66_black_small"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:text="277" />
+                    android:layout_marginRight="10dp" />
 
                 <TextView
                     android:id="@+id/sell_count"
                     style="@style/text_66_black_small"
-                    android:layout_marginRight="15dp"
-                    android:text="已售112" />
+                    android:layout_marginRight="15dp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

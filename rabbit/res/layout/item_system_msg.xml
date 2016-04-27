@@ -37,8 +37,7 @@
                 <TextView
                     android:id="@+id/content"
                     style="@style/text_44_black_medium"
-                    android:layout_marginRight="20dp"
-                    android:text="您的订单支付成功！您的订单支付成功！您的订单支付成功！您的订单支付成功！" />
+                    android:layout_marginRight="20dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -58,8 +57,7 @@
 
                 <TextView
                     android:id="@+id/dateline"
-                    style="@style/text_66_black_small"
-                    android:text="两分钟前" />
+                    style="@style/text_66_black_small"/>
             </LinearLayout>
         </LinearLayout>
 

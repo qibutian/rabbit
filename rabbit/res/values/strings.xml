@@ -2,10 +2,9 @@
 <resources>
 
     <string name="app_name">LazyBunny</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
     <string name="progress_doing">加载中...</string>
     <string name="wipe_cache_clear">缓存清理成功</string>
+    <string name="money_hint">￥0</string>
     <string name="money_symbol">￥</string>
     <string name="income">收入</string>
     <string name="expend">支出</string>
@@ -23,6 +22,11 @@
     <string name="myfragment_collect">收藏</string>
     <string name="myfragment_current_account">现金账户</string>
     <string name="myfragment_logout">退出当前账户</string>
+    <string name="exit_des">再按一次退出程序</string>
+    <string name="login_des">登录中...</string>
+    <string name="submiting">提交中...</string>
+    <string name="submit_success">提交成功</string>
+    <string name="more">更多</string>
     <!-- 系统消息 -->
     <string name="systemmsg">系统消息</string>
     <!-- 猜你喜欢 -->
@@ -33,6 +37,17 @@
     <string name="editinfo_nickname">昵称</string>
     <string name="editinfo_passwordr">密码</string>
     <string name="editinfo_phone">手机</string>
+    <string name="editinfo_name_des">昵称不能为空</string>
+    <string name="editinfo_name_des1">昵称位数不能超过14位</string>
+    <string name="editinfo_head_success">更换头像成功</string>
+    <string name="editinfo_success">修改成功</string>
+    <string name="editinfo_tel_des">手机号格式不正确</string>
+    <string name="editinfo_tel_des1">请输入手机号</string>
+    <string name="editinfo_code_des">请输入验证码 </string>
+    <string name="editinfo_code_release">重新发送</string>
+    <string name="editinfo_pswd_des">密码为6-15位字母和数字</string>
+    <string name="editinfo_pswd_des1">密码中必须包含字母</string>
+
     <!-- 修改昵称 -->
     <string name="edit_nickname">昵称</string>
     <string name="edit_save">保存修改</string>
@@ -83,10 +98,13 @@
     <!-- 翻译助手 -->
     <string name="translate">翻译助手</string>
     <string name="translate_hint">请输入中文···</string>
+    <string name="translate_content_hint">请输入翻译内容</string>
     <string name="translate_text">中文 </string>
     <string name="translate_language">语言</string>
     <string name="translate_translate">翻译</string>
     <string name="translate_result">翻译结果</string>
+    <string name="translate_ing">翻译中...</string>
+
     <!-- 选择语言 -->
     <string name="SelectLanguage_chinese">中文</string>
     <string name="translate_chinese">中文</string>
@@ -131,6 +149,7 @@
     <string name="login">登陆</string>
     <string name="login_forget_pswd">忘记密码</string>
     <string name="login_register">注册</string>
+    <string name="login_name_des">请输入昵称/姓名</string>
 
     <!-- 注册 -->
     <string name="register_phone_hint">请输入手机号</string>
@@ -141,6 +160,8 @@
     <string name="register_code">验证码</string>
     <string name="register">注册</string>
     <string name="register_get_code">获取验证码</string>
+    <string name="register_pswd_des">请输入8位以内用户名</string>
+    <string name="register_success">注册成功</string>
 
     <!-- 找回密码 -->
     <string name="forget_pswd">密码重置</string>
@@ -180,12 +201,16 @@
     <string name="grogshop_reality_money">实付金额</string>
     <string name="grogshop_submit_order">提交订单</string>
     <string name="jifen_init">请输入积分</string>
+    <string name="hotel_ruzhu">入住</string>
+    <string name="hotel_likai">离开</string>
+    <string name="hotel_des">晚</string>
 
     <!-- 附近弹框 -->
     <string name="sort_one">智能排序</string>
     <string name="sort_two">离我最近</string>
     <string name="sort_three">口碑最好</string>
     <string name="sort_four">人气最高</string>
+    <string name="sort">排序</string>
 
     <!-- 我的订单分类弹框 -->
     <string name="my_order_pop_all">全部</string>
@@ -212,6 +237,8 @@
     <string name="post_comment_txt">请说些什么吧^-^</string>
     <string name="post_comment_grade">评分</string>
     <string name="post_comment_submit">提交</string>
+    <string name="uploading">上传中...</string>
+    <string name="release_success">发布成功</string>
 
     <!-- 外卖订单 -->
     <string name="takeawayorder">外卖订单</string>
@@ -332,9 +359,12 @@
     <string name="withdraw_card_cardid">卡号</string>
     <string name="withdraw_card_name">姓名</string>
     <string name="withdraw_card_submit">提交</string>
-    <string name="withdraw_card_input_money">请输入提现金额</string>
-    <string name="withdraw_card_input_cardid">请输入卡号</string>
-    <string name="withdraw_card_input_name">请输入姓名</string>
+    <string name="withdrawcard_money_des">请输入提现金额</string>
+    <string name="withdrawcard_money_des1">提现金额需大于0元</string>
+    <string name="withdrawcard_code_des">请输入卡号</string>
+    <string name="withdrawcard_name_des">请输入姓名</string>
+    <string name="withdrawcard_release_des">已提交申请</string>
+
     <!-- 账户充值 -->
     <string name="recharge">账户充值</string>
     <string name="recharge_money">充值金额</string>
@@ -345,15 +375,17 @@
     <!-- 关于我们 -->
     <string name="about_us">关于我们</string>
     <!-- 旅行小密 -->
-    <string name="travel">旅行小密</string>
+    <string name="travel">旅行小秘</string>
     <!-- 旅行小密 -->
     <string name="travel_details">旅游详情</string>
     <!-- 酒店详情 -->
     <string name="hotel_detail">酒店详情</string>
+    <string name="hotel_detail_order">预定</string>
     <!-- 酒店 -->
     <string name="hotel_list">酒店</string>
     <!-- 团购 -->
     <string name="tuangou">团购</string>
+    <string name="tuangou_near">附近团购</string>
     <!-- 商家详情 -->
     <string name="shop_detail">商家详情</string>
     <string name="shop_detail_time">营业时间：</string>
@@ -385,6 +417,8 @@
     <string name="business_order_details">商家订单详情</string>
     <!-- 代购 -->
     <string name="Hotboom">代购</string>
+    <string name="Hotboom_brand">品牌</string>
+
     <!-- 积分明细 -->
     <string name="my_integral">积分明细</string>
     <!-- 收藏列表 -->
@@ -397,6 +431,7 @@
     <string name="zhuanxiangtese">专享特色</string>
     <string name="xiuxianyule">休闲娱乐</string>
     <string name="chuxingfuwu">出行服务</string>
+    <string name="suishenfanyi">随身翻译</string>
     <string name="meishi">美食</string>
     <string name="all">全部</string>
 
@@ -405,54 +440,66 @@
     <string name="feedback_hint">谢谢您帮我们改进平台</string>
     <string name="feedback_submit">提交</string>
     <string name="erweima">二维码</string>
-    <string name="taking_pictures">Taking Pictures</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="title_activity_register">RegisterActivity</string>
-    <string name="title_activity_setting">SettingActivity</string>
-    <string name="title_activity_my_red_packet">MyRedPacketActivity</string>
-    <string name="title_activity_payment">PaymentActivity</string>
-    <string name="title_activity_campus_select">CampusSelectActivity</string>
-    <string name="title_activity_my_commission">MyCommissionActivity</string>
-    <string name="title_activity_change_password">ChangePasswordActivity</string>
-    <string name="title_activity_consignee_address">ConsigneeAddressActivity</string>
-    <string name="title_activity_splash">SplashActivity</string>
-    <string name="title_activity_guidance">GuidanceActivity</string>
-    <string name="title_activity_about">AboutActivity</string>
-    <string name="title_activity_forget_password">ForgetPasswordActivity</string>
-    <string name="title_activity_user_protocol">UserProtocolActivity</string>
-    <string name="title_activity_edit_info">EditInfoActivity</string>
-    <string name="title_activity_system_msg">SystemMsgActivity</string>
-    <string name="title_activity_my_order">MyOrderActivity</string>
-    <string name="title_activity_business_order">BusinessOrderActivity</string>
-    <string name="title_activity_business_order_details">BusinessOrderDetailsActivity</string>
-    <string name="title_activity_shipping_address">ShippingAddressActivity</string>
-    <string name="title_activity_add_shipping_address">AddShippingAddressActivity</string>
-    <string name="title_activity_my_collect">MyCollectActivity</string>
-    <string name="title_activity_my_integral">MyIntegralActivity</string>
-    <string name="title_activity_select_language">SelectLanguageActivity</string>
-    <string name="title_activity_select_city">SelectCityActivity</string>
-    <string name="title_activity_all_item">AllItemActivity</string>
-    <string name="title_activity_favorable_pay_main">FavorablePayMainActivity</string>
-    <string name="title_activity_group_order">GroupOrderActivity</string>
-    <string name="title_activity_grogshop_order">GrogshopOrderActivity</string>
-    <string name="title_activity_take_away_order">TakeAwayOrderActivity</string>
-    <string name="title_activity_groupshop_pay">GroupshopPayActivity</string>
-    <string name="title_activity_take_away_pay">TakeAwayPayActivity</string>
-    <string name="title_activity_instead_shopping">InsteadShoppingActivity</string>
-    <string name="title_activity_instead_shopping_pay">InsteadShoppingPayActivity</string>
-    <string name="title_activity_edit_nick_name">EditNickNameActivity</string>
-    <string name="title_activity_edit_phone">EditPhoneActivity</string>
-    <string name="title_activity_about_us">AboutUsActivity</string>
-    <string name="title_activity_post_comment_main">PostCommentMainActivity</string>
-    <string name="title_activity_financial_management">FinancialManagementActivity</string>
-    <string name="title_activity_pay_order">PayOrderActivity</string>
-    <string name="title_activity_withdraw_card">WithdrawCardActivity</string>
-    <string name="title_activity_recharge">RechargeActivity</string>
-    <string name="title_activity_finance_detail">FinanceDetailActivity</string>
-    <string name="title_activity_district">DistrictActivity</string>
-    <string name="title_activity_feedback">FeedbackActivity</string>
-    <string name="title_activity_search">SearchActivity</string>
-    <string name="title_activity_tuangou">TuangouActivity</string>
-    <string name="title_activity_guess_like">GuessLikeActivity</string>
+    <string name="taking_pictures">拍照</string>
+
+    <!-- 首页 -->
+    <string name="home_selled">已售</string>
+
+    <!-- 地图 -->
+    <string name="map_title">地图</string>
+
+    <!-- 美食 -->
+    <string name="food_comment_des">评分  </string>
+    <string name="food_near">附近 </string>
+
+    <!-- 酒店详情 -->
+    <string name="hotel_people">/人 </string>
+    <string name="hotel_price_des">起</string>
+
+    <!-- 酒店列表 -->
+    <string name="hotel_comment_des">评论 </string>
+
+    <!-- 订单状态 -->
+    <string name="order_status_complete">已完成</string>
+    <string name="order_status_cancle">已取消</string>
+    <string name="order_status_pay">待支付</string>
+    <string name="order_status_payed">已支付</string>
+    <string name="order_status_failed">支付失败</string>
+    <string name="order_status_comment">待评论</string>
+    <string name="order_status_use">待消费</string>
+    <string name="order_status_release_comment">发布评论</string>
+    <string name="order_status_pay_order">支付订单</string>
+
+    <!-- 订单支付 -->
+    <string name="pay_paying">支付中...</string>
+    <string name="pay_success">支付成功</string>
+
+    <!-- 优惠买单 -->
+    <string name="favorable_des">本单最多只能使用</string>
+    <string name="favorable_credit">积分</string>
+    <string name="favorable_des1">你输入的积分超过了您的积分,请输入小于</string>
+    <string name="favorable_num">的数字!</string>
+    <string name="favorable_money">请输入消费金额!</string>
+
+    <!-- 旅行小秘 -->
+    <string name="travel_des">阅读 </string>
+    <string name="travel_time">发布时间  </string>
+
+    <!-- 商家订单 -->
+    <string name="business_order_des">输入消费码</string>
+    <string name="business_order_des1">消费完成</string>
+    <string name="business_order_des2">已消费完成</string>
+    <string name="business_order_des3">请输入消费码!</string>
+
+    <!-- 代购详情 -->
+    <string name="gooddetail_buy">立即购买</string>
+    <string name="gooddetail_buy_des">购买须知</string>
+    <!-- 拍照 -->
+    <string name="photo_take">拍照</string>
+    <string name="photo_picker">从相册选择</string>
+    <string name="photo_cancle">取消</string>
+    <string name="look_detail">查看图文详情</string>
+    <string name="look_more">查看更多</string>
+    <string name="translate_des">请对准麦克风说话</string>
 
 </resources>

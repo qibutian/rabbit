@@ -14,7 +14,7 @@
 
         <TextView
             style="@style/text_44_black_medium"
-            android:text="查看图文详情"
+            android:text="@string/look_detail"
             android:textColor="@color/text_2B_green" />
     </LinearLayout>
 

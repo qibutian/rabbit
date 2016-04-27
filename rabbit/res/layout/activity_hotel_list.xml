@@ -39,14 +39,13 @@
 
             <TextView
                 style="@style/text_66_black_medium"
-                android:text="入住 " />
+                android:text="@string/hotel_ruzhu" />
 
             <TextView
                 android:id="@+id/start_date"
                 style="@style/text_66_black_medium"
                 android:drawablePadding="2dp"
-                android:drawableRight="@drawable/icon_down"
-                android:text="入2016-2-7" />
+                android:drawableRight="@drawable/icon_down" />
         </LinearLayout>
 
         <LinearLayout
@@ -58,14 +57,13 @@
 
             <TextView
                 style="@style/text_66_black_medium"
-                android:text="离开" />
+                android:text="@string/hotel_likai" />
 
             <TextView
                 android:id="@+id/end_date"
                 style="@style/text_66_black_medium"
                 android:drawablePadding="2dp"
-                android:drawableRight="@drawable/icon_down"
-                android:text="2016-2-8" />
+                android:drawableRight="@drawable/icon_down" />
         </LinearLayout>
     </LinearLayout>
 

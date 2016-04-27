@@ -81,7 +81,7 @@ public class SplashActivity extends RabbitBaseActivity {
 		net.addParam("pswd", per.password);
 		// net.addParam("phone", "13852286536");
 		// net.addParam("password", "123");
-		net.doPostInDialog("登录中...", new NetTask(self) {
+		net.doPostInDialog(getString(R.string.login_des), new NetTask(self) {
 
 			@Override
 			public void doInUI(Response response, Integer transfer) {

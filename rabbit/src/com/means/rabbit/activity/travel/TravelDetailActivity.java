@@ -93,12 +93,12 @@ public class TravelDetailActivity extends RabbitBaseActivity {
 							"utf-8", null);
 					ViewUtil.bindView(
 							adddatelineT,
-							"发布时间 "
+							getString(R.string.travel_time)
 									+ DateUtils.dateToStr(new Date(Long
 											.parseLong(JSONUtil.getString(jo,
 													"adddateline")) * 1000)));
 					ViewUtil.bindView(viewsT,
-							"阅读 " + JSONUtil.getString(jo, "views"));
+							getString(R.string.travel_des) + JSONUtil.getString(jo, "views"));
 				}
 			}
 		});
