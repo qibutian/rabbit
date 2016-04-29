@@ -1,5 +1,7 @@
 package com.means.rabbit;
 
+import java.util.Locale;
+
 import net.duohuo.dhroid.Const;
 import net.duohuo.dhroid.adapter.ValueFix;
 import net.duohuo.dhroid.dialog.IDialog;
@@ -12,9 +14,13 @@ import net.duohuo.dhroid.util.UserLocation;
 import net.duohuo.dhroid.util.UserLocation.OnLocationChanged;
 import android.app.Application;
 import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
+import com.means.rabbit.api.API;
 import com.means.rabbit.utils.RabbitPerference;
 import com.means.rabbit.views.NomalDialog;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
@@ -36,6 +42,8 @@ public class RabbitApplication extends Application implements
 	public IDialog dialoger;
 
 	public static ImageLoaderConfiguration imageconfig;
+
+	String Baseurl;
 
 	public static RabbitApplication getInstance() {
 		return instance;
@@ -124,6 +132,32 @@ public class RabbitApplication extends Application implements
 			location.init(this);
 		}
 
+		Resources resources = this.getResources();// 获得res资源对象
+		Configuration config = resources.getConfiguration();// 获得设置对象
+		DisplayMetrics dm = resources.getDisplayMetrics();// 获得屏幕参数：主要是分辨率，像素等。
+		if (per.langType != 0) {
+			if (per.langType == 1) {
+				config.locale = Locale.CHINA; // 简体中文
+				setBaseUrl(1);
+			} else if (per.langType == 2) {
+				config.locale = Locale.ENGLISH; // 简体中文
+				setBaseUrl(2);
+			} else if (per.langType == 3) {
+				config.locale = new Locale("my");
+				setBaseUrl(3);
+			}
+			resources.updateConfiguration(config, dm);
+
+		} else {
+			if (config.locale == Locale.ENGLISH) {
+				setBaseUrl(2);
+			} else if (config.locale == new Locale("my")) {
+				setBaseUrl(3);
+			} else {
+				setBaseUrl(1);
+			}
+		}
+
 	}
 
 	@Override
@@ -133,6 +167,30 @@ public class RabbitApplication extends Application implements
 		// intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		// startActivity(intent);
 		android.os.Process.killProcess(android.os.Process.myPid());
+	}
+
+	public String getBaseUrl() {
+		return Baseurl;
+	}
+
+	public void setBaseUrl(int type) {
+		switch (type) {
+		case 1:
+			Baseurl = "http://cn.lazybunny.c.wanruankeji.com";
+			break;
+
+		case 2:
+			Baseurl = "http://en.lazybunny.c.wanruankeji.com";
+			break;
+
+		case 3:
+			Baseurl = "http://malaysia.lazybunny.c.wanruankeji.com";
+			break;
+
+		default:
+			break;
+		}
+
 	}
 
 }

@@ -10,9 +10,9 @@
     <string name="listview_last_loading_time">上一次刷新:%1$s</string>
     <string name="listview_release_to_loading">松开刷新</string>
     <string name="listview_time_formart">yyyy-MM-dd HH:mm:ss</string>
-    <string name="nonet">没有可用的网络</string>
-    <string name="net_bad">当前网络信号不好</string>
-    <string name="loading">加载中...</string>
-    <string name="net_error">网络超时</string>
+    <string name="loading">loading...</string>
+    <string name="nonet">Not available network</string>
+    <string name="net_bad">Current network signal is poor</string>
+    <string name="net_error">net error</string>
 
 </resources>

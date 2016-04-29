@@ -17,6 +17,7 @@ public class RabbitPerference extends Perference {
 	public String catid = "1";
 	public String cityname;
 	public String password;
+	public int langType = 0;
 
 	public void clear() {
 		this.name = "";
@@ -127,5 +128,14 @@ public class RabbitPerference extends Perference {
 		this.isFirst = isFirst;
 	}
 
+	public int getLangType() {
+		return langType;
+	}
+
+	public void setLangType(int langType) {
+		this.langType = langType;
+	}
 	
+	
+
 }

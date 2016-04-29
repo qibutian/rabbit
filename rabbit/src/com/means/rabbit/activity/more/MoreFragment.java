@@ -21,6 +21,7 @@ import com.means.rabbit.activity.comment.PostCommentMainActivity;
 import com.means.rabbit.activity.finance.FinanceDetailActivity;
 import com.means.rabbit.activity.main.MainActivity;
 import com.means.rabbit.utils.FileUtil;
+import com.means.rabbit.views.dialog.ChangLanguageDialog;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
@@ -108,8 +109,10 @@ public class MoreFragment extends Fragment implements OnClickListener {
 			break;
 		// 语言选择
 		case R.id.langswitcher:
-			it = new Intent(getActivity(), PostCommentMainActivity.class);
-			startActivity(it);
+
+			ChangLanguageDialog dialog = new ChangLanguageDialog(getActivity());
+			dialog.show();
+
 			break;
 		// 反馈
 		case R.id.feedback:

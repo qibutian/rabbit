@@ -6,6 +6,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 import net.duohuo.dhroid.Const;
+import net.duohuo.dhroid.R;
 import net.duohuo.dhroid.dialog.IDialog;
 import net.duohuo.dhroid.ioc.IocContainer;
 import net.duohuo.dhroid.net.cache.CacheManager;
@@ -25,6 +26,8 @@ import org.apache.http.cookie.Cookie;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
@@ -420,7 +423,21 @@ public class DhNet {
 			}
 		}
 
-		String errorjson = "{'success':false,'msg':'没有可用的网络','code':'noNetError'}";
+		// String errorjson =
+		// "{'success':false,'msg':'没有可用的网络','code':'noNetError'}";
+
+		String errorjson = null;
+		try {
+			errorjson = new JSONObject()
+					.put("success", false)
+					.put("msg",
+							DhNet.this.task.mContext.getString(R.string.nonet))
+					.put("code", "noNetError").toString();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		Response response = new Response(errorjson);
 		DhNet.this.task.transfer(response, NetTask.TRANSFER_DOERROR);
 	}
@@ -448,15 +465,54 @@ public class DhNet {
 						NetTask.TRANSFER_DOUI_ForCache);
 			}
 		}
-		String errorjson;
+		String errorjson = null;
 		if (lastSpeed < HttpManager.DEFAULT_SOCKET_TIMEOUT) {
-			errorjson = "{'success':false,'msg':'网络超时','code':'timeout'}";
+
+			try {
+				errorjson = new JSONObject()
+						.put("success", false)
+						.put("msg",
+								DhNet.this.task.mContext
+										.getString(R.string.net_error))
+						.put("code", "timeout").toString();
+			} catch (JSONException je) {
+				// TODO Auto-generated catch block
+				je.printStackTrace();
+			}
+
+			// errorjson = "{'success':false,'msg':'网络超时','code':'timeout'}";
 		} else {
 			// 同时提示网络问题
 			if (isFromCache) {
-				errorjson = "{'success':false,'msg':'当前网络信号不好,使用缓存数据','code':'netErrorButCache'}";
+				try {
+					errorjson = new JSONObject()
+							.put("success", false)
+							.put("msg",
+									DhNet.this.task.mContext
+											.getString(R.string.net_bad))
+							.put("code", "netErrorButCache").toString();
+				} catch (JSONException je) {
+					// TODO Auto-generated catch block
+					je.printStackTrace();
+				}
+
+				// errorjson =
+				// "{'success':false,'msg':'当前网络信号不好,使用缓存数据','code':'netErrorButCache'}";
 			} else {
-				errorjson = "{'success':false,'msg':'当前网络信号不好','code':'netError'}";
+
+				try {
+					errorjson = new JSONObject()
+							.put("success", false)
+							.put("msg",
+									DhNet.this.task.mContext
+											.getString(R.string.net_bad))
+							.put("code", "net_bad").toString();
+				} catch (JSONException je) {
+					// TODO Auto-generated catch block
+					je.printStackTrace();
+				}
+				// errorjson =
+				// "{'success':false,'msg':'当前网络信号不好','code':'net_bad'}";
 			}
 		}
 
@@ -477,7 +533,8 @@ public class DhNet {
 		if (dialoger != null) {
 			Dialog dialog;
 			if (TextUtils.isEmpty(msg)) {
-				dialog = dialoger.showProgressDialog(task.mContext, "加载中...");
+				dialog = dialoger.showProgressDialog(task.mContext,
+						task.mContext.getString(R.string.loading));
 			} else {
 				dialog = dialoger.showProgressDialog(task.mContext, msg);
 			}
