@@ -76,7 +76,7 @@ public class SplashActivity extends RabbitBaseActivity {
 
 	private void login() {
 
-		DhNet net = new DhNet(API.login);
+		DhNet net = new DhNet(new API().login);
 		net.addParam("name", per.name);
 		net.addParam("pswd", per.password);
 		// net.addParam("phone", "13852286536");
@@ -103,6 +103,7 @@ public class SplashActivity extends RabbitBaseActivity {
 					per.setMsgcount(JSONUtil.getString(jo, "msgcount"));
 					per.setOrdercount(JSONUtil.getString(jo, "ordercount"));
 					per.setGroupname(JSONUtil.getString(jo, "groupname"));
+					per.setEmail(JSONUtil.getString(jo, "email"));
 					per.commit();
 
 					User user = User.getInstance();
@@ -141,7 +142,7 @@ public class SplashActivity extends RabbitBaseActivity {
 	}
 
 	private void getCity(final String cityname) {
-		DhNet net = new DhNet(API.getcity);
+		DhNet net = new DhNet(new API().getcity);
 		net.addParam("city", cityname);
 		net.doGetInDialog(new NetTask(self) {
 

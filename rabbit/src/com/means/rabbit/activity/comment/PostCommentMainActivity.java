@@ -214,7 +214,7 @@ public class PostCommentMainActivity extends RabbitBaseActivity {
 
 	private void uploadPic(String path) {
 		showProgressDialog(getString(R.string.uploading));
-		DhNet net = new DhNet(API.uploadImg);
+		DhNet net = new DhNet(new API().uploadImg);
 		net.upload("upfile", new File(path), new NetTask(self) {
 			@Override
 			public void doInUI(Response response, Integer transfer) {
@@ -272,7 +272,7 @@ public class PostCommentMainActivity extends RabbitBaseActivity {
 			return;
 		}
 
-		DhNet net = new DhNet(API.addcomment);
+		DhNet net = new DhNet(new API().addcomment);
 		net.addParam("contentid", getIntent().getStringExtra("contentid")); // 团购/代购ID
 		net.addParam("content", content);
 		net.addParam("score", ratingBar.getRating());

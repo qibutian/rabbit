@@ -159,7 +159,7 @@ public class InsteadShoppingActivity extends RabbitBaseActivity {
 	}
 
 	private void getData() {
-		DhNet net = new DhNet(API.preDaigouOrder);
+		DhNet net = new DhNet(new API().preDaigouOrder);
 		net.addParam("itemid", daigouId);
 		net.doGetInDialog(new NetTask(self) {
 
@@ -247,7 +247,7 @@ public class InsteadShoppingActivity extends RabbitBaseActivity {
 
 	private void submit() {
 
-		DhNet net = new DhNet(API.addDaigouOrder);
+		DhNet net = new DhNet(new API().addDaigouOrder);
 		net.addParam("itemid", daigouId);
 
 		net.addParam("buyernote", msgE.getText().toString());

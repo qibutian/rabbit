@@ -99,7 +99,7 @@ public class LoginActivity extends RabbitBaseActivity implements
 			showToast(getString(R.string.editinfo_pswd_des));
 			return;
 		}
-		DhNet smsNet = new DhNet(API.login);
+		DhNet smsNet = new DhNet(new API().login);
 		smsNet.addParam("pswd", password);
 		smsNet.addParam("name", nickname);
 
@@ -126,6 +126,7 @@ public class LoginActivity extends RabbitBaseActivity implements
 					per.setMsgcount(JSONUtil.getString(jo, "msgcount"));
 					per.setOrdercount(JSONUtil.getString(jo, "ordercount"));
 					per.setGroupname(JSONUtil.getString(jo, "groupname"));
+					per.setEmail(JSONUtil.getString(jo, "email"));
 					per.setPassword(password);
 					per.commit();
 					isLogin = true;

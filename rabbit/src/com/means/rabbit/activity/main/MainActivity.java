@@ -6,9 +6,14 @@ import org.json.JSONObject;
 import net.duohuo.dhroid.activity.ActivityTack;
 import net.duohuo.dhroid.dialog.IDialog;
 import net.duohuo.dhroid.ioc.IocContainer;
+import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.net.JSONUtil;
+import net.duohuo.dhroid.net.NetTask;
+import net.duohuo.dhroid.net.Response;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -33,6 +38,7 @@ import com.means.rabbit.activity.merchants.MerchatsFragment;
 import com.means.rabbit.activity.more.MoreFragment;
 import com.means.rabbit.activity.my.MyIndexFragment;
 import com.means.rabbit.activity.travel.TravelFragment;
+import com.means.rabbit.api.API;
 import com.means.rabbit.bean.BackHomeEB;
 import com.means.rabbit.bean.CityEB;
 import com.means.rabbit.bean.User;
@@ -40,6 +46,7 @@ import com.means.rabbit.manage.UserInfoManage;
 import com.means.rabbit.manage.UserInfoManage.LoginCallBack;
 import com.means.rabbit.utils.RabbitPerference;
 import com.means.rabbit.utils.RabbitUtils;
+import android.app.AlertDialog.Builder;
 
 import de.greenrobot.event.EventBus;
 
@@ -50,16 +57,12 @@ public class MainActivity extends FragmentActivity {
 
 	private LinearLayout tabV;
 
-	View city_layoutV;
-
-	View search_layoutV;
-
-	ImageView translateI;
-
 	Handler mHandler;
 	private static boolean isExit = false;
 
-	public final int REQUEST_CODE = 10086;
+	public static final int REQUEST_CODE = 10086;
+
+	HomePageFragment homeFragment;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -67,78 +70,31 @@ public class MainActivity extends FragmentActivity {
 		setContentView(R.layout.activity_main);
 		EventBus.getDefault().register(this);
 		ActivityTack.getInstanse().addActivity(this);
+		homeFragment = new HomePageFragment();
 		initView();
 		initTab();
 		setTab(0);
+		updateApp();
+	}
+
+	public void restart() {
+		finish();
+		Intent i = new Intent(this, MainActivity.class);
+		startActivity(i);
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		EventBus.getDefault().unregister(this);
 	}
 
 	private void initView() {
-
-		TextView cityT = (TextView) findViewById(R.id.city);
-
-		RabbitPerference per = IocContainer.getShare().get(
-				RabbitPerference.class);
-		per.load();
-
-		cityT.setText(per.cityname);
 
 		mHandler = new Handler();
 		// TODO Auto-generated method stub
 		fm = getSupportFragmentManager();
 		tabV = (LinearLayout) findViewById(R.id.tab);
-
-		city_layoutV = (View) findViewById(R.id.city_layout);
-		city_layoutV.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent it = new Intent(MainActivity.this,
-						SelectCityActivity.class);
-				startActivity(it);
-			}
-		});
-
-		search_layoutV = findViewById(R.id.search_layout);
-		search_layoutV.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				Intent it = new Intent(MainActivity.this, SearchActivity.class);
-				startActivity(it);
-			}
-		});
-		translateI = (ImageView) findViewById(R.id.pic_translate);
-		translateI.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent it = new Intent(MainActivity.this,
-						TranslateActivity.class);
-				startActivity(it);
-			}
-		});
-
-		findViewById(R.id.top_erweima).setOnClickListener(
-				new OnClickListener() {
-
-					@Override
-					public void onClick(View arg0) {
-						Intent intent = new Intent();
-						intent.setAction(Intents.Scan.ACTION);
-						// intent.putExtra(Intents.Scan.MODE,
-						// Intents.Scan.QR_CODE_MODE);
-						intent.putExtra(Intents.Scan.CHARACTER_SET, "UTF-8");
-						intent.putExtra(Intents.Scan.WIDTH, 600);
-						intent.putExtra(Intents.Scan.HEIGHT, 600);
-						// intent.putExtra(Intents.Scan.PROMPT_MESSAGE,
-						// "type your prompt message");
-						intent.setClass(MainActivity.this,
-								CaptureActivity.class);
-						startActivityForResult(intent, REQUEST_CODE);
-					}
-				});
 
 	}
 
@@ -189,7 +145,7 @@ public class MainActivity extends FragmentActivity {
 			if (i == index) {
 				switch (i) {
 				case 0: // 首页
-					switchContent(HomePageFragment.getInstance());
+					switchContent(homeFragment);
 					imgI.setImageResource(R.drawable.icon_home_f);
 					textT.setTextColor(getResources().getColor(
 							R.color.text_2B_green));
@@ -355,6 +311,67 @@ public class MainActivity extends FragmentActivity {
 				break;
 			}
 		}
+	}
+
+	public void updateApp() {
+		final String mCurrentVersion = getAppVersion();
+		DhNet net = new DhNet(new API().update);
+		net.doGet(new NetTask(MainActivity.this) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+				if (response.isSuccess()) {
+					JSONObject jo = response.jSONFromData();
+					String version = JSONUtil.getString(jo, "android_version");
+					if (0 < version.compareTo(mCurrentVersion)) {
+						showUpdateDialog(jo);
+					}
+				}
+			}
+		});
+	}
+
+	private String getAppVersion() {
+		String versionName = null;
+		try {
+			String pkName = this.getPackageName();
+			versionName = this.getPackageManager().getPackageInfo(pkName, 0).versionName;
+
+		} catch (Exception e) {
+			return null;
+		}
+		return versionName;
+	}
+
+	private void showUpdateDialog(final JSONObject jo) {
+		Builder builder = new Builder(this);
+		builder.setTitle(getString(R.string.update_title)
+				+ JSONUtil.getString(jo, "android_version"));
+		builder.setMessage(JSONUtil.getString(jo, "android_notes"));
+		builder.setPositiveButton(getString(R.string.update),
+				new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.dismiss();
+						Intent it = new Intent(Intent.ACTION_VIEW);
+						Uri uri = Uri.parse(JSONUtil.getString(jo,
+								"android_url"));
+						it.setData(uri);
+						startActivity(it);
+					}
+
+				});
+		builder.setNegativeButton(getString(R.string.photo_cancle),
+				new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.dismiss();
+						if (JSONUtil.getInt(jo, "android_radio") == 1) {
+							finish();
+						}
+					}
+				});
+		builder.create().show();
 	}
 
 }

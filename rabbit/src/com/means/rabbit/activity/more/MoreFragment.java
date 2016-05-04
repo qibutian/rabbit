@@ -2,6 +2,7 @@ package com.means.rabbit.activity.more;
 
 import java.io.File;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -22,6 +23,7 @@ import com.means.rabbit.activity.finance.FinanceDetailActivity;
 import com.means.rabbit.activity.main.MainActivity;
 import com.means.rabbit.utils.FileUtil;
 import com.means.rabbit.views.dialog.ChangLanguageDialog;
+import com.means.rabbit.views.dialog.ChangLanguageDialog.OnClickResult;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
@@ -66,7 +68,13 @@ public class MoreFragment extends Fragment implements OnClickListener {
 	}
 
 	private void initView() {
+		View backV = mainV.findViewById(R.id.backLayout);
+		backV.setVisibility(View.GONE);
 
+		TextView titleT = (TextView) mainV.findViewById(R.id.title);
+		if (titleT != null) {
+			titleT.setText(getString(R.string.more));
+		}
 		aboutV = mainV.findViewById(R.id.about);
 		langswitcherV = mainV.findViewById(R.id.langswitcher);
 		feedbackV = mainV.findViewById(R.id.feedback);
@@ -111,6 +119,16 @@ public class MoreFragment extends Fragment implements OnClickListener {
 		case R.id.langswitcher:
 
 			ChangLanguageDialog dialog = new ChangLanguageDialog(getActivity());
+			dialog.setOnClickResult(new OnClickResult() {
+
+				@Override
+				public void click() {
+					MainActivity activity = (MainActivity) getActivity();
+					activity.restart();
+					// Intent i = new Intent(getActivity(), MainActivity.class);
+					// startActivity(i);
+				}
+			});
 			dialog.show();
 
 			break;

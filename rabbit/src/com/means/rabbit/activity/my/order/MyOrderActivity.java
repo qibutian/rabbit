@@ -88,7 +88,7 @@ public class MyOrderActivity extends RabbitBaseActivity implements
 	}
 
 	private void getDate() {
-		adapter = new NetJSONAdapter(API.orderlist, self,
+		adapter = new NetJSONAdapter(new API().orderlist, self,
 				R.layout.item_order_list);
 		adapter.fromWhat("list");
 		adapter.addField("title", R.id.title);

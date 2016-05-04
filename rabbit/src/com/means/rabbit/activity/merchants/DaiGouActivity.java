@@ -79,7 +79,7 @@ public class DaiGouActivity extends RabbitBaseActivity {
 		headV = mLayoutInflater.inflate(R.layout.head_food_list, null);
 		listV.addHeadView(headV);
 		contentListV = listV.getListView();
-		adapter = new NetJSONAdapter(API.dgcontentlist, self,
+		adapter = new NetJSONAdapter(new API().dgcontentlist, self,
 				R.layout.item_daigou_list);
 		adapter.addparam("keywords", keywords);
 		adapter.fromWhat("list");
@@ -125,7 +125,7 @@ public class DaiGouActivity extends RabbitBaseActivity {
 	}
 
 	private void getAD() {
-		DhNet net = new DhNet(API.listad);
+		DhNet net = new DhNet(new  API().listad);
 		net.doGetInDialog(new NetTask(self) {
 
 			@Override

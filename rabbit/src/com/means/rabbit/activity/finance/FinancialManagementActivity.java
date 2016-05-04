@@ -56,17 +56,18 @@ public class FinancialManagementActivity extends RabbitBaseActivity implements
 
 		myMoney();
 	}
-	
-	private void myMoney(){
-		DhNet net = new DhNet(API.accountview);
+
+	private void myMoney() {
+		DhNet net = new DhNet(new API().accountview);
 		net.doGetInDialog(new NetTask(self) {
-			
+
 			@Override
 			public void doInUI(Response response, Integer transfer) {
 				// TODO Auto-generated method stub
 				if (response.isSuccess()) {
 					JSONObject jo = response.jSONFromData();
-					balanceT.setText(getString(R.string.money_symbol)+JSONUtil.getString(jo, "balance"));
+					balanceT.setText(getString(R.string.money_symbol)
+							+ JSONUtil.getString(jo, "balance"));
 				}
 			}
 		});
@@ -76,19 +77,19 @@ public class FinancialManagementActivity extends RabbitBaseActivity implements
 	public void onClick(View v) {
 		Intent it;
 		switch (v.getId()) {
-		//充值
+		// 充值
 		case R.id.recharge:
-			it = new Intent(self,RechargeActivity.class);
+			it = new Intent(self, RechargeActivity.class);
 			startActivity(it);
 			break;
-		//财务明细
+		// 财务明细
 		case R.id.finance_detail:
-			it = new Intent(self,FinanceDetailActivity.class);
+			it = new Intent(self, FinanceDetailActivity.class);
 			startActivity(it);
 			break;
-		//提现到银行卡
+		// 提现到银行卡
 		case R.id.withdraw:
-			it = new Intent(self,WithdrawCardActivity.class);
+			it = new Intent(self, WithdrawCardActivity.class);
 			startActivity(it);
 			break;
 

@@ -45,7 +45,7 @@ public class CommentListActivity extends RabbitBaseActivity {
 		setTitle(getString(R.string.comment_list));
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		contentListV = listV.getListView();
-		adapter = new NetJSONAdapter(API.commentuserlist, self,
+		adapter = new NetJSONAdapter(new API().commentuserlist, self,
 				R.layout.item_comment);
 		adapter.fromWhat("list");
 		adapter.addField("username", R.id.name);

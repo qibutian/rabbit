@@ -23,6 +23,7 @@ import android.widget.ListView;
 
 import com.means.rabbit.R;
 import com.means.rabbit.api.API;
+import com.means.rabbit.base.RabbitBaseFragment;
 import com.means.rabbit.bean.CityEB;
 import com.means.rabbit.utils.DateUtils;
 import com.means.rabbit.views.RefreshListViewAndMore;
@@ -31,7 +32,8 @@ import com.means.rabbit.views.TabView.OnTabSelectListener;
 
 import de.greenrobot.event.EventBus;
 
-public class TravelFragment extends Fragment implements OnClickListener {
+public class TravelFragment extends RabbitBaseFragment implements
+		OnClickListener {
 	static TravelFragment instance;
 
 	View mainV;
@@ -67,9 +69,16 @@ public class TravelFragment extends Fragment implements OnClickListener {
 	}
 
 	private void initView() {
+		View backV = mainV.findViewById(R.id.backLayout);
+		backV.setVisibility(View.GONE);
+
+		TextView titleT = (TextView) mainV.findViewById(R.id.title);
+		if (titleT != null) {
+			titleT.setText(getString(R.string.lvxingxiaomi));
+		}
 		listV = (RefreshListViewAndMore) mainV.findViewById(R.id.my_listview);
 		contentListV = listV.getListView();
-		adapter = new NetJSONAdapter(API.contentlist, getActivity(),
+		adapter = new NetJSONAdapter(new API().contentlist, getActivity(),
 				R.layout.item_travel_list);
 		adapter.addparam("catid", "5");
 		adapter.fromWhat("list");
@@ -125,12 +134,16 @@ public class TravelFragment extends Fragment implements OnClickListener {
 		});
 
 	}
-	
+
 	public void onEventMainThread(CityEB city) {
+
+		// TextView cityT = (TextView) mainV.findViewById(R.id.city);
+		// cityT.setText(city.getCityname());
+
 		adapter.addparam("cityid", city.getCatid());
 		adapter.refresh();
 	}
-	
+
 	@Override
 	public void onDestroy() {
 		// TODO Auto-generated method stub

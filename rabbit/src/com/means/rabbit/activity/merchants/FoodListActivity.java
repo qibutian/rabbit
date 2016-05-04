@@ -85,7 +85,7 @@ public class FoodListActivity extends RabbitBaseActivity {
 		});
 		listV.addHeadView(headV);
 		contentListV = listV.getListView();
-		adapter = new NetJSONAdapter(API.foodList, self,
+		adapter = new NetJSONAdapter(new API().foodList, self,
 				R.layout.item_food_list);
 		adapter.addparam("catid", catid);
 		adapter.addparam("keywords", keywords);
@@ -154,7 +154,7 @@ public class FoodListActivity extends RabbitBaseActivity {
 	}
 
 	private void getAD() {
-		DhNet net = new DhNet(API.listad);
+		DhNet net = new DhNet(new API().listad);
 		net.doGetInDialog(new NetTask(self) {
 
 			@Override

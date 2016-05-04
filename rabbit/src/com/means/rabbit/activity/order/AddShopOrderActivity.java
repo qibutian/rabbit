@@ -160,7 +160,7 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 	}
 
 	private void getData() {
-		DhNet net = new DhNet(API.preHotelOrder);
+		DhNet net = new DhNet(new API().preHotelOrder);
 		net.addParam("itemid", id);
 		net.addParam("startdate", startDate);
 		net.addParam("enddate", endDate);
@@ -240,7 +240,7 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 
 	private void submit() {
 
-		DhNet net = new DhNet(API.addHotelOrder);
+		DhNet net = new DhNet(new API().addHotelOrder);
 		net.addParam("itemid", id);
 
 		net.addParam("itemid", id);

@@ -107,7 +107,7 @@ public class AllItemActivity extends RabbitBaseActivity {
 	}
 
 	private void getData() {
-		DhNet net = new DhNet(API.catlist);
+		DhNet net = new DhNet(new API().catlist);
 		net.doGet(new NetTask(self) {
 
 			@Override

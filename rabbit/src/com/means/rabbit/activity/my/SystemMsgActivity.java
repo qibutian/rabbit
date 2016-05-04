@@ -50,7 +50,7 @@ public class SystemMsgActivity extends RabbitBaseActivity {
 		setTitle(getString(R.string.systemmsg));
 
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
-		String url = API.msglist;
+		String url = new API().msglist;
 		contentListV = listV.getListView();
 
 		adapter = new NetJSONAdapter(url, self, R.layout.item_system_msg);
@@ -92,7 +92,7 @@ public class SystemMsgActivity extends RabbitBaseActivity {
 
 							@Override
 							public void onResult() {
-								DhNet net = new DhNet(API.msgdelete);
+								DhNet net = new DhNet(new API().msgdelete);
 								net.addParam("id", JSONUtil.getString(jo, "id"));
 								net.doPost(new NetTask(self) {
 

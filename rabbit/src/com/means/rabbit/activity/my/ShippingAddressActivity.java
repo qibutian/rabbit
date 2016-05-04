@@ -8,6 +8,7 @@ import net.duohuo.dhroid.net.JSONUtil;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -41,11 +42,17 @@ public class ShippingAddressActivity extends RabbitBaseActivity {
 	}
 
 	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+	}
+
+	@Override
 	public void initView() {
 		setTitle(getString(R.string.shippingaddressactivity));
 
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
-		String url = API.addressuserlist;
+		String url = new API().addressuserlist;
 		contentListV = listV.getListView();
 
 		adapter = new NetJSONAdapter(url, self, R.layout.item_shipping_address);
@@ -72,15 +79,25 @@ public class ShippingAddressActivity extends RabbitBaseActivity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				JSONObject jo = adapter.getTItem(position);
-				Intent it = getIntent();
-				it.putExtra("areaname", JSONUtil.getString(jo, "areaname"));
-				it.putExtra("id", JSONUtil.getString(jo, "id"));
-				it.putExtra("lxname", JSONUtil.getString(jo, "lxname"));
-				it.putExtra("lxphone", JSONUtil.getString(jo, "lxphone"));
-				it.putExtra("lxaddress", JSONUtil.getString(jo, "lxaddress"));
-				setResult(Activity.RESULT_OK, it);
-				finish();
+
+				if (TextUtils.isEmpty(getIntent().getStringExtra("type"))) {
+					JSONObject jo = adapter.getTItem(position);
+					Intent it = getIntent();
+					it.putExtra("areaname", JSONUtil.getString(jo, "areaname"));
+					it.putExtra("id", JSONUtil.getString(jo, "id"));
+					it.putExtra("lxname", JSONUtil.getString(jo, "lxname"));
+					it.putExtra("lxphone", JSONUtil.getString(jo, "lxphone"));
+					it.putExtra("lxaddress",
+							JSONUtil.getString(jo, "lxaddress"));
+					setResult(Activity.RESULT_OK, it);
+					finish();
+				} else {
+					JSONObject jo = adapter.getTItem(position);
+					Intent it = new Intent(self,
+							AddShippingAddressActivity.class);
+					it.putExtra("data", jo.toString());
+					startActivityForResult(it, 1);
+				}
 			}
 		});
 
@@ -90,10 +107,22 @@ public class ShippingAddressActivity extends RabbitBaseActivity {
 
 			@Override
 			public void onClick(View v) {
+
 				// 新增地址
 				Intent it = new Intent(self, AddShippingAddressActivity.class);
-				startActivity(it);
+				startActivityForResult(it, 1);
 			}
 		});
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent arg2) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, arg2);
+
+		if (resultCode == Activity.RESULT_OK) {
+			listV.refresh();
+		}
+
 	}
 }

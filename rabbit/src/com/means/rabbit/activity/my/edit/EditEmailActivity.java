@@ -4,39 +4,27 @@ import net.duohuo.dhroid.ioc.IocContainer;
 import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.net.NetTask;
 import net.duohuo.dhroid.net.Response;
-
-import com.means.rabbit.R;
-import com.means.rabbit.R.layout;
-import com.means.rabbit.activity.my.edit.ForgetPswdActivity.TimeCount;
-import com.means.rabbit.api.API;
-import com.means.rabbit.base.RabbitBaseActivity;
-import com.means.rabbit.utils.RabbitPerference;
-import com.means.rabbit.utils.RabbitUtils;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.TextUtils;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-/**
- * 
- * 修改手机
- * 
- * @author Administrator
- * 
- */
-public class EditPhoneActivity extends RabbitBaseActivity implements
+import com.means.rabbit.R;
+import com.means.rabbit.activity.my.edit.EditPhoneActivity.TimeCount;
+import com.means.rabbit.api.API;
+import com.means.rabbit.base.RabbitBaseActivity;
+import com.means.rabbit.utils.RabbitPerference;
+import com.means.rabbit.utils.RabbitUtils;
+
+public class EditEmailActivity extends RabbitBaseActivity implements
 		OnClickListener {
 
-	EditText newphoneEt, verificationEt;
+	EditText newemailE, verificationEt;
 	// EditText phoneEt,passwordEt;
 	TextView getverificationT;
 	Button submitBtn;
@@ -48,7 +36,7 @@ public class EditPhoneActivity extends RabbitBaseActivity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_edit_phone);
+		setContentView(R.layout.activity_edit_email);
 	}
 
 	@Override
@@ -60,7 +48,7 @@ public class EditPhoneActivity extends RabbitBaseActivity implements
 		per.load();
 
 		// phoneEt = (EditText) findViewById(R.id.phone);
-		newphoneEt = (EditText) findViewById(R.id.newphone);
+		newemailE = (EditText) findViewById(R.id.newemail);
 		// passwordEt = (EditText) findViewById(R.id.password);
 		verificationEt = (EditText) findViewById(R.id.verification);
 		getverificationT = (TextView) findViewById(R.id.getverification);
@@ -72,23 +60,19 @@ public class EditPhoneActivity extends RabbitBaseActivity implements
 
 	private void submit() {
 		// String tel = phoneEt.getText().toString();
-		final String newtel = newphoneEt.getText().toString();
+		final String newemail = newemailE.getText().toString();
 		// final String password = passwordEt.getText().toString();
 		String code = verificationEt.getText().toString();
 		// if (TextUtils.isEmpty(tel)) {
 		// showToast("请输入旧手机号");
 		// return;
 		// }
-		if (TextUtils.isEmpty(newtel)) {
-			showToast(getString(R.string.edit_phone_hint_new_phone));
+		if (TextUtils.isEmpty(newemail)) {
+			showToast(getString(R.string.editinfo_email_des1));
 			return;
 		}
-		// if (tel.length() != 11) {
-		// showToast("手机号格式不正确");
-		// return;
-		// }
-		if (newtel.length() != 11) {
-			showToast(getString(R.string.editinfo_tel_des));
+		if (!RabbitUtils.checkEmail(newemail)) {
+			showToast(getString(R.string.editinfo_email_des2));
 			return;
 		}
 		if (TextUtils.isEmpty(code)) {
@@ -100,11 +84,11 @@ public class EditPhoneActivity extends RabbitBaseActivity implements
 		// return;
 		// }
 
-		DhNet smsNet = new DhNet(new API().changephone);
-		smsNet.addParam("oldphone", per.getPhone());
+		DhNet smsNet = new DhNet(new API().changgeemail);
+		smsNet.addParam("oldemail", per.getEmail());
 		smsNet.addParam("pswd", per.getPassword());
-		smsNet.addParam("phone", newtel);
-		smsNet.addParam("mobilecode", code);
+		smsNet.addParam("email", newemail);
+		smsNet.addParam("emailcode", code);
 		smsNet.doPostInDialog(new NetTask(self) {
 
 			@Override
@@ -113,7 +97,7 @@ public class EditPhoneActivity extends RabbitBaseActivity implements
 				if (response.isSuccess()) {
 					showToast(getString(R.string.editinfo_success));
 					Intent it = new Intent(self, EditInfoActivity.class);
-					it.putExtra("phone", newtel);
+					it.putExtra("email", newemail);
 					setResult(RESULT_OK, it);
 					finish();
 				}
@@ -124,17 +108,17 @@ public class EditPhoneActivity extends RabbitBaseActivity implements
 
 	// 获取验证码
 	private void getMobileCode() {
-		String tel = newphoneEt.getText().toString();
-		if (TextUtils.isEmpty(tel)) {
-			showToast(getString(R.string.editinfo_tel_des1));
+		String newemail = newemailE.getText().toString();
+		if (TextUtils.isEmpty(newemail)) {
+			showToast(getString(R.string.editinfo_email_des1));
 			return;
 		}
-		if (tel.length() != 11) {
-			showToast(getString(R.string.editinfo_tel_des));
+		if (!RabbitUtils.checkEmail(newemail)) {
+			showToast(getString(R.string.editinfo_email_des2));
 			return;
 		}
-		DhNet smsNet = new DhNet(new API().mobilecode);
-		smsNet.addParam("phone", tel);
+		DhNet smsNet = new DhNet(new API().emailcode);
+		smsNet.addParam("email", newemail);
 		smsNet.addParam("type", "4"); // 4为改手机
 		smsNet.doGet(new NetTask(self) {
 

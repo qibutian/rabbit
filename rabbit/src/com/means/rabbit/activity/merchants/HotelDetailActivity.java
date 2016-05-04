@@ -66,6 +66,8 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 
 	TextView startDateT, endDateT;
 
+	String score;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -84,7 +86,7 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		listV.addHeadView(headV);
 		contentListV = listV.getListView();
-		adapter = new NetJSONAdapter(API.hotelDetailNearTuangou, self,
+		adapter = new NetJSONAdapter(new API().hotelDetailNearTuangou, self,
 				R.layout.item_shop_detail_tuangou_near);
 		adapter.fromWhat("list");
 		adapter.addparam("contentid", hotelId);
@@ -98,7 +100,8 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 			@Override
 			public Object fix(View itemV, Integer position, Object o, Object jo) {
 				// TODO Auto-generated method stub
-				return getString(R.string.money_symbol) + o + getString(R.string.hotel_people);
+				return getString(R.string.money_symbol) + o
+						+ getString(R.string.hotel_people);
 			}
 		});
 
@@ -159,7 +162,7 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 
 	// 获取详情数据
 	private void getHotelDetalData() {
-		DhNet net = new DhNet(API.hoteldetail);
+		DhNet net = new DhNet(new API().hoteldetail);
 		net.addParam("key", getIntent().getStringExtra("key"));
 		net.addParam("id", hotelId);
 		net.doGet(new NetTask(self) {
@@ -191,7 +194,8 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 					galleryAdapter.addAll(image_data);
 					gallery.setAdapter(galleryAdapter);
 
-					priceT.setText(JSONUtil.getString(detailJo, "price") + getString(R.string.hotel_price_des));
+					priceT.setText(JSONUtil.getString(detailJo, "price")
+							+ getString(R.string.hotel_price_des));
 
 					ViewUtil.bindView(headV.findViewById(R.id.title),
 							JSONUtil.getString(detailJo, "title"));
@@ -236,7 +240,7 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 					ViewUtil.bindView(headV.findViewById(R.id.comment_des),
 							JSONUtil.getString(detailJo, "score") + "/"
 									+ JSONUtil.getString(detailJo, "comment"));
-
+					score = JSONUtil.getString(detailJo, "score");
 					ratingBar.setRating(JSONUtil.getFloat(detailJo, "score"));
 
 					headV.findViewById(R.id.address_layout).setOnClickListener(
@@ -272,7 +276,7 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 
 	// 获取预订列表
 	private void getOrderList() {
-		DhNet net = new DhNet(API.hotelDetailOrderList);
+		DhNet net = new DhNet(new API().hotelDetailOrderList);
 		net.addParam("contentid", hotelId);
 		net.doGet(new NetTask(self) {
 
@@ -294,7 +298,7 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 
 	// 获取团购数据
 	private void getTuangouList() {
-		DhNet net = new DhNet(API.hotelDetailNearTuangou);
+		DhNet net = new DhNet(new API().hotelDetailNearTuangou);
 		net.addParam("contentid", hotelId);
 		net.doGet(new NetTask(self) {
 
@@ -312,7 +316,7 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 
 	// 评论列表
 	private void getCommentList() {
-		DhNet net = new DhNet(API.commentlist);
+		DhNet net = new DhNet(new API().commentlist);
 		net.addParam("contentid", hotelId);
 		net.addParam("type", 2);
 		net.addParam("step", 2);
@@ -322,7 +326,7 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 			public void doInUI(Response response, Integer transfer) {
 
 				if (response.isSuccess()) {
-					commentView.setData(response.jSONArrayFrom("list"));
+					commentView.setData(response.jSONArrayFrom("list"), score);
 				}
 
 			}

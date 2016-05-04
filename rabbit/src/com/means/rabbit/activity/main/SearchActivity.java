@@ -49,7 +49,7 @@ public class SearchActivity extends RabbitBaseActivity {
 		setTitle(getString(R.string.search));
 
 		listView = (ListView) findViewById(R.id.listview_normal);
-		adapter = new NetJSONAdapter(API.search, self,
+		adapter = new NetJSONAdapter(new API().search, self,
 				R.layout.item_search_list);
 //		String keywords = ((EditText) findViewById(R.id.content)).getText()
 //				.toString().trim();

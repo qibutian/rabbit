@@ -57,7 +57,7 @@ public class FinanceDetailActivity extends RabbitBaseActivity {
 		
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		contentListV = listV.getListView();
-		adapter = new NetJSONAdapter(API.accountlog, self,
+		adapter = new NetJSONAdapter(new API().accountlog, self,
 				R.layout.item_finance_detail);
 		adapter.fromWhat("list");
 		adapter.addField("note", R.id.note);

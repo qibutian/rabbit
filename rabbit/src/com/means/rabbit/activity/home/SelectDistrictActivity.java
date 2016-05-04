@@ -115,7 +115,7 @@ public class SelectDistrictActivity extends RabbitBaseActivity {
 	}
 
 	private void getData() {
-		DhNet net = new DhNet(API.citylist);
+		DhNet net = new DhNet(new API().citylist);
 		net.doGetInDialog(getString(R.string.progress_doing), new NetTask(self) {
 
 			@Override
@@ -131,7 +131,7 @@ public class SelectDistrictActivity extends RabbitBaseActivity {
 	}
 	
 	private void getDistrict(int cityid) {
-		DhNet net = new DhNet(API.arealist);
+		DhNet net = new DhNet(new API().arealist);
 		net.addParam("cityid", cityid);
 		net.doGetInDialog(getString(R.string.progress_doing), new NetTask(self) {
 

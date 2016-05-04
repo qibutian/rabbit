@@ -67,7 +67,7 @@ public class BusinessOrderDetailsActivity extends RabbitBaseActivity {
 	}
 
 	private void getData() {
-		DhNet net = new DhNet(API.orderbusinessdetail);
+		DhNet net = new DhNet(new API().orderbusinessdetail);
 		net.addParam("orderid", orderid);
 		net.doGetInDialog(getString(R.string.progress_doing),
 				new NetTask(self) {
@@ -177,7 +177,7 @@ public class BusinessOrderDetailsActivity extends RabbitBaseActivity {
 			showToast(getString(R.string.business_order_des3));
 			return;
 		}
-		DhNet net = new DhNet(API.usecode);
+		DhNet net = new DhNet(new API().usecode);
 		net.addParam("orderid", orderid);
 		net.addParam("ercode", errcodeE.getText().toString());
 		net.doPostInDialog(getString(R.string.submiting), new NetTask(self) {

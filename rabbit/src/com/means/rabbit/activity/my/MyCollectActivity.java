@@ -55,7 +55,7 @@ public class MyCollectActivity extends RabbitBaseActivity {
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		contentListV = listV.getListView();
 
-		adapter = new NetJSONAdapter(API.collectlist, self,
+		adapter = new NetJSONAdapter(new API().collectlist, self,
 				R.layout.item_my_collect);
 		adapter.fromWhat("list");
 		adapter.addField(new FieldMap("title", R.id.title) {

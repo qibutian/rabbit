@@ -104,9 +104,9 @@ public class RefreshListViewAndMore extends LinearLayout {
 			@Override
 			public void run() {
 				mPtrFrame.autoRefresh(true);
-				if (mAdapter != null) {
-					mAdapter.refresh();
-				}
+//				if (mAdapter != null) {
+//					mAdapter.refresh();  
+//				}
 			}
 		}, 300);
 

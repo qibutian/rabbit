@@ -3,6 +3,8 @@ package com.means.rabbit.utils;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.json.JSONObject;
 
@@ -154,7 +156,7 @@ public class RabbitUtils {
 
 	private static void usecode(final Context context, String orderid,
 			String code) {
-		DhNet net = new DhNet(API.usecode);
+		DhNet net = new DhNet(new API().usecode);
 		net.addParam("orderid", orderid);
 		net.addParam("ercode", code);
 		net.doPostInDialog("提交中...", new NetTask(context) {
@@ -185,4 +187,17 @@ public class RabbitUtils {
 			}
 		});
 	}
+	
+	public static boolean checkEmail(String email){
+        boolean flag = false;
+        try{
+                String check = "^([a-z0-9A-Z]+[-|_|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
+                Pattern regex = Pattern.compile(check);
+                Matcher matcher = regex.matcher(email);
+                flag = matcher.matches();
+            }catch(Exception e){
+                flag = false;
+            }
+        return flag;
+    }
 }

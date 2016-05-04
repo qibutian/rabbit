@@ -69,7 +69,7 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 	}
 
 	private void getData() {
-		DhNet net = new DhNet(API.daigouOrderDetail);
+		DhNet net = new DhNet(new API().daigouOrderDetail);
 		net.addParam("orderid", daigouId);
 		net.doGetInDialog(new NetTask(self) {
 
@@ -237,7 +237,7 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 	}
 
 	private void cancleOrder() {
-		DhNet net = new DhNet(API.cancelOrder);
+		DhNet net = new DhNet(new API().cancelOrder);
 		net.addParam("orderid", daigouId);
 		net.doPostInDialog("取消中...", new NetTask(self) {
 

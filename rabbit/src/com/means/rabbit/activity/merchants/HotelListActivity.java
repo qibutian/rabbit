@@ -28,14 +28,20 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.means.rabbit.R;
+import com.means.rabbit.activity.home.SelectCityActivity;
+import com.means.rabbit.activity.main.MainActivity;
 import com.means.rabbit.activity.main.SearchActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
+import com.means.rabbit.bean.BackHomeEB;
+import com.means.rabbit.bean.HotelCityEB;
 import com.means.rabbit.utils.DateUtils;
 import com.means.rabbit.utils.RabbitPerference;
 import com.means.rabbit.views.RefreshListViewAndMore;
 import com.means.rabbit.views.TabView;
 import com.means.rabbit.views.TabView.OnTabSelectListener;
+
+import de.greenrobot.event.EventBus;
 
 public class HotelListActivity extends RabbitBaseActivity {
 
@@ -57,11 +63,14 @@ public class HotelListActivity extends RabbitBaseActivity {
 
 	String keywords;
 
+	TextView cityT;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		EventBus.getDefault().register(this);
 		setContentView(R.layout.activity_hotel_list);
 
 	}
@@ -83,7 +92,7 @@ public class HotelListActivity extends RabbitBaseActivity {
 		keywords = getIntent().getStringExtra("keywords");
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		contentListV = listV.getListView();
-		adapter = new NetJSONAdapter(API.hotelList, self,
+		adapter = new NetJSONAdapter(new API().hotelList, self,
 				R.layout.item_hotel_list);
 
 		RabbitPerference per = IocContainer.getShare().get(
@@ -214,6 +223,17 @@ public class HotelListActivity extends RabbitBaseActivity {
 
 			}
 		});
+
+		cityT = (TextView) findViewById(R.id.hotel_city);
+		cityT.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent it = new Intent(self, SelectCityActivity.class);
+				it.putExtra("from", "hotellist");
+				startActivity(it);
+			}
+		});
 	}
 
 	public Date getNextDay(Date date) {
@@ -222,5 +242,18 @@ public class HotelListActivity extends RabbitBaseActivity {
 		calendar.add(Calendar.DAY_OF_MONTH, +1);
 		date = calendar.getTime();
 		return date;
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		EventBus.getDefault().unregister(this);
+	}
+
+	public void onEventMainThread(HotelCityEB city) {
+		adapter.addparam("cityid", city.getCatid());
+		adapter.refresh();
+		cityT.setText(city.getCityname());
 	}
 }

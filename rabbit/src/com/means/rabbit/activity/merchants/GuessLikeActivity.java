@@ -60,7 +60,7 @@ public class GuessLikeActivity extends RabbitBaseActivity {
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		mLayoutInflater = LayoutInflater.from(self);
 		contentListV = listV.getListView();
-		adapter = new NetJSONAdapter(API.guesslikelist, self,
+		adapter = new NetJSONAdapter(new API().guesslikelist, self,
 				R.layout.item_guess_like);
 		adapter.fromWhat("list");
 		adapter.addField("title", R.id.title);

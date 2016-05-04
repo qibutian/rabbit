@@ -13,8 +13,8 @@
         android:paddingTop="10dp" >
 
         <TextView
-            style="@style/text_44_black_medium"
-            android:text="3.7分 2281条评论 >" />
+            android:id="@+id/text"
+            style="@style/text_44_black_medium" />
     </LinearLayout>
 
 </LinearLayout>

@@ -23,6 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.means.rabbit.R;
+import com.means.rabbit.RabbitApplication;
 import com.means.rabbit.api.API;
 import com.means.rabbit.api.Constant;
 import com.means.rabbit.base.RabbitBaseActivity;
@@ -41,13 +42,15 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 public class EditInfoActivity extends RabbitBaseActivity implements
 		OnClickListener {
 
-	LinearLayout edit_nicknameV, edit_passwordV, edit_phoneV, edit_headV;
-	TextView nicknameT, passwordT, phoneT;
+	LinearLayout edit_nicknameV, edit_passwordV, edit_phoneV, edit_headV,
+			edit_emailV;
+	TextView nicknameT, passwordT, phoneT, emailT;
 	RoundImageView headI;
 
 	private final int NICKNAMECODE = 1;
 	private final int PASSWORDECODE = 2;
 	private final int PHONECODE = 3;
+	private final int EMAILCODE = 4;
 
 	RabbitPerference per;
 
@@ -63,6 +66,13 @@ public class EditInfoActivity extends RabbitBaseActivity implements
 
 	@Override
 	public void initView() {
+
+		if (RabbitApplication.getInstance().getisPhone()) {
+			findViewById(R.id.edit_phone).setVisibility(View.VISIBLE);
+		} else {
+			findViewById(R.id.edit_email).setVisibility(View.VISIBLE);
+		}
+
 		mCacheDir = new File(getExternalCacheDir(), "Rabbit");
 		mCacheDir.mkdirs();
 		// TODO Auto-generated method stub
@@ -74,7 +84,7 @@ public class EditInfoActivity extends RabbitBaseActivity implements
 		passwordT = (TextView) findViewById(R.id.password);
 		phoneT = (TextView) findViewById(R.id.phone);
 		headI = (RoundImageView) findViewById(R.id.head);
-
+		emailT = (TextView) findViewById(R.id.email);
 		nicknameT.setText(per.getNickname());
 		passwordT.setText(per.getPassword());
 		phoneT.setText(per.getPhone());
@@ -84,11 +94,13 @@ public class EditInfoActivity extends RabbitBaseActivity implements
 		edit_passwordV = (LinearLayout) findViewById(R.id.edit_password);
 		edit_phoneV = (LinearLayout) findViewById(R.id.edit_phone);
 		edit_headV = (LinearLayout) findViewById(R.id.edit_head);
+		edit_emailV = (LinearLayout) findViewById(R.id.edit_email);
 
 		edit_nicknameV.setOnClickListener(this);
 		edit_passwordV.setOnClickListener(this);
 		edit_phoneV.setOnClickListener(this);
 		edit_headV.setOnClickListener(this);
+		edit_emailV.setOnClickListener(this);
 	}
 
 	@Override
@@ -109,6 +121,11 @@ public class EditInfoActivity extends RabbitBaseActivity implements
 		case R.id.edit_phone:
 			it = new Intent(self, EditPhoneActivity.class);
 			startActivityForResult(it, PHONECODE);
+			break;
+
+		case R.id.edit_email:
+			it = new Intent(self, EditEmailActivity.class);
+			startActivityForResult(it, EMAILCODE);
 			break;
 		case R.id.edit_head:
 			ReviseHeadDialog dialog = new ReviseHeadDialog(self);
@@ -177,10 +194,15 @@ public class EditInfoActivity extends RabbitBaseActivity implements
 				break;
 			case PHONECODE:
 				String phone = arg2.getStringExtra("phone");
-				nicknameT.setText(phone);
+				phoneT.setText(phone);
 				per.setPhone(phone);
 				break;
 
+			case EMAILCODE:
+				String email = arg2.getStringExtra("email");
+				emailT.setText(email);
+				per.setEmail(email);
+				break;
 			default:
 				break;
 			}
@@ -191,7 +213,7 @@ public class EditInfoActivity extends RabbitBaseActivity implements
 	private void uploadHead(String path) {
 
 		// Bitmap bmp = PhotoUtil.getLocalImage(new File(path));
-		DhNet net = new DhNet(API.editfceimg);
+		DhNet net = new DhNet(new API().editfceimg);
 		net.upload("upfile", new File(path), new NetTask(self) {
 			@Override
 			public void doInUI(Response response, Integer transfer) {

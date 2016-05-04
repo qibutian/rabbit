@@ -114,7 +114,7 @@ public class TranslateActivity extends RabbitBaseActivity implements
 			return;
 		}
 
-		DhNet net = new DhNet(API.translation);
+		DhNet net = new DhNet(new API().translation);
 		net.addParam("slang", slang);
 		net.addParam("lang", lang);
 		net.addParam("q", contentE.getText().toString());

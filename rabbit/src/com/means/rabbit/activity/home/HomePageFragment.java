@@ -39,6 +39,7 @@ import com.means.rabbit.activity.merchants.TuangouDetailActivity;
 import com.means.rabbit.activity.travel.TravelActivity;
 import com.means.rabbit.activity.travel.TravelDetailActivity;
 import com.means.rabbit.api.API;
+import com.means.rabbit.base.RabbitBaseFragment;
 import com.means.rabbit.bean.CityEB;
 import com.means.rabbit.utils.RabbitPerference;
 import com.means.rabbit.utils.RabbitUtils;
@@ -46,7 +47,8 @@ import com.means.rabbit.views.RefreshListViewAndMore;
 
 import de.greenrobot.event.EventBus;
 
-public class HomePageFragment extends Fragment implements OnClickListener {
+public class HomePageFragment extends RabbitBaseFragment implements
+		OnClickListener {
 	static HomePageFragment instance;
 
 	View mainV;
@@ -110,6 +112,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 			Bundle savedInstanceState) {
 		mainV = inflater.inflate(R.layout.fragment_home_page, null);
 		mLayoutInflater = inflater;
+		System.out.println("homefragment");
 		EventBus.getDefault().register(this);
 		initView();
 		// TODO Auto-generated method stub
@@ -117,6 +120,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 	}
 
 	private void initView() {
+		initTitleBar(mainV);
 		listV = (RefreshListViewAndMore) mainV.findViewById(R.id.my_listview);
 		headV = mLayoutInflater.inflate(R.layout.head_home_index, null);
 		gallery = (NormalGallery) headV.findViewById(R.id.gallery);
@@ -124,7 +128,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 		listV.addHeadView(headV);
 		contentListV = listV.getListView();
-		adapter = new NetJSONAdapter(API.likelist, getActivity(),
+		adapter = new NetJSONAdapter(new API().likelist, getActivity(),
 				R.layout.item_home_list);
 		adapter.fromWhat("list");
 		adapter.addField("title", R.id.title);
@@ -197,7 +201,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 	// 获取首页幻灯+中间内容列表
 	private void getConfiglist() {
-		DhNet net = new DhNet(API.configlist);
+		DhNet net = new DhNet(new API().configlist);
 		net.doGet(new NetTask(getActivity()) {
 
 			@Override
@@ -263,7 +267,7 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 	}
 
 	public void onEventMainThread(CityEB city) {
-		TextView cityT = (TextView) mainV.getRootView().findViewById(R.id.city);
+		TextView cityT = (TextView) mainV.findViewById(R.id.city);
 		cityT.setText(city.getCityname());
 		adapter.addparam("cityid", city.getCatid());
 		adapter.refresh();

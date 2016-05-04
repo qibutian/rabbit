@@ -162,6 +162,7 @@
     <string name="register_get_code">获取验证码</string>
     <string name="register_pswd_des">请输入8位以内用户名</string>
     <string name="register_success">注册成功</string>
+    <string name="register_email">邮箱</string>
 
     <!-- 找回密码 -->
     <string name="forget_pswd">密码重置</string>
@@ -363,7 +364,7 @@
     <string name="withdrawcard_money_des1">提现金额需大于0元</string>
     <string name="withdrawcard_code_des">请输入卡号</string>
     <string name="withdrawcard_name_des">请输入姓名</string>
-    <string name="withdrawcard_release_des">已提交申请</string>
+    <string name="withdrawcard_release_des">申请已经提交，请耐心等待2-5工作日</string>
 
     <!-- 账户充值 -->
     <string name="recharge">账户充值</string>
@@ -502,5 +503,14 @@
     <string name="look_more">查看更多</string>
     <string name="translate_des">请对准麦克风说话</string>
     <string name="malaixiya">马来西亚文</string>
+    <string name="tuangoushangjia">团购或商家</string>
+    <string name="buy">购买</string>
+    <string name="score">分</string>
+    <string name="update_title">新版本</string>
+    <string name="update">更新</string>
+    <string name="editinfo_email_des1">请输入邮箱</string>
+    <string name="editinfo_email_des2">请输入正确的邮箱地址</string>
+    
+    <string name="new_email">新邮箱</string>
 
 </resources>

@@ -363,7 +363,7 @@
     <string name="withdrawcard_money_des1">Cash withdrawals require Lebih than 0</string>
     <string name="withdrawcard_code_des">Please enter the card number</string>
     <string name="withdrawcard_name_des">Please enter your name</string>
-    <string name="withdrawcard_release_des">Application submitted</string>
+    <string name="withdrawcard_release_des">Permohonan telah dikemukakan, sila tunggu 2-5 hari</string>
 
     <!-- 账户充值 -->
     <string name="recharge">Recharge</string>
@@ -503,5 +503,14 @@
     <string name="translate_des">bercakap dengan kuat</string>
     <string name="progress_noLebihresult">Anda berus terlalu cepat, tidak lebih!</string>
     <string name="malaixiya">Malaysia</string>
+    <string name="tuangoushangjia">Pelanggan atau perniagaan</string>
+    <string name="buy">pembelian</string>
+    <string name="score">Point</string>
+    <string name="update_title">Versi baru</string>
+    <string name="update">Update</string>
+    <string name="register_email">Mailbox</string>
+    <string name="editinfo_email_des1">Sila masukkan e-mel</string>
+    <string name="editinfo_email_des2">Sila masukkan alamat emel yang sah</string>
+    <string name="new_email">Peti Mel baru</string>
 
 </resources>

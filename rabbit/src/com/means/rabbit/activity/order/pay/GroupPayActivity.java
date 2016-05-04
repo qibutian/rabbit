@@ -71,7 +71,7 @@ public class GroupPayActivity extends RabbitBaseActivity {
 	}
 
 	private void getData() {
-		DhNet net = new DhNet(API.tuangouOrderDetail);
+		DhNet net = new DhNet(new API().tuangouOrderDetail);
 		net.addParam("orderid", orderId);
 		net.doGetInDialog(new NetTask(self) {
 
@@ -216,7 +216,7 @@ public class GroupPayActivity extends RabbitBaseActivity {
 	}
 
 	private void cancleOrder() {
-		DhNet net = new DhNet(API.cancelOrder);
+		DhNet net = new DhNet(new API().cancelOrder);
 		net.addParam("orderid", orderId);
 		net.doPostInDialog("取消中...", new NetTask(self) {
 

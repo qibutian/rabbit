@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.means.rabbit.R;
+import com.means.rabbit.RabbitApplication;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.utils.RabbitUtils;
@@ -21,7 +22,7 @@ import com.means.rabbit.utils.RabbitUtils;
 public class ForgetPswdActivity extends RabbitBaseActivity implements
 		OnClickListener {
 
-	private EditText phoneEt, verificationEt, passwordEt;
+	private EditText phoneEt, verificationEt, passwordEt, emailE;
 	private TextView getverificationT;
 	private Button forgetBtn;
 
@@ -37,8 +38,15 @@ public class ForgetPswdActivity extends RabbitBaseActivity implements
 	@Override
 	public void initView() {
 		setTitle(getString(R.string.forget_pswd));
-		time = new TimeCount(60000, 1000);
 
+		if (RabbitApplication.getInstance().getisPhone()) {
+			findViewById(R.id.phone_layout).setVisibility(View.VISIBLE);
+		} else {
+			findViewById(R.id.email_layout).setVisibility(View.VISIBLE);
+		}
+
+		time = new TimeCount(60000, 1000);
+		emailE = (EditText) findViewById(R.id.email);
 		phoneEt = (EditText) findViewById(R.id.phone);
 		verificationEt = (EditText) findViewById(R.id.verification);
 		passwordEt = (EditText) findViewById(R.id.password);
@@ -54,7 +62,12 @@ public class ForgetPswdActivity extends RabbitBaseActivity implements
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.getverification:
-			getMobileCode();
+
+			if (RabbitApplication.getInstance().getisPhone()) {
+				getMobileCode();
+			} else {
+				getEmailCode();
+			}
 			break;
 
 		case R.id.forget:
@@ -70,13 +83,27 @@ public class ForgetPswdActivity extends RabbitBaseActivity implements
 		String tel = phoneEt.getText().toString();
 		final String password = passwordEt.getText().toString();
 		String code = verificationEt.getText().toString();
-		if (TextUtils.isEmpty(tel)) {
-			showToast(getString(R.string.editinfo_tel_des1));
-			return;
-		}
-		if (tel.length() != 11) {
-			showToast(getString(R.string.editinfo_tel_des));
-			return;
+
+		String email = emailE.getText().toString();
+
+		if (RabbitApplication.getInstance().getisPhone()) {
+			if (TextUtils.isEmpty(tel)) {
+				showToast(getString(R.string.editinfo_tel_des1));
+				return;
+			}
+			if (tel.length() != 11) {
+				showToast(getString(R.string.editinfo_tel_des));
+				return;
+			}
+		} else {
+			if (TextUtils.isEmpty(email)) {
+				showToast(getString(R.string.editinfo_email_des1));
+				return;
+			}
+			if (!RabbitUtils.checkEmail(email)) {
+				showToast(getString(R.string.editinfo_email_des2));
+				return;
+			}
 		}
 		if (TextUtils.isEmpty(code)) {
 			showToast(getString(R.string.editinfo_code_des));
@@ -94,11 +121,25 @@ public class ForgetPswdActivity extends RabbitBaseActivity implements
 			showToast(getString(R.string.editinfo_pswd_des1));
 			return;
 		}
+		
+		String  url = "";
+		
+		if (RabbitApplication.getInstance().getisPhone()) {
+			url = new API().resetpswdbyphone;
+		} else {
+			url = new API().resetpswdbyemail;
+		}
 
-		DhNet smsNet = new DhNet(API.resetpswdbyphone);
+		DhNet smsNet = new DhNet(url);
 		smsNet.addParam("pswd", password);
-		smsNet.addParam("phone", tel);
-		smsNet.addParam("mobilecode", code);
+
+		if (RabbitApplication.getInstance().getisPhone()) {
+			smsNet.addParam("phone", tel);
+			smsNet.addParam("mobilecode", code);
+		} else {
+			smsNet.addParam("email", email);
+			smsNet.addParam("emailcode", code);
+		}
 		smsNet.doPostInDialog(new NetTask(self) {
 
 			@Override
@@ -117,6 +158,32 @@ public class ForgetPswdActivity extends RabbitBaseActivity implements
 	}
 
 	// 获取验证码
+	private void getEmailCode() {
+		String email = emailE.getText().toString();
+		if (TextUtils.isEmpty(email)) {
+			showToast(getString(R.string.editinfo_email_des1));
+			return;
+		}
+		if (!RabbitUtils.checkEmail(email)) {
+			showToast(getString(R.string.editinfo_email_des2));
+			return;
+		}
+		DhNet smsNet = new DhNet(new API().emailcode);
+		smsNet.addParam("email", email);
+		smsNet.addParam("type", "5"); // 1为注册
+		smsNet.doGet(new NetTask(self) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+				// TODO Auto-generated method stub
+				if (response.isSuccess()) {
+					time.start();
+				}
+			}
+		});
+	}
+
+	// 获取验证码
 	private void getMobileCode() {
 		String tel = phoneEt.getText().toString();
 		if (TextUtils.isEmpty(tel)) {
@@ -127,7 +194,7 @@ public class ForgetPswdActivity extends RabbitBaseActivity implements
 			showToast(getString(R.string.editinfo_tel_des));
 			return;
 		}
-		DhNet smsNet = new DhNet(API.mobilecode);
+		DhNet smsNet = new DhNet(new API().mobilecode);
 		smsNet.addParam("phone", tel);
 		smsNet.addParam("type", "5"); // 5为改密码
 		smsNet.doGet(new NetTask(self) {

@@ -20,6 +20,8 @@ public class CommentView extends LinearLayout {
 
 	LayoutInflater mLayoutInflater;
 
+	JSONArray jsa;
+
 	public CommentView(Context context) {
 		super(context);
 	}
@@ -30,10 +32,12 @@ public class CommentView extends LinearLayout {
 		this.mContext = context;
 	}
 
-	public void setData(JSONArray jsa) {
-		if (jsa == null) {
+	public void setData(JSONArray mjsa, String score) {
+		if (mjsa == null) {
 			return;
 		}
+
+		this.jsa = mjsa;
 
 		mLayoutInflater = LayoutInflater.from(mContext);
 		for (int i = 0; i < jsa.length(); i++) {
@@ -53,14 +57,7 @@ public class CommentView extends LinearLayout {
 			JSONArray picJsa = JSONUtil.getJSONArray(jo, "image_data");
 
 			if (picJsa != null && picJsa.length() != 0) {
-				
-				
-				
-				
-				
-				
-				
-				
+
 				LinearLayout picV = (LinearLayout) v
 						.findViewById(R.id.pic_layout);
 				for (int j = 0; j < picJsa.length(); j++) {
@@ -90,6 +87,11 @@ public class CommentView extends LinearLayout {
 
 		if (jsa.length() >= 2) {
 			View v = mLayoutInflater.inflate(R.layout.model_comment_text, null);
+			ViewUtil.bindView(
+					v.findViewById(R.id.text),
+					score + mContext.getString(R.string.score) + "  "
+							+ jsa.length()
+							+ mContext.getString(R.string.hotel_comment_des));
 			this.addView(v);
 		}
 

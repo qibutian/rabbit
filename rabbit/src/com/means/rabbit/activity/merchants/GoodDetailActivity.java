@@ -51,6 +51,8 @@ public class GoodDetailActivity extends RabbitBaseActivity {
 
 	RatingBar ratingBar;
 
+	String score;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -97,7 +99,7 @@ public class GoodDetailActivity extends RabbitBaseActivity {
 	}
 
 	private void getData() {
-		DhNet net = new DhNet(API.daigouDetail);
+		DhNet net = new DhNet(new API().daigouDetail);
 		net.addParam("key", getIntent().getStringExtra("key"));
 		net.addParam("id", daigouId);
 		net.doGet(new NetTask(self) {
@@ -146,6 +148,8 @@ public class GoodDetailActivity extends RabbitBaseActivity {
 					ViewUtil.bindView(findViewById(R.id.comment_des),
 							JSONUtil.getString(detailJo, "score") + "/"
 									+ JSONUtil.getString(detailJo, "comment"));
+
+					score = JSONUtil.getString(detailJo, "score");
 					ViewUtil.bindView(
 							findViewById(R.id.price),
 							getString(R.string.money_symbol)
@@ -165,15 +169,15 @@ public class GoodDetailActivity extends RabbitBaseActivity {
 								@Override
 								public void onClick(View v) {
 
-//									Intent it = new Intent(self,
-//											MapActivity.class);
-//									it.putExtra("url", JSONUtil.getString(
-//											detailJo, "map_url"));
-//									it.putExtra("tolat",
-//											JSONUtil.getFloat(detailJo, "lat"));
-//									it.putExtra("tolng",
-//											JSONUtil.getFloat(detailJo, "lng"));
-//									startActivity(it);
+									// Intent it = new Intent(self,
+									// MapActivity.class);
+									// it.putExtra("url", JSONUtil.getString(
+									// detailJo, "map_url"));
+									// it.putExtra("tolat",
+									// JSONUtil.getFloat(detailJo, "lat"));
+									// it.putExtra("tolng",
+									// JSONUtil.getFloat(detailJo, "lng"));
+									// startActivity(it);
 
 								}
 							});
@@ -185,7 +189,7 @@ public class GoodDetailActivity extends RabbitBaseActivity {
 	}
 
 	private void getCommentList() {
-		DhNet net = new DhNet(API.commentlist);
+		DhNet net = new DhNet(new API().commentlist);
 		net.addParam("contentid", daigouId);
 		net.addParam("type", 3);
 		net.addParam("step", 2);
@@ -195,7 +199,7 @@ public class GoodDetailActivity extends RabbitBaseActivity {
 			public void doInUI(Response response, Integer transfer) {
 
 				if (response.isSuccess()) {
-					commentView.setData(response.jSONArrayFrom("list"));
+					commentView.setData(response.jSONArrayFrom("list"), score);
 				}
 
 			}

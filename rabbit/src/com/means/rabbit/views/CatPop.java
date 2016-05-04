@@ -198,11 +198,11 @@ public class CatPop {
 		per.load();
 		String url = null;
 		if (type == CAT) {
-			url = API.catlist;
+			url = new API().catlist;
 		} else if (type == AREA) {
-			url = API.arealist;
+			url = new API().arealist;
 		} else if (type == BRAND) {
-			url = API.brandlist;
+			url = new API().brandlist;
 		}
 		DhNet net = new DhNet(url);
 		net.addParam("cityid", per.catid);

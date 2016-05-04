@@ -13,18 +13,17 @@
         android:background="@color/white"
         android:orientation="vertical" >
 
-         <LinearLayout
-            android:id="@+id/phone_layout"
+        <!--
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="@dimen/padding_leftandright"
-            android:visibility="gone" >
+            android:padding="@dimen/padding_leftandright" >
 
             <TextView
                 style="@style/text_44_black_medium"
-                android:text="@string/editinfo_phone" />
+                android:text="@string/edit_phone" />
 
             <EditText
                 android:id="@+id/phone"
@@ -32,45 +31,11 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:background="@color/nothing"
+                android:inputType="phone"
                 android:gravity="right"
-                android:hint="@string/register_phone_hint"
-                android:inputType="phone" />
+                android:hint="@string/edit_phone_hint_phone" />
         </LinearLayout>
-
-        <View style="@style/line_horizontal" />
-
-        <LinearLayout
-            android:id="@+id/email_layout"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:orientation="vertical"
-            android:visibility="gone" >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="@dimen/padding_leftandright" >
-
-                <TextView
-                    style="@style/text_44_black_medium"
-                    android:text="@string/register_email" />
-
-                <EditText
-                    android:id="@+id/email"
-                    style="@style/text_66_black_medium"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:background="@color/nothing"
-                    android:gravity="right"
-                    android:hint="@string/editinfo_email_des1"
-                    android:inputType="textEmailAddress" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <View style="@style/line_horizontal" />
+        -->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -81,32 +46,22 @@
 
             <TextView
                 style="@style/text_44_black_medium"
-                android:text="@string/register_code" />
+                android:text="@string/new_email" />
 
             <EditText
-                android:id="@+id/verification"
+                android:id="@+id/newemail"
                 style="@style/text_66_black_medium"
                 android:layout_width="0dp"
-                android:layout_marginRight="2dp"
                 android:layout_weight="1"
                 android:background="@color/nothing"
-                android:gravity="center_vertical|right"
-                android:hint="@string/register_code_hint" />
-
-            <TextView
-                android:id="@+id/getverification"
-                style="@style/text_white_medium"
-                android:background="@drawable/code_bg"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:paddingTop="3dp"
-                android:paddingBottom="3dp"
-                android:text="@string/register_get_code" />
+                android:gravity="right"
+                android:hint="@string/editinfo_email_des1"
+                android:inputType="textEmailAddress" />
         </LinearLayout>
 
         <View style="@style/line_horizontal" />
 
-
+        <!--
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -116,7 +71,7 @@
 
             <TextView
                 style="@style/text_44_black_medium"
-                android:text="@string/forget_pswd_newpswd" />
+                android:text="@string/edit_phone_password" />
 
             <EditText
                 android:id="@+id/password"
@@ -125,14 +80,48 @@
                 android:layout_weight="1"
                 android:background="@color/nothing"
                 android:gravity="right"
-                android:inputType="textPassword"
-                android:hint="@string/forget_pswd_newpswd_hint" />
+                android:hint="@string/edit_phone_hint_password" />
+        </LinearLayout>
+        -->
+
+        <View style="@style/line_horizontal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_leftandright" >
+
+            <TextView
+                style="@style/text_44_black_medium"
+                android:text="@string/edit_phone_code" />
+
+            <EditText
+                android:id="@+id/verification"
+                style="@style/text_66_black_medium"
+                android:layout_width="0dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:background="@color/nothing"
+                 android:gravity="center_vertical|right"
+                android:hint="@string/edit_phone_hint_code" />
+
+            <TextView
+                android:id="@+id/getverification"
+                style="@style/text_white_medium"
+                android:background="@drawable/code_bg"
+                android:paddingBottom="3dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="3dp"
+                android:text="@string/register_get_code" />
         </LinearLayout>
 
         <View style="@style/line_horizontal" />
 
         <Button
-            android:id="@+id/forget"
+            android:id="@+id/submit"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginBottom="15dp"
@@ -140,7 +129,7 @@
             android:layout_marginRight="30dp"
             android:layout_marginTop="60dp"
             android:background="@drawable/fillet_10_green_bg"
-            android:text="@string/forget_pswd"
+            android:text="@string/edit_phone_submit"
             android:textColor="@color/white"
             android:textSize="@dimen/text_medium" />
     </LinearLayout>

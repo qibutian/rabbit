@@ -70,7 +70,7 @@ public class PayOrderActivity extends RabbitBaseActivity {
 	}
 
 	private void payByMoney() {
-		DhNet net = new DhNet(API.pay);
+		DhNet net = new DhNet(new API().pay);
 		net.addParam("orderid", orderid);
 		net.addParam("payprice", payprice);
 		net.doPostInDialog(getString(R.string.pay_paying), new NetTask(self) {
@@ -90,7 +90,7 @@ public class PayOrderActivity extends RabbitBaseActivity {
 
 	// 优惠买单使用余额支付
 	private void payByMoneyYH() {
-		DhNet net = new DhNet(API.youhuibuy);
+		DhNet net = new DhNet(new API().youhuibuy);
 		net.addParam("contentid", getIntent().getStringExtra("contentid"));
 		net.addParam("payprice", payprice);
 		net.addParam("credit", getIntent().getStringExtra("credit"));
@@ -111,7 +111,7 @@ public class PayOrderActivity extends RabbitBaseActivity {
 	}
 
 	private void getMyMoney() {
-		DhNet net = new DhNet(API.accountview);
+		DhNet net = new DhNet(new API().accountview);
 		net.doGetInDialog(new NetTask(self) {
 
 			@Override

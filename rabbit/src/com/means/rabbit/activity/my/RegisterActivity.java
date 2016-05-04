@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.means.rabbit.R;
+import com.means.rabbit.RabbitApplication;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.utils.RabbitUtils;
@@ -29,7 +30,7 @@ import com.means.rabbit.utils.RabbitUtils;
 public class RegisterActivity extends RabbitBaseActivity implements
 		OnClickListener {
 
-	private EditText phoneEt, verificationEt, nicknameEt, passwordEt;
+	private EditText phoneEt, verificationEt, nicknameEt, passwordEt, emailE;
 	private TextView getverificationBtn;
 	private Button registerBtn;
 
@@ -45,8 +46,15 @@ public class RegisterActivity extends RabbitBaseActivity implements
 	@Override
 	public void initView() {
 		setTitle(getString(R.string.register));
-		time = new TimeCount(60000, 1000);
 
+		if (RabbitApplication.getInstance().getisPhone()) {
+			findViewById(R.id.phone_layout).setVisibility(View.VISIBLE);
+		} else {
+			findViewById(R.id.email_layout).setVisibility(View.VISIBLE);
+		}
+
+		time = new TimeCount(60000, 1000);
+		emailE = (EditText) findViewById(R.id.email);
 		phoneEt = (EditText) findViewById(R.id.phone);
 		verificationEt = (EditText) findViewById(R.id.verification);
 		nicknameEt = (EditText) findViewById(R.id.nickname);
@@ -61,16 +69,29 @@ public class RegisterActivity extends RabbitBaseActivity implements
 
 	private void register() {
 		String tel = phoneEt.getText().toString();
+		String email = emailE.getText().toString();
 		String password = passwordEt.getText().toString();
 		String code = verificationEt.getText().toString();
 		String nickname = nicknameEt.getText().toString();
-		if (TextUtils.isEmpty(tel)) {
-			showToast(getString(R.string.editinfo_tel_des1));
-			return;
-		}
-		if (tel.length() != 11) {
-			showToast(getString(R.string.editinfo_tel_des));
-			return;
+
+		if (RabbitApplication.getInstance().getisPhone()) {
+			if (TextUtils.isEmpty(tel)) {
+				showToast(getString(R.string.editinfo_tel_des1));
+				return;
+			}
+			if (tel.length() != 11) {
+				showToast(getString(R.string.editinfo_tel_des));
+				return;
+			}
+		} else {
+			if (TextUtils.isEmpty(email)) {
+				showToast(getString(R.string.editinfo_email_des1));
+				return;
+			}
+			if (!RabbitUtils.checkEmail(email)) {
+				showToast(getString(R.string.editinfo_email_des2));
+				return;
+			}
 		}
 		if (TextUtils.isEmpty(code)) {
 			showToast(getString(R.string.editinfo_code_des));
@@ -97,11 +118,20 @@ public class RegisterActivity extends RabbitBaseActivity implements
 			return;
 		}
 
-		DhNet smsNet = new DhNet(API.register);
+		DhNet smsNet = new DhNet(new API().register);
 		smsNet.addParam("name", nickname);
 		smsNet.addParam("pswd", password);
-		smsNet.addParam("phone", tel);
-		smsNet.addParam("mobilecode", code);
+
+		if (RabbitApplication.getInstance().getisPhone()) {
+			smsNet.addParam("phone", tel);
+			smsNet.addParam("mobilecode", code);
+		} else {
+			smsNet.addParam("email", email);
+			smsNet.addParam("emailcode", code);
+		}
+
+		smsNet.addParam("type", 1);
+
 		smsNet.doPostInDialog(new NetTask(self) {
 
 			@Override
@@ -127,8 +157,34 @@ public class RegisterActivity extends RabbitBaseActivity implements
 			showToast(getString(R.string.editinfo_tel_des));
 			return;
 		}
-		DhNet smsNet = new DhNet(API.mobilecode);
+		DhNet smsNet = new DhNet(new API().mobilecode);
 		smsNet.addParam("phone", tel);
+		smsNet.addParam("type", "1"); // 1为注册
+		smsNet.doGet(new NetTask(self) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+				// TODO Auto-generated method stub
+				if (response.isSuccess()) {
+					time.start();
+				}
+			}
+		});
+	}
+
+	// 获取验证码
+	private void getEmailCode() {
+		String email = emailE.getText().toString();
+		if (TextUtils.isEmpty(email)) {
+			showToast(getString(R.string.editinfo_email_des1));
+			return;
+		}
+		if (!RabbitUtils.checkEmail(email)) {
+			showToast(getString(R.string.editinfo_email_des2));
+			return;
+		}
+		DhNet smsNet = new DhNet(new API().emailcode);
+		smsNet.addParam("email", email);
 		smsNet.addParam("type", "1"); // 1为注册
 		smsNet.doGet(new NetTask(self) {
 
@@ -149,7 +205,8 @@ public class RegisterActivity extends RabbitBaseActivity implements
 
 		@Override
 		public void onFinish() {
-			getverificationBtn.setText(getString(R.string.editinfo_code_release));
+			getverificationBtn
+					.setText(getString(R.string.editinfo_code_release));
 			getverificationBtn.setEnabled(true);
 		}
 
@@ -166,7 +223,12 @@ public class RegisterActivity extends RabbitBaseActivity implements
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.getverification:
-			getMobileCode();
+
+			if (RabbitApplication.getInstance().getisPhone()) {
+				getMobileCode();
+			} else {
+				getEmailCode();
+			}
 			break;
 		case R.id.register:
 			register();

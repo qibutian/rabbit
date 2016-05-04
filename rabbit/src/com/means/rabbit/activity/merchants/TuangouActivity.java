@@ -41,7 +41,7 @@ public class TuangouActivity extends RabbitBaseActivity {
 		
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		contentListV = listV.getListView();
-		adapter = new NetJSONAdapter(API.hotelDetailNearTuangou, self,
+		adapter = new NetJSONAdapter(new API().hotelDetailNearTuangou, self,
 				R.layout.item_shop_detail_tuangou_near);
 		adapter.fromWhat("list");
 		adapter.addparam("contentid", shopId);

@@ -7,6 +7,7 @@ public class RabbitPerference extends Perference {
 	public int isFirst = 0;
 
 	public String name;
+	public String email;
 	public String groupname;
 	public String nickname;
 	public String ordercount;
@@ -135,6 +136,16 @@ public class RabbitPerference extends Perference {
 	public void setLangType(int langType) {
 		this.langType = langType;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	
 	
 	
 

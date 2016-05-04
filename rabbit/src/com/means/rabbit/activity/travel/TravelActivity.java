@@ -72,7 +72,7 @@ public class TravelActivity extends RabbitBaseActivity {
 		keywords = getIntent().getStringExtra("keywords");
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		contentListV = listV.getListView();
-		adapter = new NetJSONAdapter(API.contentlist, self,
+		adapter = new NetJSONAdapter(new API().contentlist, self,
 				R.layout.item_travel_list);
 		adapter.fromWhat("list");
 		adapter.addparam("catid", catid);

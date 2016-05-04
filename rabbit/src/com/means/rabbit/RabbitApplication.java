@@ -45,6 +45,9 @@ public class RabbitApplication extends Application implements
 
 	String Baseurl;
 
+	// 是否使用手机
+	boolean isphone = true;
+
 	public static RabbitApplication getInstance() {
 		return instance;
 	}
@@ -138,12 +141,15 @@ public class RabbitApplication extends Application implements
 		if (per.langType != 0) {
 			if (per.langType == 1) {
 				config.locale = Locale.CHINA; // 简体中文
+				isphone = true;
 				setBaseUrl(1);
 			} else if (per.langType == 2) {
 				config.locale = Locale.ENGLISH; // 简体中文
+				isphone = false;
 				setBaseUrl(2);
 			} else if (per.langType == 3) {
 				config.locale = new Locale("my");
+				isphone = false;
 				setBaseUrl(3);
 			}
 			resources.updateConfiguration(config, dm);
@@ -151,10 +157,13 @@ public class RabbitApplication extends Application implements
 		} else {
 			if (config.locale == Locale.ENGLISH) {
 				setBaseUrl(2);
+				isphone = false;
 			} else if (config.locale == new Locale("my")) {
 				setBaseUrl(3);
+				isphone = false;
 			} else {
 				setBaseUrl(1);
+				isphone = true;
 			}
 		}
 
@@ -169,8 +178,16 @@ public class RabbitApplication extends Application implements
 		android.os.Process.killProcess(android.os.Process.myPid());
 	}
 
+	public void setIsPhone(boolean isphone) {
+		this.isphone = isphone;
+	}
+
 	public String getBaseUrl() {
 		return Baseurl;
+	}
+
+	public boolean getisPhone() {
+		return isphone;
 	}
 
 	public void setBaseUrl(int type) {

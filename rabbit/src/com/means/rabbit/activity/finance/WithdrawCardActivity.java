@@ -77,7 +77,7 @@ public class WithdrawCardActivity extends RabbitBaseActivity {
 			return;
 		}
 
-		DhNet net = new DhNet(API.cashapply);
+		DhNet net = new DhNet(new API().cashapply);
 		net.addParam("name", name);
 		net.addParam("num", cardid);
 		net.addParam("amount", money);
@@ -87,6 +87,7 @@ public class WithdrawCardActivity extends RabbitBaseActivity {
 			public void doInUI(Response response, Integer transfer) {
 				// TODO Auto-generated method stub
 				if (response.isSuccess()) {
+					finish();
 					showToast(getString(R.string.withdrawcard_release_des));
 				}
 			}

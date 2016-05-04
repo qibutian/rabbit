@@ -127,7 +127,7 @@ public class AreaPop {
 		RabbitPerference per = IocContainer.getShare().get(
 				RabbitPerference.class);
 		per.load();
-		DhNet net = new DhNet(API.arealist);
+		DhNet net = new DhNet(new API().arealist);
 		net.addParam("cityid", per.catid);
 		net.doGetInDialog(new NetTask(context) {
 

@@ -5,6 +5,8 @@
     android:background="@color/app_bg_color"
     android:orientation="vertical" >
 
+    <include layout="@layout/include_title_bar" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
@@ -23,7 +25,7 @@
                 android:orientation="horizontal"
                 android:padding="10dp" >
 
-                 <com.means.rabbit.views.RoundImageView
+                <com.means.rabbit.views.RoundImageView
                     android:id="@+id/head"
                     android:layout_width="50dp"
                     android:layout_height="50dp" />
@@ -96,7 +98,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:padding="@dimen/padding_leftandright">
+                android:padding="@dimen/padding_leftandright" >
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -121,7 +123,7 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <View 
+            <View
                 android:id="@+id/b_line"
                 style="@style/line_horizontal" />
 
@@ -194,7 +196,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:padding="@dimen/padding_leftandright">
+                android:padding="@dimen/padding_leftandright" >
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -225,9 +227,9 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <View 
+            <View
                 android:id="@+id/m_line"
-                style="@style/line_horizontal"/>
+                style="@style/line_horizontal" />
 
             <LinearLayout
                 android:id="@+id/integral"

@@ -12,6 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -24,6 +25,7 @@ import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.bean.DistrictEB;
 import com.means.rabbit.bean.CityEB;
+import com.means.rabbit.bean.HotelCityEB;
 import com.means.rabbit.utils.RabbitPerference;
 
 import de.greenrobot.event.EventBus;
@@ -94,22 +96,29 @@ public class SelectCityActivity extends RabbitBaseActivity {
 					int position, long id) {
 				JSONObject jo = cityAdapter.getItem(position);
 
-				RabbitPerference per = IocContainer.getShare().get(
-						RabbitPerference.class);
-				per.load();
-				per.catid = JSONUtil.getString(jo, "id");
-				per.cityname = JSONUtil.getString(jo, "name");
-				per.commit();
+				if (TextUtils.isEmpty(getIntent().getStringExtra("from"))) {
+					RabbitPerference per = IocContainer.getShare().get(
+							RabbitPerference.class);
+					per.load();
+					per.catid = JSONUtil.getString(jo, "id");
+					per.cityname = JSONUtil.getString(jo, "name");
+					per.commit();
 
-				GlobalParams globalParams = IocContainer.getShare().get(
-						GlobalParams.class);
-				globalParams.setGlobalParam("cityid",
-						JSONUtil.getString(jo, "id"));
+					GlobalParams globalParams = IocContainer.getShare().get(
+							GlobalParams.class);
+					globalParams.setGlobalParam("cityid",
+							JSONUtil.getString(jo, "id"));
 
-				CityEB city = new CityEB();
-				city.setCatid(JSONUtil.getString(jo, "id"));
-				city.setCityname(JSONUtil.getString(jo, "name"));
-				EventBus.getDefault().post(city);
+					CityEB city = new CityEB();
+					city.setCatid(JSONUtil.getString(jo, "id"));
+					city.setCityname(JSONUtil.getString(jo, "name"));
+					EventBus.getDefault().post(city);
+				} else {
+					HotelCityEB city = new HotelCityEB();
+					city.setCatid(JSONUtil.getString(jo, "id"));
+					city.setCityname(JSONUtil.getString(jo, "name"));
+					EventBus.getDefault().post(city);
+				}
 
 				finish();
 			}
@@ -118,7 +127,7 @@ public class SelectCityActivity extends RabbitBaseActivity {
 	}
 
 	private void getData() {
-		DhNet net = new DhNet(API.citylist);
+		DhNet net = new DhNet(new API().citylist);
 		net.doGetInDialog(getString(R.string.progress_doing),
 				new NetTask(self) {
 

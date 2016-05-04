@@ -87,7 +87,7 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 	}
 
 	private void getGrogshopData() {
-		DhNet net = new DhNet(API.hotelOrderDetail);
+		DhNet net = new DhNet(new API().hotelOrderDetail);
 		net.addParam("orderid", itemid);
 		net.doGetInDialog(new NetTask(self) {
 
@@ -238,7 +238,7 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 	}
 
 	private void cancleOrder() {
-		DhNet net = new DhNet(API.cancelOrder);
+		DhNet net = new DhNet(new API().cancelOrder);
 		net.addParam("orderid", itemid);
 		net.doPostInDialog("取消中...", new NetTask(self) {
 

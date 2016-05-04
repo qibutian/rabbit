@@ -363,7 +363,7 @@
     <string name="withdrawcard_money_des1">Cash withdrawals require more than 0</string>
     <string name="withdrawcard_code_des">Please enter the card number</string>
     <string name="withdrawcard_name_des">Please enter your name</string>
-    <string name="withdrawcard_release_des">Application submitted</string>
+    <string name="withdrawcard_release_des">Application has been submitted, please wait 2-5 days</string>
 
     <!-- 账户充值 -->
     <string name="recharge">Recharge</string>
@@ -503,5 +503,14 @@
     <string name="translate_des">Speak loudly</string>
     <string name="progress_nomoreresult">You brush too fast, no more!</string>
     <string name="malaixiya">Malaysia</string>
+    <string name="tuangoushangjia">Customers or business</string>
+    <string name="buy">buy</string>
+    <string name="score">score</string>
+    <string name="update_title">new version</string>
+    <string name="update">Update</string>
+    <string name="register_email">Email</string>
+    <string name="editinfo_email_des1">please input your email</string>
+    <string name="editinfo_email_des2">Please input the correct email address</string>
+    <string name="new_email">new mail</string>
 
 </resources>

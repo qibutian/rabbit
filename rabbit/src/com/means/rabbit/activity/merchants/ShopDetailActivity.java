@@ -71,6 +71,8 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 	// 图片数量
 	TextView pic_countT;
 
+	String score;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -89,7 +91,7 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
 		listV.addHeadView(headV);
 		contentListV = listV.getListView();
-		adapter = new NetJSONAdapter(API.hotelDetailNearTuangou, self,
+		adapter = new NetJSONAdapter(new API().hotelDetailNearTuangou, self,
 				R.layout.item_shop_detail_tuangou_near);
 		adapter.fromWhat("list");
 		adapter.addparam("contentid", shopId);
@@ -155,7 +157,7 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 	}
 
 	private void getShopDetalData() {
-		DhNet net = new DhNet(API.shopDetail);
+		DhNet net = new DhNet(new API().shopDetail);
 		net.addParam("id", shopId);
 		net.addParam("key", getIntent().getStringExtra("key"));
 		net.doGet(new NetTask(self) {
@@ -256,6 +258,7 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 					ViewUtil.bindView(headV.findViewById(R.id.comment_des),
 							JSONUtil.getString(detailJo, "score") + "/"
 									+ JSONUtil.getString(detailJo, "comment"));
+					score = JSONUtil.getString(detailJo, "score");
 					ViewUtil.bindView(
 							headV.findViewById(R.id.price),
 							getString(R.string.money_symbol)
@@ -295,7 +298,7 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 
 	// 获取团购数据
 	private void getTuangouList() {
-		DhNet net = new DhNet(API.hotelDetailNearTuangou);
+		DhNet net = new DhNet(new API().hotelDetailNearTuangou);
 		net.addParam("contentid", shopId);
 		net.addParam("step", 3);
 		net.doGet(new NetTask(self) {
@@ -313,7 +316,7 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 	}
 
 	private void getCommentList() {
-		DhNet net = new DhNet(API.commentlist);
+		DhNet net = new DhNet(new API().commentlist);
 		net.addParam("contentid", shopId);
 		net.addParam("type", 1);
 		net.addParam("step", 2);
@@ -323,7 +326,7 @@ public class ShopDetailActivity extends RabbitBaseActivity {
 			public void doInUI(Response response, Integer transfer) {
 
 				if (response.isSuccess()) {
-					commentView.setData(response.jSONArrayFrom("list"));
+					commentView.setData(response.jSONArrayFrom("list"), score);
 				}
 
 			}

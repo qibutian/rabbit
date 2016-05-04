@@ -196,7 +196,7 @@ public class AddFavorableMainActivity extends RabbitBaseActivity {
 	}
 
 	private void getcrdeit() {
-		DhNet net = new DhNet(API.paycredit);
+		DhNet net = new DhNet(new API().paycredit);
 		net.doGetInDialog(new NetTask(self) {
 
 			@Override

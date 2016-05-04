@@ -35,7 +35,7 @@ public class AboutUsActivity extends RabbitBaseActivity {
 		titleT = (TextView) findViewById(R.id.title_txt);
 		contentT = (TextView) findViewById(R.id.content);
 		
-		DhNet net = new DhNet(API.aboutdetail);
+		DhNet net = new DhNet(new API().aboutdetail);
 		net.doGetInDialog(new NetTask(self) {
 			
 			@Override

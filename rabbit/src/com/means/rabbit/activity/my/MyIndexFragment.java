@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.means.rabbit.R;
 import com.means.rabbit.activity.finance.FinancialManagementActivity;
@@ -70,6 +71,15 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 	}
 
 	private void initView() {
+
+		View backV = mainV.findViewById(R.id.backLayout);
+		backV.setVisibility(View.GONE);
+
+		TextView titleT = (TextView) mainV.findViewById(R.id.title);
+		if (titleT != null) {
+			titleT.setText(getString(R.string.my_title));
+		}
+
 		editinfoLl = (LinearLayout) mainV.findViewById(R.id.editinfo);
 		systemmsgLl = (LinearLayout) mainV.findViewById(R.id.systemmsg);
 		business_orderLl = (LinearLayout) mainV
@@ -102,22 +112,22 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 		getUserType();
 
 	}
-	
-	private void getUserType(){
-//		User user = User.getInstance();
-//		if (user.getType() == 1) {
-//			business_orderLl.setVisibility(View.GONE);
-//			mainV.findViewById(R.id.b_line).setVisibility(View.GONE);
-//			
-//			my_orderLl.setVisibility(View.VISIBLE);
-//			mainV.findViewById(R.id.m_line).setVisibility(View.VISIBLE);
-//		} else {
-//			my_orderLl.setVisibility(View.GONE);
-//			mainV.findViewById(R.id.m_line).setVisibility(View.GONE);
-//			
-//			business_orderLl.setVisibility(View.VISIBLE);
-//			mainV.findViewById(R.id.b_line).setVisibility(View.VISIBLE);
-//		}
+
+	private void getUserType() {
+		// User user = User.getInstance();
+		// if (user.getType() == 1) {
+		// business_orderLl.setVisibility(View.GONE);
+		// mainV.findViewById(R.id.b_line).setVisibility(View.GONE);
+		//
+		// my_orderLl.setVisibility(View.VISIBLE);
+		// mainV.findViewById(R.id.m_line).setVisibility(View.VISIBLE);
+		// } else {
+		// my_orderLl.setVisibility(View.GONE);
+		// mainV.findViewById(R.id.m_line).setVisibility(View.GONE);
+		//
+		// business_orderLl.setVisibility(View.VISIBLE);
+		// mainV.findViewById(R.id.b_line).setVisibility(View.VISIBLE);
+		// }
 	}
 
 	@Override
@@ -155,6 +165,7 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 		// 配送地址
 		case R.id.shipping_address:
 			it = new Intent(getActivity(), ShippingAddressActivity.class);
+			it.putExtra("type", "edit");
 			startActivity(it);
 			break;
 		// 收藏列表
@@ -188,7 +199,7 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 	}
 
 	private void logout() {
-		DhNet net = new DhNet(API.logout);
+		DhNet net = new DhNet(new API().logout);
 		net.doPostInDialog(new NetTask(getActivity()) {
 
 			@Override
@@ -207,7 +218,7 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 	}
 
 	private void getinfo() {
-		DhNet net = new DhNet(API.userinfo);
+		DhNet net = new DhNet(new API().userinfo);
 		net.doGetInDialog(new NetTask(getActivity()) {
 
 			@Override
@@ -219,7 +230,7 @@ public class MyIndexFragment extends Fragment implements OnClickListener {
 							(ImageView) mainV.findViewById(R.id.head),
 							JSONUtil.getString(jo, "faceimg_s"), "head");
 					ViewUtil.bindView(mainV.findViewById(R.id.level),
-							JSONUtil.getString(jo, "groupname"));
+							JSONUtil.getString(jo, "rolename"));
 
 					int msgcount = JSONUtil.getInt(jo, "msgcount");
 					int ordercount = JSONUtil.getInt(jo, "ordercount");

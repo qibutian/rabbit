@@ -141,7 +141,7 @@ public class GroupOrderActivity extends RabbitBaseActivity {
 	}
 
 	private void getData() {
-		DhNet net = new DhNet(API.preTuangouOrder);
+		DhNet net = new DhNet(new API().preTuangouOrder);
 		net.addParam("itemid", tuangouId);
 		net.doGetInDialog(new NetTask(self) {
 
@@ -205,7 +205,7 @@ public class GroupOrderActivity extends RabbitBaseActivity {
 
 	private void submit() {
 
-		DhNet net = new DhNet(API.addTuangouOrder);
+		DhNet net = new DhNet(new API().addTuangouOrder);
 		net.addParam("itemid", tuangouId);
 		net.addParam("buyerphone", telT.getText().toString());
 		net.addParam("ordercount", cartView.getCartNum());

@@ -9,6 +9,7 @@ import net.duohuo.dhroid.net.JSONUtil;
 import com.means.rabbit.R;
 import com.means.rabbit.activity.home.HomePageFragment;
 import com.means.rabbit.api.API;
+import com.means.rabbit.base.RabbitBaseFragment;
 import com.means.rabbit.bean.CityEB;
 import com.means.rabbit.views.RefreshListViewAndMore;
 import com.means.rabbit.views.TabView;
@@ -28,7 +29,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class MerchatsFragment extends Fragment {
+public class MerchatsFragment extends RabbitBaseFragment {
 
 	static MerchatsFragment instance;
 
@@ -68,6 +69,14 @@ public class MerchatsFragment extends Fragment {
 
 	private void initView() {
 
+		View backV = mainV.findViewById(R.id.backLayout);
+		backV.setVisibility(View.GONE);
+
+		TextView titleT = (TextView) mainV.findViewById(R.id.title);
+		if (titleT != null) {
+			titleT.setText(getString(R.string.search_type2));
+		}
+
 		listV = (RefreshListViewAndMore) mainV.findViewById(R.id.my_listview);
 		mLayoutInflater = LayoutInflater.from(getActivity());
 		headV = mLayoutInflater.inflate(R.layout.head_food_list, null);
@@ -82,7 +91,7 @@ public class MerchatsFragment extends Fragment {
 		});
 		listV.addHeadView(headV);
 		contentListV = listV.getListView();
-		adapter = new NetJSONAdapter(API.foodList, getActivity(),
+		adapter = new NetJSONAdapter(new API().foodList, getActivity(),
 				R.layout.item_food_list);
 		adapter.fromWhat("list");
 		adapter.addField("title", R.id.title);
@@ -142,6 +151,9 @@ public class MerchatsFragment extends Fragment {
 	}
 
 	public void onEventMainThread(CityEB city) {
+		// TextView cityT = (TextView) mainV.findViewById(R.id.city);
+		// cityT.setText(city.getCityname());
+
 		adapter.addparam("cityid", city.getCatid());
 		adapter.refresh();
 	}

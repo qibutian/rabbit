@@ -14,15 +14,17 @@
         android:orientation="vertical" >
 
         <LinearLayout
+            android:id="@+id/phone_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="@dimen/padding_leftandright" >
+            android:padding="@dimen/padding_leftandright"
+            android:visibility="gone" >
 
             <TextView
                 style="@style/text_44_black_medium"
-                android:text="@string/register_phone" />
+                android:text="@string/editinfo_phone" />
 
             <EditText
                 android:id="@+id/phone"
@@ -31,8 +33,41 @@
                 android:layout_weight="1"
                 android:background="@color/nothing"
                 android:gravity="right"
-                android:inputType="phone"
-                android:hint="@string/register_phone_hint" />
+                android:hint="@string/register_phone_hint"
+                android:inputType="phone" />
+        </LinearLayout>
+
+        <View style="@style/line_horizontal" />
+
+        <LinearLayout
+            android:id="@+id/email_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_leftandright" >
+
+                <TextView
+                    style="@style/text_44_black_medium"
+                    android:text="@string/register_email" />
+
+                <EditText
+                    android:id="@+id/email"
+                    style="@style/text_66_black_medium"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/nothing"
+                    android:gravity="right"
+                    android:hint="@string/editinfo_email_des1"
+                    android:inputType="textEmailAddress" />
+            </LinearLayout>
         </LinearLayout>
 
         <View style="@style/line_horizontal" />
@@ -55,18 +90,18 @@
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
                 android:background="@color/nothing"
-                android:gravity="right"
-                android:inputType="number"
-                android:hint="@string/register_code_hint" />
+             android:gravity="center_vertical|right"
+                android:hint="@string/register_code_hint"
+                android:inputType="number" />
 
             <TextView
                 android:id="@+id/getverification"
                 style="@style/text_white_medium"
-                android:paddingTop="3dp"
+                android:background="@drawable/code_bg"
                 android:paddingBottom="3dp"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
-                android:background="@drawable/code_bg"
+                android:paddingTop="3dp"
                 android:text="@string/register_get_code" />
         </LinearLayout>
 
@@ -89,7 +124,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:background="@color/nothing"
-                android:gravity="right"
+                android:gravity="center_vertical|right"
                 android:hint="@string/register_name_hint" />
         </LinearLayout>
 

@@ -64,8 +64,7 @@
                     style="@style/text_66_black_small"
                     android:layout_width="0dp"
                     android:layout_marginRight="15dp"
-                    android:layout_weight="1"
-                    android:text="255人购买" />
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/bug"

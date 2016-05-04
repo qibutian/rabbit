@@ -45,7 +45,7 @@ public class MyIntegralActivity extends RabbitBaseActivity {
 		setTitle(getString(R.string.my_integral));
 		
 		listV = (RefreshListViewAndMore) findViewById(R.id.my_listview);
-		String url = API.creditloglist;
+		String url = new API().creditloglist;
 		contentListV = listV.getListView();
 		
 		adapter = new NetJSONAdapter(url, self,

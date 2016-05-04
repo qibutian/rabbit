@@ -60,7 +60,7 @@ public class EditNickNameActivity extends RabbitBaseActivity {
 			return;
 		}
 
-		DhNet net = new DhNet(API.editaction);
+		DhNet net = new DhNet(new API().editaction);
 		net.addParam("nickname", name);
 		net.doPostInDialog(new NetTask(self) {
 
