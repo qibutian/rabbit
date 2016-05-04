@@ -19,6 +19,8 @@ public class ChangLanguageDialog extends BaseAlertDialog {
 
 	Context context;
 
+	OnClickResult onClickResult;
+
 	public ChangLanguageDialog(Context context) {
 		super(context);
 		this.context = context;
@@ -44,6 +46,10 @@ public class ChangLanguageDialog extends BaseAlertDialog {
 					@Override
 					public void onClick(View v) {
 						changeLanguage(3);
+						RabbitApplication.getInstance().setIsPhone(false);
+						if (onClickResult != null) {
+							onClickResult.click();
+						}
 						dismiss();
 					}
 				});
@@ -54,6 +60,10 @@ public class ChangLanguageDialog extends BaseAlertDialog {
 					@Override
 					public void onClick(View v) {
 						changeLanguage(2);
+						RabbitApplication.getInstance().setIsPhone(false);
+						if (onClickResult != null) {
+							onClickResult.click();
+						}
 						dismiss();
 					}
 				});
@@ -64,9 +74,25 @@ public class ChangLanguageDialog extends BaseAlertDialog {
 					@Override
 					public void onClick(View v) {
 						changeLanguage(1);
+						RabbitApplication.getInstance().setIsPhone(true);
+						if (onClickResult != null) {
+							onClickResult.click();
+						}
 						dismiss();
 					}
 				});
+	}
+
+	public interface OnClickResult {
+		void click();
+	}
+
+	public OnClickResult getOnClickResult() {
+		return onClickResult;
+	}
+
+	public void setOnClickResult(OnClickResult onClickResult) {
+		this.onClickResult = onClickResult;
 	}
 
 	private void changeLanguage(int type) {
