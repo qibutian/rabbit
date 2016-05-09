@@ -288,4 +288,8 @@ public class API {
 	/** 重置密码*/
 	public String resetpswdbyemail = RabbitApplication.getInstance().getBaseUrl()
 			+ "/home/user/resetpswdbyemail";
+	
+	/**删除地址*/
+	public String address_del = RabbitApplication.getInstance().getBaseUrl()
+			+ "/home/cart/addressdelete";
 }

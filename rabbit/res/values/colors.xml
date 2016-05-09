@@ -26,6 +26,7 @@
     <color name="hotel_red">#FF5A5F</color>
     <color name="comment_btn_bg">#585858</color>
     <color name="wheel_line_grey">#e5e5e5</color>
-     <color name="wheel_dialog_blue">#23bde1</color>
+    <color name="wheel_dialog_blue">#23bde1</color>
+    <color name="focus_bg">#f7f7f7</color>
 
 </resources>

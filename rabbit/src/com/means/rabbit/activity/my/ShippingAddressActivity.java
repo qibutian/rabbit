@@ -4,15 +4,20 @@ import org.json.JSONObject;
 
 import net.duohuo.dhroid.adapter.FieldMap;
 import net.duohuo.dhroid.adapter.NetJSONAdapter;
+import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.net.JSONUtil;
+import net.duohuo.dhroid.net.NetTask;
+import net.duohuo.dhroid.net.Response;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -20,6 +25,8 @@ import com.means.rabbit.R;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
 import com.means.rabbit.views.RefreshListViewAndMore;
+import com.means.rabbit.views.dialog.DelectDialog;
+import com.means.rabbit.views.dialog.DelectDialog.OnDelectResultListener;
 
 /**
  * 配送地址
@@ -98,6 +105,39 @@ public class ShippingAddressActivity extends RabbitBaseActivity {
 					it.putExtra("data", jo.toString());
 					startActivityForResult(it, 1);
 				}
+			}
+
+		});
+		contentListV.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				final int index = position;
+				final JSONObject jo = adapter.getTItem(position);
+				DelectDialog dialog = new DelectDialog(self);
+				dialog.show();
+				dialog.setOnDelectResultListener(new OnDelectResultListener() {
+
+					@Override
+					public void onResult() {
+						DhNet net = new DhNet(new API().address_del);
+						net.addParam("id", JSONUtil.getString(jo, "id"));
+						net.doPost(new NetTask(self) {
+
+							@Override
+							public void doInUI(Response response,
+									Integer transfer) {
+								// TODO Auto-generated method stub
+								if (response.isSuccess()) {
+									adapter.remove(index);
+									adapter.notifyDataSetChanged();
+								}
+							}
+						});
+					}
+				});
+				return true;
 			}
 		});
 
