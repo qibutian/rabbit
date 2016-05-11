@@ -203,8 +203,7 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 					ViewUtil.bindView(
 							findViewById(R.id.price),
 							getString(R.string.money_symbol)
-									+ JSONUtil.getString(jo, "dayprice") + "/"
-									+ getString(R.string.hotel_des));
+									+ JSONUtil.getString(jo, "dayprice"));
 
 					ViewUtil.bindView(
 							findViewById(R.id.old_price),
@@ -219,6 +218,12 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 							totalPriceT
 									.setText(getString(R.string.money_symbol)
 											+ cartView.getCartNum() * price);
+
+							ViewUtil.bindView(
+									findViewById(R.id.price),
+									getString(R.string.money_symbol)
+											+ cartView.getCartNum() * price);
+
 							if (Integer.parseInt(jifenE.getText().toString()) == 0) {
 								shifuT.setText(cartView.getCartNum() * price
 										+ "");

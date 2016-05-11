@@ -3,9 +3,7 @@ package com.means.rabbit.activity.home;
 import net.duohuo.dhroid.adapter.FieldMap;
 import net.duohuo.dhroid.adapter.NetJSONAdapter;
 import net.duohuo.dhroid.adapter.PSAdapter;
-import net.duohuo.dhroid.ioc.IocContainer;
 import net.duohuo.dhroid.net.DhNet;
-import net.duohuo.dhroid.net.GlobalParams;
 import net.duohuo.dhroid.net.JSONUtil;
 import net.duohuo.dhroid.net.NetTask;
 import net.duohuo.dhroid.net.Response;
@@ -17,7 +15,6 @@ import org.json.JSONObject;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,17 +28,12 @@ import android.widget.TextView;
 import com.means.rabbit.R;
 import com.means.rabbit.activity.merchants.DaiGouActivity;
 import com.means.rabbit.activity.merchants.FoodListActivity;
-import com.means.rabbit.activity.merchants.GoodDetailActivity;
-import com.means.rabbit.activity.merchants.HotelDetailActivity;
 import com.means.rabbit.activity.merchants.HotelListActivity;
 import com.means.rabbit.activity.merchants.ShopDetailActivity;
-import com.means.rabbit.activity.merchants.TuangouDetailActivity;
 import com.means.rabbit.activity.travel.TravelActivity;
-import com.means.rabbit.activity.travel.TravelDetailActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseFragment;
 import com.means.rabbit.bean.CityEB;
-import com.means.rabbit.utils.RabbitPerference;
 import com.means.rabbit.utils.RabbitUtils;
 import com.means.rabbit.views.RefreshListViewAndMore;
 
@@ -129,7 +121,7 @@ public class HomePageFragment extends RabbitBaseFragment implements
 		listV.addHeadView(headV);
 		contentListV = listV.getListView();
 		adapter = new NetJSONAdapter(new API().likelist, getActivity(),
-				R.layout.item_home_list);
+				R.layout.item_home_like_list);
 		adapter.fromWhat("list");
 		adapter.addField("title", R.id.title);
 		adapter.addField("tuangoudes", R.id.tuangoudes);
@@ -138,6 +130,13 @@ public class HomePageFragment extends RabbitBaseFragment implements
 
 			@Override
 			public Object fix(View itemV, Integer position, Object o, Object jo) {
+				JSONObject data = (JSONObject) jo;
+				TextView comment_desT = (TextView) itemV
+						.findViewById(R.id.comment_des);
+				comment_desT.setText(getString(R.string.food_comment_des)
+						+ JSONUtil.getString(data, "score") + "/"
+						+ JSONUtil.getString(data, "comment"));
+
 				return getString(R.string.money_symbol) + o.toString();
 			}
 		});

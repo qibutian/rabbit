@@ -26,7 +26,11 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
+
+
 　　   
+    
+    
     
     <application
         android:name=".RabbitApplication"
@@ -65,7 +69,9 @@
         </activity>
         <activity android:name=".activity.my.order.BusinessOrderActivity" >
         </activity>
-        <activity android:name=".activity.my.order.BusinessOrderDetailsActivity" >
+        <activity
+            android:name=".activity.my.order.BusinessOrderDetailsActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
         </activity>
         <activity android:name=".activity.merchants.FoodListActivity" >
         </activity>
@@ -135,6 +141,10 @@
         <activity android:name=".activity.my.edit.EditPhoneActivity" >
         </activity>
         <activity android:name=".activity.more.AboutUsActivity" >
+        </activity>
+        <activity android:name=".activity.more.HelpListActivity" >
+        </activity>
+        <activity android:name=".activity.more.HelpDetailActivity" >
         </activity>
         <activity
             android:name=".activity.comment.PostCommentMainActivity"

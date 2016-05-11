@@ -159,7 +159,8 @@ public class MoreFragment extends Fragment implements OnClickListener {
 			break;
 		// 帮助
 		case R.id.help:
-
+			it = new Intent(getActivity(), HelpListActivity.class);
+			startActivity(it);
 			break;
 		// 清楚缓存
 		case R.id.wipe_cache:

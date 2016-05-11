@@ -105,7 +105,7 @@ public class FoodListActivity extends RabbitBaseActivity {
 						.findViewById(R.id.comment_des);
 				comment_desT.setText(getString(R.string.food_comment_des)
 						+ JSONUtil.getString(data, "score") + "/"
-						+ JSONUtil.getString(data, "views"));
+						+ JSONUtil.getString(data, "comment"));
 				// TODO Auto-generated method stub
 				return getString(R.string.money_symbol) + o;
 			}

@@ -512,5 +512,7 @@
     <string name="editinfo_email_des1">please input your email</string>
     <string name="editinfo_email_des2">Please input the correct email address</string>
     <string name="new_email">new mail</string>
-  <string name="tuandou_shanghu">Businesses or buy</string>
+    <string name="tuandou_shanghu">Businesses or buy</string>
+    <string name="help_detail">Help Details</string>
+
 </resources>

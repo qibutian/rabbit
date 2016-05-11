@@ -292,4 +292,17 @@ public class API {
 	/**删除地址*/
 	public String address_del = RabbitApplication.getInstance().getBaseUrl()
 			+ "/home/cart/addressdelete";
+	
+	
+	/**反馈*/
+	public String feedback = RabbitApplication.getInstance().getBaseUrl()
+			+ "/home/index/feedback";
+	
+	/**帮助列表*/
+	public String helplist = RabbitApplication.getInstance().getBaseUrl()
+			+ "/home/index/helplist";
+	
+	/**帮助详情*/
+	public String helpdetail = RabbitApplication.getInstance().getBaseUrl()
+			+ "/home/index/helpview";
 }

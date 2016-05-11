@@ -510,9 +510,8 @@
     <string name="update">更新</string>
     <string name="editinfo_email_des1">请输入邮箱</string>
     <string name="editinfo_email_des2">请输入正确的邮箱地址</string>
-    
     <string name="new_email">新邮箱</string>
-    
     <string name="tuandou_shanghu">商家或团购</string>
+    <string name="help_detail">帮助详情</string>
 
 </resources>

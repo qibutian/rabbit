@@ -48,10 +48,6 @@
     <string name="editinfo_code_release">Hantar semula</string>
     <string name="editinfo_pswd_des">Kata laluan untuk 6-15 surat bit dan nombor</string>
     <string name="editinfo_pswd_des1">Kata laluan mesti mengandungi huruf</string>
-    
-    
-    
-    
     <string name="more_about_us">mengenai Kami</string>
     <string name="more_langswitcher">bahasa pensuisan</string>
     <string name="more_feedback">Maklumbalas</string>
@@ -525,5 +521,6 @@
     <string name="editinfo_email_des2">Sila masukkan alamat emel yang sah</string>
     <string name="new_email">Peti Mel baru</string>
     <string name="tuandou_shanghu">Perniagaan atau membeli</string>
+    <string name="help_detail">bantuan Maklumat</string>
 
 </resources>

@@ -135,6 +135,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="setLanguage"
+                android:visibility="gone"
                 android:padding="@dimen/padding_leftandright" >
 
                 <TextView
@@ -150,14 +151,14 @@
                     android:src="@drawable/icon_right" />
             </RelativeLayout>
 
-            <View style="@style/line_horizontal" />
 
             <RelativeLayout
                 android:id="@+id/indonesia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="setLanguage"
-                android:padding="@dimen/padding_leftandright" >
+                android:padding="@dimen/padding_leftandright" 
+                android:visibility="gone">
 
                 <TextView
                     style="@style/text_44_black_big"
@@ -172,7 +173,6 @@
                     android:src="@drawable/icon_right" />
             </RelativeLayout>
 
-            <View style="@style/line_horizontal" />
 
             <RelativeLayout
                 android:id="@+id/spain"

@@ -115,12 +115,13 @@ public class HotelListActivity extends RabbitBaseActivity {
 
 				comment_desT.setText(getString(R.string.hotel_comment_des)
 						+ JSONUtil.getString(data, "score") + "/"
-						+ JSONUtil.getString(data, "score"));
+						+ JSONUtil.getString(data, "comment"));
 
 				return getString(R.string.money_symbol) + o
 						+ getString(R.string.hotel_price_des);
 			}
 		});
+		adapter.addField("tuidingdes", R.id.price_des);
 		adapter.addField("tuangoudes", R.id.order_des);
 		adapter.addField("address", R.id.address);
 		// adapter.addField("title", R.id.title);
@@ -184,6 +185,18 @@ public class HotelListActivity extends RabbitBaseActivity {
 					public void result(String date, long datetime) {
 						startDateT.setText(date);
 						startDateT.setTag(datetime);
+
+						SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+						try {
+							Date date1 = df.parse(date);
+							String endDate = df.format(getNextDay(date1));
+							endDateT.setText(endDate);
+							adapter.addparam("enddate", endDate);
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+
 						adapter.addparam("startdate", date);
 						adapter.refreshDialog();
 					}
