@@ -20,6 +20,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -81,6 +82,9 @@ public class MainActivity extends FragmentActivity {
 		finish();
 		Intent i = new Intent(this, MainActivity.class);
 		startActivity(i);
+		if (User.getInstance().isLogin()) {
+			login();
+		}
 	}
 
 	@Override
@@ -374,4 +378,51 @@ public class MainActivity extends FragmentActivity {
 		builder.create().show();
 	}
 
+	private void login() {
+		RabbitPerference per = IocContainer.getShare().get(
+				RabbitPerference.class);
+		per.load();
+		DhNet net = new DhNet(new API().login);
+		net.addParam("name", per.name);
+		net.addParam("pswd", per.password);
+		// net.addParam("phone", "13852286536");
+		// net.addParam("password", "123");
+		net.doPost(new NetTask(MainActivity.this) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+				if (response.isSuccess()) {
+					JSONObject jo = response.jSONFromData();
+
+					if (TextUtils.isEmpty(JSONUtil.getString(jo, "type"))) {
+						User.getInstance().setType(1);
+					} else {
+						User.getInstance().setType(JSONUtil.getInt(jo, "type"));
+					}
+					RabbitPerference per = IocContainer.getShare().get(
+							RabbitPerference.class);
+					per.load();
+					per.setName(JSONUtil.getString(jo, "name"));
+					per.setNickname(JSONUtil.getString(jo, "nickname"));
+					per.setPhone(JSONUtil.getString(jo, "phone"));
+					per.setSex(JSONUtil.getString(jo, "sex"));
+					per.setFaceimg_s(JSONUtil.getString(jo, "faceimg_s"));
+					per.setMsgcount(JSONUtil.getString(jo, "msgcount"));
+					per.setOrdercount(JSONUtil.getString(jo, "ordercount"));
+					per.setGroupname(JSONUtil.getString(jo, "groupname"));
+					per.setEmail(JSONUtil.getString(jo, "email"));
+					per.commit();
+
+					User user = User.getInstance();
+					user.setLogin(true);
+
+					// showToast("登录成功");
+
+					// 登录成功后发送事件,关闭之前的页面
+				}
+
+			}
+
+		});
+	}
 }

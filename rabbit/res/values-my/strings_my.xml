@@ -22,6 +22,7 @@
     <string name="myfragment_collect">Kegemaran</string>
     <string name="myfragment_current_account">Akaun tunai</string>
     <string name="myfragment_log_keluar">log keluar</string>
+    <string name="myfragment_logout">akaun Exit</string>
     <string name="exit_des">Kemudian klik satu prosedur keluar</string>
     <string name="login_des">Loginning...</string>
     <string name="submiting">Submitting...</string>
@@ -47,6 +48,17 @@
     <string name="editinfo_code_release">Hantar semula</string>
     <string name="editinfo_pswd_des">Kata laluan untuk 6-15 surat bit dan nombor</string>
     <string name="editinfo_pswd_des1">Kata laluan mesti mengandungi huruf</string>
+    
+    
+    
+    
+    <string name="more_about_us">mengenai Kami</string>
+    <string name="more_langswitcher">bahasa pensuisan</string>
+    <string name="more_feedback">Maklumbalas</string>
+    <string name="more_richscan">kod dua dimensi</string>
+    <string name="more_version_updating">Akhbar</string>
+    <string name="more_help">Bantuan</string>
+    <string name="more_wipe_cache">Clear cache</string>
 
     <!-- 修改昵称 -->
     <string name="edit_nickname">Username</string>
