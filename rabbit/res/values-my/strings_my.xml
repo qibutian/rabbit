@@ -522,5 +522,7 @@
     <string name="new_email">Peti Mel baru</string>
     <string name="tuandou_shanghu">Perniagaan atau membeli</string>
     <string name="help_detail">bantuan Maklumat</string>
+    <string name="order_status_release_comment_des">Tunggu ulasan pengguna</string>
+    <string name="order_status_pay_des">Menunggu pengguna untuk membayar</string>
 
 </resources>

@@ -1,4 +1,4 @@
-package com.means.rabbit.activity.order.pay;
+package com.means.rabbit.activity.order;
 
 import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.net.JSONUtil;
@@ -8,33 +8,24 @@ import net.duohuo.dhroid.util.ViewUtil;
 
 import org.json.JSONObject;
 
-import com.means.rabbit.R;
-import com.means.rabbit.RabbitValueFix;
-import com.means.rabbit.R.layout;
-import com.means.rabbit.activity.comment.PostCommentMainActivity;
-import com.means.rabbit.activity.main.ErweimaActivity;
-import com.means.rabbit.api.API;
-import com.means.rabbit.base.RabbitBaseActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-/**
- * 
- * 代购支付
- * 
- * @author Administrator
- * 
- */
-public class InsteadShoppingPayActivity extends RabbitBaseActivity {
+import com.means.rabbit.R;
+import com.means.rabbit.RabbitValueFix;
+import com.means.rabbit.activity.comment.PostCommentMainActivity;
+import com.means.rabbit.activity.main.ErweimaActivity;
+import com.means.rabbit.activity.order.pay.PayOrderActivity;
+import com.means.rabbit.api.API;
+import com.means.rabbit.base.RabbitBaseActivity;
+
+public class BusinessDaigouOrderDetailActivity extends RabbitBaseActivity {
 	String daigouId;
 
 	Button payB;
@@ -48,7 +39,7 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_instead_shopping_pay);
+		setContentView(R.layout.activity_b_daigou_order_detail);
 	}
 
 	@Override
@@ -57,7 +48,6 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 		setTitle(getString(R.string.insteadshopping));
 		daigouId = getIntent().getStringExtra("orderid");
 		payB = (Button) findViewById(R.id.pay);
-
 		findViewById(R.id.cancle).setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -123,7 +113,6 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 					payB.setTag(paystatus);
 					payB.setBackgroundResource(paystatus == 1 ? R.drawable.fillet_10_pink_bg
 							: R.drawable.fillet_10_green_bg);
-					// payB.setText(paystatus == 1 ? "支付订单" : "已支付");
 
 					if (paystatus == 2 && servicestatus == 2
 							&& JSONUtil.getInt(jo, "orderstatus") == 2) {
@@ -136,47 +125,47 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 						findViewById(R.id.cancle).setVisibility(View.GONE);
 					} else if (servicestatus == 1
 							&& JSONUtil.getInt(jo, "orderstatus") == 2) {
-						payB.setText(getString(R.string.order_status_release_comment));
+						payB.setText(getString(R.string.order_status_release_comment_des));
 						payB.setBackgroundResource(R.drawable.fillet_10_pink_bg);
 						findViewById(R.id.cancle).setVisibility(View.GONE);
 					} else if (paystatus == 1) {
-						payB.setText(getString(R.string.order_status_pay_order));
+						payB.setText(getString(R.string.order_status_pay_des));
 						payB.setBackgroundResource(R.drawable.fillet_10_pink_bg);
 						findViewById(R.id.cancle).setVisibility(View.VISIBLE);
 					} else if (paystatus == 2) {
-						payB.setText(getString(R.string.order_status_payed));
-						payB.setBackgroundResource(R.drawable.fillet_10_green_bg);
+						payB.setText(getString(R.string.business_order_des));
+						payB.setBackgroundResource(R.drawable.fillet_10_pink_bg);
 						findViewById(R.id.cancle).setVisibility(View.VISIBLE);
 					}
 					payB.setVisibility(View.VISIBLE);
-					payB.setOnClickListener(new OnClickListener() {
-
-						@Override
-						public void onClick(View v) {
-							Intent it;
-							if (payB.getTag().equals(1)) {
-								it = new Intent(self, PayOrderActivity.class);
-								it.putExtra("payprice",
-										JSONUtil.getString(jo, "payprice"));
-								it.putExtra("orderid",
-										JSONUtil.getString(jo, "id"));
-								it.putExtra("name",
-										JSONUtil.getString(jo, "title"));
-								startActivityForResult(it, pay);
-							} else {
-								if (servicestatus == 1
-										&& JSONUtil.getInt(jo, "orderstatus") == 2) {
-									it = new Intent(self,
-											PostCommentMainActivity.class);
-									it.putExtra("contentid",
-											JSONUtil.getString(jo, "contentid"));
-									it.putExtra("type", "3");
-									startActivityForResult(it, comment);
-								}
-							}
-
-						}
-					});
+					// payB.setOnClickListener(new OnClickListener() {
+					//
+					// @Override
+					// public void onClick(View v) {
+					// Intent it;
+					// if (payB.getTag().equals(1)) {
+					// it = new Intent(self, PayOrderActivity.class);
+					// it.putExtra("payprice",
+					// JSONUtil.getString(jo, "payprice"));
+					// it.putExtra("orderid",
+					// JSONUtil.getString(jo, "id"));
+					// it.putExtra("name",
+					// JSONUtil.getString(jo, "title"));
+					// startActivityForResult(it, pay);
+					// } else {
+					// // if (servicestatus == 1
+					// // && JSONUtil.getInt(jo, "orderstatus") == 2) {
+					// it = new Intent(self,
+					// PostCommentMainActivity.class);
+					// it.putExtra("contentid",
+					// JSONUtil.getString(jo, "contentid"));
+					// it.putExtra("type", "3");
+					// startActivityForResult(it, comment);
+					// // }
+					// }
+					//
+					// }
+					// });
 
 					JSONObject user_addressJo = JSONUtil.getJSONObject(jo,
 							"user_address");
@@ -223,24 +212,25 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 		});
 	}
 
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// TODO Auto-generated method stub
-		super.onActivityResult(requestCode, resultCode, data);
-
-		if (requestCode == pay && resultCode == Activity.RESULT_OK) {
-			payB.setText("已支付");
-			payB.setBackgroundResource(R.drawable.fillet_10_green_bg);
-			payB.setTag(2);
-		}
-
-		if (requestCode == comment && resultCode == Activity.RESULT_OK) {
-			payB.setText("已评论");
-			payB.setBackgroundResource(R.drawable.fillet_10_green_bg);
-			payB.setTag(2);
-			servicestatus = 2;
-		}
-	}
+	// @Override
+	// protected void onActivityResult(int requestCode, int resultCode, Intent
+	// data) {
+	// // TODO Auto-generated method stub
+	// super.onActivityResult(requestCode, resultCode, data);
+	//
+	// if (requestCode == pay && resultCode == Activity.RESULT_OK) {
+	// payB.setText("已支付");
+	// payB.setBackgroundResource(R.drawable.fillet_10_green_bg);
+	// payB.setTag(2);
+	// }
+	//
+	// if (requestCode == comment && resultCode == Activity.RESULT_OK) {
+	// payB.setText("已评论");
+	// payB.setBackgroundResource(R.drawable.fillet_10_green_bg);
+	// payB.setTag(2);
+	// servicestatus = 2;
+	// }
+	// }
 
 	private void cancleOrder() {
 		DhNet net = new DhNet(new API().cancelOrder);
@@ -258,4 +248,5 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 			}
 		});
 	}
+
 }

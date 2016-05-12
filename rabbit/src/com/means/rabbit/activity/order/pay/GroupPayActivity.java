@@ -125,21 +125,27 @@ public class GroupPayActivity extends RabbitBaseActivity {
 							&& JSONUtil.getInt(jo, "orderstatus") == 2) {
 						payB.setText(getString(R.string.order_status_complete));
 						payB.setBackgroundResource(R.drawable.fillet_10_green_bg);
+						findViewById(R.id.cancle).setVisibility(View.GONE);
+
 					} else if (JSONUtil.getInt(jo, "orderstatus") == 3) {
 						payB.setText(getString(R.string.order_status_cancle));
 						payB.setBackgroundResource(R.drawable.fillet_10_pink_bg);
+						findViewById(R.id.cancle).setVisibility(View.GONE);
 					} else if (servicestatus == 1
 							&& JSONUtil.getInt(jo, "orderstatus") == 2) {
 						payB.setText(getString(R.string.order_status_release_comment));
 						payB.setBackgroundResource(R.drawable.fillet_10_pink_bg);
+						findViewById(R.id.cancle).setVisibility(View.GONE);
 					} else if (paystatus == 1) {
 						payB.setText(getString(R.string.order_status_pay_order));
 						payB.setBackgroundResource(R.drawable.fillet_10_pink_bg);
+						findViewById(R.id.cancle).setVisibility(View.VISIBLE);
 					} else if (paystatus == 2) {
 						payB.setText(getString(R.string.order_status_payed));
 						payB.setBackgroundResource(R.drawable.fillet_10_green_bg);
+						findViewById(R.id.cancle).setVisibility(View.VISIBLE);
 					}
-					
+
 					payB.setVisibility(View.VISIBLE);
 					payB.setTag(paystatus);
 					payB.setOnClickListener(new OnClickListener() {

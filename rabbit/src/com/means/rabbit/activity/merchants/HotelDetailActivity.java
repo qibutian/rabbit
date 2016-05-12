@@ -215,27 +215,30 @@ public class HotelDetailActivity extends RabbitBaseActivity {
 								}
 							});
 
-					JSONArray label_inJsa = JSONUtil.getJSONArray(detailJo,
-							"label_in");
-					if (label_inJsa != null && label_inJsa.length() != 0) {
-						String labelS = "";
+					// JSONArray label_inJsa = JSONUtil.getJSONArray(detailJo,
+					// "label_in");
+					// if (label_inJsa != null && label_inJsa.length() != 0) {
+					// String labelS = "";
+					//
+					// for (int i = 0; i < label_inJsa.length(); i++) {
+					// try {
+					// JSONObject labeljo = label_inJsa
+					// .getJSONObject(i);
+					// labelS = labelS + " "
+					//
+					// + JSONUtil.getString(labeljo, "name");
+					// ViewUtil.bindView(
+					// headV.findViewById(R.id.label), labelS);
+					// } catch (JSONException e) {
+					// // TODO Auto-generated catch block
+					// e.printStackTrace();
+					// }
+					// }
+					//
+					// }
 
-						for (int i = 0; i < label_inJsa.length(); i++) {
-							try {
-								JSONObject labeljo = label_inJsa
-										.getJSONObject(i);
-								labelS = labelS + " "
-
-								+ JSONUtil.getString(labeljo, "name");
-								ViewUtil.bindView(
-										headV.findViewById(R.id.label), labelS);
-							} catch (JSONException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-						}
-
-					}
+					ViewUtil.bindView(headV.findViewById(R.id.label),
+							JSONUtil.getString(detailJo, "stitle"));
 
 					ViewUtil.bindView(headV.findViewById(R.id.comment_des),
 							JSONUtil.getString(detailJo, "score") + "/"

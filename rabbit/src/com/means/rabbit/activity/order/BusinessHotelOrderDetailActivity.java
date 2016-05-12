@@ -1,4 +1,4 @@
-package com.means.rabbit.activity.order.pay;
+package com.means.rabbit.activity.order;
 
 import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.net.JSONUtil;
@@ -6,6 +6,7 @@ import net.duohuo.dhroid.net.NetTask;
 import net.duohuo.dhroid.net.Response;
 import net.duohuo.dhroid.util.ViewUtil;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
@@ -15,23 +16,21 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.zxing.client.android.CaptureActivity;
+import com.google.zxing.client.android.Intents;
 import com.means.rabbit.R;
 import com.means.rabbit.RabbitValueFix;
 import com.means.rabbit.activity.comment.PostCommentMainActivity;
 import com.means.rabbit.activity.main.ErweimaActivity;
+import com.means.rabbit.activity.order.pay.PayOrderActivity;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
+import com.means.rabbit.utils.RabbitUtils;
 
-/**
- * 
- * 酒店订单详情
- * 
- * @author Administrator
- * 
- */
-public class HotelOrderDetailActivity extends RabbitBaseActivity {
+public class BusinessHotelOrderDetailActivity extends RabbitBaseActivity {
 
 	TextView titleT, nameT, dateT, signlpirceT, countT, totalpriceT, idT,
 			buyernoteT, buyerphoneT, buyernameT, creditT, credit_sT,
@@ -47,16 +46,20 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 
 	int servicestatus;
 
+	EditText errcodeE;
+
+	public final int REQUEST_CODE = 10086;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_grogshop_pay);
+		setContentView(R.layout.activity_b_hotel_order_detail);
 	}
 
 	@Override
 	public void initView() {
 		setTitle(getString(R.string.grogshop_pay_order));
-
+		errcodeE = (EditText) findViewById(R.id.erweima_code);
 		itemid = getIntent().getStringExtra("orderid");
 
 		titleT = (TextView) findViewById(R.id.title_name);
@@ -134,88 +137,71 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 					ViewUtil.bindView(findViewById(R.id.name),
 							JSONUtil.getString(jo, "name"));
 
+					// final int paystatus = JSONUtil.getInt(jo, "paystatus");
+					// grogshop_btn.setText(paystatus == 1 ? "支付订单" : "已支付");
+
 					final int paystatus = JSONUtil.getInt(jo, "paystatus");
 					servicestatus = JSONUtil.getInt(jo, "servicestatus");
-					// grogshop_btn.setText(paystatus == 1 ? "支付订单" : "已支付");
+					grogshop_btn.setTag(paystatus);
+					grogshop_btn
+							.setBackgroundResource(paystatus == 1 ? R.drawable.fillet_10_pink_bg
+									: R.drawable.fillet_10_green_bg);
 
 					if (paystatus == 2 && servicestatus == 2
 							&& JSONUtil.getInt(jo, "orderstatus") == 2) {
-						grogshop_btn.setText(getString(R.string.order_status_complete));
+						grogshop_btn
+								.setText(getString(R.string.order_status_complete));
 						grogshop_btn
 								.setBackgroundResource(R.drawable.fillet_10_green_bg);
 						findViewById(R.id.cancle).setVisibility(View.GONE);
 					} else if (JSONUtil.getInt(jo, "orderstatus") == 3) {
-						grogshop_btn.setText(getString(R.string.order_status_cancle));
+						grogshop_btn
+								.setText(getString(R.string.order_status_cancle));
 						grogshop_btn
 								.setBackgroundResource(R.drawable.fillet_10_pink_bg);
 						findViewById(R.id.cancle).setVisibility(View.GONE);
 					} else if (servicestatus == 1
 							&& JSONUtil.getInt(jo, "orderstatus") == 2) {
-						grogshop_btn.setText(getString(R.string.order_status_release_comment));
+						grogshop_btn
+								.setText(getString(R.string.order_status_release_comment_des));
 						grogshop_btn
 								.setBackgroundResource(R.drawable.fillet_10_pink_bg);
 						findViewById(R.id.cancle).setVisibility(View.GONE);
 					} else if (paystatus == 1) {
-						grogshop_btn.setText(getString(R.string.order_status_pay_order));
+						grogshop_btn
+								.setText(getString(R.string.order_status_pay_des));
 						grogshop_btn
 								.setBackgroundResource(R.drawable.fillet_10_pink_bg);
 						findViewById(R.id.cancle).setVisibility(View.VISIBLE);
 					} else if (paystatus == 2) {
-						grogshop_btn.setText(getString(R.string.order_status_payed));
 						grogshop_btn
-								.setBackgroundResource(R.drawable.fillet_10_green_bg);
+								.setText(getString(R.string.business_order_des));
+						grogshop_btn
+								.setBackgroundResource(R.drawable.fillet_10_pink_bg);
 						findViewById(R.id.cancle).setVisibility(View.VISIBLE);
 					}
-					
-					
-
-					// if (paystatus == 1) {
-					// grogshop_btn.setText("支付订单");
-					// } else {
-					// if(servicestatus==1&& JSONUtil.getInt(jo, "orderstatus")
-					// == 2){
-					// grogshop_btn.setText("发布评论");
-					// }else if(JSONUtil.getInt(jo, "orderstatus")){
-					//
-					// }
-					//
-					// }
-
-					grogshop_btn.setTag(paystatus);
-					grogshop_btn
-							.setBackgroundResource(paystatus == 1 ? R.drawable.fillet_10_pink_bg
-									: R.drawable.fillet_10_green_bg);
+					if (paystatus != 1) {
+						errcodeE.setEnabled(false);
+						errcodeE.setHint(getString(R.string.business_order_des2));
+					}
 					grogshop_btn.setVisibility(View.VISIBLE);
+					grogshop_btn.setTag(paystatus);
 					grogshop_btn.setOnClickListener(new OnClickListener() {
 
 						@Override
-						public void onClick(View arg0) {
-
-							Intent it;
-
-							if (grogshop_btn.getTag().equals(1)) {
-								it = new Intent(self, PayOrderActivity.class);
-								it.putExtra("payprice",
-										JSONUtil.getString(jo, "payprice"));
-								it.putExtra("orderid",
-										JSONUtil.getString(jo, "id"));
-								it.putExtra("name",
-										JSONUtil.getString(jo, "title"));
-								startActivityForResult(it, pay);
+						public void onClick(View v) {
+							if (grogshop_btn
+									.getText()
+									.toString()
+									.equals(getString(R.string.business_order_des))) {
+								usecode();
 							} else {
-								if (servicestatus == 1
-										&& JSONUtil.getInt(jo, "orderstatus") == 2) {
-									it = new Intent(self,
-											PostCommentMainActivity.class);
-									it.putExtra("contentid",
-											JSONUtil.getString(jo, "contentid"));
-									it.putExtra("type", "2");
-									startActivityForResult(it, comment);
-								}
+								finish();
 							}
 
 						}
 					});
+
 					reality_moneyT.setText(JSONUtil.getString(jo, "payprice"));
 
 					findViewById(R.id.erweima).setOnClickListener(
@@ -224,16 +210,7 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 								@Override
 								public void onClick(View v) {
 
-									if (TextUtils.isEmpty(JSONUtil.getString(
-											jo, "ercode_img"))) {
-										return;
-									}
-
-									Intent it = new Intent(self,
-											ErweimaActivity.class);
-									it.putExtra("url", JSONUtil.getString(jo,
-											"ercode_img"));
-									startActivity(it);
+									callCapture();
 								}
 							});
 
@@ -259,24 +236,90 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 		});
 	}
 
+	private void usecode() {
+		if (TextUtils.isEmpty(errcodeE.getText().toString())) {
+			showToast(getString(R.string.business_order_des3));
+			return;
+		}
+		DhNet net = new DhNet(new API().usecode);
+		net.addParam("orderid", itemid);
+		net.addParam("ercode", errcodeE.getText().toString());
+		net.doPostInDialog(getString(R.string.submiting), new NetTask(self) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+
+				if (response.isSuccess()) {
+
+					grogshop_btn
+							.setText(getString(R.string.order_status_release_comment_des));
+					grogshop_btn
+							.setBackgroundResource(R.drawable.fillet_10_pink_bg);
+					grogshop_btn.setTag(2);
+					findViewById(R.id.cancle).setVisibility(View.GONE);
+
+					// JSONObject jo = response.jSON();
+					// Intent it;
+					// int type = JSONUtil.getInt(jo, "type");
+					// if (type == 2) {
+					// it = new Intent(self, GroupPayActivity.class);
+					//
+					// } else if (type == 1) {
+					// it = new Intent(self, HotelOrderDetailActivity.class);
+					// } else {
+					// it = new Intent(self, InsteadShoppingPayActivity.class);
+					// }
+					// it.putExtra("orderid", JSONUtil.getString(jo, "id"));
+					// self.startActivity(it);
+
+				}
+
+			}
+		});
+	}
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// TODO Auto-generated method stub
-		super.onActivityResult(requestCode, resultCode, data);
+		if (null != data && requestCode == REQUEST_CODE) {
+			switch (resultCode) {
+			case Activity.RESULT_OK:
 
-		if (requestCode == pay && resultCode == Activity.RESULT_OK) {
-			grogshop_btn.setText("已支付");
-			grogshop_btn.setBackgroundResource(R.drawable.fillet_10_green_bg);
-			grogshop_btn.setTag(2);
+				String result = data.getStringExtra(Intents.Scan.RESULT);
+				try {
+					JSONObject jo = new JSONObject(result);
+					// if (JSONUtil.getString(jo, "type").equals("order")) {
+					// errcodeE.setText(JSONUtil.getString(jo, "key"));
+					// usecode();
+					// } else {
+					RabbitUtils.erweimaIntent(self,
+							JSONUtil.getString(jo, "type"),
+							JSONUtil.getString(jo, "id"),
+							JSONUtil.getString(jo, "key"));
+					// }
+
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				break;
+			default:
+				break;
+			}
 		}
+	}
 
-		if (requestCode == comment && resultCode == Activity.RESULT_OK) {
-			grogshop_btn.setText("已评论");
-			grogshop_btn.setBackgroundResource(R.drawable.fillet_10_green_bg);
-			grogshop_btn.setTag(2);
-			servicestatus = 2;
-		}
-
+	private void callCapture() {
+		Intent intent = new Intent();
+		intent.setAction(Intents.Scan.ACTION);
+		// intent.putExtra(Intents.Scan.MODE, Intents.Scan.QR_CODE_MODE);
+		intent.putExtra(Intents.Scan.CHARACTER_SET, "UTF-8");
+		intent.putExtra(Intents.Scan.WIDTH, 600);
+		intent.putExtra(Intents.Scan.HEIGHT, 600);
+		// intent.putExtra(Intents.Scan.PROMPT_MESSAGE,
+		// "type your prompt message");
+		intent.setClass(this, CaptureActivity.class);
+		startActivityForResult(intent, REQUEST_CODE);
 	}
 
 }

@@ -28,7 +28,11 @@
 
 
 
+
+
 　　   
+    
+    
     
     
     
@@ -67,10 +71,12 @@
         </activity>
         <activity android:name=".activity.my.order.MyOrderActivity" >
         </activity>
-        <activity android:name=".activity.my.order.BusinessOrderActivity" >
+        <activity
+            android:name=".activity.my.order.BusinessTuanGouOrderDetailsActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
         </activity>
         <activity
-            android:name=".activity.my.order.BusinessOrderDetailsActivity"
+            android:name=".activity.order.BusinessDaigouOrderDetailActivity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" >
         </activity>
         <activity android:name=".activity.merchants.FoodListActivity" >
@@ -114,6 +120,12 @@
         <activity android:name=".activity.my.edit.ForgetPswdActivity" >
         </activity>
         <activity android:name=".activity.order.pay.FavorableMainPayActivity" >
+        </activity>
+        <activity
+            android:name=".activity.order.BusinessHotelOrderDetailActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+        </activity>
+        <activity android:name=".activity.my.order.BusinessOrderActivity" >
         </activity>
         <activity android:name=".activity.order.GroupOrderActivity" >
         </activity>

@@ -10,6 +10,8 @@ import net.duohuo.dhroid.net.JSONUtil;
 
 import com.means.rabbit.R;
 import com.means.rabbit.R.layout;
+import com.means.rabbit.activity.order.BusinessDaigouOrderDetailActivity;
+import com.means.rabbit.activity.order.BusinessHotelOrderDetailActivity;
 import com.means.rabbit.activity.order.pay.GroupPayActivity;
 import com.means.rabbit.activity.order.pay.HotelOrderDetailActivity;
 import com.means.rabbit.activity.order.pay.InsteadShoppingPayActivity;
@@ -73,14 +75,33 @@ public class BusinessOrderActivity extends RabbitBaseActivity {
 				if (JSONUtil.getInt(data, "orderstatus") == 2) {
 					paystatusT
 							.setText(getString(R.string.order_status_complete));
+					paystatusT
+							.setBackgroundResource(R.drawable.fillet_10_frame_dark_green_bg);
+					paystatusT.setTextColor(getResources().getColor(
+							R.color.text_dark_green));
 				} else if (JSONUtil.getInt(data, "orderstatus") == 3) {
 					paystatusT.setText(getString(R.string.order_status_cancle));
+					paystatusT.setBackgroundResource(R.drawable.btn_grey_bg);
+					paystatusT.setTextColor(getResources().getColor(
+							R.color.text_99_grey));
 				} else if (paystatus == 1) {
 					paystatusT.setText(getString(R.string.order_status_pay));
+					paystatusT
+							.setBackgroundResource(R.drawable.fillet_10_frame_pink_bg);
+					paystatusT.setTextColor(getResources().getColor(
+							R.color.text_pink));
 				} else if (paystatus == 2) {
 					paystatusT.setText(getString(R.string.order_status_payed));
+					paystatusT
+							.setBackgroundResource(R.drawable.fillet_10_frame_pink_bg);
+					paystatusT.setTextColor(getResources().getColor(
+							R.color.text_pink));
 				} else if (paystatus == 3) {
 					paystatusT.setText(getString(R.string.order_status_failed));
+					paystatusT
+							.setBackgroundResource(R.drawable.fillet_10_frame_pink_bg);
+					paystatusT.setTextColor(getResources().getColor(
+							R.color.text_pink));
 				}
 
 				return getString(R.string.money_symbol) + "  " + o.toString();
@@ -104,11 +125,29 @@ public class BusinessOrderActivity extends RabbitBaseActivity {
 					@Override
 					public void onItemClick(AdapterView<?> parent, View view,
 							int position, long id) {
+
 						JSONObject jo = adapter.getTItem(position);
-						Intent it = new Intent(self,
-								BusinessOrderDetailsActivity.class);
+
+						Intent it;
+						int type = JSONUtil.getInt(jo, "type");
+						if (type == 2) {
+							it = new Intent(self,
+									BusinessTuanGouOrderDetailsActivity.class);
+
+						} else if (type == 1) {
+							it = new Intent(self,
+									BusinessHotelOrderDetailActivity.class);
+						} else {
+							it = new Intent(self,
+									BusinessDaigouOrderDetailActivity.class);
+						}
 						it.putExtra("orderid", JSONUtil.getString(jo, "id"));
 						startActivity(it);
+
+						// Intent it = new Intent(self,
+						// BusinessOrderDetailsActivity.class);
+						// it.putExtra("orderid", JSONUtil.getString(jo, "id"));
+						// startActivity(it);
 						// TODO Auto-generated method stub
 
 					}

@@ -37,7 +37,7 @@ import com.means.rabbit.utils.RabbitUtils;
  * @author dell
  * 
  */
-public class BusinessOrderDetailsActivity extends RabbitBaseActivity {
+public class BusinessTuanGouOrderDetailsActivity extends RabbitBaseActivity {
 
 	String orderid;
 
@@ -50,6 +50,7 @@ public class BusinessOrderDetailsActivity extends RabbitBaseActivity {
 	EditText errcodeE;
 
 	public final int REQUEST_CODE = 10086;
+	int servicestatus;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +60,17 @@ public class BusinessOrderDetailsActivity extends RabbitBaseActivity {
 
 	@Override
 	public void initView() {
-		setTitle(getString(R.string.business_order_details));
+		setTitle(getString(R.string.grouporder));
 		orderid = getIntent().getStringExtra("orderid");
 		errcodeE = (EditText) findViewById(R.id.erweima_code);
 		payB = (Button) findViewById(R.id.pay);
+		findViewById(R.id.cancle).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				cancleOrder();
+			}
+		});
 		getData();
 	}
 
@@ -120,12 +128,48 @@ public class BusinessOrderDetailsActivity extends RabbitBaseActivity {
 									JSONUtil.getDouble(jo, "payprice") + "");
 
 							final int paystatus = JSONUtil.getInt(jo,
-									"orderstatus");
-
+									"paystatus");
+							servicestatus = JSONUtil
+									.getInt(jo, "servicestatus");
+							payB.setTag(paystatus);
 							payB.setBackgroundResource(paystatus == 1 ? R.drawable.fillet_10_pink_bg
 									: R.drawable.fillet_10_green_bg);
-							payB.setText(paystatus == 1 ? getString(R.string.business_order_des)
-									: getString(R.string.business_order_des1));
+
+							if (paystatus == 2 && servicestatus == 2
+									&& JSONUtil.getInt(jo, "orderstatus") == 2) {
+								payB.setText(getString(R.string.order_status_complete));
+								payB.setBackgroundResource(R.drawable.fillet_10_green_bg);
+								findViewById(R.id.cancle).setVisibility(
+										View.GONE);
+							} else if (JSONUtil.getInt(jo, "orderstatus") == 3) {
+								payB.setText(getString(R.string.order_status_cancle));
+								payB.setBackgroundResource(R.drawable.fillet_10_pink_bg);
+								findViewById(R.id.cancle).setVisibility(
+										View.GONE);
+							} else if (servicestatus == 1
+									&& JSONUtil.getInt(jo, "orderstatus") == 2) {
+								payB.setText(getString(R.string.order_status_release_comment_des));
+								payB.setBackgroundResource(R.drawable.fillet_10_pink_bg);
+								findViewById(R.id.cancle).setVisibility(
+										View.GONE);
+							} else if (paystatus == 1) {
+								payB.setText(getString(R.string.order_status_pay_des));
+								payB.setBackgroundResource(R.drawable.fillet_10_pink_bg);
+								findViewById(R.id.cancle).setVisibility(
+										View.VISIBLE);
+							} else if (paystatus == 2) {
+								payB.setText(getString(R.string.business_order_des));
+								payB.setBackgroundResource(R.drawable.fillet_10_pink_bg);
+								findViewById(R.id.cancle).setVisibility(
+										View.VISIBLE);
+							}
+
+							// payB.setBackgroundResource(paystatus == 1 ?
+							// R.drawable.fillet_10_pink_bg
+							// : R.drawable.fillet_10_green_bg);
+							// payB.setText(paystatus == 1 ?
+							// getString(R.string.business_order_des)
+							// : getString(R.string.business_order_des1));
 							if (paystatus != 1) {
 								errcodeE.setEnabled(false);
 								errcodeE.setHint(getString(R.string.business_order_des2));
@@ -136,7 +180,7 @@ public class BusinessOrderDetailsActivity extends RabbitBaseActivity {
 
 								@Override
 								public void onClick(View v) {
-									if (payB.getTag().equals(1)) {
+									if (payB.getText().toString().equals(getString(R.string.business_order_des))) {
 										usecode();
 									} else {
 										finish();
@@ -186,23 +230,23 @@ public class BusinessOrderDetailsActivity extends RabbitBaseActivity {
 			public void doInUI(Response response, Integer transfer) {
 
 				if (response.isSuccess()) {
-					payB.setText(getString(R.string.business_order_des1));
-					payB.setBackgroundResource(R.drawable.fillet_10_green_bg);
+					payB.setText(getString(R.string.order_status_release_comment_des));
+					payB.setBackgroundResource(R.drawable.fillet_10_pink_bg);
 					payB.setTag(2);
-
-					JSONObject jo = response.jSON();
-					Intent it;
-					int type = JSONUtil.getInt(jo, "type");
-					if (type == 2) {
-						it = new Intent(self, GroupPayActivity.class);
-
-					} else if (type == 1) {
-						it = new Intent(self, HotelOrderDetailActivity.class);
-					} else {
-						it = new Intent(self, InsteadShoppingPayActivity.class);
-					}
-					it.putExtra("orderid", JSONUtil.getString(jo, "id"));
-					self.startActivity(it);
+					findViewById(R.id.cancle).setVisibility(View.GONE);
+					// JSONObject jo = response.jSON();
+					// Intent it;
+					// int type = JSONUtil.getInt(jo, "type");
+					// if (type == 2) {
+					// it = new Intent(self, GroupPayActivity.class);
+					//
+					// } else if (type == 1) {
+					// it = new Intent(self, HotelOrderDetailActivity.class);
+					// } else {
+					// it = new Intent(self, InsteadShoppingPayActivity.class);
+					// }
+					// it.putExtra("orderid", JSONUtil.getString(jo, "id"));
+					// self.startActivity(it);
 
 				}
 
@@ -252,5 +296,22 @@ public class BusinessOrderDetailsActivity extends RabbitBaseActivity {
 		// "type your prompt message");
 		intent.setClass(this, CaptureActivity.class);
 		startActivityForResult(intent, REQUEST_CODE);
+	}
+
+	private void cancleOrder() {
+		DhNet net = new DhNet(new API().cancelOrder);
+		net.addParam("orderid", orderid);
+		net.doPostInDialog("取消中...", new NetTask(self) {
+
+			@Override
+			public void doInUI(Response response, Integer transfer) {
+
+				if (response.isSuccess()) {
+					showToast("取消成功!");
+					finish();
+				}
+
+			}
+		});
 	}
 }

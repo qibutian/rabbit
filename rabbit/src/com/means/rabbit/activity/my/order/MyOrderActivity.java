@@ -112,16 +112,30 @@ public class MyOrderActivity extends RabbitBaseActivity implements
 						&& JSONUtil.getInt(data, "orderstatus") == 2) {
 					paystatusT
 							.setText(getString(R.string.order_status_complete));
+					paystatusT.setTextColor(getResources().getColor(R.color.text_dark_green));
+					paystatusT
+							.setBackgroundResource(R.drawable.fillet_10_frame_dark_green_bg);
 				} else if (JSONUtil.getInt(data, "orderstatus") == 3) {
 					paystatusT.setText(getString(R.string.order_status_cancle));
+					paystatusT.setTextColor(getResources().getColor(R.color.text_99_grey));
+					paystatusT.setBackgroundResource(R.drawable.btn_grey_bg);
 				} else if (servicestatus == 1
 						&& JSONUtil.getInt(data, "orderstatus") == 2) {
 					paystatusT
 							.setText(getString(R.string.order_status_comment));
+					paystatusT
+							.setBackgroundResource(R.drawable.fillet_10_frame_pink_bg);
+					paystatusT.setTextColor(getResources().getColor(R.color.text_pink));
 				} else if (paystatus == 1) {
 					paystatusT.setText(getString(R.string.order_status_pay));
+					paystatusT
+							.setBackgroundResource(R.drawable.fillet_10_frame_pink_bg);
+					paystatusT.setTextColor(getResources().getColor(R.color.text_pink));
 				} else if (paystatus == 2) {
 					paystatusT.setText(getString(R.string.order_status_use));
+					paystatusT
+							.setBackgroundResource(R.drawable.fillet_10_frame_pink_bg);
+					paystatusT.setTextColor(getResources().getColor(R.color.text_pink));
 				}
 
 				return getString(R.string.money_symbol) + "  " + o.toString();
