@@ -96,7 +96,14 @@ public class InsteadShoppingPayActivity extends RabbitBaseActivity {
 					String orderTime = RabbitValueFix.getStandardTime(
 							JSONUtil.getLong(jo, "adddateline"), "yyyy-MM-dd");
 
+					String paytime = RabbitValueFix.getStandardTime(
+							JSONUtil.getLong(jo, "actdateline"),
+							"yyyy-MM-dd HH:mm");
+
 					ViewUtil.bindView(findViewById(R.id.adddateline), orderTime);
+					ViewUtil.bindView(findViewById(R.id.pay_time), paytime);
+					ViewUtil.bindView(findViewById(R.id.use_time), paytime);
+
 					ViewUtil.bindView(findViewById(R.id.buyerphone),
 							JSONUtil.getString(jo, "buyerphone"));
 

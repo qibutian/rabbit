@@ -105,9 +105,18 @@ public class BusinessTuanGouOrderDetailsActivity extends RabbitBaseActivity {
 							String orderTime = RabbitValueFix.getStandardTime(
 									JSONUtil.getLong(jo, "adddateline"),
 									"yyyy-MM-dd");
-
+							String paytime = RabbitValueFix.getStandardTime(
+									JSONUtil.getLong(jo, "actdateline"),
+									"yyyy-MM-dd HH:mm");
 							ViewUtil.bindView(findViewById(R.id.order_time),
 									orderTime);
+
+
+							ViewUtil.bindView(findViewById(R.id.pay_time), paytime);
+							ViewUtil.bindView(findViewById(R.id.use_time), paytime);
+							
+							
+							
 							ViewUtil.bindView(findViewById(R.id.tel),
 									JSONUtil.getString(jo, "buyerphone"));
 
@@ -141,27 +150,36 @@ public class BusinessTuanGouOrderDetailsActivity extends RabbitBaseActivity {
 								payB.setBackgroundResource(R.drawable.fillet_10_green_bg);
 								findViewById(R.id.cancle).setVisibility(
 										View.GONE);
+								errcodeE.setEnabled(false);
+								errcodeE.setHint("");
 							} else if (JSONUtil.getInt(jo, "orderstatus") == 3) {
 								payB.setText(getString(R.string.order_status_cancle));
 								payB.setBackgroundResource(R.drawable.fillet_10_pink_bg);
 								findViewById(R.id.cancle).setVisibility(
 										View.GONE);
+								errcodeE.setEnabled(false);
+								errcodeE.setHint("");
 							} else if (servicestatus == 1
 									&& JSONUtil.getInt(jo, "orderstatus") == 2) {
 								payB.setText(getString(R.string.order_status_release_comment_des));
 								payB.setBackgroundResource(R.drawable.fillet_10_pink_bg);
 								findViewById(R.id.cancle).setVisibility(
 										View.GONE);
+								errcodeE.setEnabled(false);
+								errcodeE.setHint("");
 							} else if (paystatus == 1) {
 								payB.setText(getString(R.string.order_status_pay_des));
 								payB.setBackgroundResource(R.drawable.fillet_10_pink_bg);
 								findViewById(R.id.cancle).setVisibility(
 										View.VISIBLE);
+								errcodeE.setEnabled(false);
+								errcodeE.setHint("");
 							} else if (paystatus == 2) {
 								payB.setText(getString(R.string.business_order_des));
 								payB.setBackgroundResource(R.drawable.fillet_10_pink_bg);
 								findViewById(R.id.cancle).setVisibility(
 										View.VISIBLE);
+								errcodeE.setEnabled(true);
 							}
 
 							// payB.setBackgroundResource(paystatus == 1 ?
@@ -170,20 +188,16 @@ public class BusinessTuanGouOrderDetailsActivity extends RabbitBaseActivity {
 							// payB.setText(paystatus == 1 ?
 							// getString(R.string.business_order_des)
 							// : getString(R.string.business_order_des1));
-							if (paystatus != 1) {
-								errcodeE.setEnabled(false);
-								errcodeE.setHint(getString(R.string.business_order_des2));
-							}
 							payB.setVisibility(View.VISIBLE);
 							payB.setTag(paystatus);
 							payB.setOnClickListener(new OnClickListener() {
 
 								@Override
 								public void onClick(View v) {
-									if (payB.getText().toString().equals(getString(R.string.business_order_des))) {
+									if (payB.getText()
+											.toString()
+											.equals(getString(R.string.business_order_des))) {
 										usecode();
-									} else {
-										finish();
 									}
 
 								}
@@ -234,19 +248,8 @@ public class BusinessTuanGouOrderDetailsActivity extends RabbitBaseActivity {
 					payB.setBackgroundResource(R.drawable.fillet_10_pink_bg);
 					payB.setTag(2);
 					findViewById(R.id.cancle).setVisibility(View.GONE);
-					// JSONObject jo = response.jSON();
-					// Intent it;
-					// int type = JSONUtil.getInt(jo, "type");
-					// if (type == 2) {
-					// it = new Intent(self, GroupPayActivity.class);
-					//
-					// } else if (type == 1) {
-					// it = new Intent(self, HotelOrderDetailActivity.class);
-					// } else {
-					// it = new Intent(self, InsteadShoppingPayActivity.class);
-					// }
-					// it.putExtra("orderid", JSONUtil.getString(jo, "id"));
-					// self.startActivity(it);
+					errcodeE.setEnabled(false);
+					errcodeE.setHint("");
 
 				}
 

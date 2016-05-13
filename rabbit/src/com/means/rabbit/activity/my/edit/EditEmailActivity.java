@@ -117,6 +117,7 @@ public class EditEmailActivity extends RabbitBaseActivity implements
 			showToast(getString(R.string.editinfo_email_des2));
 			return;
 		}
+		time.start();
 		DhNet smsNet = new DhNet(new API().emailcode);
 		smsNet.addParam("email", newemail);
 		smsNet.addParam("type", "4"); // 4为改手机
@@ -126,7 +127,6 @@ public class EditEmailActivity extends RabbitBaseActivity implements
 			public void doInUI(Response response, Integer transfer) {
 				// TODO Auto-generated method stub
 				if (response.isSuccess()) {
-					time.start();
 				}
 			}
 		});

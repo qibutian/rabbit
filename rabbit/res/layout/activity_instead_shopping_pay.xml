@@ -152,8 +152,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="@dimen/padding_leftandright"
-                android:visibility="gone" >
+                android:padding="@dimen/padding_leftandright" >
 
                 <TextView
                     style="@style/text_44_black_medium"
@@ -168,7 +167,6 @@
                     <TextView
                         android:id="@+id/ercode"
                         style="@style/text_44_black_big"
-                        android:text="2300 58452 54845"
                         android:textColor="@color/text_2B_green" />
 
                     <ImageView

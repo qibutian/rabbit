@@ -107,6 +107,10 @@ public class CartView extends LinearLayout {
 		this.maxNum = maxNum;
 	}
 
+	public void setCarNum(int num) {
+		cartNumT.setText(num + "");
+	}
+
 	public OnCartViewClickListener getOnCartViewClickListener() {
 		return onCartViewClickListener;
 	}

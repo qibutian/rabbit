@@ -466,7 +466,7 @@
     <string name="order_status_pay">待支付</string>
     <string name="order_status_payed">已支付</string>
     <string name="order_status_failed">支付失败</string>
-    <string name="order_status_comment">待评论</string>
+    <string name="order_status_comment">待点论</string>
     <string name="order_status_use">待消费</string>
     <string name="order_status_release_comment">发布评论</string>
     <string name="order_status_pay_order">支付订单</string>

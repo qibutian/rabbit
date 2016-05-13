@@ -97,8 +97,14 @@ public class GroupPayActivity extends RabbitBaseActivity {
 
 					String orderTime = RabbitValueFix.getStandardTime(
 							JSONUtil.getLong(jo, "adddateline"), "yyyy-MM-dd");
-
+					String paytime = RabbitValueFix.getStandardTime(
+							JSONUtil.getLong(jo, "actdateline"),
+							"yyyy-MM-dd HH:mm");
 					ViewUtil.bindView(findViewById(R.id.order_time), orderTime);
+
+					ViewUtil.bindView(findViewById(R.id.pay_time), paytime);
+					ViewUtil.bindView(findViewById(R.id.use_time), paytime);
+
 					ViewUtil.bindView(findViewById(R.id.tel),
 							JSONUtil.getString(jo, "buyerphone"));
 

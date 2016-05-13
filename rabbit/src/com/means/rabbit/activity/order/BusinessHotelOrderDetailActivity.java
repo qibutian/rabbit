@@ -139,6 +139,22 @@ public class BusinessHotelOrderDetailActivity extends RabbitBaseActivity {
 
 					// final int paystatus = JSONUtil.getInt(jo, "paystatus");
 					// grogshop_btn.setText(paystatus == 1 ? "支付订单" : "已支付");
+					
+					
+					
+
+					String orderTime = RabbitValueFix.getStandardTime(
+							JSONUtil.getLong(jo, "adddateline"),
+							"yyyy-MM-dd HH:mm");
+
+					String paytime = RabbitValueFix.getStandardTime(
+							JSONUtil.getLong(jo, "actdateline"),
+							"yyyy-MM-dd HH:mm");
+
+					ViewUtil.bindView(findViewById(R.id.adddateline), orderTime);
+					ViewUtil.bindView(findViewById(R.id.pay_time), paytime);
+					ViewUtil.bindView(findViewById(R.id.use_time), paytime);
+					
 
 					final int paystatus = JSONUtil.getInt(jo, "paystatus");
 					servicestatus = JSONUtil.getInt(jo, "servicestatus");
@@ -154,12 +170,17 @@ public class BusinessHotelOrderDetailActivity extends RabbitBaseActivity {
 						grogshop_btn
 								.setBackgroundResource(R.drawable.fillet_10_green_bg);
 						findViewById(R.id.cancle).setVisibility(View.GONE);
+						errcodeE.setEnabled(false);
+						errcodeE.setHint("");
+
 					} else if (JSONUtil.getInt(jo, "orderstatus") == 3) {
 						grogshop_btn
 								.setText(getString(R.string.order_status_cancle));
 						grogshop_btn
 								.setBackgroundResource(R.drawable.fillet_10_pink_bg);
 						findViewById(R.id.cancle).setVisibility(View.GONE);
+						errcodeE.setEnabled(false);
+						errcodeE.setHint("");
 					} else if (servicestatus == 1
 							&& JSONUtil.getInt(jo, "orderstatus") == 2) {
 						grogshop_btn
@@ -167,22 +188,23 @@ public class BusinessHotelOrderDetailActivity extends RabbitBaseActivity {
 						grogshop_btn
 								.setBackgroundResource(R.drawable.fillet_10_pink_bg);
 						findViewById(R.id.cancle).setVisibility(View.GONE);
+						errcodeE.setEnabled(false);
+						errcodeE.setHint("");
 					} else if (paystatus == 1) {
 						grogshop_btn
 								.setText(getString(R.string.order_status_pay_des));
 						grogshop_btn
 								.setBackgroundResource(R.drawable.fillet_10_pink_bg);
 						findViewById(R.id.cancle).setVisibility(View.VISIBLE);
+						errcodeE.setEnabled(false);
+						errcodeE.setHint("");
 					} else if (paystatus == 2) {
 						grogshop_btn
 								.setText(getString(R.string.business_order_des));
 						grogshop_btn
 								.setBackgroundResource(R.drawable.fillet_10_pink_bg);
 						findViewById(R.id.cancle).setVisibility(View.VISIBLE);
-					}
-					if (paystatus != 1) {
-						errcodeE.setEnabled(false);
-						errcodeE.setHint(getString(R.string.business_order_des2));
+						errcodeE.setEnabled(true);
 					}
 					grogshop_btn.setVisibility(View.VISIBLE);
 					grogshop_btn.setTag(paystatus);
@@ -195,8 +217,6 @@ public class BusinessHotelOrderDetailActivity extends RabbitBaseActivity {
 									.toString()
 									.equals(getString(R.string.business_order_des))) {
 								usecode();
-							} else {
-								finish();
 							}
 
 						}
@@ -257,7 +277,8 @@ public class BusinessHotelOrderDetailActivity extends RabbitBaseActivity {
 							.setBackgroundResource(R.drawable.fillet_10_pink_bg);
 					grogshop_btn.setTag(2);
 					findViewById(R.id.cancle).setVisibility(View.GONE);
-
+					errcodeE.setEnabled(false);
+					errcodeE.setHint("");
 					// JSONObject jo = response.jSON();
 					// Intent it;
 					// int type = JSONUtil.getInt(jo, "type");

@@ -71,19 +71,33 @@ public class BusinessOrderActivity extends RabbitBaseActivity {
 				// TODO Auto-generated method stub
 				TextView paystatusT = (TextView) itemV
 						.findViewById(R.id.paystatus);
+
 				int paystatus = JSONUtil.getInt(data, "paystatus");
-				if (JSONUtil.getInt(data, "orderstatus") == 2) {
+
+				int servicestatus = JSONUtil.getInt(data, "servicestatus");
+				// grogshop_btn.setText(paystatus == 1 ? "支付订单" : "已支付");
+
+				if (paystatus == 2 && servicestatus == 2
+						&& JSONUtil.getInt(data, "orderstatus") == 2) {
 					paystatusT
 							.setText(getString(R.string.order_status_complete));
-					paystatusT
-							.setBackgroundResource(R.drawable.fillet_10_frame_dark_green_bg);
 					paystatusT.setTextColor(getResources().getColor(
 							R.color.text_dark_green));
+					paystatusT
+							.setBackgroundResource(R.drawable.fillet_10_frame_dark_green_bg);
 				} else if (JSONUtil.getInt(data, "orderstatus") == 3) {
 					paystatusT.setText(getString(R.string.order_status_cancle));
-					paystatusT.setBackgroundResource(R.drawable.btn_grey_bg);
 					paystatusT.setTextColor(getResources().getColor(
 							R.color.text_99_grey));
+					paystatusT.setBackgroundResource(R.drawable.btn_grey_bg);
+				} else if (servicestatus == 1
+						&& JSONUtil.getInt(data, "orderstatus") == 2) {
+					paystatusT
+							.setText(getString(R.string.order_status_comment));
+					paystatusT
+							.setBackgroundResource(R.drawable.fillet_10_frame_pink_bg);
+					paystatusT.setTextColor(getResources().getColor(
+							R.color.text_pink));
 				} else if (paystatus == 1) {
 					paystatusT.setText(getString(R.string.order_status_pay));
 					paystatusT
@@ -91,13 +105,7 @@ public class BusinessOrderActivity extends RabbitBaseActivity {
 					paystatusT.setTextColor(getResources().getColor(
 							R.color.text_pink));
 				} else if (paystatus == 2) {
-					paystatusT.setText(getString(R.string.order_status_payed));
-					paystatusT
-							.setBackgroundResource(R.drawable.fillet_10_frame_pink_bg);
-					paystatusT.setTextColor(getResources().getColor(
-							R.color.text_pink));
-				} else if (paystatus == 3) {
-					paystatusT.setText(getString(R.string.order_status_failed));
+					paystatusT.setText(getString(R.string.order_status_use));
 					paystatusT
 							.setBackgroundResource(R.drawable.fillet_10_frame_pink_bg);
 					paystatusT.setTextColor(getResources().getColor(

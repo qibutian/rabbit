@@ -198,18 +198,21 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 					price = JSONUtil.getDouble(jo, "dayprice");
 
 					totalPriceT.setText(getString(R.string.money_symbol)
-							+ price);
+							+ JSONUtil.getString(jo, "totalprice"));
+					shifuT.setText(JSONUtil.getString(jo, "totalprice"));
 
 					ViewUtil.bindView(
 							findViewById(R.id.price),
 							getString(R.string.money_symbol)
-									+ JSONUtil.getString(jo, "dayprice"));
+									+ JSONUtil.getString(jo, "totalprice"));
+
 
 					ViewUtil.bindView(
 							findViewById(R.id.old_price),
 							getString(R.string.money_symbol)
 									+ JSONUtil.getString(jo, "dayprice") + "/"
 									+ getString(R.string.hotel_des));
+					cartView.setCarNum(JSONUtil.getInt(jo, "daycount"));
 					cartView.setOnCartViewClickListener(new OnCartViewClickListener() {
 
 						@Override
@@ -236,7 +239,6 @@ public class AddShopOrderActivity extends RabbitBaseActivity {
 						}
 					});
 					cartView.setMaxNum(JSONUtil.getInt(jo, "mincount"));
-					shifuT.setText(price + "");
 				}
 
 			}

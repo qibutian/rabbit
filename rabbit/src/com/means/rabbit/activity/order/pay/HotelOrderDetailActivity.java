@@ -104,6 +104,20 @@ public class HotelOrderDetailActivity extends RabbitBaseActivity {
 							JSONUtil.getLong(jo, "enddate"), "yyyy-MM-dd");
 
 					dateT.setText("入住" + startdate + " 离开" + enddate);
+					
+					
+					
+					String orderTime = RabbitValueFix.getStandardTime(
+							JSONUtil.getLong(jo, "adddateline"),
+							"yyyy-MM-dd HH:mm");
+
+					String paytime = RabbitValueFix.getStandardTime(
+							JSONUtil.getLong(jo, "actdateline"),
+							"yyyy-MM-dd HH:mm");
+
+					ViewUtil.bindView(findViewById(R.id.adddateline), orderTime);
+					ViewUtil.bindView(findViewById(R.id.pay_time), paytime);
+					ViewUtil.bindView(findViewById(R.id.use_time), paytime);
 
 					signlpirceT.setText(getString(R.string.money_symbol)
 							+ JSONUtil.getString(jo, "singleprice"));

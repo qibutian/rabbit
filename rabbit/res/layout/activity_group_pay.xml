@@ -281,7 +281,7 @@
 
                     <TextView
                         android:id="@+id/credit"
-                        style="@style/text_99_grey_medium"/>
+                        style="@style/text_99_grey_medium" />
 
                     <TextView
                         style="@style/text_44_black_medium"

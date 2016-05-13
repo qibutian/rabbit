@@ -168,6 +168,7 @@ public class ForgetPswdActivity extends RabbitBaseActivity implements
 			showToast(getString(R.string.editinfo_email_des2));
 			return;
 		}
+		time.start();
 		DhNet smsNet = new DhNet(new API().emailcode);
 		smsNet.addParam("email", email);
 		smsNet.addParam("type", "5"); // 1为注册
@@ -177,7 +178,6 @@ public class ForgetPswdActivity extends RabbitBaseActivity implements
 			public void doInUI(Response response, Integer transfer) {
 				// TODO Auto-generated method stub
 				if (response.isSuccess()) {
-					time.start();
 				}
 			}
 		});
@@ -194,6 +194,7 @@ public class ForgetPswdActivity extends RabbitBaseActivity implements
 			showToast(getString(R.string.editinfo_tel_des));
 			return;
 		}
+		time.start();
 		DhNet smsNet = new DhNet(new API().mobilecode);
 		smsNet.addParam("phone", tel);
 		smsNet.addParam("type", "5"); // 5为改密码
@@ -203,7 +204,6 @@ public class ForgetPswdActivity extends RabbitBaseActivity implements
 			public void doInUI(Response response, Integer transfer) {
 				// TODO Auto-generated method stub
 				if (response.isSuccess()) {
-					time.start();
 				}
 			}
 		});
