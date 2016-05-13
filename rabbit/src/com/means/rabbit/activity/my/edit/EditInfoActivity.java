@@ -85,9 +85,13 @@ public class EditInfoActivity extends RabbitBaseActivity implements
 		phoneT = (TextView) findViewById(R.id.phone);
 		headI = (RoundImageView) findViewById(R.id.head);
 		emailT = (TextView) findViewById(R.id.email);
-		nicknameT.setText(per.getNickname());
+		nicknameT.setText(per.getName());
 		passwordT.setText(per.getPassword());
 		phoneT.setText(per.getPhone());
+		// boolean a = ImageLoader.getInstance().getDiskCache()
+		// .remove(per.getFaceimg_s());
+		// Bitmap b = ImageLoader.getInstance().getMemoryCache()
+		// .remove(per.getFaceimg_s());
 		ViewUtil.bindNetImage(headI, per.getFaceimg_s(), "head");
 
 		edit_nicknameV = (LinearLayout) findViewById(R.id.edit_nickname);
@@ -185,7 +189,7 @@ public class EditInfoActivity extends RabbitBaseActivity implements
 			case NICKNAMECODE:
 				String nickname = arg2.getStringExtra("nickname");
 				nicknameT.setText(nickname);
-				per.setNickname(nickname);
+				per.setName(nickname);
 				break;
 			case PASSWORDECODE:
 				String password = arg2.getStringExtra("password");
@@ -227,10 +231,8 @@ public class EditInfoActivity extends RabbitBaseActivity implements
 					showToast(getString(R.string.editinfo_head_success));
 					JSONObject jo = response.jSONFromData();
 					String head_url = per.getFaceimg_s();
-					boolean a = ImageLoader.getInstance().getDiskCache()
-							.remove(head_url);
-					Bitmap b = ImageLoader.getInstance().getMemoryCache()
-							.remove(head_url);
+					ImageLoader.getInstance().getMemoryCache().clear();
+					ImageLoader.getInstance().getDiskCache().clear();
 					per.commit();
 				}
 			}

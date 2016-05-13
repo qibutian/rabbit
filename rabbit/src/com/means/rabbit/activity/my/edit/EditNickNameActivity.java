@@ -1,5 +1,6 @@
 package com.means.rabbit.activity.my.edit;
 
+import net.duohuo.dhroid.ioc.IocContainer;
 import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.net.NetTask;
 import net.duohuo.dhroid.net.Response;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import com.means.rabbit.R;
 import com.means.rabbit.api.API;
 import com.means.rabbit.base.RabbitBaseActivity;
+import com.means.rabbit.utils.RabbitPerference;
 
 /**
  * 修改昵称
@@ -61,7 +63,7 @@ public class EditNickNameActivity extends RabbitBaseActivity {
 		}
 
 		DhNet net = new DhNet(new API().editaction);
-		net.addParam("nickname", name);
+		net.addParam("name", name);
 		net.doPostInDialog(new NetTask(self) {
 
 			@Override
@@ -69,6 +71,11 @@ public class EditNickNameActivity extends RabbitBaseActivity {
 				// TODO Auto-generated method stub
 				if (response.isSuccess()) {
 					showToast(getString(R.string.editinfo_success));
+					RabbitPerference per = IocContainer.getShare().get(
+							RabbitPerference.class);
+					per.load();
+					per.name = name;
+					per.commit();
 					Intent it = new Intent(self, EditInfoActivity.class);
 					it.putExtra("nickname", name);
 					setResult(RESULT_OK, it);
