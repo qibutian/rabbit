@@ -305,4 +305,8 @@ public class API {
 	/**帮助详情*/
 	public String helpdetail = RabbitApplication.getInstance().getBaseUrl()
 			+ "/home/index/helpview";
+	
+	/**paypal支付*/
+	public String paypal = RabbitApplication.getInstance().getBaseUrl()
+			+ "/home/account/paymentset";
 }

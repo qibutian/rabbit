@@ -21,14 +21,14 @@
             <TextView
                 android:id="@+id/name"
                 style="@style/text_44_black_medium"
-                android:singleLine="true"
                 android:ellipsize="end"
-                android:maxWidth="170dp" />
+                android:maxWidth="170dp"
+                android:singleLine="true" />
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:gravity="right|center_vertical"
                 android:orientation="horizontal" >
 
@@ -70,10 +70,12 @@
         <View style="@style/line_horizontal" />
 
         <LinearLayout
+            android:id="@+id/paypal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:padding="@dimen/padding_leftandright" >
+            android:padding="@dimen/padding_leftandright"
+            android:visibility="gone" >
 
             <TextView
                 style="@style/text_44_black_medium"

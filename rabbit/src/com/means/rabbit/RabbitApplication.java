@@ -48,6 +48,8 @@ public class RabbitApplication extends Application implements
 	// 是否使用手机
 	boolean isphone = true;
 
+	public int langtype = 0;
+
 	public static RabbitApplication getInstance() {
 		return instance;
 	}
@@ -190,18 +192,25 @@ public class RabbitApplication extends Application implements
 		return isphone;
 	}
 
+	public int getLangType() {
+		return langtype;
+	}
+
 	public void setBaseUrl(int type) {
 		switch (type) {
 		case 1:
 			Baseurl = "http://cn.lazybunny.c.wanruankeji.com";
+			langtype = 1;
 			break;
 
 		case 2:
 			Baseurl = "http://en.lazybunny.c.wanruankeji.com";
+			langtype = 2;
 			break;
 
 		case 3:
 			Baseurl = "http://malaysia.lazybunny.c.wanruankeji.com";
+			langtype = 3;
 			break;
 
 		default:
