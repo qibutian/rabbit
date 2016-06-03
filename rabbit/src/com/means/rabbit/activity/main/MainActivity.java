@@ -93,6 +93,20 @@ public class MainActivity extends FragmentActivity {
 		EventBus.getDefault().unregister(this);
 	}
 
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		RabbitPerference per = IocContainer.getShare().get(
+				RabbitPerference.class);
+		per.load();
+		if (TextUtils.isEmpty(per.cityname)) {
+			Intent it = new Intent(MainActivity.this, SelectCityActivity.class);
+			it.putExtra("type", "1");
+			startActivity(it);
+		}
+	}
+
 	private void initView() {
 
 		mHandler = new Handler();

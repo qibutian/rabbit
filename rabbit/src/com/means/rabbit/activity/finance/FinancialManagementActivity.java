@@ -35,6 +35,8 @@ public class FinancialManagementActivity extends RabbitBaseActivity implements
 	TextView balanceT;
 	LinearLayout rechargeV, finance_detailV, withdrawV;
 
+	final int Recharge = 101;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -80,7 +82,7 @@ public class FinancialManagementActivity extends RabbitBaseActivity implements
 		// 充值
 		case R.id.recharge:
 			it = new Intent(self, RechargeActivity.class);
-			startActivity(it);
+			startActivityForResult(it, Recharge);
 			break;
 		// 财务明细
 		case R.id.finance_detail:
@@ -95,6 +97,15 @@ public class FinancialManagementActivity extends RabbitBaseActivity implements
 
 		default:
 			break;
+		}
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent arg2) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, arg2);
+		if (requestCode == Recharge && resultCode == Activity.RESULT_OK) {
+			myMoney();
 		}
 	}
 }

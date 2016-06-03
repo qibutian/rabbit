@@ -513,6 +513,10 @@
     <string name="new_email">新邮箱</string>
     <string name="tuandou_shanghu">商家或团购</string>
     <string name="help_detail">帮助详情</string>
- <string name="order_status_release_comment_des">等待用户点评</string>
-      <string name="order_status_pay_des">等待用户支付</string>
+    <string name="order_status_release_comment_des">等待用户点评</string>
+    <string name="order_status_pay_des">等待用户支付</string>
+    <string name="recharge_des">请输入充值金额!</string>
+    <string name="recharge_des1">充值金额不能为0!</string>
+    <string name="recharge_success">充值成功!</string>
+
 </resources>

@@ -1,5 +1,7 @@
 package com.means.rabbit.activity.home;
 
+import net.duohuo.dhroid.activity.ActivityTack;
+import net.duohuo.dhroid.dialog.IDialog;
 import net.duohuo.dhroid.ioc.IocContainer;
 import net.duohuo.dhroid.net.DhNet;
 import net.duohuo.dhroid.net.GlobalParams;
@@ -13,12 +15,15 @@ import org.json.JSONObject;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.means.rabbit.R;
+import com.means.rabbit.activity.main.MainActivity;
+import com.means.rabbit.activity.main.MainActivity.ExitRunnable;
 import com.means.rabbit.adapter.CityAdapter;
 import com.means.rabbit.adapter.CountryAdapter;
 import com.means.rabbit.api.API;
@@ -40,6 +45,8 @@ public class SelectCityActivity extends RabbitBaseActivity {
 
 	CityAdapter cityAdapter;
 
+	String type;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -49,6 +56,10 @@ public class SelectCityActivity extends RabbitBaseActivity {
 	@Override
 	public void initView() {
 		setTitle(getString(R.string.select_city));
+		type = getIntent().getStringExtra("type");
+		if (!TextUtils.isEmpty(type)) {
+			setLeftIconGone();
+		}
 
 		countrylist = (ListView) findViewById(R.id.countrylist);
 		citylist = (ListView) findViewById(R.id.citylist);
@@ -141,6 +152,18 @@ public class SelectCityActivity extends RabbitBaseActivity {
 
 					}
 				});
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			if (!TextUtils.isEmpty(type)) {
+				return false;
+			} else {
+				return super.onKeyDown(keyCode, event);
+			}
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 
 }

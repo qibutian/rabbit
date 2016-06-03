@@ -11,8 +11,8 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:orientation="vertical" >
-        
-         <LinearLayout
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -29,19 +29,22 @@
                 android:orientation="horizontal" >
 
                 <EditText
-                style="@style/text_44_black_big"
-                android:layout_width="match_parent"
-                android:gravity="right"
-                android:textColor="@color/text_2B_green"
-                android:background="@color/white"
-                android:inputType="number" />
+                    android:id="@+id/money"
+                    style="@style/text_44_black_big"
+                    android:layout_width="match_parent"
+                    android:background="@color/white"
+                    android:gravity="right"
+                    android:inputType="number"
+                    android:textColor="@color/text_2B_green" />
             </LinearLayout>
         </LinearLayout>
-        <View style="@style/line_horizontal"
-            android:layout_height="10dp"
-             />
+
+        <View
+            style="@style/line_horizontal"
+            android:layout_height="10dp" />
 
         <LinearLayout
+            android:id="@+id/zhifubao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -63,8 +66,11 @@
                     android:src="@drawable/icon_right" />
             </LinearLayout>
         </LinearLayout>
+
         <View style="@style/line_horizontal" />
+
         <LinearLayout
+            android:id="@+id/paypal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -86,7 +92,6 @@
                     android:src="@drawable/icon_right" />
             </LinearLayout>
         </LinearLayout>
-        
     </LinearLayout>
 
 </LinearLayout>

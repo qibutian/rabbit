@@ -45,10 +45,12 @@
             android:layout_height="10dp" />
 
         <LinearLayout
+            android:id="@+id/zhifubao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:padding="@dimen/padding_leftandright" >
+            android:padding="@dimen/padding_leftandright"
+            android:visibility="gone" >
 
             <TextView
                 style="@style/text_44_black_medium"

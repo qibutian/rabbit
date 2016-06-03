@@ -21,6 +21,8 @@ public class ChangLanguageDialog extends BaseAlertDialog {
 
 	OnClickResult onClickResult;
 
+	RabbitPerference per;
+
 	public ChangLanguageDialog(Context context) {
 		super(context);
 		this.context = context;
@@ -31,7 +33,8 @@ public class ChangLanguageDialog extends BaseAlertDialog {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_change_language);
-
+		per = IocContainer.getShare().get(RabbitPerference.class);
+		per.load();
 		findViewById(R.id.bg).setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -50,6 +53,8 @@ public class ChangLanguageDialog extends BaseAlertDialog {
 						if (onClickResult != null) {
 							onClickResult.click();
 						}
+						per.cityname = "";
+						per.commit();
 						dismiss();
 					}
 				});
@@ -64,6 +69,8 @@ public class ChangLanguageDialog extends BaseAlertDialog {
 						if (onClickResult != null) {
 							onClickResult.click();
 						}
+						per.cityname = "";
+						per.commit();
 						dismiss();
 					}
 				});
@@ -78,6 +85,8 @@ public class ChangLanguageDialog extends BaseAlertDialog {
 						if (onClickResult != null) {
 							onClickResult.click();
 						}
+						per.cityname = "";
+						per.commit();
 						dismiss();
 					}
 				});

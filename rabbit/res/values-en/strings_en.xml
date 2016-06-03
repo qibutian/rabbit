@@ -514,6 +514,10 @@
     <string name="new_email">new mail</string>
     <string name="tuandou_shanghu">Businesses or buy</string>
     <string name="help_detail">Help Details</string>
- <string name="order_status_release_comment_des">Wait user reviews</string>
-      <string name="order_status_pay_des">Waiting for the user to pay</string>
+    <string name="order_status_release_comment_des">Wait user reviews</string>
+    <string name="order_status_pay_des">Waiting for the user to pay</string>
+    <string name="recharge_des">Please enter the recharge amount</string>
+    <string name="recharge_des1">Recharge amount can not be 0</string>
+    <string name="recharge_success">Successful recharge</string>
+
 </resources>

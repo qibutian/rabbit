@@ -87,8 +87,10 @@ public class PayOrderActivity extends RabbitBaseActivity {
 
 		if (RabbitApplication.getInstance().getLangType() == 1) {
 			findViewById(R.id.paypal).setVisibility(View.GONE);
+			findViewById(R.id.zhifubao).setVisibility(View.VISIBLE);
 		} else {
 			findViewById(R.id.paypal).setVisibility(View.VISIBLE);
+			findViewById(R.id.zhifubao).setVisibility(View.GONE);
 		}
 
 		findViewById(R.id.paybymoney).setOnClickListener(new OnClickListener() {

@@ -524,5 +524,8 @@
     <string name="help_detail">bantuan Maklumat</string>
     <string name="order_status_release_comment_des">Tunggu ulasan pengguna</string>
     <string name="order_status_pay_des">Menunggu pengguna untuk membayar</string>
+    <string name="recharge_des">Sila masukkan jumlah aliran masuk</string>
+    <string name="recharge_des1">Jumlah Recharge tidak boleh 0</string>
+    <string name="recharge_success">caj semula yang berjaya</string>
 
 </resources>
